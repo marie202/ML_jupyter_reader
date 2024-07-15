@@ -1,6 +1,0 @@
-export ML_CONFIG=1
-export INPUT=input
-export DATA=data_10
-export DATA_COMMON=data
-export PLOT=plot_10
-export NCLASSES=10
