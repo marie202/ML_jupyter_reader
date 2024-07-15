@@ -1,0 +1,1635 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Steering the control flow of a program &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'General_Introduction_Sessions/1_Introduction_to_Python/1_7_control_flow_mit_Lsg';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Additional Exercises I" href="1_8_Exercises_Einf_Python_I.html" />
+    <link rel="prev" title="User defined functions" href="1_6_Intro_user_defined_functions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_1_Python_as_calculator.html">Introduction to Python - Using Python as calculator</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="1_2_Build_in_Functions.html">Use of predefined functions</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="1_3_data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_4_atomic_datatypes.html">Datatypes</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="1_5_objects_data_types.html">9. The concept of objects in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_6_Intro_user_defined_functions.html">User defined functions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Steering the control flow of a program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_8_Exercises_Einf_Python_I.html">Additional Exercises I</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="1_9_Exercises_Einf_Python_II.html">Additional Exercises II</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Recap Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2_NVT/2_1_Wdhl_Statisitk_1.html">Recap Statistics 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_NVT/2_2_Add_Exercises_NVT.html">Additional Exercises III -  The Normal distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_intro_regression/4_Intro_Regression.html">What we have learnt so far:</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../5_intro_correlation/5_intro_regression%26correlation_LSG.html">What we have learnt so far:</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Feature Scales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_features_scales/3_Feature_scales.html">3. Feature Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_features_scales/3_Add_Exercises_FeatureScales-v2.html">Additional Exercises III -  Feature Scales</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FGeneral_Introduction_Sessions/1_Introduction_to_Python/1_7_control_flow_mit_Lsg.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/General_Introduction_Sessions/1_Introduction_to_Python/1_7_control_flow_mit_Lsg.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Steering the control flow of a program</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioned-code-execution">Conditioned code execution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-loops-for-repetition-of-statements">Using loops for repetition of statements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops"><code class="docutils literal notranslate"><span class="pre">for</span></code> loops</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops"><code class="docutils literal notranslate"><span class="pre">while</span></code> loops</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-ai-applications">First AI applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-chatbots-work">How do Chatbots work?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics">Statistics</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> lab_black
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="steering-the-control-flow-of-a-program">
+<h1>Steering the control flow of a program<a class="headerlink" href="#steering-the-control-flow-of-a-program" title="Permalink to this heading">#</a></h1>
+<p>Up to this point, we have already learned how to utilise Python and Jupyter Notebooks to solve a variety of programming scenarios with the help of the essential data types and structures. We also get to know the usage of external packages and the usage of user-defined functions and their vast benefits. Nevertheless, the shown programming approaches have been pretty straightforward so far in a manner of speaking that we only implemented so-called <em><strong>sequentially control flows.</strong></em> This programmatic concept describes a relatively static way of implementation since all our implemented lines of codes (<strong>statements</strong>) are executed exactly in the order they are written without any possibility of omission. Hence our programming approaches lack the opportunity for flexibility, like a repeated or conditioned execution of certain code blocks.</p>
+<p>Therefore, within the scope of this chapter, we want to get to know a variety of standard control flow structures that will allow you to modify and steer the programming flow in your favour. The following control flows will be introduced:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">while</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span></code></p></li>
+</ul>
+<section id="conditioned-code-execution">
+<h2>Conditioned code execution<a class="headerlink" href="#conditioned-code-execution" title="Permalink to this heading">#</a></h2>
+<p>The first way of steering the code execution is to create branches within the execution flow of your code using conditions. The condition itself must contain a logical statement which is evaluated. Depending on the outcome of the logical expression (either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>), one or the other branch is executed. We use the’ if’ statement to implement this type of control flow. The general syntax is:</p>
+<p>For example, we could implement a <strong>UDF</strong> that proves based on your age, if you are a teenager or an adult and returns the results of that evaluation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">age_test</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;You are a teenager!&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;You are an adult!&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us test our nearly implemented, conditioned control flowed <strong>UDF</strong> by a few different values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_test</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;You are a teenager!&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_test</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;You are an adult!&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Isn’t it great?! Based on our logical expression, the age check <code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">&lt;</span> <span class="pre">18</span></code>, and a different output is produced at the given age! Great. Since our example only covers a dichotomic categorisation based on age, we want to implement a broader range of outputs based on the given age. Therefore we make use of the <code class="docutils literal notranslate"><span class="pre">elif</span></code> statement and adapt our <code class="docutils literal notranslate"><span class="pre">age_test()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">age_test</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;You are not born yet!&quot;</span>
+    <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;You are a kid!&quot;</span>
+    <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;You are a teenager!&quot;</span>
+    <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">65</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;You are an adult!&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;You are a retiree!&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try our new version of the function with a few ages:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_test</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;You are a kid!&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_test</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;You are not born yet!&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_test</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;You are a retiree!&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-loops-for-repetition-of-statements">
+<h2>Using loops for repetition of statements<a class="headerlink" href="#using-loops-for-repetition-of-statements" title="Permalink to this heading">#</a></h2>
+<p>Another way to steer the control and execution flow is by repeatedly executing a specific code block on purpose with changing values. This programmatic concept is related to the term loops. It is one of the most powerful since it allows you to save many unnecessary LoCs due to little differences. The code statements within the loop are repeated as long as a given condition remains <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> based on the chosen implementation or as long as not all elements of a given list are selected once. The first case is related to <code class="docutils literal notranslate"><span class="pre">while</span></code> loops, while the second holds for <code class="docutils literal notranslate"><span class="pre">for</span></code> loops. For loops in Python are helpful when you want to cycle over all of the items
+in a collection (such as all of the elements of an array), and while loops are useful when you want to
+cycle for an indefinite amount of time until some condition is met.</p>
+<section id="for-loops">
+<h3><code class="docutils literal notranslate"><span class="pre">for</span></code> loops<a class="headerlink" href="#for-loops" title="Permalink to this heading">#</a></h3>
+<p>At first, we want to look at <code class="docutils literal notranslate"><span class="pre">for</span></code> loops since the structure is most likely easier to follow as a beginner.</p>
+<p>For a first example, let us use a for loop to print each number between 1 and 10 sequentially:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></div>
+</div>
+</div>
+</div>
+<p>Oh, that was relatively easy, but the result is unexpected! The reason is that we do not use the <code class="docutils literal notranslate"><span class="pre">range</span></code> command appropriately. Since the counting in Python starts with <code class="docutils literal notranslate"><span class="pre">0</span></code>, we must adapt the statement accordingly because we want the first ten numbers without the <code class="docutils literal notranslate"><span class="pre">0</span></code>. Hence:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>Note:</strong> the <code class="docutils literal notranslate"><span class="pre">range</span></code> command generates a list of values according to the parametrisation. If only one parameter is given, the list will start with <span class="math notranslate nohighlight">\(0\)</span> and ends with <span class="math notranslate nohighlight">\(n - 1\)</span>. If two parameters are given, the list starts with <span class="math notranslate nohighlight">\(a\)</span> and ends with <span class="math notranslate nohighlight">\(n - 1\)</span>.</p>
+</div></blockquote>
+<p>Awesome! As a next, more advanced task we want to calculate the sum of the first ten numbers with the help of a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">i</span>
+    <span class="c1"># print(&#39;i=&#39;,i,&#39;, result=&#39;,result)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>Note on indentation</strong>: Notice the indentation once we enter the for loop. Every idented statement after the for loop declaration is part of the for loop.  This rule holds true for while loops, if statements, functions, etc. Required identation is one of the reasons Python is such a beautiful language to read.</p>
+</div></blockquote>
+<p>Nice! We can also simplify the loop by the use of the <code class="docutils literal notranslate"><span class="pre">+=</span></code> operator:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="n">i</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;i=&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;, result=&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>i= 0 , result= 0
+i= 1 , result= 1
+i= 2 , result= 3
+i= 3 , result= 6
+i= 4 , result= 10
+i= 5 , result= 15
+i= 6 , result= 21
+i= 7 , result= 28
+i= 8 , result= 36
+i= 9 , result= 45
+i= 10 , result= 55
+55
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>Exercise:</strong> Externalise the above code within an user defined function (UDF) named <code class="docutils literal notranslate"><span class="pre">sum_of_numbers()</span></code>. The UDF shall take one <em>parameter</em>. Adapt the code so that this parameter steers up to which natural number the sum will be calculated.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_of_numbers</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">i</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;result&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>Test your function</strong>:<br />
+The sum of the first <span class="math notranslate nohighlight">\(100\)</span> natural numbers should be <span class="math notranslate nohighlight">\(5050\)</span>, while the sum of the first <span class="math notranslate nohighlight">\(500\)</span> natural numbers should be <span class="math notranslate nohighlight">\(125250\)</span>.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sum_of_numbers</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>result 0
+result 1
+result 3
+result 6
+result 10
+result 15
+result 21
+result 28
+result 36
+result 45
+result 55
+result 66
+result 78
+result 91
+result 105
+result 120
+result 136
+result 153
+result 171
+result 190
+result 210
+result 231
+result 253
+result 276
+result 300
+result 325
+result 351
+result 378
+result 406
+result 435
+result 465
+result 496
+result 528
+result 561
+result 595
+result 630
+result 666
+result 703
+result 741
+result 780
+result 820
+result 861
+result 903
+result 946
+result 990
+result 1035
+result 1081
+result 1128
+result 1176
+result 1225
+result 1275
+result 1326
+result 1378
+result 1431
+result 1485
+result 1540
+result 1596
+result 1653
+result 1711
+result 1770
+result 1830
+result 1891
+result 1953
+result 2016
+result 2080
+result 2145
+result 2211
+result 2278
+result 2346
+result 2415
+result 2485
+result 2556
+result 2628
+result 2701
+result 2775
+result 2850
+result 2926
+result 3003
+result 3081
+result 3160
+result 3240
+result 3321
+result 3403
+result 3486
+result 3570
+result 3655
+result 3741
+result 3828
+result 3916
+result 4005
+result 4095
+result 4186
+result 4278
+result 4371
+result 4465
+result 4560
+result 4656
+result 4753
+result 4851
+result 4950
+result 5050
+result 5151
+result 5253
+result 5356
+result 5460
+result 5565
+result 5671
+result 5778
+result 5886
+result 5995
+result 6105
+result 6216
+result 6328
+result 6441
+result 6555
+result 6670
+result 6786
+result 6903
+result 7021
+result 7140
+result 7260
+result 7381
+result 7503
+result 7626
+result 7750
+result 7875
+result 8001
+result 8128
+result 8256
+result 8385
+result 8515
+result 8646
+result 8778
+result 8911
+result 9045
+result 9180
+result 9316
+result 9453
+result 9591
+result 9730
+result 9870
+result 10011
+result 10153
+result 10296
+result 10440
+result 10585
+result 10731
+result 10878
+result 11026
+result 11175
+result 11325
+result 11476
+result 11628
+result 11781
+result 11935
+result 12090
+result 12246
+result 12403
+result 12561
+result 12720
+result 12880
+result 13041
+result 13203
+result 13366
+result 13530
+result 13695
+result 13861
+result 14028
+result 14196
+result 14365
+result 14535
+result 14706
+result 14878
+result 15051
+result 15225
+result 15400
+result 15576
+result 15753
+result 15931
+result 16110
+result 16290
+result 16471
+result 16653
+result 16836
+result 17020
+result 17205
+result 17391
+result 17578
+result 17766
+result 17955
+result 18145
+result 18336
+result 18528
+result 18721
+result 18915
+result 19110
+result 19306
+result 19503
+result 19701
+result 19900
+result 20100
+result 20301
+result 20503
+result 20706
+result 20910
+result 21115
+result 21321
+result 21528
+result 21736
+result 21945
+result 22155
+result 22366
+result 22578
+result 22791
+result 23005
+result 23220
+result 23436
+result 23653
+result 23871
+result 24090
+result 24310
+result 24531
+result 24753
+result 24976
+result 25200
+result 25425
+result 25651
+result 25878
+result 26106
+result 26335
+result 26565
+result 26796
+result 27028
+result 27261
+result 27495
+result 27730
+result 27966
+result 28203
+result 28441
+result 28680
+result 28920
+result 29161
+result 29403
+result 29646
+result 29890
+result 30135
+result 30381
+result 30628
+result 30876
+result 31125
+result 31375
+result 31626
+result 31878
+result 32131
+result 32385
+result 32640
+result 32896
+result 33153
+result 33411
+result 33670
+result 33930
+result 34191
+result 34453
+result 34716
+result 34980
+result 35245
+result 35511
+result 35778
+result 36046
+result 36315
+result 36585
+result 36856
+result 37128
+result 37401
+result 37675
+result 37950
+result 38226
+result 38503
+result 38781
+result 39060
+result 39340
+result 39621
+result 39903
+result 40186
+result 40470
+result 40755
+result 41041
+result 41328
+result 41616
+result 41905
+result 42195
+result 42486
+result 42778
+result 43071
+result 43365
+result 43660
+result 43956
+result 44253
+result 44551
+result 44850
+result 45150
+result 45451
+result 45753
+result 46056
+result 46360
+result 46665
+result 46971
+result 47278
+result 47586
+result 47895
+result 48205
+result 48516
+result 48828
+result 49141
+result 49455
+result 49770
+result 50086
+result 50403
+result 50721
+result 51040
+result 51360
+result 51681
+result 52003
+result 52326
+result 52650
+result 52975
+result 53301
+result 53628
+result 53956
+result 54285
+result 54615
+result 54946
+result 55278
+result 55611
+result 55945
+result 56280
+result 56616
+result 56953
+result 57291
+result 57630
+result 57970
+result 58311
+result 58653
+result 58996
+result 59340
+result 59685
+result 60031
+result 60378
+result 60726
+result 61075
+result 61425
+result 61776
+result 62128
+result 62481
+result 62835
+result 63190
+result 63546
+result 63903
+result 64261
+result 64620
+result 64980
+result 65341
+result 65703
+result 66066
+result 66430
+result 66795
+result 67161
+result 67528
+result 67896
+result 68265
+result 68635
+result 69006
+result 69378
+result 69751
+result 70125
+result 70500
+result 70876
+result 71253
+result 71631
+result 72010
+result 72390
+result 72771
+result 73153
+result 73536
+result 73920
+result 74305
+result 74691
+result 75078
+result 75466
+result 75855
+result 76245
+result 76636
+result 77028
+result 77421
+result 77815
+result 78210
+result 78606
+result 79003
+result 79401
+result 79800
+result 80200
+result 80601
+result 81003
+result 81406
+result 81810
+result 82215
+result 82621
+result 83028
+result 83436
+result 83845
+result 84255
+result 84666
+result 85078
+result 85491
+result 85905
+result 86320
+result 86736
+result 87153
+result 87571
+result 87990
+result 88410
+result 88831
+result 89253
+result 89676
+result 90100
+result 90525
+result 90951
+result 91378
+result 91806
+result 92235
+result 92665
+result 93096
+result 93528
+result 93961
+result 94395
+result 94830
+result 95266
+result 95703
+result 96141
+result 96580
+result 97020
+result 97461
+result 97903
+result 98346
+result 98790
+result 99235
+result 99681
+result 100128
+result 100576
+result 101025
+result 101475
+result 101926
+result 102378
+result 102831
+result 103285
+result 103740
+result 104196
+result 104653
+result 105111
+result 105570
+result 106030
+result 106491
+result 106953
+result 107416
+result 107880
+result 108345
+result 108811
+result 109278
+result 109746
+result 110215
+result 110685
+result 111156
+result 111628
+result 112101
+result 112575
+result 113050
+result 113526
+result 114003
+result 114481
+result 114960
+result 115440
+result 115921
+result 116403
+result 116886
+result 117370
+result 117855
+result 118341
+result 118828
+result 119316
+result 119805
+result 120295
+result 120786
+result 121278
+result 121771
+result 122265
+result 122760
+result 123256
+result 123753
+result 124251
+result 124750
+result 125250
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>125250
+</pre></div>
+</div>
+</div>
+</div>
+<p>We may as well loop through any iterable object, such as a list of strings. Let us create a list of different names for those purposes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Ringo&quot;</span><span class="p">,</span> <span class="s2">&quot;Paul&quot;</span><span class="p">,</span> <span class="s2">&quot;George&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s print each name in the list one by one:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>John
+Ringo
+Paul
+George
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>Note:</strong> By using <code class="docutils literal notranslate"><span class="pre">in</span></code>, each value within the list <code class="docutils literal notranslate"><span class="pre">names</span></code> is assigned sequentially and once to the variable name once! That makes the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop quite handy and clearly implemented.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Exercise:</strong> Combine the items from the two given lists <code class="docutils literal notranslate"><span class="pre">names</span></code> and <code class="docutils literal notranslate"><span class="pre">surnames</span></code> and print them as one string to the console each!</p>
+</div></blockquote>
+<blockquote>
+<div><p><em>Hint:</em> You may want to investigate the use of the <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> and the <code class="docutils literal notranslate"><span class="pre">zip()</span></code> functions on your own with the help of the internet to find a handy and short solution for this task!</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Ringo&quot;</span><span class="p">,</span> <span class="s2">&quot;Paul&quot;</span><span class="p">,</span> <span class="s2">&quot;George&quot;</span><span class="p">]</span>
+<span class="n">surnames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Lennon&quot;</span><span class="p">,</span> <span class="s2">&quot;Star&quot;</span><span class="p">,</span> <span class="s2">&quot;McCartney&quot;</span><span class="p">,</span> <span class="s2">&quot;Harrison&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">zip</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on class zip in module builtins:
+
+class zip(object)
+ |  zip(*iterables) --&gt; A zip object yielding tuples until an input is exhausted.
+ |  
+ |     &gt;&gt;&gt; list(zip(&#39;abcdefg&#39;, range(3), range(4)))
+ |     [(&#39;a&#39;, 0, 0), (&#39;b&#39;, 1, 1), (&#39;c&#39;, 2, 2)]
+ |  
+ |  The zip object yields n-length tuples, where n is the number of iterables
+ |  passed as positional arguments to zip().  The i-th element in every tuple
+ |  comes from the i-th iterable argument to zip().  This continues until the
+ |  shortest argument is exhausted.
+ |  
+ |  Methods defined here:
+ |  
+ |  __getattribute__(self, name, /)
+ |      Return getattr(self, name).
+ |  
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |  
+ |  __next__(self, /)
+ |      Implement next(self).
+ |  
+ |  __reduce__(...)
+ |      Return state information for pickling.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name_comb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">surnames</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name_comb</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name_comb</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>John Lennon
+------
+Ringo Star
+------
+Paul McCartney
+------
+George Harrison
+------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">zip</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on class zip in module builtins:
+
+class zip(object)
+ |  zip(*iterables) --&gt; A zip object yielding tuples until an input is exhausted.
+ |  
+ |     &gt;&gt;&gt; list(zip(&#39;abcdefg&#39;, range(3), range(4)))
+ |     [(&#39;a&#39;, 0, 0), (&#39;b&#39;, 1, 1), (&#39;c&#39;, 2, 2)]
+ |  
+ |  The zip object yields n-length tuples, where n is the number of iterables
+ |  passed as positional arguments to zip().  The i-th element in every tuple
+ |  comes from the i-th iterable argument to zip().  This continues until the
+ |  shortest argument is exhausted.
+ |  
+ |  Methods defined here:
+ |  
+ |  __getattribute__(self, name, /)
+ |      Return getattr(self, name).
+ |  
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |  
+ |  __next__(self, /)
+ |      Implement next(self).
+ |  
+ |  __reduce__(...)
+ |      Return state information for pickling.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="while-loops">
+<h3><code class="docutils literal notranslate"><span class="pre">while</span></code> loops<a class="headerlink" href="#while-loops" title="Permalink to this heading">#</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">while</span></code> loop repeats a task until a particular condition is met. Therefore, we do not need to know how often the loop will be executed. Be sure there is a way to exit out of a while loop. Otherwise, your program will run forever.</p>
+<p>Let’s implement the same task with which we introduced the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, but this time by using a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop. That means using a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop that prints the first ten natural numbers sequentially:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we want to adapt the above loop so that only every second number starting with <span class="math notranslate nohighlight">\(2\)</span> is printed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+4
+6
+8
+10
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is also the possibility of using an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement within the loop to achieve the same result. We want to have a look at that solution by printing all even numbers from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(25\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">number</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="n">number</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>Exercise:</strong> Write a parameterised UDF called <code class="docutils literal notranslate"><span class="pre">fibo_numbers()</span></code>, that calculates the fibonacci numbers according to the given parameter! Use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop for this task.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibo_numbers</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">fibo_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">fibo_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fibo_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fibo_list</span><span class="p">[</span><span class="n">a</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">fibo_list</span><span class="p">[</span><span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># print(fibo_list)</span>
+
+    <span class="k">return</span> <span class="n">fibo_list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>Test your function</strong>:<br />
+The first 10 fibonacci numbers are:</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fibo_numbers</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="first-ai-applications">
+<h2>First AI applications<a class="headerlink" href="#first-ai-applications" title="Permalink to this heading">#</a></h2>
+<section id="how-do-chatbots-work">
+<h3>How do Chatbots work?<a class="headerlink" href="#how-do-chatbots-work" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://www.python-lernen.de/chatbot-programmieren.htm">https://www.python-lernen.de/chatbot-programmieren.htm</a></p>
+<p>recall dictionaries:</p>
+<p><a class="reference external" href="https://www.python-lernen.de/python-dictionary.htm">https://www.python-lernen.de/python-dictionary.htm</a></p>
+</section>
+</section>
+<section id="statistics">
+<h2>Statistics<a class="headerlink" href="#statistics" title="Permalink to this heading">#</a></h2>
+<p>In order to apply AI algorithms, write codes and evaluate large data sets, we need some statistics.</p>
+<p>Recall in groups the following topics:</p>
+<ol class="arabic simple">
+<li><p>What is a normal distribution? What is a standard deviation, the variance, confidence intervalls?</p></li>
+<li><p>What kind of means are there?</p></li>
+<li><p>What is the central limit theorem</p></li>
+<li><p>What is the law of large numbers?</p></li>
+<li><p>What is linear regression?</p></li>
+<li><p>What is logistische Regression?</p></li>
+<li><p>What is a general linear model (GLM)?</p></li>
+<li><p>What is a Poisson distribution?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span>
+    <span class="n">src</span><span class="o">=</span><span class="s2">&quot;../../../citation_Soga.html&quot;</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="900"
+            height="200"
+            src="../../../citation_Soga.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./General_Introduction_Sessions/1_Introduction_to_Python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1_6_Intro_user_defined_functions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">User defined functions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="1_8_Exercises_Einf_Python_I.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Additional Exercises I</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioned-code-execution">Conditioned code execution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-loops-for-repetition-of-statements">Using loops for repetition of statements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops"><code class="docutils literal notranslate"><span class="pre">for</span></code> loops</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops"><code class="docutils literal notranslate"><span class="pre">while</span></code> loops</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-ai-applications">First AI applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-chatbots-work">How do Chatbots work?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics">Statistics</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

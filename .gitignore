@@ -1,0 +1,14 @@
+.DS_Store
+*.tmp
+*.nc
+**/.ipynb_checkpoints/
+EinfuehrungKI_Sose24/data/
+Kurse_FU/
+*.pdf
+*.pptx
+*.zip
+*.RData
+*.rdata
+**/__pycache__/
+*.gz
+AktuelleAnwendungen_SoSe24/keras_env/

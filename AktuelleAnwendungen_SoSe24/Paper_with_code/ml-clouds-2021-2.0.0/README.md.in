@@ -1,0 +1,570 @@
+# Code for the paper "Machine learning of cloud types in satellite observations and climate models"
+
+Peter Kuma<sup>1</sup>,
+Frida A.-M. Bender<sup>1</sup>,
+Alex Schuddeboom<sup>2</sup>,
+Adrian J. McDonald<sup>2</sup>,
+Øyvind Seland<sup>3</sup>
+
+<sup>1</sup>Department of Meteorology (MISU), Stockholm University, Stockholm, Sweden\
+<sup>2</sup>School of Physical and Chemical Sciences, Christchurch, Aotearoa New Zealand\
+<sup>3</sup>Norwegian Meteorological Institute, Oslo, Norway
+
+This repository contains code for the paper
+[Machine learning of cloud types in satellite observations and climate
+models](https://peterkuma.net/science/papers/kuma_et_al_2022b/) (in review).
+
+## Introduction
+
+The code contains scripts for training an artificial neural network (ANN) for
+prediction of cloud types based on satellite and ground-based station data, and
+related data processing and visualisation. The artificial neural network is
+implemented in [TensorFlow](https://www.tensorflow.org/). The scripts use
+Python and bash. They should be run on Linux, although it may be possible to
+adapt them to other operating systems.
+
+The scripts are divided into data processing scripts and plotting scripts.
+The scripts are dependent on one another for data input and output. The script
+`run` in the main directory runs the individual data processing and plotting
+scripts located in the directory `bin` and takes care of the dependencies.
+
+Storage requirements for running the code on all available climate models and
+reanalyses are on the scale of 10 TB, and main memory requirements are on the
+scale of 60 GB. Lower hardware requirements are possible if used with fewer
+models or shorter training data time periods.
+
+Please see the manuscript for more details about the ANN. If you have any
+questions about the code or would like to report a bug, you can contact the
+manuscript authors or submit an [issue on
+GitHub](https://github.com/peterkuma/ml-clouds-2021/issues). Contributions
+are welcome through [pull requests on
+Github](https://github.com/peterkuma/ml-clouds-2021/pulls).
+
+## Requirements
+
+The code can be run on a Linux distribution with the following software
+(exact versions are listed for reproducibility, but newer version may work
+equally well):
+
+- Python (3.9.2)
+- Cython (0.29.2)
+- aria2 (1.35.0)
+- GNU parallel (20161222)
+- cdo (1.9.10)
+
+as well as Python packages listed in `requirements.txt`.
+
+On Debian-based Linux distributions (Ubuntu, Debian, Devuan, ...), the required
+software can be installed with:
+
+```sh
+apt install python3 cython3 aria2 parallel cdo
+```
+
+Optionally, to install the Python packages in a virtual environment (venv)
+instead of the user's home directory:
+
+```sh
+python3 -m venv venv
+. venv/bin/activate
+```
+
+To install the Python packages:
+
+```sh
+pip3 install -r requirements.txt
+```
+
+Depending on the Linux distribution, python and pip might be available as
+`python` or `python3`, and `pip` or `pip3`.
+
+## Input datasets
+
+The input datasets are not contained in this repository because of their large
+size, except for surface temperature data and a table of model ECS, TCR and
+cloud feedback. The rest of the datasets have to be downloaded from other
+repositories as described below. It is possible to run the scripts with fewer
+climate models and reanalyses and thus reduce the amount of data needed to
+be downloaded. The `run` script expects a particular subdirectory structure of
+the `input` directory, described [below](#input-directory).
+
+### CERES
+
+SYN1deg Level 3 daily means can be downloaded from the [CERES
+website](https://ceres.larc.nasa.gov). They have to be converted to NetCDF with
+the tool
+[h4toh5](https://portal.hdfgroup.org/display/support/Download+h4h5tools)
+(provided by the HDF Group), and stored in `input/ceres`.
+
+After downloading, the data should be resampled to 2.5° resolution with
+[cdo](https://code.mpimet.mpg.de/projects/cdo/embedded/index.html):
+
+```sh
+# To be run in the directory with the CERES NetCDF files.
+mkdir 2.5deg
+parallel cdo -remapcon,r144x96 {{}} 2.5deg/{{}} ::: *.nc
+```
+
+### Historical Unidata Internet Data Distribution (IDD) Global Observational Data
+
+The IDD dataset contains ship and buoy records from the Global Telecommunication
+System. It can be downloaded from [Research Data
+Archive](https://rda.ucar.edu/datasets/ds336.0/). The relevant files are
+the SYNOP and BUOY NetCDF files (2008–present), and the HISTSURFACEOBS tar
+files (2003–2008). The HISTSURFACEOBS files have to be unpacked after
+downloading.
+
+In the examples below it is assumed that the IDD NetCDF files are stored under
+`input/idd/synop` and `input/idd/buoy` for the synop and buoy files,
+respectively.
+
+### Climate Model Intercomparison Project (CMIP)
+
+CMIP5 and CMIP6 model output can be downloaded from the
+[CMIP5](https://esgf-node.llnl.gov/projects/cmip5/) and
+[CMIP6](https://esgf-node.llnl.gov/projects/cmip6/) data archives.  The
+relevant experiments are `historical` (`hist-1950` in the case of EC-Earth3P)
+and `abrupt-4xCO2`. The required variables are `tas` in the monthly (`mon`)
+frequency, and `rlut`, `rlutcs`, `rsdt`, `rsut`, `rsutcs` in the daily (`day`)
+frequency.
+
+The command `download_cmip` can be used to create a list of CMIP files
+to download from a JSON catalog file, which can be created on the archive site
+above (`return results as JSON` on the search page). `limit=` in the URL to the
+JSON file should be changed to 10000, and `Show All Replicas` should be
+selected when searching. The resulting file list can be used with the program
+aria2c as `aria2c -i <file>` to download the files. Afterwards, use the
+commands `create_by_model` and `create_by_var` to create an index of symlinks
+in the directory where the downloaded files are stored. This index is required
+by the `run` script.
+
+In the examples below it is assumed that the CMIP5 and CMIP6 files are stored
+in `input/cmip5/<experiment>/<frequency/` and
+`input/cmip6/<experiment>/<frequency/`, respectively, where `<experiment>`
+is either `historical` (for both `historical` and `hist-1950`) or
+`abrupt-4xCO2` and `<frequency>` is `day` or `mon`.
+
+The data should be resampled to 2.5° resolution in the same way as the CERES
+data.
+
+### GISS Surface Temperature Analysis (GISTEMP)
+
+The GISTEMP dataset is in `data/gistemp` available as the original file
+(CSV) and converted to NetCDF with `gistemp_to_nc` (required by the main
+commands). The original dataset was downloaded from [NASA
+GISS](https://data.giss.nasa.gov/gistemp/). The original terms of use apply.
+
+### ERA5
+
+ERA5 hourly data on pressure levels from 1979 to present can be downloaded
+from the [Copernicus
+website](https://cds.climate.copernicus.eu/#!/search?text=ERA5&type=dataset).
+They have to be converted to daily mean files with cdo and stored in
+`input/era5`.
+
+The data should be resampled to 2.5° resolution in the same way as the CERES
+data.
+
+### MERRA-2
+
+The M2T1NXRAD MERRA-2 product can be downloaded from [NASA
+EarthData](https://disc.gsfc.nasa.gov/datasets?project=MERRA-2). Daily means
+can be downloaded with the GES DISC Subsetter. They have to be stored in
+`input/merra-2`.
+
+The data should be resampled to 2.5° resolution in the same way as the CERES
+data.
+
+### Global mean near-surface temperature
+
+Global mean near-surface temperature datasets should be stored in `input/tas`.
+They are present in this repository and need to be extracted from the
+archive `input/tas.tar.xz`.
+
+## Directories
+
+### Input directory
+
+The `input` directory should contain the necessary input files. Apart from the
+datasets already contained in this repository, the files need to be downloaded
+from the sources as described above. Models and reanalyses which are not
+available should be removed from the `input/models_*` files before running
+`run`. Below is a description of the structure of the input directory
+(directories are marked with `/` at the end of the name).
+
+```
+ceres/              CERES SYN1deg daily mean files (NetCDF).
+↳ 2.5deg/           The same as above, but resampled to 2.5°.
+cmip5               CMIP5 data files (NetCDF).
+↳ abrupt-4xCO2/     abrupt-4xCO2 experiment files.
+  ↳ day/            Daily mean files for the variables rlut, rlutcs, rsdt, rsut and rsutcs.
+    ↳ 2.5deg/       The same as above, but resampled to 2.5°.
+      ↳ by-model/   Directory created by create_by_model.
+    ↳ mon/          Monthly mean files for the variable tas.
+cmip6/              CMIP6 data files (NetCDF).
+↳ abrupt-4xCO2/     abrupt-4xCO2 experiment files.
+  ↳ day/            Daily mean files for the variables rlut, rlutcs, rsdt, rsut and rsutcs.
+    ↳ 2.5deg/       The same as above, but resampled to 2.5°.
+      ↳ by-model/   Directory created by create_by_model.
+  ↳ mon/            Daily mean files for the variable tas.
+↳ hist-1950/        hist-1950 expriment files for the EC-Earth3P model.
+  ↳ day/            Daily mean files for the variables rlut, rlutcs, rsdt, rsut and rsutcs.
+    ↳ 2.5deg/       The same as above, but resampled to 2.5°.
+      ↳ by-model/   Directory created by create_by_model.
+  ↳ mon/            Monthly mean files for tas.
+↳ historical/       historical experiment files.
+  ↳ day/            Daily mean files for the variables rlut, rlutcs, rsdt, rsut and rsutcs.
+    ↳ 2.5deg/       The same as above, but resampled to 2.5°.
+      ↳ by-model/   Directory created by create_by_model.
+  ↳ mon/            Monthly mean files for the variable tas.
+ecs/
+↳ ecs.csv           ECS, TCR and CLD values for the CMIP5 and CMIP6 models.
+era5/               Daily mean ERA5 NetCDF files with the following variables in each file: tisr, tsr, tsrc, ttr and ttrc.
+↳ 2.5deg/           The same as above, but resampled to 2.5°.
+idd/
+↳ buoy/             IDD buoy files (NetCDF).
+↳ synop/            IDD synop files (NetCDF).
+landmask/
+↳ ne_110m_land.nc   Land-sea mask derived from Natural Earth data.
+merra2/             Daily mean MERRA-2 NetCDF files of the M2T1NXRAD product with the following variables in each file: LWTUP, LWTUPCLR, SWTDN, SWTNT and SWTNTCLR.
+↳ 2.5deg/           The same as above, but resampled to 2.5°.
+noresm2/            NorESM2 model files.
+↳ historical/
+  ↳ day/            Daily mean files.
+    ↳ <variable>/   Daily mean NorESM NetCDF files in the historical experiment, where variable is FLNT, FLNTC, FLUT, FLUTC, FSNTOA, FSNTOAC and SOLIN.
+    ↳ 2.5deg/       The same as above, but resampled to 2.5°.
+      ↳ <variable>/
+↳ abrupt-4xCO2/
+  ↳ day/            Daily mean files.
+    ↳ <variable>/   Daily mean NorESM2 NetCDF files in the abrupt-4xCO2 experiment, where variable is FLNT, FLNTC, FLUT, FLUTC, FSNTOA, FSNTOAC and SOLIN.
+    ↳ 2.5deg/       The same as above, but resampled to 2.5°.
+      ↳ <variable>/
+tas/                Near-surface air temperature. This should be extracted from tas.tar.xz.
+↳ historical/
+  ↳ CERES.nc        Near-surface air temperature from observations (GISTEMP).
+  ↳ <model>.nc      Near-surface air temperature of a model in the historical experiment.
+↳ abrupt-4xCO2/
+  ↳ CERES.nc        Near-surface air temperature from observations (GISTEMP).
+  ↳ <model>.nc      Near-surface air temperature of a model in the abrupt-4xCO2 experiment.
+models_*            Files containing a list of models to be processed. Available in this repository.
+tas.tar.xz          Near-surface air temperature (compressed archive). Available in this repository.
+```
+
+### Data directory
+
+Output from the processing commands is written in the data directory
+(`data_4`, `data_10` and `data_27` for 4, 10 and 27 cloud types). In addition,
+a common data directory (`data`) stores data common to all cloud type sets.
+Below is a description of its structure (this is created automatically by the
+`run` script during the data processing):
+
+```
+ann
+↳ ceres.h5           ANN model generated by ann train (HDF5).
+↳ history.nc         ANN model training history file (NetCDF).
+cto_ecs
+↳ cto_ecs.nc         Cloud type occurrence vs. ECS calculated by calc_cto_ecs (NetCDF).
+dtau_pct
+↳ dtau_pct.nc        Histogram calculated by calc_dtau_pct (NetCDF).
+geo_cto              Geographical distribution files for models and CERES calculated by calc_geo_cto.
+↳ abrupt-4xCO2       CMIP5 and CMIP6 abrupt-4xCO2 experiment.
+  ↳ all              All models.
+  ↳ part_1           Models for the first figure.
+  ↳ part_2           Models for the continued figure.
+↳ historical         CMIP6 historical experiment.
+  ↳ all              All models.
+  ↳ part_1           Models for the first figure.
+  ↳ part_2           Models for the continued figure.
+idd_geo              Geographical distribution files for IDD calculated by calc_idd_cto.
+idd_sample           Sample IDD files for plotting stations.
+samples              A symbolic link to data/samples.
+↳ ceres
+  ↳ <year>           CERES samples generated by prepare_samples.
+  ↳ <year>.nc        Merged samples for a given year (NetCDF).
+  ↳ training         Symbolic links to the training years in the parent directory.
+  ↳ validation       Symbolic links to the validation years in the parent directory.
+↳ abrupt-4xCO2       abrupt-4xCO2 CMIP5 and CMIP6 experiment.
+  ↳ <model>
+    ↳ <year>         Samples generated by prepare_samples for a model/year in the abrupt-4xCO2 experiment.
+    ↳ <year>.nc      Merged samples for a given year (NetCDF).
+↳ historical         historical CMIP6 experiment.
+  ↳ <model>
+    ↳ <year>         Samples generated by prepare_samples for a model/year in the historical experiment.
+    ↳ <year>.nc      Merged samples for a given year (NetCDF).
+samples_pred
+↳ abrupt-4xCO2
+  ↳ <model>
+    ↳ <year>.nc      Samples predicted with ann apply for a model/year in the abrupt-4xCO2 experiment.
+↳ historical
+  ↳ ceres/<year>.nc  CERES samples predicted with ann apply for a year.
+  ↳ <model>
+    ↳ <year>.nc      Samples predicted with ann apply for a model/year in the historical experiment.
+roc                  Receiver operating characteristic.
+↳ all.nc
+↳ regions.nc
+xval
+↳ <region>           Results for an ANN trained on station data excluding a region.
+↳ geo_cto            Geographical distribution
+  ↳ all              Input files for the geo_cto_xval plots.
+    ↳ 0_xval_all.nc  Symbolic link to geo_cto/historical/validation/CERES.nc.
+    ↳ 1_xval_NW.nc   Symbolic link to xval/nw/geo_cto/historical/all/CERES.nc.
+    ↳ 2_xval_NE.nc   Symbolic link to xval/ne/geo_cto/historical/all/CERES.nc.
+    ↳ 3_xval_SE.nc   Symbolic link to xval/se/geo_cto/historical/all/CERES.nc.
+    ↳ 4_xval_SW.nc   Symbolic link to xval/sw/geo_cto/historical/all/CERES.nc.
+  ↳ regions.nc       Merged regions (NA, EA, OC and SA) geographical distribution produced by merge_xval_geo_cto.
+```
+
+## How to run
+
+The `input` directory should be populated with the required input files before
+running the scripts.
+
+The `run` bash script runs the Python scripts in `bin` for various tasks. The
+tasks can be run in a sequence as below. Before running the `run` script,
+configuration should be imported from one of `config_4`, `config_10` or
+`config_27` for 4, 10 and 27 cloud types, respectively. The output directories
+for data files (NetCDF) and plots (PDF and PNG) are `data_x` and `plot_x`,
+where x is 4, 10, or 27, respectively. Data files common to all cloud type sets
+are stored in `data`. Some of the tasks might take a significant amount of
+time to complete (hours to days, depending on the CPU).  In general, the tasks
+should be run in order because of data dependencies.
+
+Plots which contain complex vector graphics are saved as PNG with width of
+slightly above 1920px. Other plots are saved as PDF.
+
+```sh
+# Optional configuration:
+export JOBS=24 # Number of concurrent jobs. Defaults to the number of CPU cores if not set.
+
+. config_4 # Configuration for 4 cloud types
+# . config_10 for 10 cloud types.
+# . config_27 for 27 cloud types.
+# ./run prepare_* commands only have to be run once for either of config_4, config_10 and config_27 because they are shared between the configurations.
+
+./run prepare_ceres              # Prepare CERES samples.
+./run train_ann                  # Train the ANN.
+./run plot_training_history      # Plot training history [Figure S1].
+./run plot_idd_stations          # Plot IDD stations [Figure 1a].
+./run predict_ceres              # Predict CERES samples using the ANN.
+./run calc_dtau_pct              # Calculate cloud optical depth - cloud top pressure histograms.
+./run plot_dtau_pct              # Plot cloud optical depth - cloud top pressure histograms [Figure 8].
+./run prepare_historical         # Prepare CMIP6 historical samples.
+./run predict_historical         # Predict CMIP6 historical samples using the ANN.
+./run calc_geo_cto_historical    # Calculate geographical distribution of cloud type occurrence from the CMIP6 historical samples.
+./run calc_idd_geo               # Calculate geographical distribution of IDD cloud type occurrence.
+./run plot_idd_n_obs             # Plot number of observations per grid cell in the IDD dataset [Figure S2].
+./run plot_station_corr          # Plot CERES/ANN-IDD station spatial and temporal error correlation [Figure S3].
+./run plot_geo_cto_historical    # Plot geographical distribution of cloud type occurrence for the CMIP6 historical experiment [Figure 6, 7].
+./run plot_cto_historical        # Plot cloud type occurrence bar chart for the CMIP6 historical experiment [Figure 9a].
+./run plot_cto_rmse_ecs          # Plot cloud type occurrence RMSE vs. ECS [Figure 12, S10, S11].
+./run prepare_abrupt-4xCO2       # Prepare CMIP5 and CMIP6 abrupt-4xCO2 samples.
+./run predict_abrupt-4xCO2       # Predict CMIP5 and CMIP6 abrupt-4xCO2 samples using the ANN.
+./run calc_geo_cto_abrupt-4xCO2  # Calculate geographical distribution of cloud type occurrence from the CMIP5 and CMIP6 abrupt-4xCO2 samples.
+./run plot_geo_cto_abrupt-4xCO2  # Plot geographical distribution of cloud type occurrence for the CMIP5 and CMIP6 abrupt-4xCO2 experiment [Figure S7, S8].
+./run plot_cto_abrupt-4xCO2      # Plot cloud type occurrence bar chart for the CMIP5 and CMIP6 abrupt-4xCO2 experiment [Figure 9b].
+./run calc_cto_ecs               # Calculate cloud type occurrence vs. ECS regression in the CMIP5 and CMIP6 abrupt-4xCO2 experiment.
+./run plot_cto_ecs               # Plot cloud type occurrence vs. ECS regression in the CMIP5 and CMIP6 abrupt-4xCO2 experiment [Figure 11].
+./run train_ann_xval             # Train ANNs for cross-validation.
+./run predict_ceres_xval         # Predict CERES cross-validation samples using the ANN.
+./run calc_geo_cto_xval          # Calculate geographical distribution of cloud type occurrence for cross-validation.
+./run plot_geo_cto_xval          # Plot geographical distribution of cloud type occurrence for cross-validation [Figure 3, S12].
+./run plot_validation            # Plot validation results [Figure 4].
+./run calc_roc                   # Calculate ROC.
+./run plot_roc                   # Plot ROC [Figure 5].
+```
+
+## Commands
+
+### Overview
+
+Below is an overview of the available commands showing their dependencies and
+the paper figures they produce.
+
+```
+prepare_samples
+↳ plot_idd_stations [Figure 1a]
+↳ ann
+  ↳ plot_sample [Figure 1b, c]
+  ↳ plot_training_history [Figure S1]
+  ↳ calc_dtau_pct
+    ↳ plot_dtau_pct [Figure 8]
+  ↳ calc_geo_cto
+    ↳ calc_idd_geo
+      ↳ plot_geo_cto [Figure 3, 6, 7, S7, S8, S12]
+      ↳ plot_cto_rmse_ecs [Figure 12, S9–11]
+      ↳ plot_cto [Figure 9, S4–6]
+      ↳ calc_cto_ecs
+        ↳ plot_cto_ecs [Figure 11]
+      ↳ calc_cloud_props
+        ↳ plot_cloud_props [Figure 10]
+      ↳ plot_station_corr [Figure S3]
+        ↳ plot_idd_n_obs [Figure S2]
+        ↳ merge_xval_geo_cto
+          ↳ plot_validation [Figure 4]
+          ↳ calc_roc
+            ↳ plot_roc [Figure 5]
+```
+
+### Main commands
+
+Below is a description of the main commands. They can be run either
+individually or with the `run` command as described above. They should be run
+in a Linux terminal (bash). The commands are located in the `bin` directory as
+should be run from the main repository directory with `bin/<command>
+[<arguments>...]`.
+
+Some of the commands use [PST](https://github.com/peterkuma/pst/) for command
+line argument parsing, which allows passing of complex arguments such as
+arrays, but may also require escaping special characters, for example in file
+names.
+
+#### ann
+
+{ann}
+
+#### calc\_cloud\_props
+
+{calc_cloud_props}
+
+#### calc\_cto\_ecs
+
+{calc_cto_ecs}
+
+#### calc\_dtau\_pct
+
+{calc_dtau_pct}
+
+#### calc\_geo\_cto
+
+{calc_geo_cto}
+
+#### calc\_idd\_geo
+
+{calc_idd_geo}
+
+#### calc\_roc
+
+{calc_roc}
+
+#### merge\_xval\_geo\_cto
+
+{merge_xval_geo_cto}
+
+#### plot\_cloud\_props [Figure 11]
+
+{plot_cloud_props}
+
+#### plot\_cto [Figure 9, S4–6]
+
+{plot_cto}
+
+#### plot\_cto\_ecs [Figure 11]
+
+{plot_cto_ecs}
+
+#### plot\_cto\_rmse\_ecs [Figure 12, S9–11]
+
+{plot_cto_rmse_ecs}
+
+#### plot\_dtau\_pct [Figure 8]
+
+{plot_dtau_pct}
+
+#### plot\_geo\_cto [Figure 3, 6, 7, S7, S8, S12]
+
+{plot_geo_cto}
+
+#### plot\_idd\_n\_obs [Figure S2]
+
+{plot_idd_n_obs}
+
+#### plot\_idd\_stations [Figure 1a]
+
+{plot_idd_stations}
+
+#### plot\_roc [Figure 5]
+
+{plot_roc}
+
+#### plot\_sample [Figure 1b, c]
+
+{plot_sample}
+
+#### plot\_station\_corr [Figure S3]
+
+{plot_station_corr}
+
+#### plot\_training\_history [Figure S1]
+
+{plot_training_history}
+
+#### plot\_validation [Figure 4]
+
+{plot_validation}
+
+#### prepare\_samples
+
+{prepare_samples}
+
+### Auxiliary commands
+
+#### build\_readme
+
+{build_readme}
+
+#### create\_by\_model
+
+```
+Create a by-model index of CMIP data. This command should be run in the directory with CMIP data.
+
+Usage: create_by_model
+
+Examples:
+
+cd data/cmip5/historical/day
+./create_by_model
+```
+
+#### create\_by\_var
+
+```
+Create a by-var index of CMIP data. This command should be run in the directory with CMIP data.
+
+Usage: create_by_var
+
+Examples:
+
+cd data/cmip5/historical/day
+./create_by_var
+```
+
+#### download\_cmip
+
+{download_cmip}
+
+#### gistemp\_to\_nc
+
+{gistemp_to_nc}
+
+## Code style
+
+The code style is indentation with tabs, tab size equivalent to 4 spaces, and
+Unix line endings (LF). The style is applied automatically in editors which
+supports the `.editorconfig` standard.
+
+## Release notes
+
+### 2.0.0 (2022-12-05)
+
+- A release corresponding to the finalized manuscript at the end of the peer
+review process.
+
+### 1.0.0 (2022-03-07)
+
+- The first release corresponding to the submitted manuscript version.
+
+## License
+
+The code in this repository is open source, and can be used and distributed
+freely under the terms of an MIT license. Please see [LICENSE.md](LICENSE.md)
+for details.

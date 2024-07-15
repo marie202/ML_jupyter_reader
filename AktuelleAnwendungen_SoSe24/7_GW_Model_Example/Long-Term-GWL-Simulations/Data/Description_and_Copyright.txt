@@ -1,0 +1,95 @@
+March 2021, compiled by Andreas Wunsch
+Contact: andreas.wunsch@kit.edu
+ORCID: https://orcid.org/0000-0002-0585-9549
+Groundwater dataset accompanying the work described here: https://github.com/AndreasWunsch/Long-Term-GWL-Simulations 
+
+#############################################
+Weekly groundwater level time series dataset for 118 wells in Germany
+#############################################
+
+This data is published with kind permission of the local state authorities mentioned below.
+When using this dataset, please be sure to appropriately identify the data sources and include copyright statements, as shown below.
+For more information on the sites please search in the primary data sources below or check the paper referenced here: https://github.com/AndreasWunsch/Long-Term-GWL-Simulations 
+
+Based on previous knowledge from similar/surrounding time series (Wunsch and Liesch 2020) some  included time series were interpolated.
+Please find the respective information on interpolated values in the folder "Interpolations".
+Red dots indicate interpolation based on previous knowledge, blue dots indicate pchip interpolation.
+Time series not mentioned in this folder do not contain any interpolated values.
+
+References:
+Wunsch, A. & Liesch, T. Entwicklung und Anwendung von Algorithmen zur Berechnung von Grundwasserständen an 
+Referenzmessstellen auf Basis der Methode Künstlicher Neuronaler Netze. 191 
+https://www.bgr.bund.de/DE/Themen/Wasser/Projekte/laufend/F+E/Mentor/mentor-abschlussbericht-I.pdf?__blob=publicationFile&v=2 (2020).
+last accessed: March, 2021
+
+
+#############################################
+Primary Data Sources and Copyright Statements:
+#############################################
+
+Structure:
+[State ID]: [full name of state]
+[Name of responsible authority (in German)]
+[Link 1 to Groundwater Data Web Service if applicable]
+[Link 2 to Groundwater Data Web Service if applicable]
+[...]
+[Copyright Statement]
+
+
+BW:	Baden-Württemberg 
+LUBW - Landesanstalt für Umwelt Baden-Württemberg
+https://udo.lubw.baden-wuerttemberg.de/public/ 
+Data Source: Landesanstalt für Umwelt Baden-Württemberg
+
+BY: Bayern
+LfU - Bayerisches Landesamt für Umwelt / GKD - Gewässerkundlicher Dienst Bayern
+https://www.gkd.bayern.de/de/grundwasser/oberesstockwerk 
+Data Source: Bayerisches Landesamt für Umwelt, www.lfu.bayern.de
+
+BB:	Brandenburg
+LfU - Landesamt für Umwelt Brandenburg
+http://maps.brandenburg.de/WebOffice/?project=GWM_www_WO 
+Data Source: Daten des Landesamtes für Umwelt Brandenburg, Stand der Daten 2018
+
+HE: Hessen
+HLNUG - Hessisches Landesamt für Naturschutz, Umwelt und Geologie
+https://gruschu.hessen.de/mapapps/resources/apps/gruschu/index.html?lang=de 
+Data Source: Hessisches Landesamt für Naturschutz, Umwelt und Geologie
+
+MV: Mecklenburg-Vorpommern
+LUNG - Landesamt für Umwelt, Naturschutz und Geologie
+https://www.umweltkarten.mv-regierung.de/script/index.php?aid=206 
+Data Source: Landesamt für Umwelt, Naturschutz und Geologie Mecklenburg-Vorpommern
+
+NI:	Niedersachsen
+NLWKN - Niedersächsischer Landesbetrieb für Wasserwirtschaft, Küsten- und Naturschutz / LBEG - Landesamt für Bergbau, Energie und Geologie Niedersachsen
+http://www.wasserdaten.niedersachsen.de/cadenza/ 
+https://www.umweltkarten-niedersachsen.de/Umweltkarten/?topic=Basisdaten&lang=de&bgLayer=TopographieGrau 
+https://nibis.lbeg.de/cardomap3/ 
+Data Source: NLWKN - Niedersächsischer Landesbetrieb für Wasserwirtschaft, Küsten- und Naturschutz / LBEG - Landesamt für Bergbau, Energie und Geologie Niedersachsen
+
+NW: Nordrhein-Westfalen
+LANUV - Landesamt für Natur, Umwelt und Verbraucherschutz Nordrhein-Westfalen
+https://www.elwasweb.nrw.de/elwas-web/index.jsf 
+Data Source: Landesamt für Natur, Umwelt und Verbraucherschutz Nordrhein-Westfalen
+
+RP: Rheinland-Pfalz
+LfU - Landesamt für Umwelt Rheinland-Pfalz / LGB - Landesamt für Geologie und Bergbau Rheinland-Pfalz
+https://wasserportal.rlp-umwelt.de/servlet/is/1632/ 
+Data Source: Sächsisches Staatsministerium für Energie, Klimaschutz, Umwelt und Landwirtschaft
+
+SN: Sachsen 
+SMUL - Sächsisches Staatsministerium für Energie, Klimaschutz, Umwelt und Landwirtschaft
+https://www.umwelt.sachsen.de/umwelt/infosysteme/ida/index.xhtml 
+Data Source: Sächsisches Staatsministerium für Energie, Klimaschutz, Umwelt und Landwirtschaft
+
+ST:	Sachsen-Anhalt: 
+LHW - Landesbetrieb für Hochwasserschutz und Wasserwirtschaft Sachsen-Anhalt
+https://www.lvermgeo.sachsen-anhalt.de/de/startseite_viewer.html
+https://gld-sa.dhi-wasy.de/GLD-Portal/ 
+Data Source: Landesbetrieb für Hochwasserschutz und Wasserwirtschaft Sachsen-Anhalt
+
+SH: Schleswig-Holstein
+LLUR - Landesamt für Landwirtschaft, Umwelt und ländliche Räume
+http://www.umweltdaten.landsh.de/atlas/script/index.php 
+Data Source: Grundwasserstandsmessungen, Landesamt für Landwirtschaft, Umwelt und ländliche Räume des Landes Schleswig-Holstein, Juni 2018
