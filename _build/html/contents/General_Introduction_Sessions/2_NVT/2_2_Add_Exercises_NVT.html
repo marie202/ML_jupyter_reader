@@ -1,0 +1,1845 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Additional Exercises III - The Normal distribution &#8212; Machine Learning course online reader</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/2_NVT/2_2_Add_Exercises_NVT';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="What we have learnt so far:" href="../4_intro_regression/4_Intro_Regression.html" />
+    <link rel="prev" title="Recap Statistics 1" href="2_1_Wdhl_Statisitk_1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Machine Learning course online reader - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Machine Learning course online reader - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_1_Python_as_calculator.html">Introduction to Python - Using Python as calculator</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_2_Build_in_Functions.html">Use of predefined functions</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_3_data_structures.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_4_atomic_datatypes.html">Datatypes</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_5_objects_data_types.html">The concept of objects in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_6_Intro_user_defined_functions.html">User defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_7_control_flow_mit_Lsg.html">Steering the control flow of a program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_8_Exercises_Einf_Python_I.html">Additional Exercises I</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_9_Exercises_Einf_Python_II.html">Additional Exercises II</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Recap Statistics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2_1_Wdhl_Statisitk_1.html">Recap Statistics 1</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Additional Exercises III -  The Normal distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_intro_regression/4_Intro_Regression.html">What we have learnt so far:</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../5_intro_correlation/5_intro_regression%26correlation_LSG.html">What we have learnt so far:</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Feature Scales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3_features_scales/3_Feature_scales.html">3. Feature Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_features_scales/3_Add_Exercises_FeatureScales-v2.html">Additional Exercises III -  Feature Scales</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/2_NVT/2_2_Add_Exercises_NVT.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/contents/General_Introduction_Sessions/2_NVT/2_2_Add_Exercises_NVT.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Additional Exercises III -  The Normal distribution</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-for-normal-distribution">1. Checking for Normal Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dwd-data">DWD data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsetting-the-data-frame">1.1. Subsetting the data frame</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-mean-and-standard-deviation-for-this-subset">1.2. Checking the mean and standard deviation for this subset</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.3. Checking the mean and standard deviation for this subset</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-the-data-frame">1.4. Slicing the data frame</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-for-normality">1.5. Checking for Normality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots">1.6. Boxplots</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#which-argument-to-we-have-to-add-if-we-want-to-find-significant-differences-between-the-groups-is-there-a-signifanct-difference-in-the-monthly-mean-temperature-between-1961-to-1991-and-from-1991-to-today">Which argument to we have to add, if we want to find significant differences between the groups? Is there a signifanct difference in the monthly mean temperature between 1961 to 1991 and from 1991 to today?</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="additional-exercises-iii-the-normal-distribution">
+<h1>Additional Exercises III -  The Normal distribution<a class="headerlink" href="#additional-exercises-iii-the-normal-distribution" title="Permalink to this heading">#</a></h1>
+<section id="checking-for-normal-distribution">
+<h2>1. Checking for Normal Distribution<a class="headerlink" href="#checking-for-normal-distribution" title="Permalink to this heading">#</a></h2>
+<section id="dwd-data">
+<h3>DWD data<a class="headerlink" href="#dwd-data" title="Permalink to this heading">#</a></h3>
+<p>We begin by loading the meteorological data set from the <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/">Deutscher Wetterdienst DWD (German Weather Service) Open Climate Data Center </a>. You find a documentation of this data in <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/BESCHREIBUNG_obsgermany_climate_monthly_kl_historical_de.pdf">german</a> and  <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/DESCRIPTION_obsgermany_climate_monthly_kl_historical_en.pdf">english</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> lab_black
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, let&#39;s import all the needed libraries.</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dahlem_clim</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;https://userpage.fu-berlin.de/soga/data/raw-data/NS_TS_Dahlem.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span>
+<span class="p">)</span>
+<span class="n">dahlem_clim</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATIONS_ID</th>
+      <th>MESS_DATUM_BEGINN</th>
+      <th>MESS_DATUM_ENDE</th>
+      <th>QN_4</th>
+      <th>MO_N</th>
+      <th>MO_TT</th>
+      <th>MO_TX</th>
+      <th>MO_TN</th>
+      <th>MO_FK</th>
+      <th>MX_TX</th>
+      <th>MX_FX</th>
+      <th>MX_TN</th>
+      <th>MO_SD_S</th>
+      <th>QN_6</th>
+      <th>MO_RR</th>
+      <th>MX_RS</th>
+      <th>eor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>403</td>
+      <td>17190101</td>
+      <td>17190131</td>
+      <td>5</td>
+      <td>-999.0</td>
+      <td>2.8</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>403</td>
+      <td>17190201</td>
+      <td>17190228</td>
+      <td>5</td>
+      <td>-999.0</td>
+      <td>1.1</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>403</td>
+      <td>17190301</td>
+      <td>17190331</td>
+      <td>5</td>
+      <td>-999.0</td>
+      <td>5.2</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>403</td>
+      <td>17190401</td>
+      <td>17190430</td>
+      <td>5</td>
+      <td>-999.0</td>
+      <td>9.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>403</td>
+      <td>17190501</td>
+      <td>17190531</td>
+      <td>5</td>
+      <td>-999.0</td>
+      <td>15.1</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>403</td>
+      <td>17190601</td>
+      <td>17190630</td>
+      <td>5</td>
+      <td>-999.0</td>
+      <td>19.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>403</td>
+      <td>17190701</td>
+      <td>17190731</td>
+      <td>5</td>
+      <td>-999.0</td>
+      <td>21.4</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>403</td>
+      <td>17190801</td>
+      <td>17190831</td>
+      <td>5</td>
+      <td>-999.0</td>
+      <td>18.8</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>403</td>
+      <td>17190901</td>
+      <td>17190930</td>
+      <td>5</td>
+      <td>-999.0</td>
+      <td>13.9</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>403</td>
+      <td>17191001</td>
+      <td>17191031</td>
+      <td>5</td>
+      <td>-999.0</td>
+      <td>9.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>-999</td>
+      <td>-999.0</td>
+      <td>-999.0</td>
+      <td>eor</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="subsetting-the-data-frame">
+<h3>1.1. Subsetting the data frame<a class="headerlink" href="#subsetting-the-data-frame" title="Permalink to this heading">#</a></h3>
+<p>First, we want to subset the entire dataset.</p>
+<blockquote>
+<div><p>We only want to keep data from 1961 to day. Subset the entire dataset (not only 1 column as we saw in the seminar)!
+hwo many rows has the dataframe now?</p>
+</div></blockquote>
+<section id="solution">
+<h4>solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## you could do e.g.,:</span>
+<span class="n">dahlem_clim</span> <span class="o">=</span> <span class="n">dahlem_clim</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dahlem_clim</span><span class="p">[</span><span class="s2">&quot;MESS_DATUM_BEGINN&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">19610101</span><span class="p">]</span>
+<span class="n">dahlem_clim</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATIONS_ID</th>
+      <th>MESS_DATUM_BEGINN</th>
+      <th>MESS_DATUM_ENDE</th>
+      <th>QN_4</th>
+      <th>MO_N</th>
+      <th>MO_TT</th>
+      <th>MO_TX</th>
+      <th>MO_TN</th>
+      <th>MO_FK</th>
+      <th>MX_TX</th>
+      <th>MX_FX</th>
+      <th>MX_TN</th>
+      <th>MO_SD_S</th>
+      <th>QN_6</th>
+      <th>MO_RR</th>
+      <th>MX_RS</th>
+      <th>eor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2778</th>
+      <td>403</td>
+      <td>19610101</td>
+      <td>19610131</td>
+      <td>5</td>
+      <td>5.01</td>
+      <td>-1.02</td>
+      <td>1.31</td>
+      <td>-3.88</td>
+      <td>2.63</td>
+      <td>7.8</td>
+      <td>-999.0</td>
+      <td>-16.2</td>
+      <td>71.5</td>
+      <td>5</td>
+      <td>50.4</td>
+      <td>7.4</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2779</th>
+      <td>403</td>
+      <td>19610201</td>
+      <td>19610228</td>
+      <td>5</td>
+      <td>6.12</td>
+      <td>4.66</td>
+      <td>7.98</td>
+      <td>1.56</td>
+      <td>2.56</td>
+      <td>15.5</td>
+      <td>-999.0</td>
+      <td>-4.7</td>
+      <td>61.4</td>
+      <td>5</td>
+      <td>41.9</td>
+      <td>7.6</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2780</th>
+      <td>403</td>
+      <td>19610301</td>
+      <td>19610331</td>
+      <td>5</td>
+      <td>5.58</td>
+      <td>6.79</td>
+      <td>10.79</td>
+      <td>3.15</td>
+      <td>3.02</td>
+      <td>19.4</td>
+      <td>-999.0</td>
+      <td>-3.7</td>
+      <td>124.1</td>
+      <td>5</td>
+      <td>52.9</td>
+      <td>18.6</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2781</th>
+      <td>403</td>
+      <td>19610401</td>
+      <td>19610430</td>
+      <td>5</td>
+      <td>4.88</td>
+      <td>11.38</td>
+      <td>16.61</td>
+      <td>6.24</td>
+      <td>2.40</td>
+      <td>26.1</td>
+      <td>-999.0</td>
+      <td>-0.9</td>
+      <td>192.7</td>
+      <td>5</td>
+      <td>55.7</td>
+      <td>13.3</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2782</th>
+      <td>403</td>
+      <td>19610501</td>
+      <td>19610531</td>
+      <td>5</td>
+      <td>6.11</td>
+      <td>11.23</td>
+      <td>15.54</td>
+      <td>7.18</td>
+      <td>2.29</td>
+      <td>23.8</td>
+      <td>-999.0</td>
+      <td>3.0</td>
+      <td>132.8</td>
+      <td>5</td>
+      <td>120.1</td>
+      <td>26.7</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2783</th>
+      <td>403</td>
+      <td>19610601</td>
+      <td>19610630</td>
+      <td>5</td>
+      <td>4.39</td>
+      <td>17.73</td>
+      <td>23.18</td>
+      <td>11.47</td>
+      <td>2.12</td>
+      <td>30.4</td>
+      <td>-999.0</td>
+      <td>5.5</td>
+      <td>273.4</td>
+      <td>5</td>
+      <td>48.3</td>
+      <td>13.4</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2784</th>
+      <td>403</td>
+      <td>19610701</td>
+      <td>19610731</td>
+      <td>5</td>
+      <td>5.79</td>
+      <td>16.16</td>
+      <td>20.88</td>
+      <td>12.14</td>
+      <td>2.49</td>
+      <td>33.0</td>
+      <td>-999.0</td>
+      <td>8.8</td>
+      <td>143.2</td>
+      <td>5</td>
+      <td>72.6</td>
+      <td>13.2</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2785</th>
+      <td>403</td>
+      <td>19610801</td>
+      <td>19610831</td>
+      <td>5</td>
+      <td>5.34</td>
+      <td>15.97</td>
+      <td>21.20</td>
+      <td>11.40</td>
+      <td>2.40</td>
+      <td>28.5</td>
+      <td>-999.0</td>
+      <td>8.0</td>
+      <td>169.7</td>
+      <td>5</td>
+      <td>43.0</td>
+      <td>10.3</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2786</th>
+      <td>403</td>
+      <td>19610901</td>
+      <td>19610930</td>
+      <td>5</td>
+      <td>3.48</td>
+      <td>15.95</td>
+      <td>22.00</td>
+      <td>11.06</td>
+      <td>2.11</td>
+      <td>30.0</td>
+      <td>-999.0</td>
+      <td>4.4</td>
+      <td>201.7</td>
+      <td>5</td>
+      <td>35.5</td>
+      <td>12.1</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2787</th>
+      <td>403</td>
+      <td>19611001</td>
+      <td>19611031</td>
+      <td>5</td>
+      <td>4.77</td>
+      <td>11.10</td>
+      <td>15.54</td>
+      <td>7.26</td>
+      <td>2.39</td>
+      <td>22.3</td>
+      <td>-999.0</td>
+      <td>3.3</td>
+      <td>136.8</td>
+      <td>5</td>
+      <td>35.7</td>
+      <td>16.4</td>
+      <td>eor</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dahlem_clim</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># number of rows</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>732
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="checking-the-mean-and-standard-deviation-for-this-subset">
+<h3>1.2. Checking the mean and standard deviation for this subset<a class="headerlink" href="#checking-the-mean-and-standard-deviation-for-this-subset" title="Permalink to this heading">#</a></h3>
+<p>Calculate the mean and standard deviation for the monthly mean temperature! Doe they violate the three sigma rule? plot the distriubtion as histogram and density plot.</p>
+<section id="id1">
+<h4>solution<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dahlem_clim</span><span class="o">.</span><span class="n">MO_TT</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span>
+    <span class="n">dahlem_clim</span><span class="o">.</span><span class="n">MO_TT</span>
+<span class="p">)</span>  <span class="c1">## Yes it violates the 3 sigma rule!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9.404439890710382, 6.846380527375167)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">dahlem_clim</span><span class="o">.</span><span class="n">MO_TT</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;sturges&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temp in °C&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;absolute frequency&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/bedd031142fecbcd5ace070289ca6f4d4efc03b8581d5f5dede15238314665f7.png" src="../../../_images/bedd031142fecbcd5ace070289ca6f4d4efc03b8581d5f5dede15238314665f7.png" />
+</div>
+</div>
+<p>Ok, looks Bimodal! But there seems to be no normal distribution…..</p>
+</section>
+</section>
+<section id="id2">
+<h3>1.3. Checking the mean and standard deviation for this subset<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Check for normality of the monthly mean temperature with the help of a qqplot!</p>
+<section id="id3">
+<h4>solution<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sm</span><span class="o">.</span><span class="n">qqplot</span><span class="p">(</span><span class="n">dahlem_clim</span><span class="o">.</span><span class="n">MO_TT</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1200x500 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/f521a6c643fdab944e1e41d3ec1fa9701744e5c0442b2c007c21dd0e77a8e17c.png" src="../../../_images/f521a6c643fdab944e1e41d3ec1fa9701744e5c0442b2c007c21dd0e77a8e17c.png" />
+</div>
+</div>
+<p>Well, we already suspected something like this…. Lets have a closer look:</p>
+</section>
+</section>
+<section id="slicing-the-data-frame">
+<h3>1.4. Slicing the data frame<a class="headerlink" href="#slicing-the-data-frame" title="Permalink to this heading">#</a></h3>
+<p>Now, we want to slice the dataset into 2 parts. We want to subset between 1961 to 1990 and from 1991 to today. Subset the entire dataset (not only 1 column as we saw in the seminar)!</p>
+<section id="id4">
+<h4>solution<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## combined conditions :</span>
+
+<span class="n">dahlem_1961_1990</span> <span class="o">=</span> <span class="n">dahlem_clim</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">dahlem_clim</span><span class="p">[</span><span class="s2">&quot;MESS_DATUM_BEGINN&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">19610101</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">dahlem_clim</span><span class="p">[</span><span class="s2">&quot;MESS_DATUM_BEGINN&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">19910101</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">dahlem_1961_1990</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATIONS_ID</th>
+      <th>MESS_DATUM_BEGINN</th>
+      <th>MESS_DATUM_ENDE</th>
+      <th>QN_4</th>
+      <th>MO_N</th>
+      <th>MO_TT</th>
+      <th>MO_TX</th>
+      <th>MO_TN</th>
+      <th>MO_FK</th>
+      <th>MX_TX</th>
+      <th>MX_FX</th>
+      <th>MX_TN</th>
+      <th>MO_SD_S</th>
+      <th>QN_6</th>
+      <th>MO_RR</th>
+      <th>MX_RS</th>
+      <th>eor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2778</th>
+      <td>403</td>
+      <td>19610101</td>
+      <td>19610131</td>
+      <td>5</td>
+      <td>5.01</td>
+      <td>-1.02</td>
+      <td>1.31</td>
+      <td>-3.88</td>
+      <td>2.63</td>
+      <td>7.8</td>
+      <td>-999.0</td>
+      <td>-16.2</td>
+      <td>71.5</td>
+      <td>5</td>
+      <td>50.4</td>
+      <td>7.4</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2779</th>
+      <td>403</td>
+      <td>19610201</td>
+      <td>19610228</td>
+      <td>5</td>
+      <td>6.12</td>
+      <td>4.66</td>
+      <td>7.98</td>
+      <td>1.56</td>
+      <td>2.56</td>
+      <td>15.5</td>
+      <td>-999.0</td>
+      <td>-4.7</td>
+      <td>61.4</td>
+      <td>5</td>
+      <td>41.9</td>
+      <td>7.6</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2780</th>
+      <td>403</td>
+      <td>19610301</td>
+      <td>19610331</td>
+      <td>5</td>
+      <td>5.58</td>
+      <td>6.79</td>
+      <td>10.79</td>
+      <td>3.15</td>
+      <td>3.02</td>
+      <td>19.4</td>
+      <td>-999.0</td>
+      <td>-3.7</td>
+      <td>124.1</td>
+      <td>5</td>
+      <td>52.9</td>
+      <td>18.6</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2781</th>
+      <td>403</td>
+      <td>19610401</td>
+      <td>19610430</td>
+      <td>5</td>
+      <td>4.88</td>
+      <td>11.38</td>
+      <td>16.61</td>
+      <td>6.24</td>
+      <td>2.40</td>
+      <td>26.1</td>
+      <td>-999.0</td>
+      <td>-0.9</td>
+      <td>192.7</td>
+      <td>5</td>
+      <td>55.7</td>
+      <td>13.3</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2782</th>
+      <td>403</td>
+      <td>19610501</td>
+      <td>19610531</td>
+      <td>5</td>
+      <td>6.11</td>
+      <td>11.23</td>
+      <td>15.54</td>
+      <td>7.18</td>
+      <td>2.29</td>
+      <td>23.8</td>
+      <td>-999.0</td>
+      <td>3.0</td>
+      <td>132.8</td>
+      <td>5</td>
+      <td>120.1</td>
+      <td>26.7</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3133</th>
+      <td>403</td>
+      <td>19900801</td>
+      <td>19900831</td>
+      <td>10</td>
+      <td>4.05</td>
+      <td>18.75</td>
+      <td>24.83</td>
+      <td>13.61</td>
+      <td>1.80</td>
+      <td>32.0</td>
+      <td>17.4</td>
+      <td>7.5</td>
+      <td>253.7</td>
+      <td>10</td>
+      <td>74.7</td>
+      <td>25.2</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3134</th>
+      <td>403</td>
+      <td>19900901</td>
+      <td>19900930</td>
+      <td>10</td>
+      <td>5.79</td>
+      <td>12.27</td>
+      <td>16.55</td>
+      <td>9.25</td>
+      <td>2.13</td>
+      <td>21.7</td>
+      <td>23.1</td>
+      <td>4.8</td>
+      <td>114.0</td>
+      <td>10</td>
+      <td>52.4</td>
+      <td>8.6</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3135</th>
+      <td>403</td>
+      <td>19901001</td>
+      <td>19901031</td>
+      <td>10</td>
+      <td>4.10</td>
+      <td>10.52</td>
+      <td>15.35</td>
+      <td>6.74</td>
+      <td>2.18</td>
+      <td>23.1</td>
+      <td>16.9</td>
+      <td>0.3</td>
+      <td>157.7</td>
+      <td>10</td>
+      <td>9.8</td>
+      <td>4.3</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3136</th>
+      <td>403</td>
+      <td>19901101</td>
+      <td>19901130</td>
+      <td>10</td>
+      <td>6.55</td>
+      <td>5.26</td>
+      <td>7.40</td>
+      <td>3.16</td>
+      <td>2.01</td>
+      <td>12.1</td>
+      <td>18.0</td>
+      <td>-2.4</td>
+      <td>47.3</td>
+      <td>10</td>
+      <td>56.6</td>
+      <td>16.4</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3137</th>
+      <td>403</td>
+      <td>19901201</td>
+      <td>19901231</td>
+      <td>10</td>
+      <td>6.04</td>
+      <td>1.13</td>
+      <td>2.84</td>
+      <td>-1.07</td>
+      <td>2.19</td>
+      <td>9.0</td>
+      <td>21.0</td>
+      <td>-5.8</td>
+      <td>41.2</td>
+      <td>10</td>
+      <td>73.0</td>
+      <td>23.3</td>
+      <td>eor</td>
+    </tr>
+  </tbody>
+</table>
+<p>360 rows × 17 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## combined conditions:</span>
+
+<span class="n">dahlem_1990_today</span> <span class="o">=</span> <span class="n">dahlem_clim</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dahlem_clim</span><span class="p">[</span><span class="s2">&quot;MESS_DATUM_BEGINN&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">19910101</span><span class="p">]</span>
+<span class="n">dahlem_1990_today</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATIONS_ID</th>
+      <th>MESS_DATUM_BEGINN</th>
+      <th>MESS_DATUM_ENDE</th>
+      <th>QN_4</th>
+      <th>MO_N</th>
+      <th>MO_TT</th>
+      <th>MO_TX</th>
+      <th>MO_TN</th>
+      <th>MO_FK</th>
+      <th>MX_TX</th>
+      <th>MX_FX</th>
+      <th>MX_TN</th>
+      <th>MO_SD_S</th>
+      <th>QN_6</th>
+      <th>MO_RR</th>
+      <th>MX_RS</th>
+      <th>eor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3138</th>
+      <td>403</td>
+      <td>19910101</td>
+      <td>19910131</td>
+      <td>10</td>
+      <td>4.97</td>
+      <td>2.30</td>
+      <td>4.57</td>
+      <td>0.07</td>
+      <td>2.16</td>
+      <td>15.2</td>
+      <td>18.5</td>
+      <td>-8.7</td>
+      <td>76.20</td>
+      <td>9</td>
+      <td>27.6</td>
+      <td>13.7</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3139</th>
+      <td>403</td>
+      <td>19910201</td>
+      <td>19910228</td>
+      <td>10</td>
+      <td>5.27</td>
+      <td>-2.34</td>
+      <td>0.85</td>
+      <td>-5.32</td>
+      <td>1.84</td>
+      <td>12.9</td>
+      <td>14.9</td>
+      <td>-12.9</td>
+      <td>72.40</td>
+      <td>9</td>
+      <td>27.1</td>
+      <td>7.9</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3140</th>
+      <td>403</td>
+      <td>19910301</td>
+      <td>19910331</td>
+      <td>10</td>
+      <td>4.79</td>
+      <td>6.77</td>
+      <td>11.30</td>
+      <td>3.25</td>
+      <td>2.15</td>
+      <td>18.1</td>
+      <td>14.4</td>
+      <td>-1.2</td>
+      <td>128.30</td>
+      <td>9</td>
+      <td>40.8</td>
+      <td>19.0</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3141</th>
+      <td>403</td>
+      <td>19910401</td>
+      <td>19910430</td>
+      <td>10</td>
+      <td>4.80</td>
+      <td>8.23</td>
+      <td>13.28</td>
+      <td>3.32</td>
+      <td>2.02</td>
+      <td>20.5</td>
+      <td>20.0</td>
+      <td>-2.8</td>
+      <td>174.80</td>
+      <td>9</td>
+      <td>40.4</td>
+      <td>7.8</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3142</th>
+      <td>403</td>
+      <td>19910501</td>
+      <td>19910531</td>
+      <td>10</td>
+      <td>4.97</td>
+      <td>10.52</td>
+      <td>14.90</td>
+      <td>5.90</td>
+      <td>2.19</td>
+      <td>24.2</td>
+      <td>24.1</td>
+      <td>1.2</td>
+      <td>179.60</td>
+      <td>9</td>
+      <td>38.6</td>
+      <td>15.5</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3505</th>
+      <td>403</td>
+      <td>20210801</td>
+      <td>20210831</td>
+      <td>3</td>
+      <td>5.67</td>
+      <td>17.43</td>
+      <td>22.34</td>
+      <td>12.97</td>
+      <td>2.42</td>
+      <td>29.4</td>
+      <td>16.9</td>
+      <td>8.0</td>
+      <td>188.23</td>
+      <td>3</td>
+      <td>92.4</td>
+      <td>22.6</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3506</th>
+      <td>403</td>
+      <td>20210901</td>
+      <td>20210930</td>
+      <td>3</td>
+      <td>4.90</td>
+      <td>15.55</td>
+      <td>20.28</td>
+      <td>11.35</td>
+      <td>2.33</td>
+      <td>27.3</td>
+      <td>18.6</td>
+      <td>6.8</td>
+      <td>154.48</td>
+      <td>3</td>
+      <td>35.1</td>
+      <td>15.9</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3507</th>
+      <td>403</td>
+      <td>20211001</td>
+      <td>20211031</td>
+      <td>3</td>
+      <td>4.85</td>
+      <td>10.49</td>
+      <td>15.28</td>
+      <td>6.29</td>
+      <td>2.81</td>
+      <td>24.2</td>
+      <td>25.6</td>
+      <td>0.5</td>
+      <td>157.65</td>
+      <td>3</td>
+      <td>21.8</td>
+      <td>5.7</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3508</th>
+      <td>403</td>
+      <td>20211101</td>
+      <td>20211130</td>
+      <td>3</td>
+      <td>6.65</td>
+      <td>6.28</td>
+      <td>8.68</td>
+      <td>3.87</td>
+      <td>2.60</td>
+      <td>12.7</td>
+      <td>18.6</td>
+      <td>-0.9</td>
+      <td>41.23</td>
+      <td>3</td>
+      <td>65.2</td>
+      <td>40.4</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3509</th>
+      <td>403</td>
+      <td>20211201</td>
+      <td>20211231</td>
+      <td>1</td>
+      <td>6.57</td>
+      <td>2.19</td>
+      <td>4.30</td>
+      <td>-0.11</td>
+      <td>2.74</td>
+      <td>14.0</td>
+      <td>21.5</td>
+      <td>-10.2</td>
+      <td>38.18</td>
+      <td>3</td>
+      <td>39.2</td>
+      <td>8.8</td>
+      <td>eor</td>
+    </tr>
+  </tbody>
+</table>
+<p>372 rows × 17 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="checking-for-normality">
+<h3>1.5. Checking for Normality<a class="headerlink" href="#checking-for-normality" title="Permalink to this heading">#</a></h3>
+<p>Calculate the mean and standard deviation for the monthly mean temperature for both dataframes! Doe they violate the three sigma rule? plot the distriubtion as histogram and density plot.
+Check for normality of the monthly mean temperature with the help of a qqplot! (solution the same as above)</p>
+</section>
+<section id="boxplots">
+<h3>1.6. Boxplots<a class="headerlink" href="#boxplots" title="Permalink to this heading">#</a></h3>
+<p>Let’s have a closer look at both dataframes with the help of a boxplot! Plot both datasets next to eachother in two boxplots but one figure frame.</p>
+<section id="id5">
+<h4>solution<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">dahlem_1961_1990</span><span class="p">[</span><span class="s2">&quot;MO_TT&quot;</span><span class="p">],</span> <span class="n">dahlem_1990_today</span><span class="p">[</span><span class="s2">&quot;MO_TT&quot;</span><span class="p">]])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temp °C&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c9510c9f592b1f40c5b90d37a94f99a45abbc89ee13e1bd61c8143cdb12c6d06.png" src="../../../_images/c9510c9f592b1f40c5b90d37a94f99a45abbc89ee13e1bd61c8143cdb12c6d06.png" />
+</div>
+</div>
+</section>
+<section id="which-argument-to-we-have-to-add-if-we-want-to-find-significant-differences-between-the-groups-is-there-a-signifanct-difference-in-the-monthly-mean-temperature-between-1961-to-1991-and-from-1991-to-today">
+<h4>Which argument to we have to add, if we want to find significant differences between the groups? Is there a signifanct difference in the monthly mean temperature between 1961 to 1991 and from 1991 to today?<a class="headerlink" href="#which-argument-to-we-have-to-add-if-we-want-to-find-significant-differences-between-the-groups-is-there-a-signifanct-difference-in-the-monthly-mean-temperature-between-1961-to-1991-and-from-1991-to-today" title="Permalink to this heading">#</a></h4>
+<section id="id6">
+<h5>solution<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">dahlem_1961_1990</span><span class="p">[</span><span class="s2">&quot;MO_TT&quot;</span><span class="p">],</span> <span class="n">dahlem_1990_today</span><span class="p">[</span><span class="s2">&quot;MO_TT&quot;</span><span class="p">]],</span> <span class="n">notch</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temp °C&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/1cfb827fd71c908b762f3962e3b6e34a05c7a2908c748310f778de1e83c91b1d.png" src="../../../_images/1cfb827fd71c908b762f3962e3b6e34a05c7a2908c748310f778de1e83c91b1d.png" />
+</div>
+</div>
+<p>Looks pretty similiar</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span>
+    <span class="n">src</span><span class="o">=</span><span class="s2">&quot;../../../citation_Marie.html&quot;</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="900"
+            height="200"
+            src="../../../citation_Marie.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./contents/General_Introduction_Sessions/2_NVT"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2_1_Wdhl_Statisitk_1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Recap Statistics 1</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../4_intro_regression/4_Intro_Regression.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">What we have learnt so far:</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-for-normal-distribution">1. Checking for Normal Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dwd-data">DWD data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsetting-the-data-frame">1.1. Subsetting the data frame</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-mean-and-standard-deviation-for-this-subset">1.2. Checking the mean and standard deviation for this subset</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.3. Checking the mean and standard deviation for this subset</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-the-data-frame">1.4. Slicing the data frame</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-for-normality">1.5. Checking for Normality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots">1.6. Boxplots</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#which-argument-to-we-have-to-add-if-we-want-to-find-significant-differences-between-the-groups-is-there-a-signifanct-difference-in-the-monthly-mean-temperature-between-1961-to-1991-and-from-1991-to-today">Which argument to we have to add, if we want to find significant differences between the groups? Is there a signifanct difference in the monthly mean temperature between 1961 to 1991 and from 1991 to today?</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marie-Christin Eckert
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
