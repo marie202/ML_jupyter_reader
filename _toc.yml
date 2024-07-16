@@ -5,7 +5,7 @@ format: jb-book
 root: intro
 parts: 
 - caption: Intro to Python
-  numbered: false
+  numbered: true
   chapters:
   - file: contents/General_Introduction_Sessions/1_Introduction_to_Python/1_1_Python_as_calculator
   - file: contents/General_Introduction_Sessions/1_Introduction_to_Python/1_2_Build_in_Functions
@@ -14,17 +14,22 @@ parts:
   - file: contents/General_Introduction_Sessions/1_Introduction_to_Python/1_5_objects_data_types
   - file: contents/General_Introduction_Sessions/1_Introduction_to_Python/1_6_Intro_user_defined_functions
   - file: contents/General_Introduction_Sessions/1_Introduction_to_Python/1_7_control_flow_mit_Lsg
-  - file: contents/General_Introduction_Sessions/1_Introduction_to_Python/1_8_Exercises_Einf_Python_I
-  - file: contents/General_Introduction_Sessions/1_Introduction_to_Python/1_9_Exercises_Einf_Python_II
+  - file: contents/General_Introduction_Sessions/1_Introduction_to_Python/1_8_Pandas_Dataframes.ipynb
+  - file: contents/General_Introduction_Sessions/1_Introduction_to_Python/1_9_Exercises_Einf_Python_I
+  - file: contents/General_Introduction_Sessions/1_Introduction_to_Python/1_10_Exercises_Einf_Python_II
 - caption: Recap Statistics
-  numbered: false
+  numbered: true
   chapters:
   - file: contents/General_Introduction_Sessions/2_NVT/2_1_Wdhl_Statisitk_1
   - file: contents/General_Introduction_Sessions/2_NVT/2_2_Add_Exercises_NVT
-  - file: contents/General_Introduction_Sessions/4_intro_regression/4_Intro_Regression
-  - file: contents/General_Introduction_Sessions/5_intro_correlation/5_intro_regression&correlation_LSG
 - caption: Feature Scales
-  numbered: false
+  numbered: true
   chapters:
   - file: contents/General_Introduction_Sessions/3_features_scales/3_Feature_scales
   - file: contents/General_Introduction_Sessions/3_features_scales/3_Add_Exercises_FeatureScales-v2
+- caption: Recap Regression & Correlation
+  numbered: true
+  chapters:
+  - file: contents/General_Introduction_Sessions/4_intro_regression/4_1_Intro_Regression
+  - file: contents/General_Introduction_Sessions/4_intro_regression/4_2_Intro_Correlation
+  - file: contents/General_Introduction_Sessions/4_intro_regression/4_3_Additional_Exercises_CorrReg

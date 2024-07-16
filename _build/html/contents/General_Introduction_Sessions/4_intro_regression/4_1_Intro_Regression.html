@@ -1,0 +1,3704 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>19. Linear Regression &#8212; Machine Learning course online reader</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/4_intro_regression/4_1_Intro_Regression';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="20. Correlation and Regression" href="4_2_Intro_Correlation.html" />
+    <link rel="prev" title="18. Additional Exercises IV - Feature Scales" href="../3_features_scales/3_Add_Exercises_FeatureScales-v2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Machine Learning course online reader - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Machine Learning course online reader - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_1_Python_as_calculator.html">1. Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_2_Build_in_Functions.html">2. Use of predefined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_3_data_structures.html">3. Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_4_atomic_datatypes.html">4. Datatypes</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_5_objects_data_types.html">7. The concept of objects in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_6_Intro_user_defined_functions.html">8. User defined functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_7_control_flow_mit_Lsg.html">9. Steering the control flow of a program</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_8_Pandas_Dataframes.html">12. Pandas package for handling <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_9_Exercises_Einf_Python_I.html">13. Additional Exercises I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_10_Exercises_Einf_Python_II.html">14. Additional Exercises II</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Recap Statistics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2_NVT/2_1_Wdhl_Statisitk_1.html">15. Recap Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_NVT/2_2_Add_Exercises_NVT.html">16. Additional Exercises III -  The Normal distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_features_scales/3_Feature_scales.html">17. Feature Scales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_features_scales/3_Add_Exercises_FeatureScales-v2.html">18. Additional Exercises IV -  Feature Scales</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_2_Intro_Correlation.html">20. Correlation and Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_3_Additional_Exercises_CorrReg.html">21. Additional Exercises V -  Regression &amp; Correlation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/4_intro_regression/4_1_Intro_Regression.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/contents/General_Introduction_Sessions/4_intro_regression/4_1_Intro_Regression.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Linear Regression</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression">19.1. Simple Linear Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-estimation-ordinary-least-squares-method">19.1.1. Parameter Estimation: Ordinary Least Squares Method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression-an-example">19.2. Simple Linear Regression: An example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-unnecessary-columns">19.2.1. Remove unnecessary columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-columns-for-convenience">19.2.2. Rename columns for convenience</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pairplot-and-distributions-of-the-data">19.2.3. Pairplot and distributions of the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-missing-data">19.2.4. Drop missing data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling">19.2.5. Feature scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-scaling">19.2.5.1. Min-Max scaling</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-transformation">19.2.5.2. Logistic transformation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#back-transformation">19.2.5.3. Back transformation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">19.2.5.4. solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-mean-median-distributions">19.2.5.5. statistics - mean, median, distributions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">19.2.5.6. solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-a-sample">19.2.6. Drawing a sample</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-estimation">19.2.7. Parameter estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1">19.2.8. Using Python’ <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to calculate <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">19.2.9. Prediction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-diagnostic">19.3. Model diagnostic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-of-determination">19.3.1. Coefficient of Determination</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-the-machine-learning-perspective">19.4. From the Machine Learning perspective:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#residual-analysis">19.5. Residual analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">19.6. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">19.6.1. solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">19.6.2. solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-machine-learning-approach">19.6.3. Extra: Machine Learning approach:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> lab_black
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="linear-regression">
+<h1><span class="section-number">19. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Regression_analysis">Regression</a> analysis is a statistical process for estimating the relationships between two or more variables. The relationship is modeled as <span class="math notranslate nohighlight">\(y \sim x\)</span> or <span class="math notranslate nohighlight">\(y = f(x)\)</span>. Both model descriptions indicate  that the variable <span class="math notranslate nohighlight">\(y\)</span> is a function  of <span class="math notranslate nohighlight">\(x\)</span>. Therefore the variable <span class="math notranslate nohighlight">\(y\)</span> is denoted as <strong>response variable</strong> or <strong>dependent variable</strong>, whereas the variable <span class="math notranslate nohighlight">\(x\)</span> is denoted as <strong>predictor variable</strong> or <strong>independent variable</strong>.</p>
+<hr class="docutils" />
+<section id="simple-linear-regression">
+<h2><span class="section-number">19.1. </span>Simple Linear Regression<a class="headerlink" href="#simple-linear-regression" title="Permalink to this heading">#</a></h2>
+<p>In this section we discuss a special type of regression, which is called <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_linear_regression"><strong>simple linear regression</strong></a>. In this special case of  regression analysis the relationship between the response variable <span class="math notranslate nohighlight">\(y\)</span> and and the predictor variable <span class="math notranslate nohighlight">\(x\)</span> is given in form of a <strong>linear</strong> equation</p>
+<div class="math notranslate nohighlight">
+\[y= a + bx\text{,}\]</div>
+<p>where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are constants. The number <span class="math notranslate nohighlight">\(a\)</span> is called <strong>intercept</strong> and defines the point of intersection of the line  and the <span class="math notranslate nohighlight">\(y\)</span>-axis (<span class="math notranslate nohighlight">\(x=0\)</span>). The number <span class="math notranslate nohighlight">\(b\)</span> is called <strong>regression coefficient</strong>. It is a measure of the slope of the <strong>regression line</strong>. Thus, <span class="math notranslate nohighlight">\(b\)</span> indicates how much the <span class="math notranslate nohighlight">\(y\)</span>-value changes when the <span class="math notranslate nohighlight">\(x\)</span>-value increases by 1 unit. The adjective <strong>simple</strong> refers to the fact that the outcome variable is related to a single predictor. The model is considered as a <strong>deterministic model</strong>, as it gives an exact relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>Let us consider a simple example. Given a population of <span class="math notranslate nohighlight">\(n = 3\)</span> points with Cartesian coordinates <span class="math notranslate nohighlight">\((x_i,y_i)\)</span> of <span class="math notranslate nohighlight">\((1,6)\)</span>, <span class="math notranslate nohighlight">\((2,8)\)</span> and <span class="math notranslate nohighlight">\((3,10)\)</span>. These points plot on a straight line and thus, can be described by a linear equation model in the form of <span class="math notranslate nohighlight">\(y= a + bx\)</span>, where the intercept <span class="math notranslate nohighlight">\(a=4\)</span> and <span class="math notranslate nohighlight">\(b=2\)</span>.</p>
+<div>
+<img src="4_regression_figures/Regression.png" width="600"/>
+</div><hr class="docutils" />
+<p>In many cases, the relationship between two variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> is not exact. This is due to the fact, that the response variable <span class="math notranslate nohighlight">\(y\)</span> is affect by other unknown and/or random processes, that are not fully captured by the predictor variable <span class="math notranslate nohighlight">\(x\)</span>. In such a case the data points do not line up on a straight line. However, the data still may follow an underlying linear relationship. In order to take these unknowns into consideration a <strong>random error term</strong>, denoted by <span class="math notranslate nohighlight">\(\epsilon\)</span>, is added to the linear model equation, thus resulting in a <strong>probabilistic model</strong> in contrast to the deterministic model from above.</p>
+<div class="math notranslate nohighlight">
+\[y = a + b x + \epsilon\]</div>
+<p>where the error term <span class="math notranslate nohighlight">\(\epsilon_i\)</span> is assumed to consist of independent normal distributed values, <span class="math notranslate nohighlight">\(e_i \sim N(0, \sigma^2)\)</span>.</p>
+<p>In linear regression modelling following assumptions are made about the model (Mann 2012).</p>
+<ul class="simple">
+<li><p>The random error term <span class="math notranslate nohighlight">\(\epsilon\)</span> has a mean equal to zero for each <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+<li><p>The errors associated with different observations are independent.</p></li>
+<li><p>For any given <span class="math notranslate nohighlight">\(x\)</span>, the distribution of errors is normal.</p></li>
+<li><p>The distribution errors for each <span class="math notranslate nohighlight">\(x\)</span> has the same (constant) standard deviation, which is denoted by <span class="math notranslate nohighlight">\(\sigma_{\epsilon}\)</span>.</p></li>
+</ul>
+<hr class="docutils" />
+<p>Let us consider another example. This time we take a random sample of sample size <span class="math notranslate nohighlight">\(n = 8\)</span> from a population. In  order to emphasis that the values of the intercept and slope are calculated from sample data, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are denoted by <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>, respectively. In addition, the error term <span class="math notranslate nohighlight">\(\epsilon\)</span> is denoted as <span class="math notranslate nohighlight">\(e\)</span>. Thus, <span class="math notranslate nohighlight">\(\beta_0\)</span>, <span class="math notranslate nohighlight">\(\beta_1\)</span> and <span class="math notranslate nohighlight">\(e\)</span> are estimates based on sample data for the population parameters <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\hat y = \beta_0 + \beta_1 x + e \text{,}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat y\)</span> is the the <strong>estimated or predicted value of <span class="math notranslate nohighlight">\(y\)</span></strong> for any given value of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<div>
+<img src="4_regression_figures/Regression-2.png" width="600"/>
+</div><p>The error <span class="math notranslate nohighlight">\(e_i\)</span> for each particular pair of values (<span class="math notranslate nohighlight">\(x_i,y_i\)</span>), also called <strong>residual</strong>, is computed by the difference of the observed value <span class="math notranslate nohighlight">\(y_i\)</span> and the predicted value given by <span class="math notranslate nohighlight">\(\hat y_i\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[e_i = y_i - \hat y_i\]</div>
+<p>Depending on the data <span class="math notranslate nohighlight">\(e_i\)</span> is a negative number if <span class="math notranslate nohighlight">\(y_i\)</span> plots below the regression line or it is a positive number if <span class="math notranslate nohighlight">\(y_i\)</span> plots above the regression line.</p>
+<hr class="docutils" />
+<section id="parameter-estimation-ordinary-least-squares-method">
+<h3><span class="section-number">19.1.1. </span>Parameter Estimation: Ordinary Least Squares Method<a class="headerlink" href="#parameter-estimation-ordinary-least-squares-method" title="Permalink to this heading">#</a></h3>
+<p>Now, as we relaxed the constraints of the deterministic model and introduced an error term <span class="math notranslate nohighlight">\(\epsilon\)</span>, we run into another problem. There are infinitely many regression lines that fulfill the specifications of the probabilistic model.</p>
+<div>
+<img src="4_regression_figures/Regression-3.png" width="600"/>
+</div><p>Obviously, we need a strategy to select that particular regression line, which corresponds to the <em>best</em> model in order to describe the data. In this section we discuss on one of the most popular methods to achieve that task, the so called <a class="reference external" href="https://en.wikipedia.org/wiki/Ordinary_least_squares"><strong>ordinary least squares method (OLS)</strong></a>.</p>
+<p>As mentioned in the previous section for each particular pair of values <span class="math notranslate nohighlight">\((x_1,y_1)\)</span> the error <span class="math notranslate nohighlight">\(e_i\)</span> is calculated by <span class="math notranslate nohighlight">\(y_1-\hat y\)</span>. In order to get the best fitting line for the given data the <strong>error sum of squares</strong>, denoted by SSE, is minimized.</p>
+<div class="math notranslate nohighlight">
+\[SSE = \sum_{i=1}^n e_i^2=\sum_{i=1}^n (y - \hat y)^2\]</div>
+<p>For the simple linear model there exists an analytic solution for <span class="math notranslate nohighlight">\(\beta_1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\hat{\beta_1} = \frac{\sum_{i=1}^n ((x_i- \bar x) (y_i-\bar y))}{\sum_{i=1}^n (x_i-\bar x)^2} = \frac{cov(x,y)}{var(x)}\text{,}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\beta_0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\hat{\beta_0} = \bar y -\hat{\beta_1} \bar x\]</div>
+<p>The OLS gives the maximum likelihood estimate for <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> when the parameters have equal variance and are uncorrelated, and the residuals <span class="math notranslate nohighlight">\(\epsilon\)</span> are uncorrelated and follow a Gaussian distribution (<a class="reference external" href="https://en.wikipedia.org/wiki/Homoscedasticity">homoscedasticity</a>).</p>
+</section>
+</section>
+<section id="simple-linear-regression-an-example">
+<h2><span class="section-number">19.2. </span>Simple Linear Regression: An example<a class="headerlink" href="#simple-linear-regression-an-example" title="Permalink to this heading">#</a></h2>
+<p>In order to get some hands-on experience we apply the <strong>simple linear regression</strong> in an exercise.</p>
+<hr class="docutils" />
+<p>For this example, we will use a daily time series from the DWD weather station Berlin-Dahlem (FU), downloaded from <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/daily/kl/historical/tageswerte_KL_00403_19500101_20211231_hist.zip">Climate Data Center</a> on 2022-07-22. A detailed description of the variables is available <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/daily/kl/historical/DESCRIPTION_obsgermany_climate_daily_kl_historical_en.pdf">here</a>. For the purpose of this tutorial the dataset is provided <a class="reference external" href="https://userpage.fu-berlin.de/soga/data/raw-data/tageswerte_KL_00403_19500101_20211231_hist.zip">here</a>.</p>
+<p>You find a documentation of this data in <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/daily/kl/historical/BESCHREIBUNG_obsgermany_climate_daily_kl_historical_de.pdf">german</a> and  <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/daily/kl/historical/DESCRIPTION_obsgermany_climate_daily_kl_historical_en.pdf">english</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, let&#39;s import all the needed libraries.</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="s2">&quot;use_inf_as_na&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">zipfile</span><span class="o">,</span> <span class="nn">io</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://userpage.fu-berlin.de/soga/soga-py/300/307000_time_series/tageswerte_KL_00403_19500101_20211231_hist.zip&quot;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="n">z</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s2">&quot;produkt_klima_tag_19500101_20211231_00403.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;../data&quot;</span><span class="p">)</span>
+<span class="n">data_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;../data/produkt_klima_tag_19500101_20211231_00403.txt&quot;</span><span class="p">,</span>
+    <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span>
+    <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;-999&quot;</span><span class="p">],</span>
+    <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">data_raw</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATIONS_ID</th>
+      <th>MESS_DATUM</th>
+      <th>QN_3</th>
+      <th>FX</th>
+      <th>FM</th>
+      <th>QN_4</th>
+      <th>RSK</th>
+      <th>RSKF</th>
+      <th>SDK</th>
+      <th>SHK_TAG</th>
+      <th>NM</th>
+      <th>VPM</th>
+      <th>PM</th>
+      <th>TMK</th>
+      <th>UPM</th>
+      <th>TXK</th>
+      <th>TNK</th>
+      <th>TGK</th>
+      <th>eor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>403</td>
+      <td>19500101</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>2.2</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1025.60</td>
+      <td>-3.2</td>
+      <td>83.00</td>
+      <td>-1.1</td>
+      <td>-4.9</td>
+      <td>-6.3</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>403</td>
+      <td>19500102</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>12.6</td>
+      <td>8</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>6.1</td>
+      <td>1005.60</td>
+      <td>1.0</td>
+      <td>95.00</td>
+      <td>2.2</td>
+      <td>-3.7</td>
+      <td>-5.3</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>403</td>
+      <td>19500103</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>6.5</td>
+      <td>996.60</td>
+      <td>2.8</td>
+      <td>86.00</td>
+      <td>3.9</td>
+      <td>1.7</td>
+      <td>-1.4</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>403</td>
+      <td>19500104</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>0.5</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>7.7</td>
+      <td>5.2</td>
+      <td>999.50</td>
+      <td>-0.1</td>
+      <td>85.00</td>
+      <td>2.1</td>
+      <td>-0.9</td>
+      <td>-2.3</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>403</td>
+      <td>19500105</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>10.3</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>4.0</td>
+      <td>1001.10</td>
+      <td>-2.8</td>
+      <td>79.00</td>
+      <td>-0.9</td>
+      <td>-3.3</td>
+      <td>-5.2</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>26293</th>
+      <td>403</td>
+      <td>20211227</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>0.0</td>
+      <td>8</td>
+      <td>0.183</td>
+      <td>0.0</td>
+      <td>5.9</td>
+      <td>3.8</td>
+      <td>998.13</td>
+      <td>-3.7</td>
+      <td>79.67</td>
+      <td>-0.7</td>
+      <td>-7.9</td>
+      <td>-9.9</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>26294</th>
+      <td>403</td>
+      <td>20211228</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1.5</td>
+      <td>6</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>6.4</td>
+      <td>5.3</td>
+      <td>990.17</td>
+      <td>-0.5</td>
+      <td>88.46</td>
+      <td>2.7</td>
+      <td>-3.9</td>
+      <td>-5.1</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>26295</th>
+      <td>403</td>
+      <td>20211229</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>0.3</td>
+      <td>6</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>7.5</td>
+      <td>8.2</td>
+      <td>994.40</td>
+      <td>4.0</td>
+      <td>100.00</td>
+      <td>5.6</td>
+      <td>1.8</td>
+      <td>0.0</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>26296</th>
+      <td>403</td>
+      <td>20211230</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>3.2</td>
+      <td>6</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>7.9</td>
+      <td>11.5</td>
+      <td>1001.70</td>
+      <td>9.0</td>
+      <td>98.54</td>
+      <td>12.7</td>
+      <td>4.6</td>
+      <td>2.3</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>26297</th>
+      <td>403</td>
+      <td>20211231</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>5.5</td>
+      <td>6</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>7.7</td>
+      <td>12.5</td>
+      <td>1004.72</td>
+      <td>12.8</td>
+      <td>84.96</td>
+      <td>14.0</td>
+      <td>11.5</td>
+      <td>10.7</td>
+      <td>eor</td>
+    </tr>
+  </tbody>
+</table>
+<p>26298 rows × 19 columns</p>
+</div></div></div>
+</div>
+<section id="remove-unnecessary-columns">
+<h3><span class="section-number">19.2.1. </span>Remove unnecessary columns<a class="headerlink" href="#remove-unnecessary-columns" title="Permalink to this heading">#</a></h3>
+<p>By looking at the data and consulting the variable description, we can immediately find variables that are not useful for our purpose and drop them.</p>
+<ul class="simple">
+<li><p>STATIONS_ID -&gt; There is only one station in the data.</p></li>
+<li><p>MESS_DATUM -&gt; Since we are not interested in a time series analysis, this is just a numbering of the rows.</p></li>
+<li><p>QN_3, FX, FM, eor -&gt; These variables do not contain any data.</p></li>
+<li><p>QN_4 -&gt; This value is a data quality label and has no relation to weather data.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">data_raw</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;STATIONS_ID&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;MESS_DATUM&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;QN_3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FX&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FM&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;NM&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;eor&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;QN_4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;RSK&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;RSKF&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SHK_TAG&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SDK&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;UPM&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;VPM&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PM</th>
+      <th>TMK</th>
+      <th>TXK</th>
+      <th>TNK</th>
+      <th>TGK</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1025.60</td>
+      <td>-3.2</td>
+      <td>-1.1</td>
+      <td>-4.9</td>
+      <td>-6.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1005.60</td>
+      <td>1.0</td>
+      <td>2.2</td>
+      <td>-3.7</td>
+      <td>-5.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>996.60</td>
+      <td>2.8</td>
+      <td>3.9</td>
+      <td>1.7</td>
+      <td>-1.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>999.50</td>
+      <td>-0.1</td>
+      <td>2.1</td>
+      <td>-0.9</td>
+      <td>-2.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1001.10</td>
+      <td>-2.8</td>
+      <td>-0.9</td>
+      <td>-3.3</td>
+      <td>-5.2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>26293</th>
+      <td>998.13</td>
+      <td>-3.7</td>
+      <td>-0.7</td>
+      <td>-7.9</td>
+      <td>-9.9</td>
+    </tr>
+    <tr>
+      <th>26294</th>
+      <td>990.17</td>
+      <td>-0.5</td>
+      <td>2.7</td>
+      <td>-3.9</td>
+      <td>-5.1</td>
+    </tr>
+    <tr>
+      <th>26295</th>
+      <td>994.40</td>
+      <td>4.0</td>
+      <td>5.6</td>
+      <td>1.8</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>26296</th>
+      <td>1001.70</td>
+      <td>9.0</td>
+      <td>12.7</td>
+      <td>4.6</td>
+      <td>2.3</td>
+    </tr>
+    <tr>
+      <th>26297</th>
+      <td>1004.72</td>
+      <td>12.8</td>
+      <td>14.0</td>
+      <td>11.5</td>
+      <td>10.7</td>
+    </tr>
+  </tbody>
+</table>
+<p>26298 rows × 5 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="rename-columns-for-convenience">
+<h3><span class="section-number">19.2.2. </span>Rename columns for convenience<a class="headerlink" href="#rename-columns-for-convenience" title="Permalink to this heading">#</a></h3>
+<p>To improve the readability, we rename the remaining columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;PM&quot;</span><span class="p">:</span> <span class="s2">&quot;pres&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TMK&quot;</span><span class="p">:</span> <span class="s2">&quot;temp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TXK&quot;</span><span class="p">:</span> <span class="s2">&quot;temp_max&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TNK&quot;</span><span class="p">:</span> <span class="s2">&quot;temp_min&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TGK&quot;</span><span class="p">:</span> <span class="s2">&quot;temp_sfc&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pres</th>
+      <th>temp</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>temp_sfc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1025.60</td>
+      <td>-3.2</td>
+      <td>-1.1</td>
+      <td>-4.9</td>
+      <td>-6.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1005.60</td>
+      <td>1.0</td>
+      <td>2.2</td>
+      <td>-3.7</td>
+      <td>-5.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>996.60</td>
+      <td>2.8</td>
+      <td>3.9</td>
+      <td>1.7</td>
+      <td>-1.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>999.50</td>
+      <td>-0.1</td>
+      <td>2.1</td>
+      <td>-0.9</td>
+      <td>-2.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1001.10</td>
+      <td>-2.8</td>
+      <td>-0.9</td>
+      <td>-3.3</td>
+      <td>-5.2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>26293</th>
+      <td>998.13</td>
+      <td>-3.7</td>
+      <td>-0.7</td>
+      <td>-7.9</td>
+      <td>-9.9</td>
+    </tr>
+    <tr>
+      <th>26294</th>
+      <td>990.17</td>
+      <td>-0.5</td>
+      <td>2.7</td>
+      <td>-3.9</td>
+      <td>-5.1</td>
+    </tr>
+    <tr>
+      <th>26295</th>
+      <td>994.40</td>
+      <td>4.0</td>
+      <td>5.6</td>
+      <td>1.8</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>26296</th>
+      <td>1001.70</td>
+      <td>9.0</td>
+      <td>12.7</td>
+      <td>4.6</td>
+      <td>2.3</td>
+    </tr>
+    <tr>
+      <th>26297</th>
+      <td>1004.72</td>
+      <td>12.8</td>
+      <td>14.0</td>
+      <td>11.5</td>
+      <td>10.7</td>
+    </tr>
+  </tbody>
+</table>
+<p>26298 rows × 5 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="pairplot-and-distributions-of-the-data">
+<h3><span class="section-number">19.2.3. </span>Pairplot and distributions of the data<a class="headerlink" href="#pairplot-and-distributions-of-the-data" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/7de74c33e806f2c9b6fb1a750100385c271be79142849de122dd8bc111732d29.png" src="../../../_images/7de74c33e806f2c9b6fb1a750100385c271be79142849de122dd8bc111732d29.png" />
+</div>
+</div>
+<p>Now, we got an impression of the distributions and relations of the different features. We notice a strong reration between different temperature variables.</p>
+</section>
+<section id="drop-missing-data">
+<h3><span class="section-number">19.2.4. </span>Drop missing data<a class="headerlink" href="#drop-missing-data" title="Permalink to this heading">#</a></h3>
+<p>As a next step, we check the data for missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pres        0
+temp        0
+temp_max    0
+temp_min    0
+temp_sfc    8
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see, the percentage of missing values in our data is very small (148 out of 26298 rows). Therefore, the simplest solution is to simply drop all rows with missing data. If the percentage were higher, other solutions might be more useful, such as <strong>imputing values</strong> for the missing values. Read more about dealing with <a class="reference external" href="https://www.geo.fu-berlin.de/en/v/soga-py/Advanced-statistics/Feature-scales/Zero-Missings/index.html">zero missings here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pres</th>
+      <th>temp</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>temp_sfc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1025.60</td>
+      <td>-3.2</td>
+      <td>-1.1</td>
+      <td>-4.9</td>
+      <td>-6.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1005.60</td>
+      <td>1.0</td>
+      <td>2.2</td>
+      <td>-3.7</td>
+      <td>-5.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>996.60</td>
+      <td>2.8</td>
+      <td>3.9</td>
+      <td>1.7</td>
+      <td>-1.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>999.50</td>
+      <td>-0.1</td>
+      <td>2.1</td>
+      <td>-0.9</td>
+      <td>-2.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1001.10</td>
+      <td>-2.8</td>
+      <td>-0.9</td>
+      <td>-3.3</td>
+      <td>-5.2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>26293</th>
+      <td>998.13</td>
+      <td>-3.7</td>
+      <td>-0.7</td>
+      <td>-7.9</td>
+      <td>-9.9</td>
+    </tr>
+    <tr>
+      <th>26294</th>
+      <td>990.17</td>
+      <td>-0.5</td>
+      <td>2.7</td>
+      <td>-3.9</td>
+      <td>-5.1</td>
+    </tr>
+    <tr>
+      <th>26295</th>
+      <td>994.40</td>
+      <td>4.0</td>
+      <td>5.6</td>
+      <td>1.8</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>26296</th>
+      <td>1001.70</td>
+      <td>9.0</td>
+      <td>12.7</td>
+      <td>4.6</td>
+      <td>2.3</td>
+    </tr>
+    <tr>
+      <th>26297</th>
+      <td>1004.72</td>
+      <td>12.8</td>
+      <td>14.0</td>
+      <td>11.5</td>
+      <td>10.7</td>
+    </tr>
+  </tbody>
+</table>
+<p>26290 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pres</th>
+      <th>temp</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>temp_sfc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>26290.000000</td>
+      <td>26290.00000</td>
+      <td>26290.000000</td>
+      <td>26290.000000</td>
+      <td>26290.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1007.808868</td>
+      <td>9.36466</td>
+      <td>13.520822</td>
+      <td>5.365135</td>
+      <td>3.667554</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>9.132328</td>
+      <td>7.62621</td>
+      <td>8.969154</td>
+      <td>6.730699</td>
+      <td>6.793801</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>961.000000</td>
+      <td>-17.90000</td>
+      <td>-16.400000</td>
+      <td>-21.800000</td>
+      <td>-31.600000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1002.300000</td>
+      <td>3.60000</td>
+      <td>6.400000</td>
+      <td>0.500000</td>
+      <td>-0.900000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1008.200000</td>
+      <td>9.50000</td>
+      <td>13.600000</td>
+      <td>5.500000</td>
+      <td>3.700000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1013.700000</td>
+      <td>15.40000</td>
+      <td>20.600000</td>
+      <td>10.700000</td>
+      <td>9.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1040.000000</td>
+      <td>29.50000</td>
+      <td>37.900000</td>
+      <td>22.500000</td>
+      <td>21.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We notice the the range of the data differs! Often, we need data of the same scale for appropriate modelling. Therefore, we explain min-max scaling. Moreover, a lot of data sets are not normally distributed. But they need to be normally distributed to e.g. calculate the correlations in a mathematical correct way.</p>
+</section>
+<section id="feature-scaling">
+<h3><span class="section-number">19.2.5. </span>Feature scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this heading">#</a></h3>
+<p>In the next steps it is exaplained how to transform the data to make the different variables (feature) comparable with each other <strong>min-max scaling</strong> and <strong>logistic transformation</strong> which transforms e.g. skew-symmetric data to a normally distributed data set.
+We comment the code, because our data is normally distributed. But you need it later for dealing with different data.</p>
+<section id="min-max-scaling">
+<h4><span class="section-number">19.2.5.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Permalink to this heading">#</a></h4>
+<p>The min-max scaling</p>
+<div class="math notranslate nohighlight">
+\[x'=\frac{x-x_{min}}{x_{max}-x_{min}}\]</div>
+<p>transforms the data into the range <span class="math notranslate nohighlight">\([0,1]\)</span>. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values <span class="math notranslate nohighlight">\(x_{min}-1\)</span> and <span class="math notranslate nohighlight">\(x_{max}+1\)</span>. Thus</p>
+<div class="math notranslate nohighlight">
+\[x'=\frac{x-x_{min}+1}{x_{max}-x_{min}+2\, .}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#min-max Scaling </span>
+<span class="c1">#transform_cols = [&quot;temp&quot;, &quot;temp_max&quot;, &quot;temp_min&quot;, &quot;temp_sfc&quot;] # [&quot;COLUMN NAME&quot;, &quot;COLUMN NAME&quot;]</span>
+
+<span class="c1">#df_transfo  =df.copy() # set an equivalent copy to perform the feature scales transformation</span>
+
+<span class="c1">#xmin = df[transform_cols].min()</span>
+<span class="c1">#xmax =  df[transform_cols].max()</span>
+
+<span class="c1"># transform each column by its indiv. min/max</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="logistic-transformation">
+<h4><span class="section-number">19.2.5.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Permalink to this heading">#</a></h4>
+<p>As a second step, we use a logistic transformation
+$<span class="math notranslate nohighlight">\(x''=\log\frac{x'}{1-x'}\)</span>$</p>
+<p>However, before we can start the transformation, we face a problem! Because we have transformed the test set with the values of the training set, the test set may contain values outside the range [0,1]. This will not work with the logarithm in the transformation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#print(df_transfo[df_transfo[transform_cols].le(0).any(axis=1)])</span>
+<span class="c1">#print(df_transfo[df_transfo[transform_cols].ge(1).any(axis=1)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see, there is no value below 0 in the test set.</p>
+<p>If there is a value below 0: We basically have two options: either drop the data or impute new values. If we only have one problematic data set, we will drop it. For imputation, we could assign the minimum possible value to the problematic values. To do so, see the uncommented line below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df.drop(df[df[transform_cols].le(0).any(axis=1) | df[df].ge(1).any(axis=1)].index, inplace=True)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform a logistic transformation on x′∈]0,1[ℝ</span>
+
+<span class="c1">#df_transfo[transform_cols] = np.log(df_transfo[transform_cols] / (1 - df_transfo[transform_cols]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we are ready to check our distributions again. We will plot all variables as histogram next to each other like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#df_transfo[transform_cols].hist(bins=35, figsize=(9, 6))</span>
+<span class="c1">#plt.show()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#df.hist()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="back-transformation">
+<h4><span class="section-number">19.2.5.3. </span>Back transformation<a class="headerlink" href="#back-transformation" title="Permalink to this heading">#</a></h4>
+<p>The back transformation is the “logistic” function resp. inverse logit:</p>
+<p>\begin{align}
+x’’\to x’=\frac{e^{x’’}}{1+e^{x’’}}&amp;&amp; and &amp;&amp;
+x’\to x=(x’+l)\cdot(u-l)
+\end{align}</p>
+<p>\begin{align}
+&amp;&amp; resp. &amp;&amp;
+x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
+\end{align}</p>
+<blockquote>
+<div><p><strong>Exercise A:</strong></p>
+<p>Write function (<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">():...</span></code>) that log transforms your data including a prior Min-Max-Scaling. This way we can generalise our approach well to new unseen data! (e.g. call it <code class="docutils literal notranslate"><span class="pre">logistic_min_max()</span></code> function).</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Exercise B:</strong></p>
+<p>The same way provide a function that back transformations this “logistic” function, resp. inverse logit! (call it <code class="docutils literal notranslate"><span class="pre">inv_logit()</span></code> function)</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### your code here ###</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution">
+<h4><span class="section-number">19.2.5.4. </span>solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## A.</span>
+
+
+<span class="k">def</span> <span class="nf">min_max</span><span class="p">(</span><span class="n">variable</span><span class="p">):</span>
+    <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">variable</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">variable</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">min_max_done</span> <span class="o">=</span> <span class="p">(</span><span class="n">variable</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">min_max_done</span>
+
+
+<span class="c1"># df_transfo[transform_cols] = (df_transfo[transform_cols] - xmin + 1) / (xmax - xmin + 2)</span>
+
+<span class="n">test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">min_max_variable</span> <span class="o">=</span> <span class="n">min_max</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log_transform</span><span class="p">(</span><span class="n">min_max_variable</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">min_max_variable</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">min_max_variable</span><span class="p">))</span>
+
+
+<span class="n">log_transform</span><span class="p">(</span><span class="n">min_max_variable</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-4.60517019, -3.90197267, -3.48635519, -3.18841662, -2.95491028,
+       -2.76211742, -2.59738463, -2.45315795, -2.324564  , -2.20827441,
+       -2.1019144 , -2.00372972, -1.91238746, -1.82685079, -1.7462971 ,
+       -1.67006253, -1.59760345, -1.52846885, -1.46228027, -1.39871688,
+       -1.3375042 , -1.2784054 , -1.22121461, -1.16575159, -1.11185752,
+       -1.05939158, -1.00822823, -0.95825493, -0.90937029, -0.8614825 ,
+       -0.81450804, -0.7683706 , -0.72300014, -0.67833209, -0.63430668,
+       -0.59086833, -0.54796517, -0.50554857, -0.46357274, -0.42199441,
+       -0.3807725 , -0.33986783, -0.29924289, -0.25886163, -0.2186892 ,
+       -0.17869179, -0.13883644, -0.0990909 , -0.05942342, -0.01980263,
+        0.01980263,  0.05942342,  0.0990909 ,  0.13883644,  0.17869179,
+        0.2186892 ,  0.25886163,  0.29924289,  0.33986783,  0.3807725 ,
+        0.42199441,  0.46357274,  0.50554857,  0.54796517,  0.59086833,
+        0.63430668,  0.67833209,  0.72300014,  0.7683706 ,  0.81450804,
+        0.8614825 ,  0.90937029,  0.95825493,  1.00822823,  1.05939158,
+        1.11185752,  1.16575159,  1.22121461,  1.2784054 ,  1.3375042 ,
+        1.39871688,  1.46228027,  1.52846885,  1.59760345,  1.67006253,
+        1.7462971 ,  1.82685079,  1.91238746,  2.00372972,  2.1019144 ,
+        2.20827441,  2.324564  ,  2.45315795,  2.59738463,  2.76211742,
+        2.95491028,  3.18841662,  3.48635519,  3.90197267,  4.60517019])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## B.</span>
+
+
+<span class="c1"># backtransform</span>
+<span class="c1">## reverse min max und perform exp()</span>
+<span class="k">def</span> <span class="nf">inv_logit</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">logit_transf_variable</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">xmin</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logit_transf_variable</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+        <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logit_transf_variable</span><span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="n">inv_logit</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">log_transform</span><span class="p">(</span><span class="n">min_max_variable</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.4408921e-16, 1.0000000e+00, 2.0000000e+00, 3.0000000e+00,
+       4.0000000e+00, 5.0000000e+00, 6.0000000e+00, 7.0000000e+00,
+       8.0000000e+00, 9.0000000e+00, 1.0000000e+01, 1.1000000e+01,
+       1.2000000e+01, 1.3000000e+01, 1.4000000e+01, 1.5000000e+01,
+       1.6000000e+01, 1.7000000e+01, 1.8000000e+01, 1.9000000e+01,
+       2.0000000e+01, 2.1000000e+01, 2.2000000e+01, 2.3000000e+01,
+       2.4000000e+01, 2.5000000e+01, 2.6000000e+01, 2.7000000e+01,
+       2.8000000e+01, 2.9000000e+01, 3.0000000e+01, 3.1000000e+01,
+       3.2000000e+01, 3.3000000e+01, 3.4000000e+01, 3.5000000e+01,
+       3.6000000e+01, 3.7000000e+01, 3.8000000e+01, 3.9000000e+01,
+       4.0000000e+01, 4.1000000e+01, 4.2000000e+01, 4.3000000e+01,
+       4.4000000e+01, 4.5000000e+01, 4.6000000e+01, 4.7000000e+01,
+       4.8000000e+01, 4.9000000e+01, 5.0000000e+01, 5.1000000e+01,
+       5.2000000e+01, 5.3000000e+01, 5.4000000e+01, 5.5000000e+01,
+       5.6000000e+01, 5.7000000e+01, 5.8000000e+01, 5.9000000e+01,
+       6.0000000e+01, 6.1000000e+01, 6.2000000e+01, 6.3000000e+01,
+       6.4000000e+01, 6.5000000e+01, 6.6000000e+01, 6.7000000e+01,
+       6.8000000e+01, 6.9000000e+01, 7.0000000e+01, 7.1000000e+01,
+       7.2000000e+01, 7.3000000e+01, 7.4000000e+01, 7.5000000e+01,
+       7.6000000e+01, 7.7000000e+01, 7.8000000e+01, 7.9000000e+01,
+       8.0000000e+01, 8.1000000e+01, 8.2000000e+01, 8.3000000e+01,
+       8.4000000e+01, 8.5000000e+01, 8.6000000e+01, 8.7000000e+01,
+       8.8000000e+01, 8.9000000e+01, 9.0000000e+01, 9.1000000e+01,
+       9.2000000e+01, 9.3000000e+01, 9.4000000e+01, 9.5000000e+01,
+       9.6000000e+01, 9.7000000e+01, 9.8000000e+01, 9.9000000e+01])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="statistics-mean-median-distributions">
+<h4><span class="section-number">19.2.5.5. </span>statistics - mean, median, distributions<a class="headerlink" href="#statistics-mean-median-distributions" title="Permalink to this heading">#</a></h4>
+<p>Now, we may compute statistics :)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## calculate mean on original data:</span>
+<span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(pres        1007.808868
+ temp           9.364660
+ temp_max      13.520822
+ temp_min       5.365135
+ temp_sfc       3.667554
+ dtype: float64,
+ pres        1008.2
+ temp           9.5
+ temp_max      13.6
+ temp_min       5.5
+ temp_sfc       3.7
+ dtype: float64)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## calculate mean on transformed data: </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#mean_log = (xmin+1)+(xmax-xmin+2)*np.exp(df_transfo[transform_cols].mean())/(1+np.exp(df_transfo[transform_cols].mean()))</span>
+
+<span class="c1">#mean_log</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#median_log = (xmin+1)+(xmax-xmin+2)*np.exp(df_transfo[transform_cols].median())/(1+np.exp(df_transfo[transform_cols].median()))</span>
+
+<span class="c1">#median_log</span>
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>Exercise C</strong>:</p>
+<p>Take a further feature from the data set, which is not normally distributed. Compare the mean, median and standard deviation of all variabels between original untransformed data and the back transformed mean, median and standard deviation of the log transformed data. Do you notice any difference?</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### your code here ###</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h4><span class="section-number">19.2.5.6. </span>solution<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### log tranform your variable</span>
+
+<span class="n">df_transfo</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">transform_cols</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;temp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;temp_max&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;temp_min&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;temp_sfc&quot;</span><span class="p">,</span>
+<span class="p">]</span>  <span class="c1"># [&quot;COLUMN NAME&quot;, &quot;COLUMN NAME&quot;]</span>
+
+<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">df_transfo</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_max</span><span class="p">(</span><span class="n">df_transfo</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">])</span>
+
+<span class="n">df_transfo</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">log_transform</span><span class="p">(</span><span class="n">df_transfo</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">])</span>
+
+<span class="c1">## calculate mean &amp; median tranform back:</span>
+<span class="n">inv_logit</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">df_transfo</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span> <span class="n">inv_logit</span><span class="p">(</span>
+    <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">df_transfo</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(temp         9.767871
+ temp_max    13.886515
+ temp_min     5.842247
+ temp_sfc     4.349503
+ dtype: float64,
+ temp         9.5
+ temp_max    13.6
+ temp_min     5.5
+ temp_sfc     3.7
+ dtype: float64)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## calculate mean on original data:</span>
+<span class="n">df</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(temp         9.364660
+ temp_max    13.520822
+ temp_min     5.365135
+ temp_sfc     3.667554
+ dtype: float64,
+ temp         9.5
+ temp_max    13.6
+ temp_min     5.5
+ temp_sfc     3.7
+ dtype: float64)
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to showcase the <strong>simple linear regression</strong> we examine the relationship between two variables, the minimum temperature provided within the dataset as the predictor variable, and the maximum temperature as the response variable.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="drawing-a-sample">
+<h3><span class="section-number">19.2.6. </span>Drawing a sample<a class="headerlink" href="#drawing-a-sample" title="Permalink to this heading">#</a></h3>
+<p>For data preparation we randomly sample <code class="docutils literal notranslate"><span class="pre">50</span></code> time steps from the data set and build a data frame with the two variables of interest. Further we use the module <code class="docutils literal notranslate"> <span class="pre">matplotlib.pyplot</span></code> to plot the data in form of a scatter plot to visualize the underlying linear relationship between the two variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">x_sample</span> <span class="o">=</span> <span class="n">df_sample</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;temp_min&quot;</span><span class="p">]</span>
+<span class="n">y_sample</span> <span class="o">=</span> <span class="n">df_sample</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;temp_max&quot;</span><span class="p">]</span>
+
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;temperature minimum&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;temperature maximum&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_sample</span><span class="p">,</span> <span class="n">y_sample</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x13859c910&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/f290cc8c98c0cd2bb6d0fab72323728e1d31a8cf37226410fa8f1dd67232cc91.png" src="../../../_images/f290cc8c98c0cd2bb6d0fab72323728e1d31a8cf37226410fa8f1dd67232cc91.png" />
+</div>
+</div>
+<p>The visual inspection confirms our assumption that the relationship between the minimun and the maximum temperature variables is roughly linear. In other words, with increasing maximum temperature the minimum temperature tends to increase.</p>
+</section>
+<hr class="docutils" />
+<section id="parameter-estimation">
+<h3><span class="section-number">19.2.7. </span>Parameter estimation<a class="headerlink" href="#parameter-estimation" title="Permalink to this heading">#</a></h3>
+<p><strong>Solving for <span class="math notranslate nohighlight">\(\beta_0\)</span> and  <span class="math notranslate nohighlight">\(\beta_1\)</span> analytically in Python</strong></p>
+<p>As shown in the previous section the parameter <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> of a simple linear model may be calculated analytically. Recall the equation for a linear model from sample data</p>
+<div class="math notranslate nohighlight">
+\[\hat y = \beta_0 + \beta_1 x + e \text{,}\]</div>
+<p>for <span class="math notranslate nohighlight">\(\beta_1\)</span></p>
+<div class="math notranslate nohighlight">
+\[\hat{\beta_1} = \frac{\sum_{i=1}^n ((x_i- \bar x) (y_i-\bar y))}{\sum_{i=1}^n (x_i-\bar x)^2} = \frac{cov(x,y)}{var(x)}\text{,}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\beta_0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\hat{\beta_0} = \bar y -\hat{\beta_1} \bar x\]</div>
+<p>For a better understanding we use Python to calculate the individual terms using numpy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Calculate b1</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;temp_min&quot;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;temp_max&quot;</span><span class="p">]</span>
+
+<span class="n">x_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">b1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_bar</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_bar</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_bar</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b1 =&quot;</span><span class="p">,</span> <span class="n">b1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b1 = 1.2105022692591816
+</pre></div>
+</div>
+</div>
+</div>
+<p>The slope of the regression model is approximately <code class="docutils literal notranslate"><span class="pre">b1</span></code>. For a sanity check we calculate the ratio of the covariance of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, applying the <code class="docutils literal notranslate"><span class="pre">cov()</span></code> function, and the variance of <span class="math notranslate nohighlight">\(x\)</span>, using the <code class="docutils literal notranslate"><span class="pre">var()</span></code> function and compare it to the result from above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.210548315220198
+</pre></div>
+</div>
+</div>
+</div>
+<p>A great match!</p>
+<p>Further, we calculate <span class="math notranslate nohighlight">\(\beta_0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate b0</span>
+<span class="n">b0</span> <span class="o">=</span> <span class="n">y_bar</span> <span class="o">-</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">x_bar</span>
+<span class="n">b0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.026313473653632
+</pre></div>
+</div>
+</div>
+</div>
+<p>The intercept <span class="math notranslate nohighlight">\(\beta_0\)</span> of the regression model is approximately <code class="docutils literal notranslate"><span class="pre">7</span></code>.</p>
+<p>Thus we can write down the regression model</p>
+<div class="math notranslate nohighlight">
+\[\text{temperature maximum} = 7 + 1,21\times \text{temperature minimum} \]</div>
+<p>Now, based on that equation we may determine the maximum temperature given its minimum temperature. Let us predict the temperature maximum at times where the temperature minimum <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">5,</span> <span class="pre">10</span></code> degrees.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_0</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">+</span> <span class="n">b1</span> <span class="o">*</span> <span class="mi">0</span>
+<span class="n">temp_5</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">+</span> <span class="n">b1</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="n">temp_10</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">+</span> <span class="n">b1</span> <span class="o">*</span> <span class="mi">10</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot; Das prognostizierte Temperaturmaximum bei einem Temp. Minimum von 0 Grad C ist &quot;</span><span class="p">,</span>
+    <span class="n">temp_0</span><span class="p">,</span>
+    <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot; Das prognostizierte Temperaturmaximum bei einem Temp. Minimum von 5 Grad C ist &quot;</span><span class="p">,</span>
+    <span class="n">temp_5</span><span class="p">,</span>
+    <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot; Das prognostizierte Temperaturmaximum bei einem Temp. Minimum von 10 Grad C ist &quot;</span><span class="p">,</span>
+    <span class="n">temp_10</span><span class="p">,</span>
+    <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Das prognostizierte Temperaturmaximum bei einem Temp. Minimum von 0 Grad C ist  7.026313473653632 C
+ Das prognostizierte Temperaturmaximum bei einem Temp. Minimum von 5 Grad C ist  13.07882481994954 C
+ Das prognostizierte Temperaturmaximum bei einem Temp. Minimum von 10 Grad C ist  19.131336166245447 C
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1">
+<h3><span class="section-number">19.2.8. </span>Using Python’ <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to calculate <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span><a class="headerlink" href="#using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1" title="Permalink to this heading">#</a></h3>
+<p>See also the more detailed explanations in <a class="reference external" href="https://realpython.com/linear-regression-in-python/">https://realpython.com/linear-regression-in-python/</a></p>
+<p>First, import the class <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model.LinearRegressio</span></code> to perform linear and polynomial regression and make predictions accordingly</p>
+<p>The second step is defining data to work with. The inputs (regressors, predictor variable, independent variable 𝑥) and output (predictor, dependent variable 𝑦) should be arrays (the instances of the class numpy.ndarray) or similar objects. This is the simplest way of providing data for regression:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;temp_min&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;temp_max&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># we have to reshape the regressors </span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># set up the linear model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># find the linear function that fits the min/max temperature best:</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(26290,) (26290,)
+(26290, 1) (26290,)
+</pre></div>
+</div>
+<div class="output text_html"><style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;LinearRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div></div></div>
+</div>
+<p>Let us look at the just calculated interception and slope of the linear equation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;intercept:&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span> <span class="c1"># y-schnittpunkt</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;slope:&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span> <span class="c1"># slope</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>intercept: 7.026313473653561
+slope: [1.21050227]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># y = b + a* x</span>
+<span class="n">y_regr_grade</span><span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_regr_grade</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13a6feb80&gt;]
+</pre></div>
+</div>
+<img alt="../../../_images/93de329331991a8f97cc290d8b5298d851b71cab055cce6d69785ea2734547e0.png" src="../../../_images/93de329331991a8f97cc290d8b5298d851b71cab055cce6d69785ea2734547e0.png" />
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="prediction">
+<h3><span class="section-number">19.2.9. </span>Prediction<a class="headerlink" href="#prediction" title="Permalink to this heading">#</a></h3>
+<p>Now, we have the linear model to predict the maximum temperature of randomly picked data point. We test if we get the same results as above and calculate the maximum temperature at minimal temperatures of 0, 5 and 10 <span class="math notranslate nohighlight">\(°C\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_minTemp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+
+<span class="c1"># max temp:</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="n">sample_minTemp</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 7.02631347 13.07882482 19.13133617]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also use <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> to pass the regressor as the argument and get the corresponding predicted response. We first have to reshape the <code class="docutils literal notranslate"><span class="pre">sample_minTemp</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_minTemp</span> <span class="o">=</span> <span class="n">sample_minTemp</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sample_minTemp</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 7.02631347 13.07882482 19.13133617]
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>Take a look at the scatter plot again and let us plot the regression line into the scatter plot. We define a function that will plot the scatter plot of the minimum/maximum temperature of the DWD data set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;steelblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Min. Temp. (log)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Max. Temp. (log)&quot;</span><span class="p">)</span>
+<span class="c1"># linear regression line: </span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13a78d7c0&gt;]
+</pre></div>
+</div>
+<img alt="../../../_images/ed0f3481bb823841ded3ef7ab5318069f76f04396bef57dec5491f467b21613d.png" src="../../../_images/ed0f3481bb823841ded3ef7ab5318069f76f04396bef57dec5491f467b21613d.png" />
+</div>
+</div>
+<p>Yes! We get the same results as above, where we calculated the intercept and the slope manually!</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="model-diagnostic">
+<h2><span class="section-number">19.3. </span>Model diagnostic<a class="headerlink" href="#model-diagnostic" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Regression_validation"><strong>Regression validation</strong></a> or <a class="reference external" href="https://en.wikipedia.org/wiki/Regression_diagnostic"><strong>regression diagnostic</strong></a> is a set of procedures that are applied to assess the numerical results of a regression analysis. The procedures include methods of graphical and quantitative analysis or a formal statistical hypothesis test. In this section we focus on the two foremost methods, the graphical and the quantitative analysis. Statistical hypothesis tests for regression problems are provided in the section on hypothesis testing.</p>
+<hr class="docutils" />
+<section id="coefficient-of-determination">
+<h3><span class="section-number">19.3.1. </span>Coefficient of Determination<a class="headerlink" href="#coefficient-of-determination" title="Permalink to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination"><strong>Coefficient of Determination</strong></a>, also denoted as <span class="math notranslate nohighlight">\(R^2\)</span>, is the proportion of variation in the observed values explained by the regression equation. In other words, <span class="math notranslate nohighlight">\(R^2\)</span> is a statistical measure of how well the regression line approximates the real data points, thus it is a measure of the goodness of fit of the model.</p>
+<p>The total variation of the response variable <span class="math notranslate nohighlight">\(y\)</span> is based on the deviation of each observed value <span class="math notranslate nohighlight">\(y_i\)</span> from the mean value <span class="math notranslate nohighlight">\(\bar y\)</span>. This quantity is called <strong>total sum of squares, SST</strong> and is given by</p>
+<div class="math notranslate nohighlight">
+\[SST = \sum (y_i - \bar y)^2\text{.}\]</div>
+<p>This total sum of squares (SST) can be be decomposed into two parts: the deviation explained by the regression line, <span class="math notranslate nohighlight">\(\hat y_i-\bar y\)</span>, and the remaining unexplained deviation <span class="math notranslate nohighlight">\(y_i-\hat y_i\)</span>. Consequently, the the amount of variation that is explained by the regression is called the <strong>sum of squares due to regression, SSR</strong> and is given by</p>
+<div class="math notranslate nohighlight">
+\[SSR = \sum (\hat y_i- \bar y)^2\]</div>
+<p>The ratio of the sum of squares due to regression (SSR) and the total sum of squares (SST) is called the <strong>coefficient of determination</strong> and is denoted <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[R^2 = \frac{SSR}{SST}\]</div>
+<p><span class="math notranslate nohighlight">\(R^2\)</span> lies between 0 and 1. A value of near 0 suggests that the regression equation is not capable of explaining the data. An <span class="math notranslate nohighlight">\(R^2\)</span> of 1 indicates that the regression line perfectly fits the data.</p>
+<p>Just for the sake of completeness the variation in the observed values of the response variable not explained by the regression is called <strong>sum of squared errors of prediction, SSE</strong> and is given by</p>
+<div class="math notranslate nohighlight">
+\[SSE = \sum (y_i-\hat y_i)^2\text{.} \]</div>
+<p>Recall that the SSE quantity is minimized to obtain the best regression line to describe the data, also known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Ordinary_least_squares"><strong>ordinary least squares method (OLS)</strong></a>.</p>
+<hr class="docutils" />
+<p>We can calculate coefficient of determination (<span class="math notranslate nohighlight">\(R^2\)</span>, see also the first lecture) with <code class="docutils literal notranslate"><span class="pre">.score()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_sq</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;coefficient of determination:&#39;</span><span class="p">,</span> <span class="n">r_sq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefficient of determination: 0.8251798025189557
+</pre></div>
+</div>
+</div>
+</div>
+<p>This looks quiet good!</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="from-the-machine-learning-perspective">
+<h2><span class="section-number">19.4. </span>From the Machine Learning perspective:<a class="headerlink" href="#from-the-machine-learning-perspective" title="Permalink to this heading">#</a></h2>
+<p>Today, we have created a first Machine Learning model!</p>
+<div>
+<img src="4_regression_figures/01_01.png" width="600"/>
+</div>
+<div>
+<img src="4_regression_figures/01_02.png" width="600"/>
+</div><p>The machine-learning figures are adapted from the first chapter in Raschka &amp; Mirjalili (2017).</p>
+<p>If you would like to find a model to make future preditions, you first split the data into a</p>
+<ul class="simple">
+<li><p><strong>training set</strong> to train a model, for example: take 80% of your data to find the linear regression line</p></li>
+<li><p>and a <strong>test set</strong> to test the trained model. E.g: to test, if the linear regression line also fits to your test set</p></li>
+</ul>
+<p>The training set has to be large enough to yield statistically meaningful results!
+It has to be representative of the data set as a whole. In other words, don’t pick a test set with different characteristics than the training set.
+Assuming that your test set meets the preceding two conditions, your goal is to create a model that generalizes well to new data. Our test set serves as a proxy for new data.</p>
+<blockquote>
+<div><p>If you want to learn more about Train-Test-Splitting, <a class="reference external" href="https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data">click here!</a></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Train und test data set</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Let us take a sample again, this time with a sample size of n=100 </span>
+<span class="c1"># that we split into a trainings data with 70% of the data and </span>
+<span class="c1"># and a test data with the 30% of the data</span>
+
+<span class="n">df_sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;temp_min&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;temp_max&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span>  <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_train_predict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_test_predict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;steelblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;trainings data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;limegreen&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;test data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;min. Temp&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;max Temp&#39;</span><span class="p">)</span>
+
+<span class="c1"># linear regression line: </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train_predict</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13a831910&gt;]
+</pre></div>
+</div>
+<img alt="../../../_images/dcc23f875e143fe8c6dbe33d1012783e98a507b20b9befc0b4a8fbeb30f5f7bb.png" src="../../../_images/dcc23f875e143fe8c6dbe33d1012783e98a507b20b9befc0b4a8fbeb30f5f7bb.png" />
+</div>
+</div>
+<p>Great! You have implemented a machine leraning algorithm! You fitted a line on a data set, which can now be used for prediction of the maximal temperature by the knowldedge of the minimal temperature!</p>
+</section>
+<hr class="docutils" />
+<section id="residual-analysis">
+<h2><span class="section-number">19.5. </span>Residual analysis<a class="headerlink" href="#residual-analysis" title="Permalink to this heading">#</a></h2>
+<p>A residuals of an observed value is the difference between the observed value and the estimated value <span class="math notranslate nohighlight">\((y_i−\hat{y}_i)\)</span>. It is the leftover after fitting a model to data. The <strong>sum of squared errors of prediction (SSE)</strong>, also known as the sum of squared residuals or the error sum of squares is an indicator how well a model represents data.</p>
+<p>If the absolute residuals, defined for observation <span class="math notranslate nohighlight">\(x_i\)</span> as <span class="math notranslate nohighlight">\(y_i−\hat{y}_i\)</span>  are unusually large, it may be that the observation is from a different population, or that there was some error in making or recording the observation.</p>
+<p>In addition we may analyse the residuals to check if linear regression assumptions are met. Regression residuals should be approximately normally-distributed; that is, the regression should explain the structure and whatever is left over should just be noise, caused by measurement errors or many small uncorrelated factors. The normality of residuals can be checked graphically by a plot of the residuals against the values of the predictor variable. In such a residual plot, the residuals should be randomly scattered about 0 and the variation around 0 should be equal.</p>
+<p>If the assumptions for regression inferences are met, the following two conditions should hold (Weiss 2010):</p>
+<p>A plot of the residuals (residual plot) against the values of the predictor variable should fall roughly in a horizontal band centered and symmetric about the x-axis.</p>
+<p>A normal probability plot of the residuals should be roughly linear.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_train_predict</span> <span class="o">-</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;steelblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;trainings data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_test_predict</span> <span class="o">-</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;limegreen&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;test data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;min Temp&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Residuals&#39;)
+</pre></div>
+</div>
+<img alt="../../../_images/77f155ab99723e6efe95f06d8589142c2bfe0024adda423e58ebdd53c8c264a4.png" src="../../../_images/77f155ab99723e6efe95f06d8589142c2bfe0024adda423e58ebdd53c8c264a4.png" />
+</div>
+</div>
+<p>The residuals are fairly well distributed around zero indicating that the linear model assumptions for that model are fulfilled.</p>
+<blockquote>
+<div><p>For an overview on different methods how to check the quality of the regression model in python, <a class="reference external" href="https://towardsdatascience.com/how-do-you-check-the-quality-of-your-regression-model-in-python-fa61759ff685">click here.</a></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;MSE train:&#39;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_train_predict</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;MSE test:&#39;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_test_predict</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE train: 19.584438118151994
+MSE test: 14.510185438570927
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### linear fit, polynomial fit --&gt; See chapter 10 of the Raschka and Mirjalili (2017)</span>
+<span class="c1">## Can we fit polynomes?</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+
+
+<span class="n">regr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># create quadratic features</span>
+<span class="n">quadratic</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">cubic</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">X_quad</span> <span class="o">=</span> <span class="n">quadratic</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">X_cubic</span> <span class="o">=</span> <span class="n">cubic</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># fit features</span>
+<span class="n">X_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+
+<span class="n">regr</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">y_lin_fit</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_fit</span><span class="p">)</span>
+
+
+<span class="n">regr</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_quad</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">y_quad_fit</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">quadratic</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_fit</span><span class="p">))</span>
+
+
+<span class="n">regr</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_cubic</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">y_cubic_fit</span> <span class="o">=</span> <span class="n">regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">cubic</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_fit</span><span class="p">))</span>
+
+
+
+<span class="c1"># plot results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;training points&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_fit</span><span class="p">,</span> <span class="n">y_lin_fit</span><span class="p">,</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;linear (d=1)&#39;</span><span class="p">,</span> 
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> 
+         <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+         <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_fit</span><span class="p">,</span> <span class="n">y_quad_fit</span><span class="p">,</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;quadratic (d=2)&#39;</span><span class="p">,</span>
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> 
+         <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+         <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_fit</span><span class="p">,</span> <span class="n">y_cubic_fit</span><span class="p">,</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cubic (d=3)&#39;</span><span class="p">,</span>
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> 
+         <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+         <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;minimum temperature °C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;maximum temperature °C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/34d9946c7791163fc8b15e5633ccadd195e748901768f4e7c48384491848debf.png" src="../../../_images/34d9946c7791163fc8b15e5633ccadd195e748901768f4e7c48384491848debf.png" />
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="exercises">
+<h2><span class="section-number">19.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p><strong>Exercise 2A</strong></p>
+<p>Find the best regression line of the minimal temperature and the mean temperature of the weather station Dahlem.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### your code here ###</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id2">
+<h3><span class="section-number">19.6.1. </span>solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;temp_min&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># we have to reshape the regressors </span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+
+<span class="c1"># set up the linear model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># find the linear function that fits the min/max temperature best:</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-2 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-2 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-2 pre {
+  padding: 0;
+}
+
+#sk-container-id-2 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-2 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-2 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-2 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-2 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-2 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-2 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-2 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-2 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-2 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label label.sk-toggleable__label,
+#sk-container-id-2 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-2 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-2 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-2 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-2 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-2 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-2 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;LinearRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;intercept:&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;slope:&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>intercept: 3.575855043366209
+slope: [1.07896716]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Now, we can easily plot using the 2 coefficients: m*x +n --&gt;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13aa1b5e0&gt;]
+</pre></div>
+</div>
+<img alt="../../../_images/bac64e58e70350fd84e2891eb3a257e123dd1a4ed722357fde47cfd813fda607.png" src="../../../_images/bac64e58e70350fd84e2891eb3a257e123dd1a4ed722357fde47cfd813fda607.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## or just use the seaborn package (sns.regplot)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;temp_min&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;temp&quot;</span><span class="p">,</span><span class="n">line_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">),</span> <span class="n">ci</span> <span class="o">=</span> <span class="mi">95</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;temp_min&#39;, ylabel=&#39;temp&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/0015cc4cc7a448d7658669fc514c90701298fec121938c3a9a13a60e34b6dd4e.png" src="../../../_images/0015cc4cc7a448d7658669fc514c90701298fec121938c3a9a13a60e34b6dd4e.png" />
+</div>
+</div>
+<blockquote>
+<div><p><strong>Exercise 2B</strong></p>
+<p>Next, we  import the module <code class="docutils literal notranslate"><span class="pre">scipy.stat</span></code> for Q-Q plots and plot all variables in a for-loop. Of course, you can also plot step py step.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### your code here ###</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3><span class="section-number">19.6.2. </span>solution<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)):</span>
+    <span class="n">sm</span><span class="o">.</span><span class="n">qqplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">line</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/74895d44998569c537c7598ca348ad41241df39ab2f09f18c17a54aa2f8a71cd.png" src="../../../_images/74895d44998569c537c7598ca348ad41241df39ab2f09f18c17a54aa2f8a71cd.png" />
+<img alt="../../../_images/6cf18c82466388518b94f0e96320dc3aaf03e0c1710f3fc5810ed1cbb64f4f3c.png" src="../../../_images/6cf18c82466388518b94f0e96320dc3aaf03e0c1710f3fc5810ed1cbb64f4f3c.png" />
+<img alt="../../../_images/58de442d3788ac127c31e00b341cbf21aa11cbb202ada746ffba7bf731490b40.png" src="../../../_images/58de442d3788ac127c31e00b341cbf21aa11cbb202ada746ffba7bf731490b40.png" />
+<img alt="../../../_images/b96c17fd5b81f2a2bcf0348e68fa94752d95d6c56209c9c28c5da9e939ea002f.png" src="../../../_images/b96c17fd5b81f2a2bcf0348e68fa94752d95d6c56209c9c28c5da9e939ea002f.png" />
+<img alt="../../../_images/596bb810ff578b92f36231bffab8568d32285c418e972e58092d6e1c9b34840d.png" src="../../../_images/596bb810ff578b92f36231bffab8568d32285c418e972e58092d6e1c9b34840d.png" />
+</div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="extra-machine-learning-approach">
+<h3><span class="section-number">19.6.3. </span>Extra: Machine Learning approach:<a class="headerlink" href="#extra-machine-learning-approach" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p><strong>Exercise 2C (just for fun, this is extra)</strong><br>
+a) Take again two variables the meteorological data set and devide the data into trainings and test data <br>
+b) Find either a linear model, a quadratic or a cubic (see the example code below) for your training data set and test if it fits!</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### your code here ###</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># do each column by hand ....</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;temp_min&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;temp_max&quot;</span><span class="p">])</span>
+
+<span class="c1"># or easily use the .corr() function of the entire df:</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;pearson&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pres</th>
+      <th>temp</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>temp_sfc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pres</th>
+      <td>1.000000</td>
+      <td>-0.069212</td>
+      <td>-0.042117</td>
+      <td>-0.123350</td>
+      <td>-0.125634</td>
+    </tr>
+    <tr>
+      <th>temp</th>
+      <td>-0.069212</td>
+      <td>1.000000</td>
+      <td>0.981847</td>
+      <td>0.952269</td>
+      <td>0.902622</td>
+    </tr>
+    <tr>
+      <th>temp_max</th>
+      <td>-0.042117</td>
+      <td>0.981847</td>
+      <td>1.000000</td>
+      <td>0.908394</td>
+      <td>0.852836</td>
+    </tr>
+    <tr>
+      <th>temp_min</th>
+      <td>-0.123350</td>
+      <td>0.952269</td>
+      <td>0.908394</td>
+      <td>1.000000</td>
+      <td>0.975749</td>
+    </tr>
+    <tr>
+      <th>temp_sfc</th>
+      <td>-0.125634</td>
+      <td>0.902622</td>
+      <td>0.852836</td>
+      <td>0.975749</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pres</th>
+      <th>temp</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>temp_sfc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pres</th>
+      <td>1.000000</td>
+      <td>-0.069212</td>
+      <td>-0.042117</td>
+      <td>-0.123350</td>
+      <td>-0.125634</td>
+    </tr>
+    <tr>
+      <th>temp</th>
+      <td>-0.069212</td>
+      <td>1.000000</td>
+      <td>0.981847</td>
+      <td>0.952269</td>
+      <td>0.902622</td>
+    </tr>
+    <tr>
+      <th>temp_max</th>
+      <td>-0.042117</td>
+      <td>0.981847</td>
+      <td>1.000000</td>
+      <td>0.908394</td>
+      <td>0.852836</td>
+    </tr>
+    <tr>
+      <th>temp_min</th>
+      <td>-0.123350</td>
+      <td>0.952269</td>
+      <td>0.908394</td>
+      <td>1.000000</td>
+      <td>0.975749</td>
+    </tr>
+    <tr>
+      <th>temp_sfc</th>
+      <td>-0.125634</td>
+      <td>0.902622</td>
+      <td>0.852836</td>
+      <td>0.975749</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_transfo</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pres</th>
+      <th>temp</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>temp_sfc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pres</th>
+      <td>1.000000</td>
+      <td>-0.066808</td>
+      <td>-0.042975</td>
+      <td>-0.118797</td>
+      <td>-0.116435</td>
+    </tr>
+    <tr>
+      <th>temp</th>
+      <td>-0.066808</td>
+      <td>1.000000</td>
+      <td>0.980614</td>
+      <td>0.945663</td>
+      <td>0.891206</td>
+    </tr>
+    <tr>
+      <th>temp_max</th>
+      <td>-0.042975</td>
+      <td>0.980614</td>
+      <td>1.000000</td>
+      <td>0.901528</td>
+      <td>0.842826</td>
+    </tr>
+    <tr>
+      <th>temp_min</th>
+      <td>-0.118797</td>
+      <td>0.945663</td>
+      <td>0.901528</td>
+      <td>1.000000</td>
+      <td>0.972604</td>
+    </tr>
+    <tr>
+      <th>temp_sfc</th>
+      <td>-0.116435</td>
+      <td>0.891206</td>
+      <td>0.842826</td>
+      <td>0.972604</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_transfo</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;original data&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;log-transformed data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/f584cb8dfb79b365c8dabddc604ff7e81539246c34dcb6b385714b52d04947d1.png" src="../../../_images/f584cb8dfb79b365c8dabddc604ff7e81539246c34dcb6b385714b52d04947d1.png" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Q</p></th>
+<th class="head"><p>LF</p></th>
+<th class="head"><p>NO3</p></th>
+<th class="head"><p>SO4</p></th>
+<th class="head"><p>Ca</p></th>
+<th class="head"><p>Mg</p></th>
+<th class="head"><p>PO4 2-</p></th>
+<th class="head"><p>Fe3+</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Q</p></td>
+<td><p>1</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>LF</p></td>
+<td><p>-0,87</p></td>
+<td><p>1</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>NO3</p></td>
+<td><p>0,61</p></td>
+<td><p>-0,84</p></td>
+<td><p>1</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>SO4</p></td>
+<td><p>-0,74</p></td>
+<td><p>0,88</p></td>
+<td><p><strong>-0,36</strong></p></td>
+<td><p>1</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Ca</p></td>
+<td><p>-0,56</p></td>
+<td><p>0,73</p></td>
+<td><p>-0,67</p></td>
+<td><p>0,69</p></td>
+<td><p>1</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Mg</p></td>
+<td><p>-0,44</p></td>
+<td><p>0,7</p></td>
+<td><p>-0,62</p></td>
+<td><p>0,62</p></td>
+<td><p>0,38</p></td>
+<td><p>1</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>PO4 2-</p></td>
+<td><p>-0,7</p></td>
+<td><p>0,81</p></td>
+<td><p>0,86</p></td>
+<td><p><strong>0,31</strong></p></td>
+<td><p>0,76</p></td>
+<td><p>0,71</p></td>
+<td><p>1</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Fe3+</p></td>
+<td><p>-0,65</p></td>
+<td><p>0,77</p></td>
+<td><p>-0,76</p></td>
+<td><p><strong>0,84</strong></p></td>
+<td><p>0,71</p></td>
+<td><p>0,7</p></td>
+<td><p>-0,81</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>ehemaliger Braunkohleabbau (Fe3+, SO4 2-) oder die Landwirtschaft (PO43-, NO3, SO4 2-) ?
+Korrelation zwischen Fe3+ und SO4 am höchsten –&gt; also vermutlich verlaufen die Fließpfade durch ehem. Braunkohleabbaugebiete oder werden durch diese beeinfliusst.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elev_NN</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">840</span><span class="p">,</span> <span class="mi">1160</span><span class="p">,</span> <span class="mi">1830</span><span class="p">,</span> <span class="mi">2100</span><span class="p">,</span> <span class="mi">2400</span><span class="p">])</span>  <span class="c1"># m a. s.l.</span>
+<span class="n">precip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1800</span><span class="p">,</span> <span class="mi">1250</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">510</span><span class="p">,</span> <span class="mi">410</span><span class="p">,</span> <span class="mi">310</span><span class="p">,</span> <span class="mi">230</span><span class="p">])</span>  <span class="c1"># mm/a</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span>
+    <span class="n">src</span><span class="o">=</span><span class="s2">&quot;../../citations/citation_Soga.html&quot;</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="900"
+            height="200"
+            src="../../citations/citation_Soga.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./contents/General_Introduction_Sessions/4_intro_regression"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../3_features_scales/3_Add_Exercises_FeatureScales-v2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Additional Exercises IV -  Feature Scales</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="4_2_Intro_Correlation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>Correlation and Regression</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression">19.1. Simple Linear Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-estimation-ordinary-least-squares-method">19.1.1. Parameter Estimation: Ordinary Least Squares Method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression-an-example">19.2. Simple Linear Regression: An example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-unnecessary-columns">19.2.1. Remove unnecessary columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-columns-for-convenience">19.2.2. Rename columns for convenience</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pairplot-and-distributions-of-the-data">19.2.3. Pairplot and distributions of the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-missing-data">19.2.4. Drop missing data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling">19.2.5. Feature scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-scaling">19.2.5.1. Min-Max scaling</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-transformation">19.2.5.2. Logistic transformation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#back-transformation">19.2.5.3. Back transformation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">19.2.5.4. solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-mean-median-distributions">19.2.5.5. statistics - mean, median, distributions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">19.2.5.6. solution</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-a-sample">19.2.6. Drawing a sample</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-estimation">19.2.7. Parameter estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1">19.2.8. Using Python’ <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to calculate <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">19.2.9. Prediction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-diagnostic">19.3. Model diagnostic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-of-determination">19.3.1. Coefficient of Determination</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-the-machine-learning-perspective">19.4. From the Machine Learning perspective:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#residual-analysis">19.5. Residual analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">19.6. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">19.6.1. solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">19.6.2. solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-machine-learning-approach">19.6.3. Extra: Machine Learning approach:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marie-Christin Eckert
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
