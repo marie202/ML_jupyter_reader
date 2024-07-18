@@ -1,0 +1,2206 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>5. Correlation and Regression &#8212; Machine Learning Online Reader</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/4_intro_regression/4_2_Intro_Correlation';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="5.2. Additional Exercises V - Regression &amp; Correlation" href="4_3_Additional_Exercises_CorrReg.html" />
+    <link rel="prev" title="4. Linear Regression" href="4_1_Intro_Regression.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Machine Learning Online Reader - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Machine Learning Online Reader - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Machine Learning Intro Course Materials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1_Introduction_to_Python/1_0_Intro_to_Python_landing.html">1. Introduction to Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_1_Python_as_calculator.html">1.1. Using Python as calculator</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_2_Build_in_Functions.html">1.3. Use of predefined functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_3_data_structures.html">1.4. Data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_4_atomic_datatypes.html">1.5. Datatypes</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_5_objects_data_types.html">1.8. The concept of objects in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_6_Intro_user_defined_functions.html">1.9. User defined functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_7_control_flow_mit_Lsg.html">1.10. Steering the control flow of a program</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_8_Pandas_Dataframes.html">1.12. Pandas package for handling <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_9_Exercises_Einf_Python_I.html">1.13. Additional Exercises I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_10_Exercises_Einf_Python_II.html">1.14. Additional Exercises II</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Recap Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../2_NVT/2_1_Wdhl_Statisitk_1.html">2. Recap Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_NVT/2_2_Add_Exercises_NVT.html">2.3. Additional Exercises III -  The Normal distribution</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Feature Scales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_features_scales/3_Feature_scales.html">3. Feature Scales</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_features_scales/3_Add_Exercises_FeatureScales-v2.html">3.4. Additional Exercises IV -  Feature Scales</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Recap Regression &amp; Correlation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="4_1_Intro_Regression.html">4. Linear Regression</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">5. Correlation and Regression</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="4_3_Additional_Exercises_CorrReg.html">5.2. Additional Exercises V -  Regression &amp; Correlation</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning Algorithms</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ML_algorithms/5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/4_intro_regression/4_2_Intro_Correlation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/contents/General_Introduction_Sessions/4_intro_regression/4_2_Intro_Correlation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Correlation and Regression</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-relation-between-variables">5.1. Measures of Relation Between Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-covariance">5.1.1. The Covariance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">5.1.2. Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation-coefficient">5.1.2.1. Pearson Correlation coefficient</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation-coefficient-an-example">5.1.3. Pearson correlation coefficient: An example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling">5.1.3.1. Feature scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-scaling">5.1.3.1.1. Min-Max scaling</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-transformation">5.1.3.1.2. Logistic transformation</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#back-transformation">5.1.3.1.3. Back transformation</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">5.1.3.1.4. solution</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pairwise-correlations">5.1.3.2. Pairwise Correlations</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1.3.2.1. solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient">5.1.4. Spearman’s rank correlation coefficient</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient-an-example">5.1.4.1. Spearman’s rank correlation coefficient: An example</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient-a-second-example">5.1.5. Spearman’s rank correlation coefficient: A second example</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="correlation-and-regression">
+<h1><span class="section-number">5. </span>Correlation and Regression<a class="headerlink" href="#correlation-and-regression" title="Permalink to this heading">#</a></h1>
+<section id="measures-of-relation-between-variables">
+<h2><span class="section-number">5.1. </span>Measures of Relation Between Variables<a class="headerlink" href="#measures-of-relation-between-variables" title="Permalink to this heading">#</a></h2>
+<p>In the last week we mainly focused on a single variable, describing a distribution and calculating summary statistics. Statistics that describe a single variable are referred to as univariate statistics. If we examine the relationship of two variables, we refer to bivariate statistics. If the relationships among several variables are simultaneously examined, we refer to multivariate statistics. Measures of relation provide a means of summarizing the size of the relation between two variables</p>
+<section id="the-covariance">
+<h3><span class="section-number">5.1.1. </span>The Covariance<a class="headerlink" href="#the-covariance" title="Permalink to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance"><strong>covariance</strong></a> is a measure of the joint variability of two variables. The covariance can take any value in the interval $(- \infty, \infty)$. The covariance is positive, if the greater/smaller values of one variable mainly correspond with the greater/smaller values of the other variable. The covariance is negative if the variables tend to show opposite behavior. If greater values of one variable mainly correspond to the lesser values of the other.</p>
+<p>The covariance, $s_{xy}$, is calculated by the equation</p>
+<p>$$s_{xy}=\frac{\sum_{i=1}^n(x_i-\bar x)(y_i-\bar y)}{n-1}$$</p>
+<p>The normalized version of the covariance, is called correlation coefficient, which magnitude indicates the strength of a linear relation between two variables.</p>
+<p>The <strong>normalized version of the covariance</strong>, is called  <strong>correlation coefficient</strong>, which magnitude indicates the strength of a linear relation between two variables.</p>
+</section>
+<hr class="docutils" />
+<section id="correlation">
+<h3><span class="section-number">5.1.2. </span>Correlation<a class="headerlink" href="#correlation" title="Permalink to this heading">#</a></h3>
+<section id="pearson-correlation-coefficient">
+<h4><span class="section-number">5.1.2.1. </span>Pearson Correlation coefficient<a class="headerlink" href="#pearson-correlation-coefficient" title="Permalink to this heading">#</a></h4>
+<p>Correlation is a commonly used method to examine the relationship between <strong>quantitative variables</strong>. The most commonly used statistic is the <strong>linear correlation coefficient</strong>, $r$, which is also known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient"><strong>Pearson product moment correlation coefficient</strong></a> in honor of its developer, <a class="reference external" href="https://en.wikipedia.org/wiki/Karl_Pearson">Karl Pearson</a>. Is it given by</p>
+<p>$$r = \frac{\sum_{i=1}^n(x_i- \bar x)(y_i - \bar y)}{\sqrt{\sum_{i=1}^n(x_i- \bar x)^2}\sqrt{\sum_{i=1}^n(y_i- \bar y)^2}}=\frac{s_{xy}}{s_x s_y}\text{,}$$</p>
+<p>where $s_{xy}$ is the covariance of $x$ and $y$ and $s_x$ and $s_y$ the standard deviation of $x$ and $y$, respectively. By dividing by the sample standard deviations, $s_x$ and $s_y$, the linear correlation coefficient, $r$, becomes scale independent and takes values between $-1$ and $1$.</p>
+<p>The linear correlation coefficient measures the strength of the linear relationship between two variables. If $r$ is close to $\pm 1$, the two variables are highly correlated and if plotted on a scatter plot, the data points cluster about a line. If $r$ is far from $\pm 1$, the data points are more widely scattered. If $r$ is near $0$, the data points are essentially scattered about a horizontal line indicating that there is almost no linear relationship between the variables.</p>
+<div>
+<img src="4_regression_figures/Korrelationen.png" width="800"/>
+</div><p>An interesting property of $r$ is, that its sign reflects the slope of the linear relationship between two variables. A positive value of $r$ suggests that the variables are <strong>positively linearly correlated</strong>, indicating that $y$ tends to increase linearly as $x$ increases. A negative value of $r$ suggests that the variables are <strong>negatively linearly correlated</strong>, indicating that $y$ tends to decrease linearly as $x$ increases.</p>
+<p>There is no unambiguous classification rule for the quantity of a linear relationship between two variables. However, the following table may serve a as rule of thumb how to address the numerical values of Pearson product moment correlation coefficient.</p>
+<p>$$
+\begin{array}{lc}
+\hline
+\ \text{Strong linear relationship} &amp; r &gt; 0.9 \
+\ \text{Medium linear relationship} &amp; 0.7 &lt; r \le 0.9\
+\ \text{Weak linear relationship} &amp; 0.5 &lt; r \le 0.7 \
+\ \text{No or doubtful linear relationship} &amp; 0 &lt; r \le 0.5 \
+\hline
+\end{array}
+$$</p>
+<p>Pearson’s correlation assumes the variables to be roughly normally distributed and it is not robust in the presence of outliers.</p>
+<p>In the section on LINEAR REGRESSION we discussed the coefficient of determination, $R^2$, a descriptive measure for the quality of linear models. There is a close relation between $R^2$ and the linear correlation coefficient, $r$. The coefficient of determination, $R^2$, equals the square of the linear correlation coefficient, $r$.</p>
+<p>$$\text{coefficient of determination }(R^2) =r^2 $$</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pearson-correlation-coefficient-an-example">
+<h3><span class="section-number">5.1.3. </span>Pearson correlation coefficient: An example<a class="headerlink" href="#pearson-correlation-coefficient-an-example" title="Permalink to this heading">#</a></h3>
+<p>In order to get some intuition we calculate the Pearson product moment correlation coefficient in an example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, let&#39;s import all the needed libraries.</span>
+
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="s2">&quot;use_inf_as_na&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">zipfile</span><span class="o">,</span> <span class="nn">io</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://userpage.fu-berlin.de/soga/soga-py/300/307000_time_series/tageswerte_KL_00403_19500101_20211231_hist.zip&quot;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+<span class="n">z</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s2">&quot;produkt_klima_tag_19500101_20211231_00403.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;../data&quot;</span><span class="p">)</span>
+<span class="n">data_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;../data/produkt_klima_tag_19500101_20211231_00403.txt&quot;</span><span class="p">,</span>
+    <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span>
+    <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;-999&quot;</span><span class="p">],</span>
+    <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">data_raw</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATIONS_ID</th>
+      <th>MESS_DATUM</th>
+      <th>QN_3</th>
+      <th>FX</th>
+      <th>FM</th>
+      <th>QN_4</th>
+      <th>RSK</th>
+      <th>RSKF</th>
+      <th>SDK</th>
+      <th>SHK_TAG</th>
+      <th>NM</th>
+      <th>VPM</th>
+      <th>PM</th>
+      <th>TMK</th>
+      <th>UPM</th>
+      <th>TXK</th>
+      <th>TNK</th>
+      <th>TGK</th>
+      <th>eor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>403</td>
+      <td>19500101</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>2.2</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>1025.60</td>
+      <td>-3.2</td>
+      <td>83.00</td>
+      <td>-1.1</td>
+      <td>-4.9</td>
+      <td>-6.3</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>403</td>
+      <td>19500102</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>12.6</td>
+      <td>8</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>6.1</td>
+      <td>1005.60</td>
+      <td>1.0</td>
+      <td>95.00</td>
+      <td>2.2</td>
+      <td>-3.7</td>
+      <td>-5.3</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>403</td>
+      <td>19500103</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>6.5</td>
+      <td>996.60</td>
+      <td>2.8</td>
+      <td>86.00</td>
+      <td>3.9</td>
+      <td>1.7</td>
+      <td>-1.4</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>403</td>
+      <td>19500104</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>0.5</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>7.7</td>
+      <td>5.2</td>
+      <td>999.50</td>
+      <td>-0.1</td>
+      <td>85.00</td>
+      <td>2.1</td>
+      <td>-0.9</td>
+      <td>-2.3</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>403</td>
+      <td>19500105</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>10.3</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>8.0</td>
+      <td>4.0</td>
+      <td>1001.10</td>
+      <td>-2.8</td>
+      <td>79.00</td>
+      <td>-0.9</td>
+      <td>-3.3</td>
+      <td>-5.2</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>26293</th>
+      <td>403</td>
+      <td>20211227</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>0.0</td>
+      <td>8</td>
+      <td>0.183</td>
+      <td>0.0</td>
+      <td>5.9</td>
+      <td>3.8</td>
+      <td>998.13</td>
+      <td>-3.7</td>
+      <td>79.67</td>
+      <td>-0.7</td>
+      <td>-7.9</td>
+      <td>-9.9</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>26294</th>
+      <td>403</td>
+      <td>20211228</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>1.5</td>
+      <td>6</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>6.4</td>
+      <td>5.3</td>
+      <td>990.17</td>
+      <td>-0.5</td>
+      <td>88.46</td>
+      <td>2.7</td>
+      <td>-3.9</td>
+      <td>-5.1</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>26295</th>
+      <td>403</td>
+      <td>20211229</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>0.3</td>
+      <td>6</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>7.5</td>
+      <td>8.2</td>
+      <td>994.40</td>
+      <td>4.0</td>
+      <td>100.00</td>
+      <td>5.6</td>
+      <td>1.8</td>
+      <td>0.0</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>26296</th>
+      <td>403</td>
+      <td>20211230</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>3.2</td>
+      <td>6</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>7.9</td>
+      <td>11.5</td>
+      <td>1001.70</td>
+      <td>9.0</td>
+      <td>98.54</td>
+      <td>12.7</td>
+      <td>4.6</td>
+      <td>2.3</td>
+      <td>eor</td>
+    </tr>
+    <tr>
+      <th>26297</th>
+      <td>403</td>
+      <td>20211231</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>5.5</td>
+      <td>6</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>7.7</td>
+      <td>12.5</td>
+      <td>1004.72</td>
+      <td>12.8</td>
+      <td>84.96</td>
+      <td>14.0</td>
+      <td>11.5</td>
+      <td>10.7</td>
+      <td>eor</td>
+    </tr>
+  </tbody>
+</table>
+<p>26298 rows × 19 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove unnecessary columns</span>
+<span class="c1">### By looking at the data and consulting the variable description,</span>
+<span class="c1">### we can immediately find variables that are not useful for our purpose and drop them.</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">data_raw</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;STATIONS_ID&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;MESS_DATUM&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;QN_3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FX&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FM&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;NM&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;eor&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;QN_4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;RSK&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;RSKF&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SHK_TAG&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SDK&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;UPM&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;VPM&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="c1">## rename for convenience:</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;PM&quot;</span><span class="p">:</span> <span class="s2">&quot;pres&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TMK&quot;</span><span class="p">:</span> <span class="s2">&quot;temp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TXK&quot;</span><span class="p">:</span> <span class="s2">&quot;temp_max&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TNK&quot;</span><span class="p">:</span> <span class="s2">&quot;temp_min&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TGK&quot;</span><span class="p">:</span> <span class="s2">&quot;temp_sfc&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pres</th>
+      <th>temp</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>temp_sfc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1025.60</td>
+      <td>-3.2</td>
+      <td>-1.1</td>
+      <td>-4.9</td>
+      <td>-6.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1005.60</td>
+      <td>1.0</td>
+      <td>2.2</td>
+      <td>-3.7</td>
+      <td>-5.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>996.60</td>
+      <td>2.8</td>
+      <td>3.9</td>
+      <td>1.7</td>
+      <td>-1.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>999.50</td>
+      <td>-0.1</td>
+      <td>2.1</td>
+      <td>-0.9</td>
+      <td>-2.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1001.10</td>
+      <td>-2.8</td>
+      <td>-0.9</td>
+      <td>-3.3</td>
+      <td>-5.2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>26293</th>
+      <td>998.13</td>
+      <td>-3.7</td>
+      <td>-0.7</td>
+      <td>-7.9</td>
+      <td>-9.9</td>
+    </tr>
+    <tr>
+      <th>26294</th>
+      <td>990.17</td>
+      <td>-0.5</td>
+      <td>2.7</td>
+      <td>-3.9</td>
+      <td>-5.1</td>
+    </tr>
+    <tr>
+      <th>26295</th>
+      <td>994.40</td>
+      <td>4.0</td>
+      <td>5.6</td>
+      <td>1.8</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>26296</th>
+      <td>1001.70</td>
+      <td>9.0</td>
+      <td>12.7</td>
+      <td>4.6</td>
+      <td>2.3</td>
+    </tr>
+    <tr>
+      <th>26297</th>
+      <td>1004.72</td>
+      <td>12.8</td>
+      <td>14.0</td>
+      <td>11.5</td>
+      <td>10.7</td>
+    </tr>
+  </tbody>
+</table>
+<p>26298 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pres</th>
+      <th>temp</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>temp_sfc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1025.60</td>
+      <td>-3.2</td>
+      <td>-1.1</td>
+      <td>-4.9</td>
+      <td>-6.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1005.60</td>
+      <td>1.0</td>
+      <td>2.2</td>
+      <td>-3.7</td>
+      <td>-5.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>996.60</td>
+      <td>2.8</td>
+      <td>3.9</td>
+      <td>1.7</td>
+      <td>-1.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>999.50</td>
+      <td>-0.1</td>
+      <td>2.1</td>
+      <td>-0.9</td>
+      <td>-2.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1001.10</td>
+      <td>-2.8</td>
+      <td>-0.9</td>
+      <td>-3.3</td>
+      <td>-5.2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>26293</th>
+      <td>998.13</td>
+      <td>-3.7</td>
+      <td>-0.7</td>
+      <td>-7.9</td>
+      <td>-9.9</td>
+    </tr>
+    <tr>
+      <th>26294</th>
+      <td>990.17</td>
+      <td>-0.5</td>
+      <td>2.7</td>
+      <td>-3.9</td>
+      <td>-5.1</td>
+    </tr>
+    <tr>
+      <th>26295</th>
+      <td>994.40</td>
+      <td>4.0</td>
+      <td>5.6</td>
+      <td>1.8</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>26296</th>
+      <td>1001.70</td>
+      <td>9.0</td>
+      <td>12.7</td>
+      <td>4.6</td>
+      <td>2.3</td>
+    </tr>
+    <tr>
+      <th>26297</th>
+      <td>1004.72</td>
+      <td>12.8</td>
+      <td>14.0</td>
+      <td>11.5</td>
+      <td>10.7</td>
+    </tr>
+  </tbody>
+</table>
+<p>26290 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Drop missing data</span>
+<span class="c1">## As a next step, we check the data for missing values.</span>
+<span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pres        0
+temp        0
+temp_max    0
+temp_min    0
+temp_sfc    0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<section id="feature-scaling">
+<h4><span class="section-number">5.1.3.1. </span>Feature scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this heading">#</a></h4>
+<p>In the next steps it is exaplained how to transform the data to make the different variables (feature) comparable with each other <strong>min-max scaling</strong> and <strong>logistic transformation</strong> which transforms e.g. skew-symmetric data to a normally distributed data set.
+We comment the code, because our data is normally distributed. But you need it later for dealing with different data.</p>
+<section id="min-max-scaling">
+<h5><span class="section-number">5.1.3.1.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Permalink to this heading">#</a></h5>
+<p>The min-max scaling</p>
+<p>$$x’=\frac{x-x_{min}}{x_{max}-x_{min}}$$</p>
+<p>transforms the data into the range $[0,1]$. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values $x_{min}-1$ and $x_{max}+1$. Thus</p>
+<p>$$x’=\frac{x-x_{min}+1}{x_{max}-x_{min}+2, .}$$</p>
+</section>
+<section id="logistic-transformation">
+<h5><span class="section-number">5.1.3.1.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Permalink to this heading">#</a></h5>
+<p>As a second step, we use a logistic transformation
+$$x’’=\log\frac{x’}{1-x’}$$</p>
+<p>However, before we can start the transformation, we face a problem! Because we have transformed the test set with the values of the training set, the test set may contain values outside the range [0,1]. This will not work with the logarithm in the transformation.</p>
+</section>
+<section id="back-transformation">
+<h5><span class="section-number">5.1.3.1.3. </span>Back transformation<a class="headerlink" href="#back-transformation" title="Permalink to this heading">#</a></h5>
+<p>The back transformation is the “logistic” function resp. inverse logit:</p>
+<p>\begin{align}
+x’’\to x’=\frac{e^{x’’}}{1+e^{x’’}}&amp;&amp; and &amp;&amp;
+x’\to x=(x’+l)\cdot(u-l)
+\end{align}</p>
+<p>\begin{align}
+&amp;&amp; resp. &amp;&amp;
+x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
+\end{align}</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">min_max</span><span class="p">(</span><span class="n">variable</span><span class="p">):</span>
+    <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">variable</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">variable</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">min_max_done</span> <span class="o">=</span> <span class="p">(</span><span class="n">variable</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">min_max_done</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log_transform</span><span class="p">(</span><span class="n">min_max_variable</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">min_max_variable</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">min_max_variable</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># backtransform</span>
+<span class="c1">## reverse min max und perform exp()</span>
+<span class="k">def</span> <span class="nf">inv_logit</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">logit_transf_variable</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">xmin</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logit_transf_variable</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+        <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logit_transf_variable</span><span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### log tranform your variable</span>
+
+<span class="n">df_transfo</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">transform_cols</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;temp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;temp_max&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;temp_min&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;temp_sfc&quot;</span><span class="p">,</span>
+<span class="p">]</span>  <span class="c1"># [&quot;COLUMN NAME&quot;, &quot;COLUMN NAME&quot;]</span>
+
+<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">df_transfo</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_max</span><span class="p">(</span><span class="n">df_transfo</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">])</span>
+
+<span class="n">df_transfo</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">log_transform</span><span class="p">(</span><span class="n">df_transfo</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">])</span>
+
+<span class="c1">## calculate mean &amp; median tranform back:</span>
+<span class="n">inv_logit</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">df_transfo</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span> <span class="n">inv_logit</span><span class="p">(</span>
+    <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">df_transfo</span><span class="p">[</span><span class="n">transform_cols</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(temp         9.767871
+ temp_max    13.886515
+ temp_min     5.842247
+ temp_sfc     4.349503
+ dtype: float64,
+ temp         9.5
+ temp_max    13.6
+ temp_min     5.5
+ temp_sfc     3.7
+ dtype: float64)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/47cbb0a6ca06391dc12891e9fbeb978c69cf1b978a4ffb1f6e8236c51d3dffa3.png" src="../../../_images/47cbb0a6ca06391dc12891e9fbeb978c69cf1b978a4ffb1f6e8236c51d3dffa3.png" />
+</div>
+</div>
+<p>It looks like a correlation of the minimum and maximum temperature.</p>
+<p>The scatter plot indicates that there exists an linear relationship between the two variables under consideration.</p>
+<p>For the sake of this exercise we calculate the linear correlation coefficient by hand at first, and then we apply the <code class="docutils literal notranslate"><span class="pre">pearsonr()</span></code> function in Python.</p>
+<p>Recall the equation from above</p>
+<p>$$r = \frac{\sum_{i=1}^n(x_i- \bar x)(y_i - \bar y)}{\sqrt{\sum_{i=1}^n(x_i- \bar x)^2}\sqrt{\sum_{i=1}^n(y_i- \bar y)^2}}=\frac{s_{xy}}{s_x s_y}$$</p>
+<p>r is called <strong>Pearsons correlation coefficient</strong>. To calculate the mean and the square roots, we import the <code class="docutils literal notranslate"><span class="pre">numpy</span> <span class="pre">module</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">temp_min</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">temp_max</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="nb">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_bar</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_bar</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_bar</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_bar</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9083940788660801
+</pre></div>
+</div>
+</div>
+</div>
+<p>As a sanity check we calculate the ration of the covariance of $x$ and $y$ and the standard deviation of $x$ and $y$:</p>
+<p>$$r =\frac{s_{xy}}{s_x s_y}$$</p>
+<p>We use the numpy module to calculate the standard deviations <code class="docutils literal notranslate"><span class="pre">np.std()</span></code> and the covariance <code class="docutils literal notranslate"><span class="pre">np.cov(x,y)</span></code>.</p>
+<p>But! Using numpy, <code class="docutils literal notranslate"><span class="pre">np.cov(a,b)</span></code> gives us the covariance matrix</p>
+<p>$$\begin{pmatrix}
+cov(a,a) &amp;  cov(a,b) \
+cov(b,a) &amp; cov(b,b) \
+\end{pmatrix}$$</p>
+<p>Therefore, use <code class="docutils literal notranslate"><span class="pre">numpy.cov(a,b)[0][1]</span></code> for the matrix element cov(a,b)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9084286330172082
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, from the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">from</span> <span class="pre">scipy.stat</span></code>  we <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pearsonr</span></code> to calculate Pearson’s correlation coefficient that we called r above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span>
+
+<span class="n">corr</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9083940788660892
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perfect. The three calculations yield the same result!</p>
+<p>We may conclude, that there is a strong linear correlation between the minimum and maximum temperature at the weather station in Dahlem!</p>
+<blockquote>
+<div><h5 class="rubric" id="exercise"><strong>Exercise:</strong></h5>
+<p>Take the data set of the weather station in Dahlem and calculate the correlation-coefficient after Pearson for different time dependent variables and provide the coefficients of determination!</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### your code here ###</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution">
+<h5><span class="section-number">5.1.3.1.4. </span>solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># do each column by hand ....</span>
+<span class="n">pearsonr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;temp_min&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;temp_max&#39;</span><span class="p">])</span>
+
+<span class="c1"># or easily use the .corr() function of the entire df:</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;pearson&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pres</th>
+      <th>temp</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>temp_sfc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pres</th>
+      <td>1.000000</td>
+      <td>-0.069212</td>
+      <td>-0.042117</td>
+      <td>-0.123350</td>
+      <td>-0.125634</td>
+    </tr>
+    <tr>
+      <th>temp</th>
+      <td>-0.069212</td>
+      <td>1.000000</td>
+      <td>0.981847</td>
+      <td>0.952269</td>
+      <td>0.902622</td>
+    </tr>
+    <tr>
+      <th>temp_max</th>
+      <td>-0.042117</td>
+      <td>0.981847</td>
+      <td>1.000000</td>
+      <td>0.908394</td>
+      <td>0.852836</td>
+    </tr>
+    <tr>
+      <th>temp_min</th>
+      <td>-0.123350</td>
+      <td>0.952269</td>
+      <td>0.908394</td>
+      <td>1.000000</td>
+      <td>0.975749</td>
+    </tr>
+    <tr>
+      <th>temp_sfc</th>
+      <td>-0.125634</td>
+      <td>0.902622</td>
+      <td>0.852836</td>
+      <td>0.975749</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="pairwise-correlations">
+<h4><span class="section-number">5.1.3.2. </span>Pairwise Correlations<a class="headerlink" href="#pairwise-correlations" title="Permalink to this heading">#</a></h4>
+<p>Of course a correlation analysis is not restricted to two variables. Thanks to statistical software packages, we are able to conduct a pairwise correlation analysis for more than two variables. Let us first prepare the data set. For a better visualization experience we may draw again 100  randomly picked time steps of the data set. Then we select a number of variables to perform correlation analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">corr()</span></code> function returns a nice table, also called <strong>correlation matrix</strong>,  with the pairwise Pearson’s correlation coefficients. Obviously some variables contain missing values, denoted as <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrMatrix</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="n">corrMatrix</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pres</th>
+      <th>temp</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>temp_sfc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pres</th>
+      <td>1.000000</td>
+      <td>-0.069212</td>
+      <td>-0.042117</td>
+      <td>-0.123350</td>
+      <td>-0.125634</td>
+    </tr>
+    <tr>
+      <th>temp</th>
+      <td>-0.069212</td>
+      <td>1.000000</td>
+      <td>0.981847</td>
+      <td>0.952269</td>
+      <td>0.902622</td>
+    </tr>
+    <tr>
+      <th>temp_max</th>
+      <td>-0.042117</td>
+      <td>0.981847</td>
+      <td>1.000000</td>
+      <td>0.908394</td>
+      <td>0.852836</td>
+    </tr>
+    <tr>
+      <th>temp_min</th>
+      <td>-0.123350</td>
+      <td>0.952269</td>
+      <td>0.908394</td>
+      <td>1.000000</td>
+      <td>0.975749</td>
+    </tr>
+    <tr>
+      <th>temp_sfc</th>
+      <td>-0.125634</td>
+      <td>0.902622</td>
+      <td>0.852836</td>
+      <td>0.975749</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>A table is nice representation for a correlation analysis, but a figure of course would improve the interpretability. Import the <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> and the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> packages for plotting the correlation matrices. The NaN data fields are empty.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corrMatrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/7ad3b622c86b14c84e213e723c9ea9213383bf4fcfc841d771d882b91b94d4f2.png" src="../../../_images/7ad3b622c86b14c84e213e723c9ea9213383bf4fcfc841d771d882b91b94d4f2.png" />
+</div>
+</div>
+<p>Which variables are highly correlated with each other?</p>
+<blockquote>
+<div><h5 class="rubric" id="id1"><strong>Exercise</strong>:</h5>
+<p>Create a correlation plot for the original data (df) and one for the transformed data (df_transfo). Both should be displayed in one figure but 1 subplot each.  Are there differences between the two plots? Which variables are no longer or more strongly correlated? How can these differences be explained?</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### your code here ###</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id2">
+<h5><span class="section-number">5.1.3.2.1. </span>solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pres</th>
+      <th>temp</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>temp_sfc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pres</th>
+      <td>1.000000</td>
+      <td>-0.069212</td>
+      <td>-0.042117</td>
+      <td>-0.123350</td>
+      <td>-0.125634</td>
+    </tr>
+    <tr>
+      <th>temp</th>
+      <td>-0.069212</td>
+      <td>1.000000</td>
+      <td>0.981847</td>
+      <td>0.952269</td>
+      <td>0.902622</td>
+    </tr>
+    <tr>
+      <th>temp_max</th>
+      <td>-0.042117</td>
+      <td>0.981847</td>
+      <td>1.000000</td>
+      <td>0.908394</td>
+      <td>0.852836</td>
+    </tr>
+    <tr>
+      <th>temp_min</th>
+      <td>-0.123350</td>
+      <td>0.952269</td>
+      <td>0.908394</td>
+      <td>1.000000</td>
+      <td>0.975749</td>
+    </tr>
+    <tr>
+      <th>temp_sfc</th>
+      <td>-0.125634</td>
+      <td>0.902622</td>
+      <td>0.852836</td>
+      <td>0.975749</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_transfo</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pres</th>
+      <th>temp</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>temp_sfc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pres</th>
+      <td>1.000000</td>
+      <td>-0.066808</td>
+      <td>-0.042975</td>
+      <td>-0.118797</td>
+      <td>-0.116435</td>
+    </tr>
+    <tr>
+      <th>temp</th>
+      <td>-0.066808</td>
+      <td>1.000000</td>
+      <td>0.980614</td>
+      <td>0.945663</td>
+      <td>0.891206</td>
+    </tr>
+    <tr>
+      <th>temp_max</th>
+      <td>-0.042975</td>
+      <td>0.980614</td>
+      <td>1.000000</td>
+      <td>0.901528</td>
+      <td>0.842826</td>
+    </tr>
+    <tr>
+      <th>temp_min</th>
+      <td>-0.118797</td>
+      <td>0.945663</td>
+      <td>0.901528</td>
+      <td>1.000000</td>
+      <td>0.972604</td>
+    </tr>
+    <tr>
+      <th>temp_sfc</th>
+      <td>-0.116435</td>
+      <td>0.891206</td>
+      <td>0.842826</td>
+      <td>0.972604</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_transfo</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;original data&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;log-transformed data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/f584cb8dfb79b365c8dabddc604ff7e81539246c34dcb6b385714b52d04947d1.png" src="../../../_images/f584cb8dfb79b365c8dabddc604ff7e81539246c34dcb6b385714b52d04947d1.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="spearman-s-rank-correlation-coefficient">
+<h3><span class="section-number">5.1.4. </span>Spearman’s rank correlation coefficient<a class="headerlink" href="#spearman-s-rank-correlation-coefficient" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient"><strong>Spearman’s rank correlation coefficient</strong></a>, also known as the Spearman’s $\rho$ is a non-parametric rank correlation coefficient. It was developed by <a class="reference external" href="https://en.wikipedia.org/wiki/Charles_Spearman">Charles Spearman</a> and is an alternative to Pearson’s product moment correlation coefficient. The Spearman $\rho$ rank correlation coefficient is denoted by $r_s$ for sample data and by $\rho_s$ for population data (Mann 2012). The correlation coefficient assesses the monotonic relationship between two variables and ranges between $-1$ and $1$. It describes the linear correlation between the ranks of the data on variables $x$ and $y$. Spearman’s correlation is high when the variables have a similar rank, and low when variables have a dissimilar rank.</p>
+<p>To calculate $r_s$, the data for each variable, $x$ and $y$, is ranked separately. The difference between each pair of ranks and denote it by $d$. For a given bivariate sequence $(x_1, y_1), (x_2, y_2), …, (x_n, y_n)$ Spearman’s $r_s$  is given by</p>
+<p>$$r_s=1-\frac{6\sum_{i=1}^n (r_{xi}-r_{yi})^2}{n(n^2-1)}\text{,}$$
+where $r_{xi}=Rank(x_i)$ , $r_{yi}= Rank(y_i)$ , and $n$ is the sample size.</p>
+<p>In contrast to Pearson’s linear correlation coefficient Spearman’s linear coefficient is appropriate for both quantitative and ordinal variables. In addition rank based correlations are not dependent on the normal distributional assumption are more resistant to outliers (Schumann 2010).</p>
+<section id="spearman-s-rank-correlation-coefficient-an-example">
+<h4><span class="section-number">5.1.4.1. </span>Spearman’s rank correlation coefficient: An example<a class="headerlink" href="#spearman-s-rank-correlation-coefficient-an-example" title="Permalink to this heading">#</a></h4>
+<p>Let us consider an example. The population of a community along a river believes that recent increases in peak discharge rates are due to deforestation by a logging company in recent years. We calculate Spearman’s rank correlation coefficient to assess if there is a correlation between peak discharge (Durchfluss) and the faction of deforestation (Abholzung) area in the watershed (data modified after <a class="reference external" href="https://www.crcpress.com/Modeling-Hydrologic-Change-Statistical-Methods/McCuen/p/book/9781566706001">McCuen 2003, p. 112</a>).</p>
+<p>$$
+\begin{array}{lcc}
+\hline
+\ \text{Year} &amp; \text{Discharge (m}^3 \text{s}^{-1}) &amp; \text{Logging area (%)} \
+\hline
+\ 1982 &amp; 227 &amp; 53  \
+\ 1983 &amp; 249 &amp; 56  \
+\ 1984 &amp; 210 &amp; 57 \
+\ 1985 &amp; 190 &amp; 58  \
+\ 1986 &amp; 314 &amp; 55  \
+\ 1987 &amp; 345 &amp; 54 \
+\ 1988 &amp; 161 &amp; 51  \
+\ 1988 &amp; 266 &amp; 50  \
+\ 1989 &amp; 402 &amp; 49 \
+\ 1990 &amp; 215 &amp; 57  \
+\ 1991 &amp; 164 &amp; 46  \
+\ 1992 &amp; 405 &amp; 44 \
+\ 1993 &amp; 328 &amp; 43 \
+\ 1994 &amp; 294 &amp; 42 \
+\hline \
+\end{array}
+$$</p>
+<p>Let us construct our data vectors. We assign the years to the variable <code class="docutils literal notranslate"><span class="pre">year</span></code>, the discharge values to the variable <code class="docutils literal notranslate"><span class="pre">Q</span></code> and the logging area to the variable <code class="docutils literal notranslate"><span class="pre">logged</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">1982</span><span class="p">,</span> <span class="mi">1983</span><span class="p">,</span> <span class="mi">1984</span><span class="p">,</span> <span class="mi">1985</span><span class="p">,</span> <span class="mi">1986</span><span class="p">,</span> <span class="mi">1987</span><span class="p">,</span> <span class="mi">1988</span><span class="p">,</span> <span class="mi">1988</span><span class="p">,</span> <span class="mi">1989</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">1991</span><span class="p">,</span> <span class="mi">1992</span><span class="p">,</span> <span class="mi">1993</span><span class="p">,</span> <span class="mi">1994</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">227</span><span class="p">,</span> <span class="mi">249</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">314</span><span class="p">,</span> <span class="mi">345</span><span class="p">,</span> <span class="mi">161</span><span class="p">,</span> <span class="mi">266</span><span class="p">,</span> <span class="mi">402</span><span class="p">,</span> <span class="mi">215</span><span class="p">,</span> <span class="mi">164</span><span class="p">,</span> <span class="mi">405</span><span class="p">,</span> <span class="mi">328</span><span class="p">,</span> <span class="mi">294</span><span class="p">])</span>
+<span class="n">logged</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">53</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">42</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Year = &quot;</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q = &quot;</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;logged =&quot;</span><span class="p">,</span> <span class="n">logged</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year =  [1982 1983 1984 1985 1986 1987 1988 1988 1989 1990 1991 1992 1993 1994]
+Q =  [227 249 210 190 314 345 161 266 402 215 164 405 328 294]
+logged = [53 56 57 58 55 54 51 50 49 47 46 44 43 42]
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><a class="reference external" href="https://www.geo.fu-berlin.de/en/v/soga-py/Basics-of-statistics/Descriptive-Statistics/Measures-of-Relation-Between-Variables/Correlation/index.html"><strong>Spearman’s rank correlation coefficient</strong></a></p>
+<p>Spearman’s  ρ  is a non-parametric rank correlation coefficient. It was developed by Charles Spearman and is an alternative to the Pearson product moment correlation coefficient. The Spearman’s rank correlation coefficient is denoted by $r_{s}$ for sample data and by $ρ_{s}$ for population data (Mann 2012). The correlation coefficient assesses the monotonic relationship between two variables and ranges between  $−1$ and $1$. It describes the linear correlation between the ranks of the data of variables x and y. Spearman’s correlation is high when the variables have a similar rank and low when variables have a dissimilar rank. In contrast to Pearson’s linear correlation coefficient Spearman’s linear correlation coefficient is appropriate for both, quantitative and ordinal, variables. In addition, rank based correlations are not dependent on the assumption of a normal distribution and are more resistant to outliers (Schumann 2010).</p>
+</div></blockquote>
+<p>First we calculate <strong>Spearman’s rank correlation coefficient</strong> by hand. Recall the equation</p>
+<p>$$r_s=1-\frac{6\sum_{i=1}^n (r_{xi}-r_{yi})^2}{n(n^2-1)}\text{,}$$</p>
+<p>where $r_{xi}=Rank(x_i)$ , $r_{yi}= Rank(y_i)$ , and $n$ is the sample size.</p>
+<p>Next, we create a <code class="docutils literal notranslate"><span class="pre">pandas</span> <span class="pre">DataFrame</span></code> with the above assigned values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The vectors year, Q and logged need to have the same length to create</span>
+<span class="c1"># data frame</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">logged</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+
+<span class="c1"># create a new pandas data frame:</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Year&quot;</span><span class="p">:</span> <span class="n">year</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="s2">&quot;logged&quot;</span><span class="p">:</span> <span class="n">logged</span><span class="p">}</span>
+<span class="n">df_ex</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+
+<span class="n">df_ex</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14 14 14
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Q</th>
+      <th>logged</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1982</td>
+      <td>227</td>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1983</td>
+      <td>249</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1984</td>
+      <td>210</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1985</td>
+      <td>190</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1986</td>
+      <td>314</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1987</td>
+      <td>345</td>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1988</td>
+      <td>161</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1988</td>
+      <td>266</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1989</td>
+      <td>402</td>
+      <td>49</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1990</td>
+      <td>215</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1991</td>
+      <td>164</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1992</td>
+      <td>405</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1993</td>
+      <td>328</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1994</td>
+      <td>294</td>
+      <td>42</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We apply the <code class="docutils literal notranslate"><span class="pre">rank()</span></code> function to calculate the rank for the values of each variable. Then, we calculate <strong>Spearman’s rank correlation coefficient</strong> by hand:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_xi</span> <span class="o">=</span> <span class="n">df_ex</span><span class="p">[</span><span class="s2">&quot;Q&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span>
+<span class="n">r_yi</span> <span class="o">=</span> <span class="n">df_ex</span><span class="p">[</span><span class="s2">&quot;logged&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span>
+
+<span class="n">rs</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">((</span><span class="mi">6</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">((</span><span class="n">r_xi</span> <span class="o">-</span> <span class="n">r_yi</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.34065934065934056
+</pre></div>
+</div>
+</div>
+</div>
+<p>As Spearman’s rank correlation coefficient is nothing else but Pearson’s linear correlation coefficient on the ranked data. The result the following code cell should equal the previous results.</p>
+<p>Alternatively to the above calculation, we load the funktion <code class="docutils literal notranslate"><span class="pre">spearmanr</span></code>of the modue <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">spearmanr</span>
+
+<span class="n">corr</span> <span class="o">=</span> <span class="n">spearmanr</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">logged</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.3406593406593406
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perfect, we got the same result by all three calculations! The results indicate that there is no to a weak negative correlation between peak discharge and logging area. In other words, the discharge tends to decrease when the logging area increases. Thus, the perception of the population can not be confirmed by out statistical analysis.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="spearman-s-rank-correlation-coefficient-a-second-example">
+<h3><span class="section-number">5.1.5. </span>Spearman’s rank correlation coefficient: A second example<a class="headerlink" href="#spearman-s-rank-correlation-coefficient-a-second-example" title="Permalink to this heading">#</a></h3>
+<p>Analogously to the Pearson correlation, we can calculate the correlation matrix with respect to the Spearman correlation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrMatrix_spearman</span> <span class="o">=</span> <span class="n">df_transfo</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;spearman&quot;</span><span class="p">)</span>
+<span class="n">corrMatrix_spearman</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pres</th>
+      <th>temp</th>
+      <th>temp_max</th>
+      <th>temp_min</th>
+      <th>temp_sfc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>pres</th>
+      <td>1.000000</td>
+      <td>-0.063239</td>
+      <td>-0.039928</td>
+      <td>-0.118206</td>
+      <td>-0.120218</td>
+    </tr>
+    <tr>
+      <th>temp</th>
+      <td>-0.063239</td>
+      <td>1.000000</td>
+      <td>0.982374</td>
+      <td>0.951269</td>
+      <td>0.901883</td>
+    </tr>
+    <tr>
+      <th>temp_max</th>
+      <td>-0.039928</td>
+      <td>0.982374</td>
+      <td>1.000000</td>
+      <td>0.908758</td>
+      <td>0.853738</td>
+    </tr>
+    <tr>
+      <th>temp_min</th>
+      <td>-0.118206</td>
+      <td>0.951269</td>
+      <td>0.908758</td>
+      <td>1.000000</td>
+      <td>0.975820</td>
+    </tr>
+    <tr>
+      <th>temp_sfc</th>
+      <td>-0.120218</td>
+      <td>0.901883</td>
+      <td>0.853738</td>
+      <td>0.975820</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corrMatrix_spearman</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/bd32d87695073d67378725313835d1aa97fd8931e73e5f01496a3272c17a83f6.png" src="../../../_images/bd32d87695073d67378725313835d1aa97fd8931e73e5f01496a3272c17a83f6.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="900"
+            height="200"
+            src="../../citations/citation_Soga.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./contents/General_Introduction_Sessions/4_intro_regression"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="4_1_Intro_Regression.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Linear Regression</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="4_3_Additional_Exercises_CorrReg.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>Additional Exercises V -  Regression &amp; Correlation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-relation-between-variables">5.1. Measures of Relation Between Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-covariance">5.1.1. The Covariance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">5.1.2. Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation-coefficient">5.1.2.1. Pearson Correlation coefficient</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation-coefficient-an-example">5.1.3. Pearson correlation coefficient: An example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling">5.1.3.1. Feature scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-scaling">5.1.3.1.1. Min-Max scaling</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-transformation">5.1.3.1.2. Logistic transformation</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#back-transformation">5.1.3.1.3. Back transformation</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">5.1.3.1.4. solution</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pairwise-correlations">5.1.3.2. Pairwise Correlations</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1.3.2.1. solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient">5.1.4. Spearman’s rank correlation coefficient</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient-an-example">5.1.4.1. Spearman’s rank correlation coefficient: An example</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient-a-second-example">5.1.5. Spearman’s rank correlation coefficient: A second example</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Annette Rudolph, Marie-Christin Eckert
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
