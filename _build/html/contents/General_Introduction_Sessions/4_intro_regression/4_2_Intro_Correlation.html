@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>20. Correlation and Regression &#8212; Machine Learning course online reader</title>
+    <title>5. Correlation and Regression &#8212; Machine Learning Online Reader</title>
   
   
   
@@ -58,13 +58,11 @@
     <script src="../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/4_intro_regression/4_2_Intro_Correlation';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="21. Additional Exercises V - Regression &amp; Correlation" href="4_3_Additional_Exercises_CorrReg.html" />
-    <link rel="prev" title="19. Linear Regression" href="4_1_Intro_Regression.html" />
+    <link rel="next" title="5.2. Additional Exercises V - Regression &amp; Correlation" href="4_3_Additional_Exercises_CorrReg.html" />
+    <link rel="prev" title="4. Linear Regression" href="4_1_Intro_Regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +154,8 @@
       
     
     
-    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Machine Learning course online reader - Home"/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Machine Learning course online reader - Home"/>`);</script>
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Machine Learning Online Reader - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Machine Learning Online Reader - Home"/>`);</script>
   
   
 </a></div>
@@ -178,36 +176,63 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../../intro.html">
-                    Welcome to your Jupyter Book
+                    Machine Learning Intro Course Materials
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to Python</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Python</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_1_Python_as_calculator.html">1. Introduction to Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_2_Build_in_Functions.html">2. Use of predefined functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_3_data_structures.html">3. Data structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_4_atomic_datatypes.html">4. Datatypes</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1_Introduction_to_Python/1_0_Intro_to_Python_landing.html">1. Introduction to Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_1_Python_as_calculator.html">1.1. Using Python as calculator</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_2_Build_in_Functions.html">1.3. Use of predefined functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_3_data_structures.html">1.4. Data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_4_atomic_datatypes.html">1.5. Datatypes</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_5_objects_data_types.html">7. The concept of objects in Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_6_Intro_user_defined_functions.html">8. User defined functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_7_control_flow_mit_Lsg.html">9. Steering the control flow of a program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_5_objects_data_types.html">1.8. The concept of objects in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_6_Intro_user_defined_functions.html">1.9. User defined functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_7_control_flow_mit_Lsg.html">1.10. Steering the control flow of a program</a></li>
 
-
-<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_8_Pandas_Dataframes.html">12. Pandas package for handling <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_9_Exercises_Einf_Python_I.html">13. Additional Exercises I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1_Introduction_to_Python/1_10_Exercises_Einf_Python_II.html">14. Additional Exercises II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_8_Pandas_Dataframes.html">1.12. Pandas package for handling <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_9_Exercises_Einf_Python_I.html">1.13. Additional Exercises I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Introduction_to_Python/1_10_Exercises_Einf_Python_II.html">1.14. Additional Exercises II</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Recap Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../2_NVT/2_1_Wdhl_Statisitk_1.html">2. Recap Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_NVT/2_2_Add_Exercises_NVT.html">2.3. Additional Exercises III -  The Normal distribution</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Feature Scales</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_features_scales/3_Feature_scales.html">3. Feature Scales</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_features_scales/3_Add_Exercises_FeatureScales-v2.html">3.4. Additional Exercises IV -  Feature Scales</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Recap Regression &amp; Correlation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../2_NVT/2_1_Wdhl_Statisitk_1.html">15. Recap Statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2_NVT/2_2_Add_Exercises_NVT.html">16. Additional Exercises III -  The Normal distribution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_features_scales/3_Feature_scales.html">17. Feature Scales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_features_scales/3_Add_Exercises_FeatureScales-v2.html">18. Additional Exercises IV -  Feature Scales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_1_Intro_Regression.html">19. Linear Regression</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">20. Correlation and Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_3_Additional_Exercises_CorrReg.html">21. Additional Exercises V -  Regression &amp; Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_1_Intro_Regression.html">4. Linear Regression</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">5. Correlation and Regression</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="4_3_Additional_Exercises_CorrReg.html">5.2. Additional Exercises V -  Regression &amp; Correlation</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning Algorithms</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ML_algorithms/5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -403,31 +428,31 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-relation-between-variables">20.1. Measures of Relation Between Variables</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-covariance">20.1.1. The Covariance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">20.1.2. Correlation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation-coefficient">20.1.2.1. Pearson Correlation coefficient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-relation-between-variables">5.1. Measures of Relation Between Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-covariance">5.1.1. The Covariance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">5.1.2. Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation-coefficient">5.1.2.1. Pearson Correlation coefficient</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation-coefficient-an-example">20.1.3. Pearson correlation coefficient: An example</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling">20.1.3.1. Feature scaling</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-scaling">20.1.3.1.1. Min-Max scaling</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-transformation">20.1.3.1.2. Logistic transformation</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#back-transformation">20.1.3.1.3. Back transformation</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">20.1.3.1.4. solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation-coefficient-an-example">5.1.3. Pearson correlation coefficient: An example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling">5.1.3.1. Feature scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-scaling">5.1.3.1.1. Min-Max scaling</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-transformation">5.1.3.1.2. Logistic transformation</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#back-transformation">5.1.3.1.3. Back transformation</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">5.1.3.1.4. solution</a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pairwise-correlations">20.1.3.2. Pairwise Correlations</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">20.1.3.2.1. solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pairwise-correlations">5.1.3.2. Pairwise Correlations</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1.3.2.1. solution</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient">20.1.4. Spearman’s rank correlation coefficient</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient-an-example">20.1.4.1. Spearman’s rank correlation coefficient: An example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient">5.1.4. Spearman’s rank correlation coefficient</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient-an-example">5.1.4.1. Spearman’s rank correlation coefficient: An example</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient-a-second-example">20.1.5. Spearman’s rank correlation coefficient: A second example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient-a-second-example">5.1.5. Spearman’s rank correlation coefficient: A second example</a></li>
 </ul>
 </li>
 </ul>
@@ -441,61 +466,50 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> lab_black
-</pre></div>
-</div>
-</div>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="correlation-and-regression">
-<h1><span class="section-number">20. </span>Correlation and Regression<a class="headerlink" href="#correlation-and-regression" title="Permalink to this heading">#</a></h1>
+  <section id="correlation-and-regression">
+<h1><span class="section-number">5. </span>Correlation and Regression<a class="headerlink" href="#correlation-and-regression" title="Permalink to this heading">#</a></h1>
 <section id="measures-of-relation-between-variables">
-<h2><span class="section-number">20.1. </span>Measures of Relation Between Variables<a class="headerlink" href="#measures-of-relation-between-variables" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.1. </span>Measures of Relation Between Variables<a class="headerlink" href="#measures-of-relation-between-variables" title="Permalink to this heading">#</a></h2>
 <p>In the last week we mainly focused on a single variable, describing a distribution and calculating summary statistics. Statistics that describe a single variable are referred to as univariate statistics. If we examine the relationship of two variables, we refer to bivariate statistics. If the relationships among several variables are simultaneously examined, we refer to multivariate statistics. Measures of relation provide a means of summarizing the size of the relation between two variables</p>
 <section id="the-covariance">
-<h3><span class="section-number">20.1.1. </span>The Covariance<a class="headerlink" href="#the-covariance" title="Permalink to this heading">#</a></h3>
-<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance"><strong>covariance</strong></a> is a measure of the joint variability of two variables. The covariance can take any value in the interval <span class="math notranslate nohighlight">\((- \infty, \infty)\)</span>. The covariance is positive, if the greater/smaller values of one variable mainly correspond with the greater/smaller values of the other variable. The covariance is negative if the variables tend to show opposite behavior. If greater values of one variable mainly correspond to the lesser values of the other.</p>
-<p>The covariance, <span class="math notranslate nohighlight">\(s_{xy}\)</span>, is calculated by the equation</p>
-<div class="math notranslate nohighlight">
-\[s_{xy}=\frac{\sum_{i=1}^n(x_i-\bar x)(y_i-\bar y)}{n-1}\]</div>
+<h3><span class="section-number">5.1.1. </span>The Covariance<a class="headerlink" href="#the-covariance" title="Permalink to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance"><strong>covariance</strong></a> is a measure of the joint variability of two variables. The covariance can take any value in the interval $(- \infty, \infty)$. The covariance is positive, if the greater/smaller values of one variable mainly correspond with the greater/smaller values of the other variable. The covariance is negative if the variables tend to show opposite behavior. If greater values of one variable mainly correspond to the lesser values of the other.</p>
+<p>The covariance, $s_{xy}$, is calculated by the equation</p>
+<p>$$s_{xy}=\frac{\sum_{i=1}^n(x_i-\bar x)(y_i-\bar y)}{n-1}$$</p>
 <p>The normalized version of the covariance, is called correlation coefficient, which magnitude indicates the strength of a linear relation between two variables.</p>
 <p>The <strong>normalized version of the covariance</strong>, is called  <strong>correlation coefficient</strong>, which magnitude indicates the strength of a linear relation between two variables.</p>
 </section>
 <hr class="docutils" />
 <section id="correlation">
-<h3><span class="section-number">20.1.2. </span>Correlation<a class="headerlink" href="#correlation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.2. </span>Correlation<a class="headerlink" href="#correlation" title="Permalink to this heading">#</a></h3>
 <section id="pearson-correlation-coefficient">
-<h4><span class="section-number">20.1.2.1. </span>Pearson Correlation coefficient<a class="headerlink" href="#pearson-correlation-coefficient" title="Permalink to this heading">#</a></h4>
-<p>Correlation is a commonly used method to examine the relationship between <strong>quantitative variables</strong>. The most commonly used statistic is the <strong>linear correlation coefficient</strong>, <span class="math notranslate nohighlight">\(r\)</span>, which is also known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient"><strong>Pearson product moment correlation coefficient</strong></a> in honor of its developer, <a class="reference external" href="https://en.wikipedia.org/wiki/Karl_Pearson">Karl Pearson</a>. Is it given by</p>
-<div class="math notranslate nohighlight">
-\[r = \frac{\sum_{i=1}^n(x_i- \bar x)(y_i - \bar y)}{\sqrt{\sum_{i=1}^n(x_i- \bar x)^2}\sqrt{\sum_{i=1}^n(y_i- \bar y)^2}}=\frac{s_{xy}}{s_x s_y}\text{,}\]</div>
-<p>where <span class="math notranslate nohighlight">\(s_{xy}\)</span> is the covariance of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(s_x\)</span> and <span class="math notranslate nohighlight">\(s_y\)</span> the standard deviation of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, respectively. By dividing by the sample standard deviations, <span class="math notranslate nohighlight">\(s_x\)</span> and <span class="math notranslate nohighlight">\(s_y\)</span>, the linear correlation coefficient, <span class="math notranslate nohighlight">\(r\)</span>, becomes scale independent and takes values between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span>.</p>
-<p>The linear correlation coefficient measures the strength of the linear relationship between two variables. If <span class="math notranslate nohighlight">\(r\)</span> is close to <span class="math notranslate nohighlight">\(\pm 1\)</span>, the two variables are highly correlated and if plotted on a scatter plot, the data points cluster about a line. If <span class="math notranslate nohighlight">\(r\)</span> is far from <span class="math notranslate nohighlight">\(\pm 1\)</span>, the data points are more widely scattered. If <span class="math notranslate nohighlight">\(r\)</span> is near <span class="math notranslate nohighlight">\(0\)</span>, the data points are essentially scattered about a horizontal line indicating that there is almost no linear relationship between the variables.</p>
+<h4><span class="section-number">5.1.2.1. </span>Pearson Correlation coefficient<a class="headerlink" href="#pearson-correlation-coefficient" title="Permalink to this heading">#</a></h4>
+<p>Correlation is a commonly used method to examine the relationship between <strong>quantitative variables</strong>. The most commonly used statistic is the <strong>linear correlation coefficient</strong>, $r$, which is also known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient"><strong>Pearson product moment correlation coefficient</strong></a> in honor of its developer, <a class="reference external" href="https://en.wikipedia.org/wiki/Karl_Pearson">Karl Pearson</a>. Is it given by</p>
+<p>$$r = \frac{\sum_{i=1}^n(x_i- \bar x)(y_i - \bar y)}{\sqrt{\sum_{i=1}^n(x_i- \bar x)^2}\sqrt{\sum_{i=1}^n(y_i- \bar y)^2}}=\frac{s_{xy}}{s_x s_y}\text{,}$$</p>
+<p>where $s_{xy}$ is the covariance of $x$ and $y$ and $s_x$ and $s_y$ the standard deviation of $x$ and $y$, respectively. By dividing by the sample standard deviations, $s_x$ and $s_y$, the linear correlation coefficient, $r$, becomes scale independent and takes values between $-1$ and $1$.</p>
+<p>The linear correlation coefficient measures the strength of the linear relationship between two variables. If $r$ is close to $\pm 1$, the two variables are highly correlated and if plotted on a scatter plot, the data points cluster about a line. If $r$ is far from $\pm 1$, the data points are more widely scattered. If $r$ is near $0$, the data points are essentially scattered about a horizontal line indicating that there is almost no linear relationship between the variables.</p>
 <div>
 <img src="4_regression_figures/Korrelationen.png" width="800"/>
-</div><p>An interesting property of <span class="math notranslate nohighlight">\(r\)</span> is, that its sign reflects the slope of the linear relationship between two variables. A positive value of <span class="math notranslate nohighlight">\(r\)</span> suggests that the variables are <strong>positively linearly correlated</strong>, indicating that <span class="math notranslate nohighlight">\(y\)</span> tends to increase linearly as <span class="math notranslate nohighlight">\(x\)</span> increases. A negative value of <span class="math notranslate nohighlight">\(r\)</span> suggests that the variables are <strong>negatively linearly correlated</strong>, indicating that <span class="math notranslate nohighlight">\(y\)</span> tends to decrease linearly as <span class="math notranslate nohighlight">\(x\)</span> increases.</p>
+</div><p>An interesting property of $r$ is, that its sign reflects the slope of the linear relationship between two variables. A positive value of $r$ suggests that the variables are <strong>positively linearly correlated</strong>, indicating that $y$ tends to increase linearly as $x$ increases. A negative value of $r$ suggests that the variables are <strong>negatively linearly correlated</strong>, indicating that $y$ tends to decrease linearly as $x$ increases.</p>
 <p>There is no unambiguous classification rule for the quantity of a linear relationship between two variables. However, the following table may serve a as rule of thumb how to address the numerical values of Pearson product moment correlation coefficient.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<p>$$
 \begin{array}{lc}
 \hline
-\ \text{Strong linear relationship} &amp; r &gt; 0.9 \\
-\ \text{Medium linear relationship} &amp; 0.7 &lt; r \le 0.9\\
-\ \text{Weak linear relationship} &amp; 0.5 &lt; r \le 0.7 \\
-\ \text{No or doubtful linear relationship} &amp; 0 &lt; r \le 0.5 \\
-\hline 
+\ \text{Strong linear relationship} &amp; r &gt; 0.9 \
+\ \text{Medium linear relationship} &amp; 0.7 &lt; r \le 0.9\
+\ \text{Weak linear relationship} &amp; 0.5 &lt; r \le 0.7 \
+\ \text{No or doubtful linear relationship} &amp; 0 &lt; r \le 0.5 \
+\hline
 \end{array}
-\end{split}\]</div>
+$$</p>
 <p>Pearson’s correlation assumes the variables to be roughly normally distributed and it is not robust in the presence of outliers.</p>
-<p>In the section on LINEAR REGRESSION we discussed the coefficient of determination, <span class="math notranslate nohighlight">\(R^2\)</span>, a descriptive measure for the quality of linear models. There is a close relation between <span class="math notranslate nohighlight">\(R^2\)</span> and the linear correlation coefficient, <span class="math notranslate nohighlight">\(r\)</span>. The coefficient of determination, <span class="math notranslate nohighlight">\(R^2\)</span>, equals the square of the linear correlation coefficient, <span class="math notranslate nohighlight">\(r\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[\text{coefficient of determination }(R^2) =r^2 \]</div>
+<p>In the section on LINEAR REGRESSION we discussed the coefficient of determination, $R^2$, a descriptive measure for the quality of linear models. There is a close relation between $R^2$ and the linear correlation coefficient, $r$. The coefficient of determination, $R^2$, equals the square of the linear correlation coefficient, $r$.</p>
+<p>$$\text{coefficient of determination }(R^2) =r^2 $$</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="pearson-correlation-coefficient-an-example">
-<h3><span class="section-number">20.1.3. </span>Pearson correlation coefficient: An example<a class="headerlink" href="#pearson-correlation-coefficient-an-example" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.3. </span>Pearson correlation coefficient: An example<a class="headerlink" href="#pearson-correlation-coefficient-an-example" title="Permalink to this heading">#</a></h3>
 <p>In order to get some intuition we calculate the Pearson product moment correlation coefficient in an example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1129,26 +1143,24 @@ dtype: int64
 </div>
 </div>
 <section id="feature-scaling">
-<h4><span class="section-number">20.1.3.1. </span>Feature scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">5.1.3.1. </span>Feature scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this heading">#</a></h4>
 <p>In the next steps it is exaplained how to transform the data to make the different variables (feature) comparable with each other <strong>min-max scaling</strong> and <strong>logistic transformation</strong> which transforms e.g. skew-symmetric data to a normally distributed data set.
 We comment the code, because our data is normally distributed. But you need it later for dealing with different data.</p>
 <section id="min-max-scaling">
-<h5><span class="section-number">20.1.3.1.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">5.1.3.1.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Permalink to this heading">#</a></h5>
 <p>The min-max scaling</p>
-<div class="math notranslate nohighlight">
-\[x'=\frac{x-x_{min}}{x_{max}-x_{min}}\]</div>
-<p>transforms the data into the range <span class="math notranslate nohighlight">\([0,1]\)</span>. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values <span class="math notranslate nohighlight">\(x_{min}-1\)</span> and <span class="math notranslate nohighlight">\(x_{max}+1\)</span>. Thus</p>
-<div class="math notranslate nohighlight">
-\[x'=\frac{x-x_{min}+1}{x_{max}-x_{min}+2\, .}\]</div>
+<p>$$x’=\frac{x-x_{min}}{x_{max}-x_{min}}$$</p>
+<p>transforms the data into the range $[0,1]$. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values $x_{min}-1$ and $x_{max}+1$. Thus</p>
+<p>$$x’=\frac{x-x_{min}+1}{x_{max}-x_{min}+2, .}$$</p>
 </section>
 <section id="logistic-transformation">
-<h5><span class="section-number">20.1.3.1.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">5.1.3.1.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Permalink to this heading">#</a></h5>
 <p>As a second step, we use a logistic transformation
-$<span class="math notranslate nohighlight">\(x''=\log\frac{x'}{1-x'}\)</span>$</p>
+$$x’’=\log\frac{x’}{1-x’}$$</p>
 <p>However, before we can start the transformation, we face a problem! Because we have transformed the test set with the values of the training set, the test set may contain values outside the range [0,1]. This will not work with the logarithm in the transformation.</p>
 </section>
 <section id="back-transformation">
-<h5><span class="section-number">20.1.3.1.3. </span>Back transformation<a class="headerlink" href="#back-transformation" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">5.1.3.1.3. </span>Back transformation<a class="headerlink" href="#back-transformation" title="Permalink to this heading">#</a></h5>
 <p>The back transformation is the “logistic” function resp. inverse logit:</p>
 <p>\begin{align}
 x’’\to x’=\frac{e^{x’’}}{1+e^{x’’}}&amp;&amp; and &amp;&amp;
@@ -1241,8 +1253,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 <p>The scatter plot indicates that there exists an linear relationship between the two variables under consideration.</p>
 <p>For the sake of this exercise we calculate the linear correlation coefficient by hand at first, and then we apply the <code class="docutils literal notranslate"><span class="pre">pearsonr()</span></code> function in Python.</p>
 <p>Recall the equation from above</p>
-<div class="math notranslate nohighlight">
-\[r = \frac{\sum_{i=1}^n(x_i- \bar x)(y_i - \bar y)}{\sqrt{\sum_{i=1}^n(x_i- \bar x)^2}\sqrt{\sum_{i=1}^n(y_i- \bar y)^2}}=\frac{s_{xy}}{s_x s_y}\]</div>
+<p>$$r = \frac{\sum_{i=1}^n(x_i- \bar x)(y_i - \bar y)}{\sqrt{\sum_{i=1}^n(x_i- \bar x)^2}\sqrt{\sum_{i=1}^n(y_i- \bar y)^2}}=\frac{s_{xy}}{s_x s_y}$$</p>
 <p>r is called <strong>Pearsons correlation coefficient</strong>. To calculate the mean and the square roots, we import the <code class="docutils literal notranslate"><span class="pre">numpy</span> <span class="pre">module</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1269,16 +1280,14 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </div>
 </div>
-<p>As a sanity check we calculate the ration of the covariance of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> and the standard deviation of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[r =\frac{s_{xy}}{s_x s_y}\]</div>
+<p>As a sanity check we calculate the ration of the covariance of $x$ and $y$ and the standard deviation of $x$ and $y$:</p>
+<p>$$r =\frac{s_{xy}}{s_x s_y}$$</p>
 <p>We use the numpy module to calculate the standard deviations <code class="docutils literal notranslate"><span class="pre">np.std()</span></code> and the covariance <code class="docutils literal notranslate"><span class="pre">np.cov(x,y)</span></code>.</p>
 <p>But! Using numpy, <code class="docutils literal notranslate"><span class="pre">np.cov(a,b)</span></code> gives us the covariance matrix</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{pmatrix}
-cov(a,a) &amp;  cov(a,b) \\
-cov(b,a) &amp; cov(b,b) \\
-\end{pmatrix}\end{split}\]</div>
+<p>$$\begin{pmatrix}
+cov(a,a) &amp;  cov(a,b) \
+cov(b,a) &amp; cov(b,b) \
+\end{pmatrix}$$</p>
 <p>Therefore, use <code class="docutils literal notranslate"><span class="pre">numpy.cov(a,b)[0][1]</span></code> for the matrix element cov(a,b)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1323,7 +1332,7 @@ cov(b,a) &amp; cov(b,b) \\
 </div>
 </section>
 <section id="solution">
-<h5><span class="section-number">20.1.3.1.4. </span>solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">5.1.3.1.4. </span>solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># do each column by hand ....</span>
@@ -1409,7 +1418,7 @@ cov(b,a) &amp; cov(b,b) \\
 </section>
 </section>
 <section id="pairwise-correlations">
-<h4><span class="section-number">20.1.3.2. </span>Pairwise Correlations<a class="headerlink" href="#pairwise-correlations" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">5.1.3.2. </span>Pairwise Correlations<a class="headerlink" href="#pairwise-correlations" title="Permalink to this heading">#</a></h4>
 <p>Of course a correlation analysis is not restricted to two variables. Thanks to statistical software packages, we are able to conduct a pairwise correlation analysis for more than two variables. Let us first prepare the data set. For a better visualization experience we may draw again 100  randomly picked time steps of the data set. Then we select a number of variables to perform correlation analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1526,7 +1535,7 @@ cov(b,a) &amp; cov(b,b) \\
 </div>
 </div>
 <section id="id2">
-<h5><span class="section-number">20.1.3.2.1. </span>solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">5.1.3.2.1. </span>solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
@@ -1703,39 +1712,37 @@ cov(b,a) &amp; cov(b,b) \\
 </section>
 </section>
 <section id="spearman-s-rank-correlation-coefficient">
-<h3><span class="section-number">20.1.4. </span>Spearman’s rank correlation coefficient<a class="headerlink" href="#spearman-s-rank-correlation-coefficient" title="Permalink to this heading">#</a></h3>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient"><strong>Spearman’s rank correlation coefficient</strong></a>, also known as the Spearman’s <span class="math notranslate nohighlight">\(\rho\)</span> is a non-parametric rank correlation coefficient. It was developed by <a class="reference external" href="https://en.wikipedia.org/wiki/Charles_Spearman">Charles Spearman</a> and is an alternative to Pearson’s product moment correlation coefficient. The Spearman <span class="math notranslate nohighlight">\(\rho\)</span> rank correlation coefficient is denoted by <span class="math notranslate nohighlight">\(r_s\)</span> for sample data and by <span class="math notranslate nohighlight">\(\rho_s\)</span> for population data (Mann 2012). The correlation coefficient assesses the monotonic relationship between two variables and ranges between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span>. It describes the linear correlation between the ranks of the data on variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. Spearman’s correlation is high when the variables have a similar rank, and low when variables have a dissimilar rank.</p>
-<p>To calculate <span class="math notranslate nohighlight">\(r_s\)</span>, the data for each variable, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, is ranked separately. The difference between each pair of ranks and denote it by <span class="math notranslate nohighlight">\(d\)</span>. For a given bivariate sequence <span class="math notranslate nohighlight">\((x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\)</span> Spearman’s <span class="math notranslate nohighlight">\(r_s\)</span>  is given by</p>
-<div class="math notranslate nohighlight">
-\[r_s=1-\frac{6\sum_{i=1}^n (r_{xi}-r_{yi})^2}{n(n^2-1)}\text{,}\]</div>
-<p>where <span class="math notranslate nohighlight">\(r_{xi}=Rank(x_i)\)</span> , <span class="math notranslate nohighlight">\(r_{yi}= Rank(y_i)\)</span> , and <span class="math notranslate nohighlight">\(n\)</span> is the sample size.</p>
+<h3><span class="section-number">5.1.4. </span>Spearman’s rank correlation coefficient<a class="headerlink" href="#spearman-s-rank-correlation-coefficient" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient"><strong>Spearman’s rank correlation coefficient</strong></a>, also known as the Spearman’s $\rho$ is a non-parametric rank correlation coefficient. It was developed by <a class="reference external" href="https://en.wikipedia.org/wiki/Charles_Spearman">Charles Spearman</a> and is an alternative to Pearson’s product moment correlation coefficient. The Spearman $\rho$ rank correlation coefficient is denoted by $r_s$ for sample data and by $\rho_s$ for population data (Mann 2012). The correlation coefficient assesses the monotonic relationship between two variables and ranges between $-1$ and $1$. It describes the linear correlation between the ranks of the data on variables $x$ and $y$. Spearman’s correlation is high when the variables have a similar rank, and low when variables have a dissimilar rank.</p>
+<p>To calculate $r_s$, the data for each variable, $x$ and $y$, is ranked separately. The difference between each pair of ranks and denote it by $d$. For a given bivariate sequence $(x_1, y_1), (x_2, y_2), …, (x_n, y_n)$ Spearman’s $r_s$  is given by</p>
+<p>$$r_s=1-\frac{6\sum_{i=1}^n (r_{xi}-r_{yi})^2}{n(n^2-1)}\text{,}$$
+where $r_{xi}=Rank(x_i)$ , $r_{yi}= Rank(y_i)$ , and $n$ is the sample size.</p>
 <p>In contrast to Pearson’s linear correlation coefficient Spearman’s linear coefficient is appropriate for both quantitative and ordinal variables. In addition rank based correlations are not dependent on the normal distributional assumption are more resistant to outliers (Schumann 2010).</p>
 <section id="spearman-s-rank-correlation-coefficient-an-example">
-<h4><span class="section-number">20.1.4.1. </span>Spearman’s rank correlation coefficient: An example<a class="headerlink" href="#spearman-s-rank-correlation-coefficient-an-example" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">5.1.4.1. </span>Spearman’s rank correlation coefficient: An example<a class="headerlink" href="#spearman-s-rank-correlation-coefficient-an-example" title="Permalink to this heading">#</a></h4>
 <p>Let us consider an example. The population of a community along a river believes that recent increases in peak discharge rates are due to deforestation by a logging company in recent years. We calculate Spearman’s rank correlation coefficient to assess if there is a correlation between peak discharge (Durchfluss) and the faction of deforestation (Abholzung) area in the watershed (data modified after <a class="reference external" href="https://www.crcpress.com/Modeling-Hydrologic-Change-Statistical-Methods/McCuen/p/book/9781566706001">McCuen 2003, p. 112</a>).</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<p>$$
 \begin{array}{lcc}
 \hline
-\ \text{Year} &amp; \text{Discharge (m}^3 \text{s}^{-1}) &amp; \text{Logging area (\%)} \\
-\hline 
-\ 1982 &amp; 227 &amp; 53  \\
-\ 1983 &amp; 249 &amp; 56  \\
-\ 1984 &amp; 210 &amp; 57 \\
-\ 1985 &amp; 190 &amp; 58  \\
-\ 1986 &amp; 314 &amp; 55  \\
-\ 1987 &amp; 345 &amp; 54 \\
-\ 1988 &amp; 161 &amp; 51  \\
-\ 1988 &amp; 266 &amp; 50  \\
-\ 1989 &amp; 402 &amp; 49 \\
-\ 1990 &amp; 215 &amp; 57  \\
-\ 1991 &amp; 164 &amp; 46  \\
-\ 1992 &amp; 405 &amp; 44 \\
-\ 1993 &amp; 328 &amp; 43 \\
-\ 1994 &amp; 294 &amp; 42 \\
-\hline \\
+\ \text{Year} &amp; \text{Discharge (m}^3 \text{s}^{-1}) &amp; \text{Logging area (%)} \
+\hline
+\ 1982 &amp; 227 &amp; 53  \
+\ 1983 &amp; 249 &amp; 56  \
+\ 1984 &amp; 210 &amp; 57 \
+\ 1985 &amp; 190 &amp; 58  \
+\ 1986 &amp; 314 &amp; 55  \
+\ 1987 &amp; 345 &amp; 54 \
+\ 1988 &amp; 161 &amp; 51  \
+\ 1988 &amp; 266 &amp; 50  \
+\ 1989 &amp; 402 &amp; 49 \
+\ 1990 &amp; 215 &amp; 57  \
+\ 1991 &amp; 164 &amp; 46  \
+\ 1992 &amp; 405 &amp; 44 \
+\ 1993 &amp; 328 &amp; 43 \
+\ 1994 &amp; 294 &amp; 42 \
+\hline \
 \end{array}
-\end{split}\]</div>
+$$</p>
 <p>Let us construct our data vectors. We assign the years to the variable <code class="docutils literal notranslate"><span class="pre">year</span></code>, the discharge values to the variable <code class="docutils literal notranslate"><span class="pre">Q</span></code> and the logging area to the variable <code class="docutils literal notranslate"><span class="pre">logged</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1761,12 +1768,11 @@ logged = [53 56 57 58 55 54 51 50 49 47 46 44 43 42]
 </div>
 <blockquote>
 <div><p><a class="reference external" href="https://www.geo.fu-berlin.de/en/v/soga-py/Basics-of-statistics/Descriptive-Statistics/Measures-of-Relation-Between-Variables/Correlation/index.html"><strong>Spearman’s rank correlation coefficient</strong></a></p>
-<p>Spearman’s  ρ  is a non-parametric rank correlation coefficient. It was developed by Charles Spearman and is an alternative to the Pearson product moment correlation coefficient. The Spearman’s rank correlation coefficient is denoted by <span class="math notranslate nohighlight">\(r_{s}\)</span> for sample data and by <span class="math notranslate nohighlight">\(ρ_{s}\)</span> for population data (Mann 2012). The correlation coefficient assesses the monotonic relationship between two variables and ranges between  <span class="math notranslate nohighlight">\(−1\)</span> and <span class="math notranslate nohighlight">\(1\)</span>. It describes the linear correlation between the ranks of the data of variables x and y. Spearman’s correlation is high when the variables have a similar rank and low when variables have a dissimilar rank. In contrast to Pearson’s linear correlation coefficient Spearman’s linear correlation coefficient is appropriate for both, quantitative and ordinal, variables. In addition, rank based correlations are not dependent on the assumption of a normal distribution and are more resistant to outliers (Schumann 2010).</p>
+<p>Spearman’s  ρ  is a non-parametric rank correlation coefficient. It was developed by Charles Spearman and is an alternative to the Pearson product moment correlation coefficient. The Spearman’s rank correlation coefficient is denoted by $r_{s}$ for sample data and by $ρ_{s}$ for population data (Mann 2012). The correlation coefficient assesses the monotonic relationship between two variables and ranges between  $−1$ and $1$. It describes the linear correlation between the ranks of the data of variables x and y. Spearman’s correlation is high when the variables have a similar rank and low when variables have a dissimilar rank. In contrast to Pearson’s linear correlation coefficient Spearman’s linear correlation coefficient is appropriate for both, quantitative and ordinal, variables. In addition, rank based correlations are not dependent on the assumption of a normal distribution and are more resistant to outliers (Schumann 2010).</p>
 </div></blockquote>
 <p>First we calculate <strong>Spearman’s rank correlation coefficient</strong> by hand. Recall the equation</p>
-<div class="math notranslate nohighlight">
-\[r_s=1-\frac{6\sum_{i=1}^n (r_{xi}-r_{yi})^2}{n(n^2-1)}\text{,}\]</div>
-<p>where <span class="math notranslate nohighlight">\(r_{xi}=Rank(x_i)\)</span> , <span class="math notranslate nohighlight">\(r_{yi}= Rank(y_i)\)</span> , and <span class="math notranslate nohighlight">\(n\)</span> is the sample size.</p>
+<p>$$r_s=1-\frac{6\sum_{i=1}^n (r_{xi}-r_{yi})^2}{n(n^2-1)}\text{,}$$</p>
+<p>where $r_{xi}=Rank(x_i)$ , $r_{yi}= Rank(y_i)$ , and $n$ is the sample size.</p>
 <p>Next, we create a <code class="docutils literal notranslate"><span class="pre">pandas</span> <span class="pre">DataFrame</span></code> with the above assigned values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1942,7 +1948,7 @@ logged = [53 56 57 58 55 54 51 50 49 47 46 44 43 42]
 </section>
 <hr class="docutils" />
 <section id="spearman-s-rank-correlation-coefficient-a-second-example">
-<h3><span class="section-number">20.1.5. </span>Spearman’s rank correlation coefficient: A second example<a class="headerlink" href="#spearman-s-rank-correlation-coefficient-a-second-example" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.5. </span>Spearman’s rank correlation coefficient: A second example<a class="headerlink" href="#spearman-s-rank-correlation-coefficient-a-second-example" title="Permalink to this heading">#</a></h3>
 <p>Analogously to the Pearson correlation, we can calculate the correlation matrix with respect to the Spearman correlation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2033,207 +2039,7 @@ logged = [53 56 57 58 55 54 51 50 49 47 46 44 43 42]
 <img alt="../../../_images/bd32d87695073d67378725313835d1aa97fd8931e73e5f01496a3272c17a83f6.png" src="../../../_images/bd32d87695073d67378725313835d1aa97fd8931e73e5f01496a3272c17a83f6.png" />
 </div>
 </div>
-<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>Q</p></th>
-<th class="head"><p>LF</p></th>
-<th class="head"><p>NO3</p></th>
-<th class="head"><p>SO4</p></th>
-<th class="head"><p>Ca</p></th>
-<th class="head"><p>Mg</p></th>
-<th class="head"><p>PO4 2-</p></th>
-<th class="head"><p>Fe3+</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Q</p></td>
-<td><p>1</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>LF</p></td>
-<td><p>-0,87</p></td>
-<td><p>1</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p>NO3</p></td>
-<td><p>0,61</p></td>
-<td><p>-0,84</p></td>
-<td><p>1</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>SO4</p></td>
-<td><p>-0,74</p></td>
-<td><p>0,88</p></td>
-<td><p><strong>-0,36</strong></p></td>
-<td><p>1</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p>Ca</p></td>
-<td><p>-0,56</p></td>
-<td><p>0,73</p></td>
-<td><p>-0,67</p></td>
-<td><p>0,69</p></td>
-<td><p>1</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>Mg</p></td>
-<td><p>-0,44</p></td>
-<td><p>0,7</p></td>
-<td><p>-0,62</p></td>
-<td><p>0,62</p></td>
-<td><p>0,38</p></td>
-<td><p>1</p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p>PO4 2-</p></td>
-<td><p>-0,7</p></td>
-<td><p>0,81</p></td>
-<td><p>0,86</p></td>
-<td><p><strong>0,31</strong></p></td>
-<td><p>0,76</p></td>
-<td><p>0,71</p></td>
-<td><p>1</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>Fe3+</p></td>
-<td><p>-0,65</p></td>
-<td><p>0,77</p></td>
-<td><p>-0,76</p></td>
-<td><p><strong>0,84</strong></p></td>
-<td><p>0,71</p></td>
-<td><p>0,7</p></td>
-<td><p>-0,81</p></td>
-<td><p>1</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<blockquote>
-<div><p>ehemaliger Braunkohleabbau (Fe3+, SO4 2-) oder die Landwirtschaft (PO43-, NO3, SO4 2-) ?
-Korrelation zwischen Fe3+ und SO4 am höchsten –&gt; also vermutlich verlaufen die Fließpfade durch ehem. Braunkohleabbaugebiete oder werden durch diese beeinfliusst.</p>
-</div></blockquote>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">elev_NN</span><span class="p">,</span> <span class="n">precip</span><span class="p">)</span>
-
-<span class="n">corr</span> <span class="o">=</span> <span class="n">spearmanr</span><span class="p">(</span><span class="n">elev_NN</span><span class="p">,</span> <span class="n">precip</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span>
-<span class="n">corr</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">elev_NN</span><span class="p">,</span> <span class="n">precip</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">31</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">elev_NN</span><span class="p">,</span> <span class="n">precip</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">corr</span> <span class="o">=</span> <span class="n">spearmanr</span><span class="p">(</span><span class="n">elev_NN</span><span class="p">,</span> <span class="n">precip</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">corr</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;elev_NN&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">elev_NN</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">precip</span>
-
-<span class="c1"># we have to reshape the regressors </span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-
-<span class="c1"># set up the linear model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-
-<span class="c1"># find the linear function that fits the min/max temperature best:</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="c1">## Now, we can easily plot using the 2 coefficients: m*x +n --&gt;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## predict from y to x--&gt; input is precip</span>
-
-<span class="c1">## transform the input with min max and log as well </span>
-<span class="n">sample</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">400</span><span class="p">])</span>
-
-
-
-<span class="c1"># max temp:</span>
-<span class="n">x_pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span> <span class="o">/</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span> 
-
-<span class="nb">print</span><span class="p">(</span><span class="n">x_pred</span><span class="p">)</span>
-
-<span class="c1">#inv_logit(logit_transf_variable = x_pred, xmin = elev_min, xmax = elev_max)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### predict from x to y</span>
-<span class="n">baumgrenze</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">baumgrenze</span> <span class="o">=</span> <span class="n">baumgrenze</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">baumgrenze</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### evaluate</span>
-
-<span class="n">r_sq</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;coefficient of determination:&#39;</span><span class="p">,</span> <span class="n">r_sq</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-
-<span class="n">IFrame</span><span class="p">(</span>
-    <span class="n">src</span><span class="o">=</span><span class="s2">&quot;../../citations/citation_Soga.html&quot;</span><span class="p">,</span>
-    <span class="n">width</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span>
-    <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html">
         <iframe
@@ -2248,6 +2054,8 @@ Korrelation zwischen Fe3+ und SO4 am höchsten –&gt; also vermutlich verlaufen
 </div>
 </section>
 </section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2286,7 +2094,7 @@ Korrelation zwischen Fe3+ und SO4 am höchsten –&gt; also vermutlich verlaufen
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">19. </span>Linear Regression</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Linear Regression</p>
       </div>
     </a>
     <a class="right-next"
@@ -2294,7 +2102,7 @@ Korrelation zwischen Fe3+ und SO4 am höchsten –&gt; also vermutlich verlaufen
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">21. </span>Additional Exercises V -  Regression &amp; Correlation</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>Additional Exercises V -  Regression &amp; Correlation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2314,31 +2122,31 @@ Korrelation zwischen Fe3+ und SO4 am höchsten –&gt; also vermutlich verlaufen
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-relation-between-variables">20.1. Measures of Relation Between Variables</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-covariance">20.1.1. The Covariance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">20.1.2. Correlation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation-coefficient">20.1.2.1. Pearson Correlation coefficient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-relation-between-variables">5.1. Measures of Relation Between Variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-covariance">5.1.1. The Covariance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">5.1.2. Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation-coefficient">5.1.2.1. Pearson Correlation coefficient</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation-coefficient-an-example">20.1.3. Pearson correlation coefficient: An example</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling">20.1.3.1. Feature scaling</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-scaling">20.1.3.1.1. Min-Max scaling</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-transformation">20.1.3.1.2. Logistic transformation</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#back-transformation">20.1.3.1.3. Back transformation</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">20.1.3.1.4. solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation-coefficient-an-example">5.1.3. Pearson correlation coefficient: An example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling">5.1.3.1. Feature scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-scaling">5.1.3.1.1. Min-Max scaling</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-transformation">5.1.3.1.2. Logistic transformation</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#back-transformation">5.1.3.1.3. Back transformation</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">5.1.3.1.4. solution</a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pairwise-correlations">20.1.3.2. Pairwise Correlations</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">20.1.3.2.1. solution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pairwise-correlations">5.1.3.2. Pairwise Correlations</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1.3.2.1. solution</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient">20.1.4. Spearman’s rank correlation coefficient</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient-an-example">20.1.4.1. Spearman’s rank correlation coefficient: An example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient">5.1.4. Spearman’s rank correlation coefficient</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient-an-example">5.1.4.1. Spearman’s rank correlation coefficient: An example</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient-a-second-example">20.1.5. Spearman’s rank correlation coefficient: A second example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient-a-second-example">5.1.5. Spearman’s rank correlation coefficient: A second example</a></li>
 </ul>
 </li>
 </ul>
@@ -2355,7 +2163,7 @@ Korrelation zwischen Fe3+ und SO4 am höchsten –&gt; also vermutlich verlaufen
   <div class="footer-item">
     
 <p class="component-author">
-By Marie-Christin Eckert
+By Annette Rudolph, Marie-Christin Eckert
 </p>
 
   </div>

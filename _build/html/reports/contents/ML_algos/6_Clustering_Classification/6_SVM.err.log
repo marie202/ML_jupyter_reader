@@ -1,0 +1,80 @@
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+
+from sklearn import preprocessing
+
+df_norm = preprocessing.normalize(cluster_df[0])
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+Cell [0;32mIn[6], line 3[0m
+[1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m [38;5;28;01mimport[39;00m preprocessing
+[0;32m----> 3[0m df_norm [38;5;241m=[39m [43mpreprocessing[49m[38;5;241;43m.[39;49m[43mnormalize[49m[43m([49m[43mcluster_df[49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m[43m)[49m
+
+File [0;32m/opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/sklearn/utils/_param_validation.py:213[0m, in [0;36mvalidate_params.<locals>.decorator.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    207[0m [38;5;28;01mtry[39;00m:
+[1;32m    208[0m     [38;5;28;01mwith[39;00m config_context(
+[1;32m    209[0m         skip_parameter_validation[38;5;241m=[39m(
+[1;32m    210[0m             prefer_skip_nested_validation [38;5;129;01mor[39;00m global_skip_validation
+[1;32m    211[0m         )
+[1;32m    212[0m     ):
+[0;32m--> 213[0m         [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    214[0m [38;5;28;01mexcept[39;00m InvalidParameterError [38;5;28;01mas[39;00m e:
+[1;32m    215[0m     [38;5;66;03m# When the function is just a wrapper around an estimator, we allow[39;00m
+[1;32m    216[0m     [38;5;66;03m# the function to delegate validation to the estimator, but we replace[39;00m
+[1;32m    217[0m     [38;5;66;03m# the name of the estimator by the name of the function in the error[39;00m
+[1;32m    218[0m     [38;5;66;03m# message to avoid confusion.[39;00m
+[1;32m    219[0m     msg [38;5;241m=[39m re[38;5;241m.[39msub(
+[1;32m    220[0m         [38;5;124mr[39m[38;5;124m"[39m[38;5;124mparameter of [39m[38;5;124m\[39m[38;5;124mw+ must be[39m[38;5;124m"[39m,
+[1;32m    221[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mparameter of [39m[38;5;132;01m{[39;00mfunc[38;5;241m.[39m[38;5;18m__qualname__[39m[38;5;132;01m}[39;00m[38;5;124m must be[39m[38;5;124m"[39m,
+[1;32m    222[0m         [38;5;28mstr[39m(e),
+[1;32m    223[0m     )
+
+File [0;32m/opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/sklearn/preprocessing/_data.py:1933[0m, in [0;36mnormalize[0;34m(X, norm, axis, copy, return_norm)[0m
+[1;32m   1929[0m     sparse_format [38;5;241m=[39m [38;5;124m"[39m[38;5;124mcsr[39m[38;5;124m"[39m
+[1;32m   1931[0m xp, _ [38;5;241m=[39m get_namespace(X)
+[0;32m-> 1933[0m X [38;5;241m=[39m [43mcheck_array[49m[43m([49m
+[1;32m   1934[0m [43m    [49m[43mX[49m[43m,[49m
+[1;32m   1935[0m [43m    [49m[43maccept_sparse[49m[38;5;241;43m=[39;49m[43msparse_format[49m[43m,[49m
+[1;32m   1936[0m [43m    [49m[43mcopy[49m[38;5;241;43m=[39;49m[43mcopy[49m[43m,[49m
+[1;32m   1937[0m [43m    [49m[43mestimator[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mthe normalize function[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m   1938[0m [43m    [49m[43mdtype[49m[38;5;241;43m=[39;49m[43m_array_api[49m[38;5;241;43m.[39;49m[43msupported_float_dtypes[49m[43m([49m[43mxp[49m[43m)[49m[43m,[49m
+[1;32m   1939[0m [43m    [49m[43mforce_writeable[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m
+[1;32m   1940[0m [43m[49m[43m)[49m
+[1;32m   1941[0m [38;5;28;01mif[39;00m axis [38;5;241m==[39m [38;5;241m0[39m:
+[1;32m   1942[0m     X [38;5;241m=[39m X[38;5;241m.[39mT
+
+File [0;32m/opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/sklearn/utils/validation.py:1050[0m, in [0;36mcheck_array[0;34m(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)[0m
+[1;32m   1043[0m         [38;5;28;01melse[39;00m:
+[1;32m   1044[0m             msg [38;5;241m=[39m (
+[1;32m   1045[0m                 [38;5;124mf[39m[38;5;124m"[39m[38;5;124mExpected 2D array, got 1D array instead:[39m[38;5;130;01m\n[39;00m[38;5;124marray=[39m[38;5;132;01m{[39;00marray[38;5;132;01m}[39;00m[38;5;124m.[39m[38;5;130;01m\n[39;00m[38;5;124m"[39m
+[1;32m   1046[0m                 [38;5;124m"[39m[38;5;124mReshape your data either using array.reshape(-1, 1) if [39m[38;5;124m"[39m
+[1;32m   1047[0m                 [38;5;124m"[39m[38;5;124myour data has a single feature or array.reshape(1, -1) [39m[38;5;124m"[39m
+[1;32m   1048[0m                 [38;5;124m"[39m[38;5;124mif it contains a single sample.[39m[38;5;124m"[39m
+[1;32m   1049[0m             )
+[0;32m-> 1050[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
+[1;32m   1052[0m [38;5;28;01mif[39;00m dtype_numeric [38;5;129;01mand[39;00m [38;5;28mhasattr[39m(array[38;5;241m.[39mdtype, [38;5;124m"[39m[38;5;124mkind[39m[38;5;124m"[39m) [38;5;129;01mand[39;00m array[38;5;241m.[39mdtype[38;5;241m.[39mkind [38;5;129;01min[39;00m [38;5;124m"[39m[38;5;124mUSV[39m[38;5;124m"[39m:
+[1;32m   1053[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[1;32m   1054[0m         [38;5;124m"[39m[38;5;124mdtype=[39m[38;5;124m'[39m[38;5;124mnumeric[39m[38;5;124m'[39m[38;5;124m is not compatible with arrays of bytes/strings.[39m[38;5;124m"[39m
+[1;32m   1055[0m         [38;5;124m"[39m[38;5;124mConvert your data to numeric values explicitly instead.[39m[38;5;124m"[39m
+[1;32m   1056[0m     )
+
+[0;31mValueError[0m: Expected a 2-dimensional container but got <class 'pandas.core.series.Series'> instead. Pass a DataFrame containing a single row (i.e. single sample) or a single column (i.e. single feature) instead.
+

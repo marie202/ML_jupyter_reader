@@ -1,8 +1,8 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Machine Learning course online reader
-author: Marie-Christin Eckert
+title: Machine Learning Online Reader
+author: Annette Rudolph, Marie-Christin Eckert
 logo: logo.png
 
 # Force re-execution of notebooks on each build.
@@ -30,3 +30,10 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default! See here: https://jupyterbook.org/en/stable/customize/config.html
+    - html_image
