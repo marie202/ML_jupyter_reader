@@ -57,11 +57,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/Neural_networks/7_MLP_WF';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="References" href="../../references.html" />
-    <link rel="prev" title="8.1. Clustering Algorithms - $k$-Means" href="../ML_algorithms/6_Unsupervised/6_1_k-Means.html" />
+    <link rel="prev" title="8.1. Clustering Algorithms - \(k\)-Means" href="../ML_algorithms/6_Unsupervised/6_1_k-Means.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -232,7 +234,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
@@ -1258,7 +1260,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x12b732b50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x132eee850&gt;
 </pre></div>
 </div>
 <img alt="../../_images/d70472cea3c52c18f945578731ec426c01a30e7849b6ccd30145fd7d3087593b.png" src="../../_images/d70472cea3c52c18f945578731ec426c01a30e7849b6ccd30145fd7d3087593b.png" />
@@ -2200,9 +2202,11 @@ dtype: int64
 <section id="min-max-scaling">
 <h3><span class="section-number">9.9.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Link to this heading">#</a></h3>
 <p>The min-max scaling</p>
-<p>$$x’=\frac{x-x_{min}}{x_{max}-x_{min}}$$</p>
-<p>transforms the data into the range $[0,1]$. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values $x_{min}-1$ and $x_{max}+1$. Thus</p>
-<p>$$x’=\frac{x-x_{min}+1}{x_{max}-x_{min}+2, .}$$</p>
+<div class="math notranslate nohighlight">
+\[x'=\frac{x-x_{min}}{x_{max}-x_{min}}\]</div>
+<p>transforms the data into the range <span class="math notranslate nohighlight">\([0,1]\)</span>. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values <span class="math notranslate nohighlight">\(x_{min}-1\)</span> and <span class="math notranslate nohighlight">\(x_{max}+1\)</span>. Thus</p>
+<div class="math notranslate nohighlight">
+\[x'=\frac{x-x_{min}+1}{x_{max}-x_{min}+2\, .}\]</div>
 <p><strong>Note that we transform the test set with the min max values from the train set.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2223,7 +2227,7 @@ dtype: int64
 <section id="logistic-transformation">
 <h3><span class="section-number">9.9.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Link to this heading">#</a></h3>
 <p>As a second step, we use a logistic transformation
-$$x’’=\log\frac{x’}{1-x’}$$</p>
+$<span class="math notranslate nohighlight">\(x''=\log\frac{x'}{1-x'}\)</span>$</p>
 <p>However, before we can start the transformation, we face a problem! Because we have transformed the test set with the values of the training set, the test set may contain values outside the range [0,1]. This will not work with the logarithm in the transformation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2807,9 +2811,9 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </section>
 <section id="model-validation">
 <h3><span class="section-number">9.12.2. </span>Model validation<a class="headerlink" href="#model-validation" title="Link to this heading">#</a></h3>
-<p>Let us start with a naive approach to get an idea of the performance of the model. We will use our test data and predict temperatures $\hat{y}<em>i$ for each of the datasets in <code class="docutils literal notranslate"><span class="pre">X_test</span></code>. Then we compare the model output with our known temperatures $y_i$ in <code class="docutils literal notranslate"><span class="pre">y_test</span></code>. To calculate the  mean squared error
-$$MSE={\sum</em>{i=1}^N\left(y_i-\hat{y}<em>i\right)^2}, ,$$ respectively the root mean squared error
-$$RMSE=\sqrt{\sum</em>{i=1}^N\left(y_i-\hat{y}_i\right)^2}$$
+<p>Let us start with a naive approach to get an idea of the performance of the model. We will use our test data and predict temperatures <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> for each of the datasets in <code class="docutils literal notranslate"><span class="pre">X_test</span></code>. Then we compare the model output with our known temperatures <span class="math notranslate nohighlight">\(y_i\)</span> in <code class="docutils literal notranslate"><span class="pre">y_test</span></code>. To calculate the  mean squared error
+$<span class="math notranslate nohighlight">\(MSE={\sum_{i=1}^N\left(y_i-\hat{y}_i\right)^2}\, ,\)</span><span class="math notranslate nohighlight">\( respectively the root mean squared error
+\)</span><span class="math notranslate nohighlight">\(RMSE=\sqrt{\sum_{i=1}^N\left(y_i-\hat{y}_i\right)^2}\)</span>$
 gives us an estimate of the quality of the prediction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2830,7 +2834,7 @@ gives us an estimate of the quality of the prediction.</p>
 </div>
 </div>
 <p>So what does this figure tell us? The RMSE is the root of the mean of the squared deviations between the prediction and the “truth”. So a value of 0.055, or 0.055K in units, is a very good value. So we could conclude that our model is very good.</p>
-<p>However, we might be lucky in our choice of training and test data. To reduce the influence of this split, we perform a so-called k-fold cross validation. This means that we take the training data and split it into 10 equal pieces, i.e. $k=10$ here. We then train the model on nine of the 10 pieces and use the 10th piece to validate the model as above. This process is repeated 10 times, each time using a different piece for validation. In the end we get 10 RMSE values which give us some insight into the validity of the above value.</p>
+<p>However, we might be lucky in our choice of training and test data. To reduce the influence of this split, we perform a so-called k-fold cross validation. This means that we take the training data and split it into 10 equal pieces, i.e. <span class="math notranslate nohighlight">\(k=10\)</span> here. We then train the model on nine of the 10 pieces and use the 10th piece to validate the model as above. This process is repeated 10 times, each time using a different piece for validation. In the end we get 10 RMSE values which give us some insight into the validity of the above value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
@@ -2977,7 +2981,7 @@ gives us an estimate of the quality of the prediction.</p>
 <img alt="../../_images/84a84f75c2cf6692069177cae8c53f12d26ef56c95505089479baa172e81674f.png" src="../../_images/84a84f75c2cf6692069177cae8c53f12d26ef56c95505089479baa172e81674f.png" />
 </div>
 </div>
-<p>The plot shows that over a wide range of alpha values the result for the model is almost the same. However, for larger values, the RMSE starts to “jump around”. Since we are not sure whether the lower value for $alpha=0.1$ is just lower by chance or really a better value, we stick with our predefined value of 0.0001.</p>
+<p>The plot shows that over a wide range of alpha values the result for the model is almost the same. However, for larger values, the RMSE starts to “jump around”. Since we are not sure whether the lower value for <span class="math notranslate nohighlight">\(alpha=0.1\)</span> is just lower by chance or really a better value, we stick with our predefined value of 0.0001.</p>
 </section>
 <section id="the-network-layout">
 <h3><span class="section-number">9.13.2. </span>The network layout<a class="headerlink" href="#the-network-layout" title="Link to this heading">#</a></h3>
@@ -4126,7 +4130,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8.1. </span>Clustering Algorithms - $k$-Means</p>
+        <p class="prev-next-title"><span class="section-number">8.1. </span>Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</p>
       </div>
     </a>
     <a class="right-next"

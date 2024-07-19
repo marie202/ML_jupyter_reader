@@ -57,6 +57,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/4_intro_regression/4_2_Intro_Correlation';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -232,7 +234,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
@@ -476,16 +478,17 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="correlation-and-regression">
+  <section class="tex2jax_ignore mathjax_ignore" id="correlation-and-regression">
 <h1><span class="section-number">5. </span>Correlation and Regression<a class="headerlink" href="#correlation-and-regression" title="Link to this heading">#</a></h1>
 <section id="measures-of-relation-between-variables">
 <h2><span class="section-number">5.1. </span>Measures of Relation Between Variables<a class="headerlink" href="#measures-of-relation-between-variables" title="Link to this heading">#</a></h2>
 <p>In the last week we mainly focused on a single variable, describing a distribution and calculating summary statistics. Statistics that describe a single variable are referred to as univariate statistics. If we examine the relationship of two variables, we refer to bivariate statistics. If the relationships among several variables are simultaneously examined, we refer to multivariate statistics. Measures of relation provide a means of summarizing the size of the relation between two variables</p>
 <section id="the-covariance">
 <h3><span class="section-number">5.1.1. </span>The Covariance<a class="headerlink" href="#the-covariance" title="Link to this heading">#</a></h3>
-<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance"><strong>covariance</strong></a> is a measure of the joint variability of two variables. The covariance can take any value in the interval $(- \infty, \infty)$. The covariance is positive, if the greater/smaller values of one variable mainly correspond with the greater/smaller values of the other variable. The covariance is negative if the variables tend to show opposite behavior. If greater values of one variable mainly correspond to the lesser values of the other.</p>
-<p>The covariance, $s_{xy}$, is calculated by the equation</p>
-<p>$$s_{xy}=\frac{\sum_{i=1}^n(x_i-\bar x)(y_i-\bar y)}{n-1}$$</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance"><strong>covariance</strong></a> is a measure of the joint variability of two variables. The covariance can take any value in the interval <span class="math notranslate nohighlight">\((- \infty, \infty)\)</span>. The covariance is positive, if the greater/smaller values of one variable mainly correspond with the greater/smaller values of the other variable. The covariance is negative if the variables tend to show opposite behavior. If greater values of one variable mainly correspond to the lesser values of the other.</p>
+<p>The covariance, <span class="math notranslate nohighlight">\(s_{xy}\)</span>, is calculated by the equation</p>
+<div class="math notranslate nohighlight">
+\[s_{xy}=\frac{\sum_{i=1}^n(x_i-\bar x)(y_i-\bar y)}{n-1}\]</div>
 <p>The normalized version of the covariance, is called correlation coefficient, which magnitude indicates the strength of a linear relation between two variables.</p>
 <p>The <strong>normalized version of the covariance</strong>, is called  <strong>correlation coefficient</strong>, which magnitude indicates the strength of a linear relation between two variables.</p>
 </section>
@@ -494,27 +497,30 @@ document.write(`
 <h3><span class="section-number">5.1.2. </span>Correlation<a class="headerlink" href="#correlation" title="Link to this heading">#</a></h3>
 <section id="pearson-correlation-coefficient">
 <h4><span class="section-number">5.1.2.1. </span>Pearson Correlation coefficient<a class="headerlink" href="#pearson-correlation-coefficient" title="Link to this heading">#</a></h4>
-<p>Correlation is a commonly used method to examine the relationship between <strong>quantitative variables</strong>. The most commonly used statistic is the <strong>linear correlation coefficient</strong>, $r$, which is also known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient"><strong>Pearson product moment correlation coefficient</strong></a> in honor of its developer, <a class="reference external" href="https://en.wikipedia.org/wiki/Karl_Pearson">Karl Pearson</a>. Is it given by</p>
-<p>$$r = \frac{\sum_{i=1}^n(x_i- \bar x)(y_i - \bar y)}{\sqrt{\sum_{i=1}^n(x_i- \bar x)^2}\sqrt{\sum_{i=1}^n(y_i- \bar y)^2}}=\frac{s_{xy}}{s_x s_y}\text{,}$$</p>
-<p>where $s_{xy}$ is the covariance of $x$ and $y$ and $s_x$ and $s_y$ the standard deviation of $x$ and $y$, respectively. By dividing by the sample standard deviations, $s_x$ and $s_y$, the linear correlation coefficient, $r$, becomes scale independent and takes values between $-1$ and $1$.</p>
-<p>The linear correlation coefficient measures the strength of the linear relationship between two variables. If $r$ is close to $\pm 1$, the two variables are highly correlated and if plotted on a scatter plot, the data points cluster about a line. If $r$ is far from $\pm 1$, the data points are more widely scattered. If $r$ is near $0$, the data points are essentially scattered about a horizontal line indicating that there is almost no linear relationship between the variables.</p>
+<p>Correlation is a commonly used method to examine the relationship between <strong>quantitative variables</strong>. The most commonly used statistic is the <strong>linear correlation coefficient</strong>, <span class="math notranslate nohighlight">\(r\)</span>, which is also known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient"><strong>Pearson product moment correlation coefficient</strong></a> in honor of its developer, <a class="reference external" href="https://en.wikipedia.org/wiki/Karl_Pearson">Karl Pearson</a>. Is it given by</p>
+<div class="math notranslate nohighlight">
+\[r = \frac{\sum_{i=1}^n(x_i- \bar x)(y_i - \bar y)}{\sqrt{\sum_{i=1}^n(x_i- \bar x)^2}\sqrt{\sum_{i=1}^n(y_i- \bar y)^2}}=\frac{s_{xy}}{s_x s_y}\text{,}\]</div>
+<p>where <span class="math notranslate nohighlight">\(s_{xy}\)</span> is the covariance of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(s_x\)</span> and <span class="math notranslate nohighlight">\(s_y\)</span> the standard deviation of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, respectively. By dividing by the sample standard deviations, <span class="math notranslate nohighlight">\(s_x\)</span> and <span class="math notranslate nohighlight">\(s_y\)</span>, the linear correlation coefficient, <span class="math notranslate nohighlight">\(r\)</span>, becomes scale independent and takes values between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>The linear correlation coefficient measures the strength of the linear relationship between two variables. If <span class="math notranslate nohighlight">\(r\)</span> is close to <span class="math notranslate nohighlight">\(\pm 1\)</span>, the two variables are highly correlated and if plotted on a scatter plot, the data points cluster about a line. If <span class="math notranslate nohighlight">\(r\)</span> is far from <span class="math notranslate nohighlight">\(\pm 1\)</span>, the data points are more widely scattered. If <span class="math notranslate nohighlight">\(r\)</span> is near <span class="math notranslate nohighlight">\(0\)</span>, the data points are essentially scattered about a horizontal line indicating that there is almost no linear relationship between the variables.</p>
 <div>
 <img src="4_regression_figures/Korrelationen.png" width="800"/>
-</div><p>An interesting property of $r$ is, that its sign reflects the slope of the linear relationship between two variables. A positive value of $r$ suggests that the variables are <strong>positively linearly correlated</strong>, indicating that $y$ tends to increase linearly as $x$ increases. A negative value of $r$ suggests that the variables are <strong>negatively linearly correlated</strong>, indicating that $y$ tends to decrease linearly as $x$ increases.</p>
+</div><p>An interesting property of <span class="math notranslate nohighlight">\(r\)</span> is, that its sign reflects the slope of the linear relationship between two variables. A positive value of <span class="math notranslate nohighlight">\(r\)</span> suggests that the variables are <strong>positively linearly correlated</strong>, indicating that <span class="math notranslate nohighlight">\(y\)</span> tends to increase linearly as <span class="math notranslate nohighlight">\(x\)</span> increases. A negative value of <span class="math notranslate nohighlight">\(r\)</span> suggests that the variables are <strong>negatively linearly correlated</strong>, indicating that <span class="math notranslate nohighlight">\(y\)</span> tends to decrease linearly as <span class="math notranslate nohighlight">\(x\)</span> increases.</p>
 <p>There is no unambiguous classification rule for the quantity of a linear relationship between two variables. However, the following table may serve a as rule of thumb how to address the numerical values of Pearson product moment correlation coefficient.</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{array}{lc}
 \hline
-\ \text{Strong linear relationship} &amp; r &gt; 0.9 \
-\ \text{Medium linear relationship} &amp; 0.7 &lt; r \le 0.9\
-\ \text{Weak linear relationship} &amp; 0.5 &lt; r \le 0.7 \
-\ \text{No or doubtful linear relationship} &amp; 0 &lt; r \le 0.5 \
-\hline
+\ \text{Strong linear relationship} &amp; r &gt; 0.9 \\
+\ \text{Medium linear relationship} &amp; 0.7 &lt; r \le 0.9\\
+\ \text{Weak linear relationship} &amp; 0.5 &lt; r \le 0.7 \\
+\ \text{No or doubtful linear relationship} &amp; 0 &lt; r \le 0.5 \\
+\hline 
 \end{array}
-$$</p>
+\end{split}\]</div>
 <p>Pearson’s correlation assumes the variables to be roughly normally distributed and it is not robust in the presence of outliers.</p>
-<p>In the section on LINEAR REGRESSION we discussed the coefficient of determination, $R^2$, a descriptive measure for the quality of linear models. There is a close relation between $R^2$ and the linear correlation coefficient, $r$. The coefficient of determination, $R^2$, equals the square of the linear correlation coefficient, $r$.</p>
-<p>$$\text{coefficient of determination }(R^2) =r^2 $$</p>
+<p>In the section on LINEAR REGRESSION we discussed the coefficient of determination, <span class="math notranslate nohighlight">\(R^2\)</span>, a descriptive measure for the quality of linear models. There is a close relation between <span class="math notranslate nohighlight">\(R^2\)</span> and the linear correlation coefficient, <span class="math notranslate nohighlight">\(r\)</span>. The coefficient of determination, <span class="math notranslate nohighlight">\(R^2\)</span>, equals the square of the linear correlation coefficient, <span class="math notranslate nohighlight">\(r\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\text{coefficient of determination }(R^2) =r^2 \]</div>
 </section>
 </section>
 <hr class="docutils" />
@@ -1159,27 +1165,31 @@ We comment the code, because our data is normally distributed. But you need it l
 <section id="min-max-scaling">
 <h5><span class="section-number">5.1.3.1.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Link to this heading">#</a></h5>
 <p>The min-max scaling</p>
-<p>$$x’=\frac{x-x_{min}}{x_{max}-x_{min}}$$</p>
-<p>transforms the data into the range $[0,1]$. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values $x_{min}-1$ and $x_{max}+1$. Thus</p>
-<p>$$x’=\frac{x-x_{min}+1}{x_{max}-x_{min}+2, .}$$</p>
+<div class="math notranslate nohighlight">
+\[x'=\frac{x-x_{min}}{x_{max}-x_{min}}\]</div>
+<p>transforms the data into the range <span class="math notranslate nohighlight">\([0,1]\)</span>. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values <span class="math notranslate nohighlight">\(x_{min}-1\)</span> and <span class="math notranslate nohighlight">\(x_{max}+1\)</span>. Thus</p>
+<div class="math notranslate nohighlight">
+\[x'=\frac{x-x_{min}+1}{x_{max}-x_{min}+2\, .}\]</div>
 </section>
 <section id="logistic-transformation">
 <h5><span class="section-number">5.1.3.1.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Link to this heading">#</a></h5>
 <p>As a second step, we use a logistic transformation
-$$x’’=\log\frac{x’}{1-x’}$$</p>
+$<span class="math notranslate nohighlight">\(x''=\log\frac{x'}{1-x'}\)</span>$</p>
 <p>However, before we can start the transformation, we face a problem! Because we have transformed the test set with the values of the training set, the test set may contain values outside the range [0,1]. This will not work with the logarithm in the transformation.</p>
 </section>
 <section id="back-transformation">
 <h5><span class="section-number">5.1.3.1.3. </span>Back transformation<a class="headerlink" href="#back-transformation" title="Link to this heading">#</a></h5>
 <p>The back transformation is the “logistic” function resp. inverse logit:</p>
-<p>\begin{align}
-x’’\to x’=\frac{e^{x’’}}{1+e^{x’’}}&amp;&amp; and &amp;&amp;
-x’\to x=(x’+l)\cdot(u-l)
-\end{align}</p>
-<p>\begin{align}
-&amp;&amp; resp. &amp;&amp;
-x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-071cb653-fd8f-4b99-8729-f25c1817f464">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-071cb653-fd8f-4b99-8729-f25c1817f464" title="Permalink to this equation">#</a></span>\[\begin{align}
+x''\to x'=\frac{e^{x''}}{1+e^{x''}}&amp;&amp; and &amp;&amp;
+x'\to x=(x'+l)\cdot(u-l)
+\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-d1102587-b07d-4358-bfba-6101d3e87a6e">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-d1102587-b07d-4358-bfba-6101d3e87a6e" title="Permalink to this equation">#</a></span>\[\begin{align}
+&amp;&amp; resp. &amp;&amp; 
+x'\to x= ({x'+x_{min}+1})\cdot(x_{max}-x_{min}+2)
+\end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">min_max</span><span class="p">(</span><span class="n">variable</span><span class="p">):</span>
@@ -1263,7 +1273,8 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 <p>The scatter plot indicates that there exists an linear relationship between the two variables under consideration.</p>
 <p>For the sake of this exercise we calculate the linear correlation coefficient by hand at first, and then we apply the <code class="docutils literal notranslate"><span class="pre">pearsonr()</span></code> function in Python.</p>
 <p>Recall the equation from above</p>
-<p>$$r = \frac{\sum_{i=1}^n(x_i- \bar x)(y_i - \bar y)}{\sqrt{\sum_{i=1}^n(x_i- \bar x)^2}\sqrt{\sum_{i=1}^n(y_i- \bar y)^2}}=\frac{s_{xy}}{s_x s_y}$$</p>
+<div class="math notranslate nohighlight">
+\[r = \frac{\sum_{i=1}^n(x_i- \bar x)(y_i - \bar y)}{\sqrt{\sum_{i=1}^n(x_i- \bar x)^2}\sqrt{\sum_{i=1}^n(y_i- \bar y)^2}}=\frac{s_{xy}}{s_x s_y}\]</div>
 <p>r is called <strong>Pearsons correlation coefficient</strong>. To calculate the mean and the square roots, we import the <code class="docutils literal notranslate"><span class="pre">numpy</span> <span class="pre">module</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1290,14 +1301,16 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </div>
 </div>
-<p>As a sanity check we calculate the ration of the covariance of $x$ and $y$ and the standard deviation of $x$ and $y$:</p>
-<p>$$r =\frac{s_{xy}}{s_x s_y}$$</p>
+<p>As a sanity check we calculate the ration of the covariance of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> and the standard deviation of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[r =\frac{s_{xy}}{s_x s_y}\]</div>
 <p>We use the numpy module to calculate the standard deviations <code class="docutils literal notranslate"><span class="pre">np.std()</span></code> and the covariance <code class="docutils literal notranslate"><span class="pre">np.cov(x,y)</span></code>.</p>
 <p>But! Using numpy, <code class="docutils literal notranslate"><span class="pre">np.cov(a,b)</span></code> gives us the covariance matrix</p>
-<p>$$\begin{pmatrix}
-cov(a,a) &amp;  cov(a,b) \
-cov(b,a) &amp; cov(b,b) \
-\end{pmatrix}$$</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+cov(a,a) &amp;  cov(a,b) \\
+cov(b,a) &amp; cov(b,b) \\
+\end{pmatrix}\end{split}\]</div>
 <p>Therefore, use <code class="docutils literal notranslate"><span class="pre">numpy.cov(a,b)[0][1]</span></code> for the matrix element cov(a,b)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1723,36 +1736,38 @@ cov(b,a) &amp; cov(b,b) \
 </section>
 <section id="spearman-s-rank-correlation-coefficient">
 <h3><span class="section-number">5.1.4. </span>Spearman’s rank correlation coefficient<a class="headerlink" href="#spearman-s-rank-correlation-coefficient" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient"><strong>Spearman’s rank correlation coefficient</strong></a>, also known as the Spearman’s $\rho$ is a non-parametric rank correlation coefficient. It was developed by <a class="reference external" href="https://en.wikipedia.org/wiki/Charles_Spearman">Charles Spearman</a> and is an alternative to Pearson’s product moment correlation coefficient. The Spearman $\rho$ rank correlation coefficient is denoted by $r_s$ for sample data and by $\rho_s$ for population data (Mann 2012). The correlation coefficient assesses the monotonic relationship between two variables and ranges between $-1$ and $1$. It describes the linear correlation between the ranks of the data on variables $x$ and $y$. Spearman’s correlation is high when the variables have a similar rank, and low when variables have a dissimilar rank.</p>
-<p>To calculate $r_s$, the data for each variable, $x$ and $y$, is ranked separately. The difference between each pair of ranks and denote it by $d$. For a given bivariate sequence $(x_1, y_1), (x_2, y_2), …, (x_n, y_n)$ Spearman’s $r_s$  is given by</p>
-<p>$$r_s=1-\frac{6\sum_{i=1}^n (r_{xi}-r_{yi})^2}{n(n^2-1)}\text{,}$$
-where $r_{xi}=Rank(x_i)$ , $r_{yi}= Rank(y_i)$ , and $n$ is the sample size.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient"><strong>Spearman’s rank correlation coefficient</strong></a>, also known as the Spearman’s <span class="math notranslate nohighlight">\(\rho\)</span> is a non-parametric rank correlation coefficient. It was developed by <a class="reference external" href="https://en.wikipedia.org/wiki/Charles_Spearman">Charles Spearman</a> and is an alternative to Pearson’s product moment correlation coefficient. The Spearman <span class="math notranslate nohighlight">\(\rho\)</span> rank correlation coefficient is denoted by <span class="math notranslate nohighlight">\(r_s\)</span> for sample data and by <span class="math notranslate nohighlight">\(\rho_s\)</span> for population data (Mann 2012). The correlation coefficient assesses the monotonic relationship between two variables and ranges between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span>. It describes the linear correlation between the ranks of the data on variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. Spearman’s correlation is high when the variables have a similar rank, and low when variables have a dissimilar rank.</p>
+<p>To calculate <span class="math notranslate nohighlight">\(r_s\)</span>, the data for each variable, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, is ranked separately. The difference between each pair of ranks and denote it by <span class="math notranslate nohighlight">\(d\)</span>. For a given bivariate sequence <span class="math notranslate nohighlight">\((x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\)</span> Spearman’s <span class="math notranslate nohighlight">\(r_s\)</span>  is given by</p>
+<div class="math notranslate nohighlight">
+\[r_s=1-\frac{6\sum_{i=1}^n (r_{xi}-r_{yi})^2}{n(n^2-1)}\text{,}\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_{xi}=Rank(x_i)\)</span> , <span class="math notranslate nohighlight">\(r_{yi}= Rank(y_i)\)</span> , and <span class="math notranslate nohighlight">\(n\)</span> is the sample size.</p>
 <p>In contrast to Pearson’s linear correlation coefficient Spearman’s linear coefficient is appropriate for both quantitative and ordinal variables. In addition rank based correlations are not dependent on the normal distributional assumption are more resistant to outliers (Schumann 2010).</p>
 <section id="spearman-s-rank-correlation-coefficient-an-example">
 <h4><span class="section-number">5.1.4.1. </span>Spearman’s rank correlation coefficient: An example<a class="headerlink" href="#spearman-s-rank-correlation-coefficient-an-example" title="Link to this heading">#</a></h4>
 <p>Let us consider an example. The population of a community along a river believes that recent increases in peak discharge rates are due to deforestation by a logging company in recent years. We calculate Spearman’s rank correlation coefficient to assess if there is a correlation between peak discharge (Durchfluss) and the faction of deforestation (Abholzung) area in the watershed (data modified after <a class="reference external" href="https://www.crcpress.com/Modeling-Hydrologic-Change-Statistical-Methods/McCuen/p/book/9781566706001">McCuen 2003, p. 112</a>).</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{array}{lcc}
 \hline
-\ \text{Year} &amp; \text{Discharge (m}^3 \text{s}^{-1}) &amp; \text{Logging area (%)} \
-\hline
-\ 1982 &amp; 227 &amp; 53  \
-\ 1983 &amp; 249 &amp; 56  \
-\ 1984 &amp; 210 &amp; 57 \
-\ 1985 &amp; 190 &amp; 58  \
-\ 1986 &amp; 314 &amp; 55  \
-\ 1987 &amp; 345 &amp; 54 \
-\ 1988 &amp; 161 &amp; 51  \
-\ 1988 &amp; 266 &amp; 50  \
-\ 1989 &amp; 402 &amp; 49 \
-\ 1990 &amp; 215 &amp; 57  \
-\ 1991 &amp; 164 &amp; 46  \
-\ 1992 &amp; 405 &amp; 44 \
-\ 1993 &amp; 328 &amp; 43 \
-\ 1994 &amp; 294 &amp; 42 \
-\hline \
+\ \text{Year} &amp; \text{Discharge (m}^3 \text{s}^{-1}) &amp; \text{Logging area (\%)} \\
+\hline 
+\ 1982 &amp; 227 &amp; 53  \\
+\ 1983 &amp; 249 &amp; 56  \\
+\ 1984 &amp; 210 &amp; 57 \\
+\ 1985 &amp; 190 &amp; 58  \\
+\ 1986 &amp; 314 &amp; 55  \\
+\ 1987 &amp; 345 &amp; 54 \\
+\ 1988 &amp; 161 &amp; 51  \\
+\ 1988 &amp; 266 &amp; 50  \\
+\ 1989 &amp; 402 &amp; 49 \\
+\ 1990 &amp; 215 &amp; 57  \\
+\ 1991 &amp; 164 &amp; 46  \\
+\ 1992 &amp; 405 &amp; 44 \\
+\ 1993 &amp; 328 &amp; 43 \\
+\ 1994 &amp; 294 &amp; 42 \\
+\hline \\
 \end{array}
-$$</p>
+\end{split}\]</div>
 <p>Let us construct our data vectors. We assign the years to the variable <code class="docutils literal notranslate"><span class="pre">year</span></code>, the discharge values to the variable <code class="docutils literal notranslate"><span class="pre">Q</span></code> and the logging area to the variable <code class="docutils literal notranslate"><span class="pre">logged</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1778,11 +1793,12 @@ logged = [53 56 57 58 55 54 51 50 49 47 46 44 43 42]
 </div>
 <blockquote>
 <div><p><a class="reference external" href="https://www.geo.fu-berlin.de/en/v/soga-py/Basics-of-statistics/Descriptive-Statistics/Measures-of-Relation-Between-Variables/Correlation/index.html"><strong>Spearman’s rank correlation coefficient</strong></a></p>
-<p>Spearman’s  ρ  is a non-parametric rank correlation coefficient. It was developed by Charles Spearman and is an alternative to the Pearson product moment correlation coefficient. The Spearman’s rank correlation coefficient is denoted by $r_{s}$ for sample data and by $ρ_{s}$ for population data (Mann 2012). The correlation coefficient assesses the monotonic relationship between two variables and ranges between  $−1$ and $1$. It describes the linear correlation between the ranks of the data of variables x and y. Spearman’s correlation is high when the variables have a similar rank and low when variables have a dissimilar rank. In contrast to Pearson’s linear correlation coefficient Spearman’s linear correlation coefficient is appropriate for both, quantitative and ordinal, variables. In addition, rank based correlations are not dependent on the assumption of a normal distribution and are more resistant to outliers (Schumann 2010).</p>
+<p>Spearman’s  ρ  is a non-parametric rank correlation coefficient. It was developed by Charles Spearman and is an alternative to the Pearson product moment correlation coefficient. The Spearman’s rank correlation coefficient is denoted by <span class="math notranslate nohighlight">\(r_{s}\)</span> for sample data and by <span class="math notranslate nohighlight">\(ρ_{s}\)</span> for population data (Mann 2012). The correlation coefficient assesses the monotonic relationship between two variables and ranges between  <span class="math notranslate nohighlight">\(−1\)</span> and <span class="math notranslate nohighlight">\(1\)</span>. It describes the linear correlation between the ranks of the data of variables x and y. Spearman’s correlation is high when the variables have a similar rank and low when variables have a dissimilar rank. In contrast to Pearson’s linear correlation coefficient Spearman’s linear correlation coefficient is appropriate for both, quantitative and ordinal, variables. In addition, rank based correlations are not dependent on the assumption of a normal distribution and are more resistant to outliers (Schumann 2010).</p>
 </div></blockquote>
 <p>First we calculate <strong>Spearman’s rank correlation coefficient</strong> by hand. Recall the equation</p>
-<p>$$r_s=1-\frac{6\sum_{i=1}^n (r_{xi}-r_{yi})^2}{n(n^2-1)}\text{,}$$</p>
-<p>where $r_{xi}=Rank(x_i)$ , $r_{yi}= Rank(y_i)$ , and $n$ is the sample size.</p>
+<div class="math notranslate nohighlight">
+\[r_s=1-\frac{6\sum_{i=1}^n (r_{xi}-r_{yi})^2}{n(n^2-1)}\text{,}\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_{xi}=Rank(x_i)\)</span> , <span class="math notranslate nohighlight">\(r_{yi}= Rank(y_i)\)</span> , and <span class="math notranslate nohighlight">\(n\)</span> is the sample size.</p>
 <p>Next, we create a <code class="docutils literal notranslate"><span class="pre">pandas</span> <span class="pre">DataFrame</span></code> with the above assigned values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

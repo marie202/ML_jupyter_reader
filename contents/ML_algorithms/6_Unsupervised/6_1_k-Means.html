@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8.1. Clustering Algorithms - $k$-Means &#8212; Machine Learning Online Reader</title>
+    <title>8.1. Clustering Algorithms - \(k\)-Means &#8212; Machine Learning Online Reader</title>
   
   
   
@@ -57,6 +57,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/ML_algorithms/6_Unsupervised/6_1_k-Means';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -232,7 +234,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
@@ -428,7 +430,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Clustering Algorithms - $k$-Means</h1>
+    <h1>Clustering Algorithms - k-Means</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -438,12 +440,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">8.1.1. $k$-Means</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">8.1.1. <span class="math notranslate nohighlight">\(k\)</span>-Means</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">8.1.1.1. Introduction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-k-means-clustering">8.1.1.2. Performing $k$-Means Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-k-means-clustering">8.1.1.2. Performing <span class="math notranslate nohighlight">\(k\)</span>-Means Clustering</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisation">8.1.1.2.1. Normalisation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-number-of-clusters-k">8.1.1.2.2. Determine the number of clusters (K=?)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-k-means">8.1.1.2.3. Performing $k$-Means</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-k-means">8.1.1.2.3. Performing <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-data-points-to-clusters-and-plot-final-result">8.1.1.3. Assign data points to clusters and plot final Result</a><ul class="nav section-nav flex-column">
@@ -465,14 +467,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="clustering-algorithms-k-means">
-<h1><span class="section-number">8.1. </span>Clustering Algorithms - $k$-Means<a class="headerlink" href="#clustering-algorithms-k-means" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="clustering-algorithms-k-means">
+<h1><span class="section-number">8.1. </span>Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means<a class="headerlink" href="#clustering-algorithms-k-means" title="Link to this heading">#</a></h1>
 <div>
 <img src="figures/Ml_kmeans.png" width="600"/>
 </div>
 <section id="k-means">
-<h2><span class="section-number">8.1.1. </span>$k$-Means<a class="headerlink" href="#k-means" title="Link to this heading">#</a></h2>
-<p>The aim of clustering algorithms is to group data points based on a defined similarity measure (and this is crucial!). Here we will use the clustering algorithm $k$-Means. An algorithm that divides a given (even high-dimensional) data set into $k$ groups (clusters).</p>
+<h2><span class="section-number">8.1.1. </span><span class="math notranslate nohighlight">\(k\)</span>-Means<a class="headerlink" href="#k-means" title="Link to this heading">#</a></h2>
+<p>The aim of clustering algorithms is to group data points based on a defined similarity measure (and this is crucial!). Here we will use the clustering algorithm <span class="math notranslate nohighlight">\(k\)</span>-Means. An algorithm that divides a given (even high-dimensional) data set into <span class="math notranslate nohighlight">\(k\)</span> groups (clusters).</p>
 <p>K-means is the go-to unsupervised clustering algorithm, whcih is easy to implement and trains in next to no time. As the model trains by minimizing the sum of distances between data points and their corresponding clusters, it is relatable to other machine learning models.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -504,21 +506,22 @@ document.write(`
 <div>
 <img src="figures/kmeans.png" width="600"/>
 </div>
-<p>$k$-Means clustering is an unsupervised algorithm that groups unlabelled data into different clusters. The K in the title shows how many clusters will be created. It’s important to know this before you start training the model. So, if we use K=3, we’ll get three clusters. The $k$-Means algorithm is used in fraud and error detection, and confirming existing clusters in the real world.</p>
-<p>The algorithm is centroid-based, which basically means that each data point is assigned to the cluster with the closest centroid. You can use this algorithm for any number of dimensions, because we calculate the distance to centroids using the Euclidean distance. The idea behind $k$-Means is to make the distances between the data points and their assigned cluster centroid as small as possible. This is done by repeatedly moving data points to the closest centroid and centroid to the centre of their assigned points, which makes the clusters more compact and separated.</p>
-<p>The great thing about the $k$-Means algorithm is that it’s simple to use, it can handle huge datasets, it always converges, and it works well with clusters of varying shapes and sizes. The drawbacks are that the number of clusters has to be chosen manually, the clusters are dependent on initial values, and it can be sensitive to outliers.</p>
+<p><span class="math notranslate nohighlight">\(k\)</span>-Means clustering is an unsupervised algorithm that groups unlabelled data into different clusters. The K in the title shows how many clusters will be created. It’s important to know this before you start training the model. So, if we use K=3, we’ll get three clusters. The <span class="math notranslate nohighlight">\(k\)</span>-Means algorithm is used in fraud and error detection, and confirming existing clusters in the real world.</p>
+<p>The algorithm is centroid-based, which basically means that each data point is assigned to the cluster with the closest centroid. You can use this algorithm for any number of dimensions, because we calculate the distance to centroids using the Euclidean distance. The idea behind <span class="math notranslate nohighlight">\(k\)</span>-Means is to make the distances between the data points and their assigned cluster centroid as small as possible. This is done by repeatedly moving data points to the closest centroid and centroid to the centre of their assigned points, which makes the clusters more compact and separated.</p>
+<p>The great thing about the <span class="math notranslate nohighlight">\(k\)</span>-Means algorithm is that it’s simple to use, it can handle huge datasets, it always converges, and it works well with clusters of varying shapes and sizes. The drawbacks are that the number of clusters has to be chosen manually, the clusters are dependent on initial values, and it can be sensitive to outliers.</p>
 </section>
 <section id="performing-k-means-clustering">
-<h3><span class="section-number">8.1.1.2. </span>Performing $k$-Means Clustering<a class="headerlink" href="#performing-k-means-clustering" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.1.1.2. </span>Performing <span class="math notranslate nohighlight">\(k\)</span>-Means Clustering<a class="headerlink" href="#performing-k-means-clustering" title="Link to this heading">#</a></h3>
 <p>The algorithm works as follows (somewhat simplified):</p>
 <ol class="arabic simple" start="0">
-<li><p>Choose a cluster number $k$ and select $k$ cluster centres (centroids) for initialisation. These centroids can be randomly distributed in the state space or elements can simply be randomly drawn from the training data set to serve as centroids. (Initialisation)</p></li>
+<li><p>Choose a cluster number <span class="math notranslate nohighlight">\(k\)</span> and select <span class="math notranslate nohighlight">\(k\)</span> cluster centres (centroids) for initialisation. These centroids can be randomly distributed in the state space or elements can simply be randomly drawn from the training data set to serve as centroids. (Initialisation)</p></li>
 <li><p>assign each data point to the cluster whose cluster centre (centroid) is closest to this point. ‘Closeness’ is determined by the distance measure, which can be Euclid’s distance, for example, which is calculated with the following equation:</p></li>
 </ol>
-<p>$$
-d(p,q) =  \sqrt{ \sum_{i=1}^{n}(q_i -p_i)^2}$$</p>
+<div class="math notranslate nohighlight">
+\[
+d(p,q) =  \sqrt{ \sum_{i=1}^{n}(q_i -p_i)^2}\]</div>
 <ol class="arabic simple" start="2">
-<li><p>recalculate all $k$ cluster centres: The mean value (in all dimensions) of all data points in a cluster results in the new cluster centre (centroid).</p></li>
+<li><p>recalculate all <span class="math notranslate nohighlight">\(k\)</span> cluster centres: The mean value (in all dimensions) of all data points in a cluster results in the new cluster centre (centroid).</p></li>
 <li><p>cancellation criterion fulfilled? (e.g. ‘maximum number of iterations reached’ or ‘cluster centres change only slightly’) Otherwise go to 1.</p></li>
 </ol>
 <p>For the sake of simplicity, we use simulated data in this exercise:</p>
@@ -590,7 +593,7 @@ d(p,q) =  \sqrt{ \sum_{i=1}^{n}(q_i -p_i)^2}$$</p>
 </div>
 </div>
 <blockquote>
-<div><p><strong>Question</strong>: Even without $k$-Means clustering, how many clusters would you suggest ?</p>
+<div><p><strong>Question</strong>: Even without <span class="math notranslate nohighlight">\(k\)</span>-Means clustering, how many clusters would you suggest ?</p>
 </div></blockquote>
 <section id="normalisation">
 <h4><span class="section-number">8.1.1.2.1. </span>Normalisation<a class="headerlink" href="#normalisation" title="Link to this heading">#</a></h4>
@@ -626,10 +629,11 @@ d(p,q) =  \sqrt{ \sum_{i=1}^{n}(q_i -p_i)^2}$$</p>
 <section id="determine-the-number-of-clusters-k">
 <h4><span class="section-number">8.1.1.2.2. </span>Determine the number of clusters (K=?)<a class="headerlink" href="#determine-the-number-of-clusters-k" title="Link to this heading">#</a></h4>
 <p><strong>Elbow-method</strong>
-The optimal value of $k$ in the $k$-Means algorithm can be found using the elbow method. This involves finding the inertia value of every $k$ number of clusters from 1-10 and visualizing it.</p>
+The optimal value of <span class="math notranslate nohighlight">\(k\)</span> in the <span class="math notranslate nohighlight">\(k\)</span>-Means algorithm can be found using the elbow method. This involves finding the inertia value of every <span class="math notranslate nohighlight">\(k\)</span> number of clusters from 1-10 and visualizing it.</p>
 <p>Inertia: the sum of the squared distances of samples to their closest cluster center.</p>
-<p>$$Inertia = Σ(distance(point, centroid)^2)$$</p>
-<p>We iterate the values of $k$ from 1 to n and calculate the values of distortions for each value of k and calculate the distortion and inertia for each value of $k$ in the given range.</p>
+<div class="math notranslate nohighlight">
+\[Inertia = Σ(distance(point, centroid)^2)\]</div>
+<p>We iterate the values of <span class="math notranslate nohighlight">\(k\)</span> from 1 to n and calculate the values of distortions for each value of k and calculate the distortion and inertia for each value of <span class="math notranslate nohighlight">\(k\)</span> in the given range.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">elbow_plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">clusters</span><span class="p">):</span>
@@ -659,8 +663,8 @@ The optimal value of $k$ in the $k$-Means algorithm can be found using the elbow
 <p>We obtained an optimal value of 4. Perfect, thats what we also suggested!</p>
 </section>
 <section id="performing-k-means">
-<h4><span class="section-number">8.1.1.2.3. </span>Performing $k$-Means<a class="headerlink" href="#performing-k-means" title="Link to this heading">#</a></h4>
-<p>As we already discussed we perform $k$-Means by initializing cluster centroids, assigning these data points to clusters. We then update cluster centroids and Iteratively update the centroids. In Python we perform $k$-Means as follows:</p>
+<h4><span class="section-number">8.1.1.2.3. </span>Performing <span class="math notranslate nohighlight">\(k\)</span>-Means<a class="headerlink" href="#performing-k-means" title="Link to this heading">#</a></h4>
+<p>As we already discussed we perform <span class="math notranslate nohighlight">\(k\)</span>-Means by initializing cluster centroids, assigning these data points to clusters. We then update cluster centroids and Iteratively update the centroids. In Python we perform <span class="math notranslate nohighlight">\(k\)</span>-Means as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">4</span>
@@ -743,7 +747,7 @@ The optimal value of $k$ in the $k$-Means algorithm can be found using the elbow
 <div><h4 class="rubric" id="exercise"><strong>Exercise</strong></h4>
 <p>Take a look at another data set.
 Visualise the data as a scatterplot. How many cluster centres can be expected?
-Why does $k$-Means clustering not work well here? What are the limitations of $k$-Means?</p>
+Why does <span class="math notranslate nohighlight">\(k\)</span>-Means clustering not work well here? What are the limitations of <span class="math notranslate nohighlight">\(k\)</span>-Means?</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -853,7 +857,7 @@ Why does $k$-Means clustering not work well here? What are the limitations of $k
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
 </pre></div>
 </div>
 </div>
@@ -870,16 +874,16 @@ Why does $k$-Means clustering not work well here? What are the limitations of $k
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Scikit-Learn K-means Results&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/62808765ae4eecbb6987fe8950578ae43b73830af00c066e1d21b4054232f7d8.png" src="../../../_images/62808765ae4eecbb6987fe8950578ae43b73830af00c066e1d21b4054232f7d8.png" />
+<img alt="../../../_images/05c066e0d800e3a604242dac860148432451a8c80aafa46d14ec4a66ca4040f3.png" src="../../../_images/05c066e0d800e3a604242dac860148432451a8c80aafa46d14ec4a66ca4040f3.png" />
 </div>
 </div>
 <ul class="simple">
-<li><p>$k$-Means clustering may not work well in this case because the data points in the two clusters are unevenly distributed. $k$-Means is based on the assumption that the clusters are spherical and of similar size. If this assumption is not met, clustering can produce poor results.</p></li>
-<li><p>$k$-Means is limited to linear cluster boundaries</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span>-Means clustering may not work well in this case because the data points in the two clusters are unevenly distributed. <span class="math notranslate nohighlight">\(k\)</span>-Means is based on the assumption that the clusters are spherical and of similar size. If this assumption is not met, clustering can produce poor results.</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span>-Means is limited to linear cluster boundaries</p></li>
 </ul>
 <blockquote>
 <div><h4 class="rubric" id="id1"><strong>Exercise</strong></h4>
-<p>Research an alternative to $k$-Means that could work here! Can you even implement it with plot?</p>
+<p>Research an alternative to <span class="math notranslate nohighlight">\(k\)</span>-Means that could work here! Can you even implement it with plot?</p>
 </div></blockquote>
 </section>
 <section id="id2">
@@ -985,12 +989,12 @@ Why does $k$-Means clustering not work well here? What are the limitations of $k
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">8.1.1. $k$-Means</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means">8.1.1. <span class="math notranslate nohighlight">\(k\)</span>-Means</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">8.1.1.1. Introduction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-k-means-clustering">8.1.1.2. Performing $k$-Means Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-k-means-clustering">8.1.1.2. Performing <span class="math notranslate nohighlight">\(k\)</span>-Means Clustering</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisation">8.1.1.2.1. Normalisation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-the-number-of-clusters-k">8.1.1.2.2. Determine the number of clusters (K=?)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-k-means">8.1.1.2.3. Performing $k$-Means</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-k-means">8.1.1.2.3. Performing <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-data-points-to-clusters-and-plot-final-result">8.1.1.3. Assign data points to clusters and plot final Result</a><ul class="nav section-nav flex-column">

@@ -232,7 +232,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
@@ -489,7 +489,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="introduction-random-forest-in-python">
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-random-forest-in-python">
 <h1>Introduction: Random Forest in Python<a class="headerlink" href="#introduction-random-forest-in-python" title="Link to this heading">#</a></h1>
 <p>In this notebook, we will implement a random forest in Python. With machine learning in Python, it’s very easy to build a complex model without having any idea how it works. Therefore, we’ll start with a single decision tree and a simple problem, and then work our way to a random forest and a real-world problem.</p>
 <p>Once we understand how a single decision tree thinks, we can transfer this knowledge to an entire forest of trees.</p>
@@ -505,7 +505,7 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="start-simple-basic-problem">
+<section class="tex2jax_ignore mathjax_ignore" id="start-simple-basic-problem">
 <h1>Start Simple: Basic Problem<a class="headerlink" href="#start-simple-basic-problem" title="Link to this heading">#</a></h1>
 <p>To begin, we’ll use a very simple problems with only two features and two classes. This is a binary classification problem.</p>
 <p>First, we create the features <code class="docutils literal notranslate"><span class="pre">X</span></code> and the labels <code class="docutils literal notranslate"><span class="pre">y</span></code>. There are only two features, which will allow us to visualize the data and which makes this a very easy problem.</p>
@@ -1093,7 +1093,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 </section>
 </section>
 </section>
-<section id="real-dataset">
+<section class="tex2jax_ignore mathjax_ignore" id="real-dataset">
 <h1>Real Dataset<a class="headerlink" href="#real-dataset" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://www.kaggle.com/cdc/behavioral-risk-factor-surveillance-system">Available Here</a></p>
 <p>The following data set is from the Centers for Disease Control and Prevention (CDC) and includes socioeconomic and lifestyle indicators for hundreds of thousands of individuals. The objective is to predict the overall health of an individual: either 0 for poor health or 1 for good health. We’ll limit the data to 100,000 individuals to speed up training.</p>
@@ -1466,7 +1466,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 </section>
 </section>
 </section>
-<section id="random-forest">
+<section class="tex2jax_ignore mathjax_ignore" id="random-forest">
 <h1>Random Forest<a class="headerlink" href="#random-forest" title="Link to this heading">#</a></h1>
 <p>Now we can move on to a more powerful model, the random forest. This takes the idea of a single decision tree, and creates an <em>ensemble</em> model out of hundreds or thousands of trees to reduce the variance. Each tree is trained on a random set of the observations, and for each split of a node, only a subset of the features are used for making a split. When making predictions, the random forest averages the predictions for each of the individual decision trees for each data point in order to arrive at a final classification.</p>
 <p>Creating and training a random forest in extremely easy in Scikit-Learn. The cell below is all you need.</p>
@@ -1547,7 +1547,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 <p>Our model does pretty well! Compared to the single decision tree, the random forest is much better able to generalize to new data.</p>
 </section>
 </section>
-<section id="random-forest-optimization-through-random-search">
+<section class="tex2jax_ignore mathjax_ignore" id="random-forest-optimization-through-random-search">
 <h1>Random Forest Optimization through Random Search<a class="headerlink" href="#random-forest-optimization-through-random-search" title="Link to this heading">#</a></h1>
 <p>In order to maximize the performance of the random forest, we can perform a random search for better hyperparameters. This will randomly select combinations of hyperparameters from a grid, evaluate them using cross validation on the training data, and return the values that perform the best.</p>
 <div class="cell docutils container">
@@ -1654,7 +1654,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 <p>This tree is a little simpler than the solitary decision tree model. Random search found that limiting the maximum depth of the trees in the forest delivers better performance than letting them expand as far as needed.</p>
 </section>
 </section>
-<section id="conclusions">
+<section class="tex2jax_ignore mathjax_ignore" id="conclusions">
 <h1>Conclusions<a class="headerlink" href="#conclusions" title="Link to this heading">#</a></h1>
 <p>In this notebook, we built and used a random forest machine learning model in Python. Rather than just writing the code and not understanding the model, we formed an understanding of the random forest by inspecting an individual decision tree and discussion its limitations. We visualized the decision tree to see how it makes decisions and also saw how one decision tree overfits to the trainig data. <strong>To overcome the limitations of a single decision tree, we can train hundreds or thousands of them in a single ensemble model. This model, known as a random forest, trains each tree on a different set of the training observations, and make splits at each node based on a subset of the features leading to a model with reduced variance and better generalization performance on the testing set.</strong></p>
 <p>A few key concepts to take away are</p>

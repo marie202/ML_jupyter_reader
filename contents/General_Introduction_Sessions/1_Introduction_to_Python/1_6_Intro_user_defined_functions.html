@@ -57,6 +57,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/1_Introduction_to_Python/1_6_Intro_user_defined_functions';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -232,7 +234,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
@@ -489,8 +491,9 @@ document.write(`
 <section id="example-defining-and-using-a-udf-to-calculate-the-volume-of-a-cube">
 <h2><span class="section-number">1.9.3. </span>Example: Defining and using a UDF to calculate the volume of a cube<a class="headerlink" href="#example-defining-and-using-a-udf-to-calculate-the-volume-of-a-cube" title="Link to this heading">#</a></h2>
 <p>As a first and simple example for UDFs, we want to declare and develop a function that calculates the value of a cube step by step. Initially, the function should be pretty simple and return the volume of a cube with a fixed edge length. Since this provides no flexibility, we want to adapt and parametrise the function afterwards so that the volume of any given edge length is calculated and returned.</p>
-<p>But one after the other. Generally, the volume $V$ of a cube with the edge length $a$ is calculated by:</p>
-<p>$$V = a^3$$</p>
+<p>But one after the other. Generally, the volume <span class="math notranslate nohighlight">\(V\)</span> of a cube with the edge length <span class="math notranslate nohighlight">\(a\)</span> is calculated by:</p>
+<div class="math notranslate nohighlight">
+\[V = a^3\]</div>
 <p>Now we want to implement the above equation within a Python UDF. As it should be as simple as possible at first, the function should return the volume of the cube with a fixed edge length of <code class="docutils literal notranslate"><span class="pre">3</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -500,7 +503,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>After successfully declaring and implementing the function, we can directly use it by typing the <em>name of the function</em> followed by <code class="docutils literal notranslate"><span class="pre">()</span></code>. The function should return the value $27$ since $3^3 = 27$:</p>
+<p>After successfully declaring and implementing the function, we can directly use it by typing the <em>name of the function</em> followed by <code class="docutils literal notranslate"><span class="pre">()</span></code>. The function should return the value <span class="math notranslate nohighlight">\(27\)</span> since <span class="math notranslate nohighlight">\(3^3 = 27\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cubes_volume</span><span class="p">()</span>
@@ -598,7 +601,8 @@ document.write(`
 <blockquote>
 <div><p><strong>Exercise:</strong> Write a function that computes Kelvin from Fahrenheit! The function shall be named as <code class="docutils literal notranslate"><span class="pre">fahrenheit_to_kelvin</span></code> and shall also be parameterised. Kelvin is converted to Fahrenheit by:</p>
 </div></blockquote>
-<p>$$K = (°F - 32.0) \times \frac{5}{9} + 273.15$$</p>
+<div class="math notranslate nohighlight">
+\[K = (°F - 32.0) \times \frac{5}{9} + 273.15\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### your solution</span>
@@ -608,7 +612,7 @@ document.write(`
 </div>
 <blockquote>
 <div><p><strong>Test your function</strong>:<br />
-$-50\ F$ should yield approximately $228\ K$.</p>
+<span class="math notranslate nohighlight">\(-50\ F\)</span> should yield approximately <span class="math notranslate nohighlight">\(228\ K\)</span>.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -630,7 +634,8 @@ $-50\ F$ should yield approximately $228\ K$.</p>
 <blockquote>
 <div><p><strong>Exercise:</strong> Write a function that computes Celsius from Kelvin! The function shall be named as <code class="docutils literal notranslate"><span class="pre">kelvin_to_celsius</span></code>. This function should be parameterised too. Celsuis is converted to Kelvin by:</p>
 </div></blockquote>
-<p>$$°C = K - 273.15$$</p>
+<div class="math notranslate nohighlight">
+\[°C = K - 273.15\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### your solution</span>
@@ -640,7 +645,7 @@ $-50\ F$ should yield approximately $228\ K$.</p>
 </div>
 <blockquote>
 <div><p><strong>Test your function</strong>:<br />
-$0\ K$ should yield approximately $-273.15 °C$.</p>
+<span class="math notranslate nohighlight">\(0\ K\)</span> should yield approximately <span class="math notranslate nohighlight">\(-273.15 °C\)</span>.</p>
 </div></blockquote>
 <blockquote>
 <div><p><strong>Exercise:</strong> Write a function that computes Celsius form Fahrenheit! The function shall be named as <code class="docutils literal notranslate"><span class="pre">fahrenheit_to_celsius</span></code>. This function should be parameterised too. Reuse your above declared functions for this calculation:</p>
@@ -654,7 +659,7 @@ $0\ K$ should yield approximately $-273.15 °C$.</p>
 </div>
 <blockquote>
 <div><p><strong>Test your function</strong>:<br />
-$451\ F$ should yield approximately $232\ °C$.</p>
+<span class="math notranslate nohighlight">\(451\ F\)</span> should yield approximately <span class="math notranslate nohighlight">\(232\ °C\)</span>.</p>
 </div></blockquote>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">

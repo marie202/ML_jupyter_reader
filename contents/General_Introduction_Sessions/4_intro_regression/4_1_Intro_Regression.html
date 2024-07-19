@@ -57,6 +57,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/4_intro_regression/4_1_Intro_Regression';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -232,7 +234,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
@@ -458,7 +460,7 @@ document.write(`
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-a-sample">4.2.6. Drawing a sample</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-estimation">4.2.7. Parameter estimation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1">4.2.8. Using Python’ <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to calculate $\beta_0$ and $\beta_1$</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1">4.2.8. Using Python’ <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to calculate <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">4.2.9. Prediction</a></li>
 </ul>
 </li>
@@ -485,52 +487,59 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="linear-regression">
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-regression">
 <h1><span class="section-number">4. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h1>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Regression_analysis">Regression</a> analysis is a statistical process for estimating the relationships between two or more variables. The relationship is modeled as $y \sim x$ or $y = f(x)$. Both model descriptions indicate  that the variable $y$ is a function  of $x$. Therefore the variable $y$ is denoted as <strong>response variable</strong> or <strong>dependent variable</strong>, whereas the variable $x$ is denoted as <strong>predictor variable</strong> or <strong>independent variable</strong>.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Regression_analysis">Regression</a> analysis is a statistical process for estimating the relationships between two or more variables. The relationship is modeled as <span class="math notranslate nohighlight">\(y \sim x\)</span> or <span class="math notranslate nohighlight">\(y = f(x)\)</span>. Both model descriptions indicate  that the variable <span class="math notranslate nohighlight">\(y\)</span> is a function  of <span class="math notranslate nohighlight">\(x\)</span>. Therefore the variable <span class="math notranslate nohighlight">\(y\)</span> is denoted as <strong>response variable</strong> or <strong>dependent variable</strong>, whereas the variable <span class="math notranslate nohighlight">\(x\)</span> is denoted as <strong>predictor variable</strong> or <strong>independent variable</strong>.</p>
 <hr class="docutils" />
 <section id="simple-linear-regression">
 <h2><span class="section-number">4.1. </span>Simple Linear Regression<a class="headerlink" href="#simple-linear-regression" title="Link to this heading">#</a></h2>
-<p>In this section we discuss a special type of regression, which is called <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_linear_regression"><strong>simple linear regression</strong></a>. In this special case of  regression analysis the relationship between the response variable $y$ and and the predictor variable $x$ is given in form of a <strong>linear</strong> equation</p>
-<p>$$y= a + bx\text{,}$$
-where $a$ and $b$ are constants. The number $a$ is called <strong>intercept</strong> and defines the point of intersection of the line  and the $y$-axis ($x=0$). The number $b$ is called <strong>regression coefficient</strong>. It is a measure of the slope of the <strong>regression line</strong>. Thus, $b$ indicates how much the $y$-value changes when the $x$-value increases by 1 unit. The adjective <strong>simple</strong> refers to the fact that the outcome variable is related to a single predictor. The model is considered as a <strong>deterministic model</strong>, as it gives an exact relationship between $x$ and $y$.</p>
-<p>Let us consider a simple example. Given a population of $n = 3$ points with Cartesian coordinates $(x_i,y_i)$ of $(1,6)$, $(2,8)$ and $(3,10)$. These points plot on a straight line and thus, can be described by a linear equation model in the form of $y= a + bx$, where the intercept $a=4$ and $b=2$.</p>
+<p>In this section we discuss a special type of regression, which is called <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_linear_regression"><strong>simple linear regression</strong></a>. In this special case of  regression analysis the relationship between the response variable <span class="math notranslate nohighlight">\(y\)</span> and and the predictor variable <span class="math notranslate nohighlight">\(x\)</span> is given in form of a <strong>linear</strong> equation</p>
+<div class="math notranslate nohighlight">
+\[y= a + bx\text{,}\]</div>
+<p>where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are constants. The number <span class="math notranslate nohighlight">\(a\)</span> is called <strong>intercept</strong> and defines the point of intersection of the line  and the <span class="math notranslate nohighlight">\(y\)</span>-axis (<span class="math notranslate nohighlight">\(x=0\)</span>). The number <span class="math notranslate nohighlight">\(b\)</span> is called <strong>regression coefficient</strong>. It is a measure of the slope of the <strong>regression line</strong>. Thus, <span class="math notranslate nohighlight">\(b\)</span> indicates how much the <span class="math notranslate nohighlight">\(y\)</span>-value changes when the <span class="math notranslate nohighlight">\(x\)</span>-value increases by 1 unit. The adjective <strong>simple</strong> refers to the fact that the outcome variable is related to a single predictor. The model is considered as a <strong>deterministic model</strong>, as it gives an exact relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>Let us consider a simple example. Given a population of <span class="math notranslate nohighlight">\(n = 3\)</span> points with Cartesian coordinates <span class="math notranslate nohighlight">\((x_i,y_i)\)</span> of <span class="math notranslate nohighlight">\((1,6)\)</span>, <span class="math notranslate nohighlight">\((2,8)\)</span> and <span class="math notranslate nohighlight">\((3,10)\)</span>. These points plot on a straight line and thus, can be described by a linear equation model in the form of <span class="math notranslate nohighlight">\(y= a + bx\)</span>, where the intercept <span class="math notranslate nohighlight">\(a=4\)</span> and <span class="math notranslate nohighlight">\(b=2\)</span>.</p>
 <div>
 <img src="4_regression_figures/Regression.png" width="600"/>
 </div><hr class="docutils" />
-<p>In many cases, the relationship between two variables $x$ and $y$ is not exact. This is due to the fact, that the response variable $y$ is affect by other unknown and/or random processes, that are not fully captured by the predictor variable $x$. In such a case the data points do not line up on a straight line. However, the data still may follow an underlying linear relationship. In order to take these unknowns into consideration a <strong>random error term</strong>, denoted by $\epsilon$, is added to the linear model equation, thus resulting in a <strong>probabilistic model</strong> in contrast to the deterministic model from above.</p>
-<p>$$y = a + b x + \epsilon$$</p>
-<p>where the error term $\epsilon_i$ is assumed to consist of independent normal distributed values, $e_i \sim N(0, \sigma^2)$.</p>
+<p>In many cases, the relationship between two variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> is not exact. This is due to the fact, that the response variable <span class="math notranslate nohighlight">\(y\)</span> is affect by other unknown and/or random processes, that are not fully captured by the predictor variable <span class="math notranslate nohighlight">\(x\)</span>. In such a case the data points do not line up on a straight line. However, the data still may follow an underlying linear relationship. In order to take these unknowns into consideration a <strong>random error term</strong>, denoted by <span class="math notranslate nohighlight">\(\epsilon\)</span>, is added to the linear model equation, thus resulting in a <strong>probabilistic model</strong> in contrast to the deterministic model from above.</p>
+<div class="math notranslate nohighlight">
+\[y = a + b x + \epsilon\]</div>
+<p>where the error term <span class="math notranslate nohighlight">\(\epsilon_i\)</span> is assumed to consist of independent normal distributed values, <span class="math notranslate nohighlight">\(e_i \sim N(0, \sigma^2)\)</span>.</p>
 <p>In linear regression modelling following assumptions are made about the model (Mann 2012).</p>
 <ul class="simple">
-<li><p>The random error term $\epsilon$ has a mean equal to zero for each $x$.</p></li>
+<li><p>The random error term <span class="math notranslate nohighlight">\(\epsilon\)</span> has a mean equal to zero for each <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
 <li><p>The errors associated with different observations are independent.</p></li>
-<li><p>For any given $x$, the distribution of errors is normal.</p></li>
-<li><p>The distribution errors for each $x$ has the same (constant) standard deviation, which is denoted by $\sigma_{\epsilon}$.</p></li>
+<li><p>For any given <span class="math notranslate nohighlight">\(x\)</span>, the distribution of errors is normal.</p></li>
+<li><p>The distribution errors for each <span class="math notranslate nohighlight">\(x\)</span> has the same (constant) standard deviation, which is denoted by <span class="math notranslate nohighlight">\(\sigma_{\epsilon}\)</span>.</p></li>
 </ul>
 <hr class="docutils" />
-<p>Let us consider another example. This time we take a random sample of sample size $n = 8$ from a population. In  order to emphasis that the values of the intercept and slope are calculated from sample data, $a$ and $b$ are denoted by $\beta_0$ and $\beta_1$, respectively. In addition, the error term $\epsilon$ is denoted as $e$. Thus, $\beta_0$, $\beta_1$ and $e$ are estimates based on sample data for the population parameters $a$, $b$ and $\epsilon$.</p>
-<p>$$\hat y = \beta_0 + \beta_1 x + e \text{,}$$</p>
-<p>where $\hat y$ is the the <strong>estimated or predicted value of $y$</strong> for any given value of $x$.</p>
+<p>Let us consider another example. This time we take a random sample of sample size <span class="math notranslate nohighlight">\(n = 8\)</span> from a population. In  order to emphasis that the values of the intercept and slope are calculated from sample data, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are denoted by <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>, respectively. In addition, the error term <span class="math notranslate nohighlight">\(\epsilon\)</span> is denoted as <span class="math notranslate nohighlight">\(e\)</span>. Thus, <span class="math notranslate nohighlight">\(\beta_0\)</span>, <span class="math notranslate nohighlight">\(\beta_1\)</span> and <span class="math notranslate nohighlight">\(e\)</span> are estimates based on sample data for the population parameters <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\hat y = \beta_0 + \beta_1 x + e \text{,}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat y\)</span> is the the <strong>estimated or predicted value of <span class="math notranslate nohighlight">\(y\)</span></strong> for any given value of <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <div>
 <img src="4_regression_figures/Regression-2.png" width="600"/>
-</div><p>The error $e_i$ for each particular pair of values ($x_i,y_i$), also called <strong>residual</strong>, is computed by the difference of the observed value $y_i$ and the predicted value given by $\hat y_i$.</p>
-<p>$$e_i = y_i - \hat y_i$$</p>
-<p>Depending on the data $e_i$ is a negative number if $y_i$ plots below the regression line or it is a positive number if $y_i$ plots above the regression line.</p>
+</div><p>The error <span class="math notranslate nohighlight">\(e_i\)</span> for each particular pair of values (<span class="math notranslate nohighlight">\(x_i,y_i\)</span>), also called <strong>residual</strong>, is computed by the difference of the observed value <span class="math notranslate nohighlight">\(y_i\)</span> and the predicted value given by <span class="math notranslate nohighlight">\(\hat y_i\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[e_i = y_i - \hat y_i\]</div>
+<p>Depending on the data <span class="math notranslate nohighlight">\(e_i\)</span> is a negative number if <span class="math notranslate nohighlight">\(y_i\)</span> plots below the regression line or it is a positive number if <span class="math notranslate nohighlight">\(y_i\)</span> plots above the regression line.</p>
 <hr class="docutils" />
 <section id="parameter-estimation-ordinary-least-squares-method">
 <h3><span class="section-number">4.1.1. </span>Parameter Estimation: Ordinary Least Squares Method<a class="headerlink" href="#parameter-estimation-ordinary-least-squares-method" title="Link to this heading">#</a></h3>
-<p>Now, as we relaxed the constraints of the deterministic model and introduced an error term $\epsilon$, we run into another problem. There are infinitely many regression lines that fulfill the specifications of the probabilistic model.</p>
+<p>Now, as we relaxed the constraints of the deterministic model and introduced an error term <span class="math notranslate nohighlight">\(\epsilon\)</span>, we run into another problem. There are infinitely many regression lines that fulfill the specifications of the probabilistic model.</p>
 <div>
 <img src="4_regression_figures/Regression-3.png" width="600"/>
 </div><p>Obviously, we need a strategy to select that particular regression line, which corresponds to the <em>best</em> model in order to describe the data. In this section we discuss on one of the most popular methods to achieve that task, the so called <a class="reference external" href="https://en.wikipedia.org/wiki/Ordinary_least_squares"><strong>ordinary least squares method (OLS)</strong></a>.</p>
-<p>As mentioned in the previous section for each particular pair of values $(x_1,y_1)$ the error $e_i$ is calculated by $y_1-\hat y$. In order to get the best fitting line for the given data the <strong>error sum of squares</strong>, denoted by SSE, is minimized.</p>
-<p>$$SSE = \sum_{i=1}^n e_i^2=\sum_{i=1}^n (y - \hat y)^2$$</p>
-<p>For the simple linear model there exists an analytic solution for $\beta_1$.</p>
-<p>$$\hat{\beta_1} = \frac{\sum_{i=1}^n ((x_i- \bar x) (y_i-\bar y))}{\sum_{i=1}^n (x_i-\bar x)^2} = \frac{cov(x,y)}{var(x)}\text{,}$$
-and $\beta_0$.</p>
-<p>$$\hat{\beta_0} = \bar y -\hat{\beta_1} \bar x$$</p>
-<p>The OLS gives the maximum likelihood estimate for $\hat{\beta}$ when the parameters have equal variance and are uncorrelated, and the residuals $\epsilon$ are uncorrelated and follow a Gaussian distribution (<a class="reference external" href="https://en.wikipedia.org/wiki/Homoscedasticity">homoscedasticity</a>).</p>
+<p>As mentioned in the previous section for each particular pair of values <span class="math notranslate nohighlight">\((x_1,y_1)\)</span> the error <span class="math notranslate nohighlight">\(e_i\)</span> is calculated by <span class="math notranslate nohighlight">\(y_1-\hat y\)</span>. In order to get the best fitting line for the given data the <strong>error sum of squares</strong>, denoted by SSE, is minimized.</p>
+<div class="math notranslate nohighlight">
+\[SSE = \sum_{i=1}^n e_i^2=\sum_{i=1}^n (y - \hat y)^2\]</div>
+<p>For the simple linear model there exists an analytic solution for <span class="math notranslate nohighlight">\(\beta_1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\hat{\beta_1} = \frac{\sum_{i=1}^n ((x_i- \bar x) (y_i-\bar y))}{\sum_{i=1}^n (x_i-\bar x)^2} = \frac{cov(x,y)}{var(x)}\text{,}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\beta_0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\hat{\beta_0} = \bar y -\hat{\beta_1} \bar x\]</div>
+<p>The OLS gives the maximum likelihood estimate for <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> when the parameters have equal variance and are uncorrelated, and the residuals <span class="math notranslate nohighlight">\(\epsilon\)</span> are uncorrelated and follow a Gaussian distribution (<a class="reference external" href="https://en.wikipedia.org/wiki/Homoscedasticity">homoscedasticity</a>).</p>
 </section>
 </section>
 <section id="simple-linear-regression-an-example">
@@ -1428,9 +1437,11 @@ We comment the code, because our data is normally distributed. But you need it l
 <section id="min-max-scaling">
 <h4><span class="section-number">4.2.5.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Link to this heading">#</a></h4>
 <p>The min-max scaling</p>
-<p>$$x’=\frac{x-x_{min}}{x_{max}-x_{min}}$$</p>
-<p>transforms the data into the range $[0,1]$. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values $x_{min}-1$ and $x_{max}+1$. Thus</p>
-<p>$$x’=\frac{x-x_{min}+1}{x_{max}-x_{min}+2, .}$$</p>
+<div class="math notranslate nohighlight">
+\[x'=\frac{x-x_{min}}{x_{max}-x_{min}}\]</div>
+<p>transforms the data into the range <span class="math notranslate nohighlight">\([0,1]\)</span>. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values <span class="math notranslate nohighlight">\(x_{min}-1\)</span> and <span class="math notranslate nohighlight">\(x_{max}+1\)</span>. Thus</p>
+<div class="math notranslate nohighlight">
+\[x'=\frac{x-x_{min}+1}{x_{max}-x_{min}+2\, .}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#min-max Scaling </span>
@@ -1450,7 +1461,7 @@ We comment the code, because our data is normally distributed. But you need it l
 <section id="logistic-transformation">
 <h4><span class="section-number">4.2.5.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Link to this heading">#</a></h4>
 <p>As a second step, we use a logistic transformation
-$$x’’=\log\frac{x’}{1-x’}$$</p>
+$<span class="math notranslate nohighlight">\(x''=\log\frac{x'}{1-x'}\)</span>$</p>
 <p>However, before we can start the transformation, we face a problem! Because we have transformed the test set with the values of the training set, the test set may contain values outside the range [0,1]. This will not work with the logarithm in the transformation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1498,14 +1509,16 @@ $$x’’=\log\frac{x’}{1-x’}$$</p>
 <section id="back-transformation">
 <h4><span class="section-number">4.2.5.3. </span>Back transformation<a class="headerlink" href="#back-transformation" title="Link to this heading">#</a></h4>
 <p>The back transformation is the “logistic” function resp. inverse logit:</p>
-<p>\begin{align}
-x’’\to x’=\frac{e^{x’’}}{1+e^{x’’}}&amp;&amp; and &amp;&amp;
-x’\to x=(x’+l)\cdot(u-l)
-\end{align}</p>
-<p>\begin{align}
-&amp;&amp; resp. &amp;&amp;
-x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c82606cc-6094-4ada-a7bd-274528bf2502">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-c82606cc-6094-4ada-a7bd-274528bf2502" title="Permalink to this equation">#</a></span>\[\begin{align}
+x''\to x'=\frac{e^{x''}}{1+e^{x''}}&amp;&amp; and &amp;&amp;
+x'\to x=(x'+l)\cdot(u-l)
+\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-5821c2a5-6708-419f-a5f1-7104e0810c15">
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-5821c2a5-6708-419f-a5f1-7104e0810c15" title="Permalink to this equation">#</a></span>\[\begin{align}
+&amp;&amp; resp. &amp;&amp; 
+x'\to x= ({x'+x_{min}+1})\cdot(x_{max}-x_{min}+2)
+\end{align}\]</div>
 <blockquote>
 <div><p><strong>Exercise A:</strong></p>
 <p>Write function (<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">():...</span></code>) that log transforms your data including a prior Min-Max-Scaling. This way we can generalise our approach well to new unseen data! (e.g. call it <code class="docutils literal notranslate"><span class="pre">logistic_min_max()</span></code> function).</p>
@@ -1776,7 +1789,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x12f5868e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1293ad6d0&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/f290cc8c98c0cd2bb6d0fab72323728e1d31a8cf37226410fa8f1dd67232cc91.png" src="../../../_images/f290cc8c98c0cd2bb6d0fab72323728e1d31a8cf37226410fa8f1dd67232cc91.png" />
@@ -1787,13 +1800,16 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 <hr class="docutils" />
 <section id="parameter-estimation">
 <h3><span class="section-number">4.2.7. </span>Parameter estimation<a class="headerlink" href="#parameter-estimation" title="Link to this heading">#</a></h3>
-<p><strong>Solving for $\beta_0$ and  $\beta_1$ analytically in Python</strong></p>
-<p>As shown in the previous section the parameter $\beta_0$ and $\beta_1$ of a simple linear model may be calculated analytically. Recall the equation for a linear model from sample data</p>
-<p>$$\hat y = \beta_0 + \beta_1 x + e \text{,}$$</p>
-<p>for $\beta_1$</p>
-<p>$$\hat{\beta_1} = \frac{\sum_{i=1}^n ((x_i- \bar x) (y_i-\bar y))}{\sum_{i=1}^n (x_i-\bar x)^2} = \frac{cov(x,y)}{var(x)}\text{,}$$</p>
-<p>and $\beta_0$.</p>
-<p>$$\hat{\beta_0} = \bar y -\hat{\beta_1} \bar x$$</p>
+<p><strong>Solving for <span class="math notranslate nohighlight">\(\beta_0\)</span> and  <span class="math notranslate nohighlight">\(\beta_1\)</span> analytically in Python</strong></p>
+<p>As shown in the previous section the parameter <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> of a simple linear model may be calculated analytically. Recall the equation for a linear model from sample data</p>
+<div class="math notranslate nohighlight">
+\[\hat y = \beta_0 + \beta_1 x + e \text{,}\]</div>
+<p>for <span class="math notranslate nohighlight">\(\beta_1\)</span></p>
+<div class="math notranslate nohighlight">
+\[\hat{\beta_1} = \frac{\sum_{i=1}^n ((x_i- \bar x) (y_i-\bar y))}{\sum_{i=1}^n (x_i-\bar x)^2} = \frac{cov(x,y)}{var(x)}\text{,}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\beta_0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\hat{\beta_0} = \bar y -\hat{\beta_1} \bar x\]</div>
 <p>For a better understanding we use Python to calculate the individual terms using numpy</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1818,7 +1834,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </div>
 </div>
-<p>The slope of the regression model is approximately <code class="docutils literal notranslate"><span class="pre">b1</span></code>. For a sanity check we calculate the ratio of the covariance of $x$ and $y$, applying the <code class="docutils literal notranslate"><span class="pre">cov()</span></code> function, and the variance of $x$, using the <code class="docutils literal notranslate"><span class="pre">var()</span></code> function and compare it to the result from above.</p>
+<p>The slope of the regression model is approximately <code class="docutils literal notranslate"><span class="pre">b1</span></code>. For a sanity check we calculate the ratio of the covariance of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, applying the <code class="docutils literal notranslate"><span class="pre">cov()</span></code> function, and the variance of <span class="math notranslate nohighlight">\(x\)</span>, using the <code class="docutils literal notranslate"><span class="pre">var()</span></code> function and compare it to the result from above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1834,7 +1850,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </div>
 <p>A great match!</p>
-<p>Further, we calculate $\beta_0$.</p>
+<p>Further, we calculate <span class="math notranslate nohighlight">\(\beta_0\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate b0</span>
@@ -1849,9 +1865,10 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </div>
 </div>
-<p>The intercept $\beta_0$ of the regression model is approximately <code class="docutils literal notranslate"><span class="pre">7</span></code>.</p>
+<p>The intercept <span class="math notranslate nohighlight">\(\beta_0\)</span> of the regression model is approximately <code class="docutils literal notranslate"><span class="pre">7</span></code>.</p>
 <p>Thus we can write down the regression model</p>
-<p>$$\text{temperature maximum} = 7 + 1,21\times \text{temperature minimum} $$</p>
+<div class="math notranslate nohighlight">
+\[\text{temperature maximum} = 7 + 1,21\times \text{temperature minimum} \]</div>
 <p>Now, based on that equation we may determine the maximum temperature given its minimum temperature. Let us predict the temperature maximum at times where the temperature minimum <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">5,</span> <span class="pre">10</span></code> degrees.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1887,8 +1904,8 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </section>
 <section id="using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1">
-<h3><span class="section-number">4.2.8. </span>Using Python’ <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to calculate $\beta_0$ and $\beta_1$<a class="headerlink" href="#using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1" title="Link to this heading">#</a></h3>
-<p>See also the more detailed explanations in https://realpython.com/linear-regression-in-python/</p>
+<h3><span class="section-number">4.2.8. </span>Using Python’ <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to calculate <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span><a class="headerlink" href="#using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1" title="Link to this heading">#</a></h3>
+<p>See also the more detailed explanations in <a class="reference external" href="https://realpython.com/linear-regression-in-python/">https://realpython.com/linear-regression-in-python/</a></p>
 <p>First, import the class <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model.LinearRegressio</span></code> to perform linear and polynomial regression and make predictions accordingly</p>
 <p>The second step is defining data to work with. The inputs (regressors, predictor variable, independent variable 𝑥) and output (predictor, dependent variable 𝑦) should be arrays (the instances of the class numpy.ndarray) or similar objects. This is the simplest way of providing data for regression:</p>
 <div class="cell docutils container">
@@ -2350,7 +2367,7 @@ slope: [1.21050227]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x139d56700&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12a66a700&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/93de329331991a8f97cc290d8b5298d851b71cab055cce6d69785ea2734547e0.png" src="../../../_images/93de329331991a8f97cc290d8b5298d851b71cab055cce6d69785ea2734547e0.png" />
@@ -2360,7 +2377,7 @@ slope: [1.21050227]
 <hr class="docutils" />
 <section id="prediction">
 <h3><span class="section-number">4.2.9. </span>Prediction<a class="headerlink" href="#prediction" title="Link to this heading">#</a></h3>
-<p>Now, we have the linear model to predict the maximum temperature of randomly picked data point. We test if we get the same results as above and calculate the maximum temperature at minimal temperatures of 0, 5 and 10 $°C$.</p>
+<p>Now, we have the linear model to predict the maximum temperature of randomly picked data point. We test if we get the same results as above and calculate the maximum temperature at minimal temperatures of 0, 5 and 10 <span class="math notranslate nohighlight">\(°C\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_minTemp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
@@ -2409,7 +2426,7 @@ slope: [1.21050227]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x139db3820&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12a6c7820&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/ed0f3481bb823841ded3ef7ab5318069f76f04396bef57dec5491f467b21613d.png" src="../../../_images/ed0f3481bb823841ded3ef7ab5318069f76f04396bef57dec5491f467b21613d.png" />
@@ -2425,19 +2442,23 @@ slope: [1.21050227]
 <hr class="docutils" />
 <section id="coefficient-of-determination">
 <h3><span class="section-number">4.3.1. </span>Coefficient of Determination<a class="headerlink" href="#coefficient-of-determination" title="Link to this heading">#</a></h3>
-<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination"><strong>Coefficient of Determination</strong></a>, also denoted as $R^2$, is the proportion of variation in the observed values explained by the regression equation. In other words, $R^2$ is a statistical measure of how well the regression line approximates the real data points, thus it is a measure of the goodness of fit of the model.</p>
-<p>The total variation of the response variable $y$ is based on the deviation of each observed value $y_i$ from the mean value $\bar y$. This quantity is called <strong>total sum of squares, SST</strong> and is given by</p>
-<p>$$SST = \sum (y_i - \bar y)^2\text{.}$$
-This total sum of squares (SST) can be be decomposed into two parts: the deviation explained by the regression line, $\hat y_i-\bar y$, and the remaining unexplained deviation $y_i-\hat y_i$. Consequently, the the amount of variation that is explained by the regression is called the <strong>sum of squares due to regression, SSR</strong> and is given by</p>
-<p>$$SSR = \sum (\hat y_i- \bar y)^2$$</p>
-<p>The ratio of the sum of squares due to regression (SSR) and the total sum of squares (SST) is called the <strong>coefficient of determination</strong> and is denoted $R^2$.</p>
-<p>$$R^2 = \frac{SSR}{SST}$$</p>
-<p>$R^2$ lies between 0 and 1. A value of near 0 suggests that the regression equation is not capable of explaining the data. An $R^2$ of 1 indicates that the regression line perfectly fits the data.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination"><strong>Coefficient of Determination</strong></a>, also denoted as <span class="math notranslate nohighlight">\(R^2\)</span>, is the proportion of variation in the observed values explained by the regression equation. In other words, <span class="math notranslate nohighlight">\(R^2\)</span> is a statistical measure of how well the regression line approximates the real data points, thus it is a measure of the goodness of fit of the model.</p>
+<p>The total variation of the response variable <span class="math notranslate nohighlight">\(y\)</span> is based on the deviation of each observed value <span class="math notranslate nohighlight">\(y_i\)</span> from the mean value <span class="math notranslate nohighlight">\(\bar y\)</span>. This quantity is called <strong>total sum of squares, SST</strong> and is given by</p>
+<div class="math notranslate nohighlight">
+\[SST = \sum (y_i - \bar y)^2\text{.}\]</div>
+<p>This total sum of squares (SST) can be be decomposed into two parts: the deviation explained by the regression line, <span class="math notranslate nohighlight">\(\hat y_i-\bar y\)</span>, and the remaining unexplained deviation <span class="math notranslate nohighlight">\(y_i-\hat y_i\)</span>. Consequently, the the amount of variation that is explained by the regression is called the <strong>sum of squares due to regression, SSR</strong> and is given by</p>
+<div class="math notranslate nohighlight">
+\[SSR = \sum (\hat y_i- \bar y)^2\]</div>
+<p>The ratio of the sum of squares due to regression (SSR) and the total sum of squares (SST) is called the <strong>coefficient of determination</strong> and is denoted <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[R^2 = \frac{SSR}{SST}\]</div>
+<p><span class="math notranslate nohighlight">\(R^2\)</span> lies between 0 and 1. A value of near 0 suggests that the regression equation is not capable of explaining the data. An <span class="math notranslate nohighlight">\(R^2\)</span> of 1 indicates that the regression line perfectly fits the data.</p>
 <p>Just for the sake of completeness the variation in the observed values of the response variable not explained by the regression is called <strong>sum of squared errors of prediction, SSE</strong> and is given by</p>
-<p>$$SSE = \sum (y_i-\hat y_i)^2\text{.} $$
-Recall that the SSE quantity is minimized to obtain the best regression line to describe the data, also known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Ordinary_least_squares"><strong>ordinary least squares method (OLS)</strong></a>.</p>
+<div class="math notranslate nohighlight">
+\[SSE = \sum (y_i-\hat y_i)^2\text{.} \]</div>
+<p>Recall that the SSE quantity is minimized to obtain the best regression line to describe the data, also known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Ordinary_least_squares"><strong>ordinary least squares method (OLS)</strong></a>.</p>
 <hr class="docutils" />
-<p>We can calculate coefficient of determination ($R^2$, see also the first lecture) with <code class="docutils literal notranslate"><span class="pre">.score()</span></code>:</p>
+<p>We can calculate coefficient of determination (<span class="math notranslate nohighlight">\(R^2\)</span>, see also the first lecture) with <code class="docutils literal notranslate"><span class="pre">.score()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_sq</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -2512,7 +2533,7 @@ Assuming that your test set meets the preceding two conditions, your goal is to 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x139e384c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12a87f550&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/dcc23f875e143fe8c6dbe33d1012783e98a507b20b9befc0b4a8fbeb30f5f7bb.png" src="../../../_images/dcc23f875e143fe8c6dbe33d1012783e98a507b20b9befc0b4a8fbeb30f5f7bb.png" />
@@ -2523,8 +2544,8 @@ Assuming that your test set meets the preceding two conditions, your goal is to 
 <hr class="docutils" />
 <section id="residual-analysis">
 <h2><span class="section-number">4.5. </span>Residual analysis<a class="headerlink" href="#residual-analysis" title="Link to this heading">#</a></h2>
-<p>A residuals of an observed value is the difference between the observed value and the estimated value $(y_i−\hat{y}_i)$. It is the leftover after fitting a model to data. The <strong>sum of squared errors of prediction (SSE)</strong>, also known as the sum of squared residuals or the error sum of squares is an indicator how well a model represents data.</p>
-<p>If the absolute residuals, defined for observation $x_i$ as $y_i−\hat{y}_i$  are unusually large, it may be that the observation is from a different population, or that there was some error in making or recording the observation.</p>
+<p>A residuals of an observed value is the difference between the observed value and the estimated value <span class="math notranslate nohighlight">\((y_i−\hat{y}_i)\)</span>. It is the leftover after fitting a model to data. The <strong>sum of squared errors of prediction (SSE)</strong>, also known as the sum of squared residuals or the error sum of squares is an indicator how well a model represents data.</p>
+<p>If the absolute residuals, defined for observation <span class="math notranslate nohighlight">\(x_i\)</span> as <span class="math notranslate nohighlight">\(y_i−\hat{y}_i\)</span>  are unusually large, it may be that the observation is from a different population, or that there was some error in making or recording the observation.</p>
 <p>In addition we may analyse the residuals to check if linear regression assumptions are met. Regression residuals should be approximately normally-distributed; that is, the regression should explain the structure and whatever is left over should just be noise, caused by measurement errors or many small uncorrelated factors. The normality of residuals can be checked graphically by a plot of the residuals against the values of the predictor variable. In such a residual plot, the residuals should be randomly scattered about 0 and the variation around 0 should be equal.</p>
 <p>If the assumptions for regression inferences are met, the following two conditions should hold (Weiss 2010):</p>
 <p>A plot of the residuals (residual plot) against the values of the predictor variable should fall roughly in a horizontal band centered and symmetric about the x-axis.</p>
@@ -3097,7 +3118,7 @@ slope: [1.07896716]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13b278d00&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12aa9fe20&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/bac64e58e70350fd84e2891eb3a257e123dd1a4ed722357fde47cfd813fda607.png" src="../../../_images/bac64e58e70350fd84e2891eb3a257e123dd1a4ed722357fde47cfd813fda607.png" />
@@ -3115,7 +3136,7 @@ slope: [1.07896716]
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;temp_min&#39;, ylabel=&#39;temp&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/4ea06fd6f09add04eb5eaa68440f3a7051578d5271f046268e4254957fc1226c.png" src="../../../_images/4ea06fd6f09add04eb5eaa68440f3a7051578d5271f046268e4254957fc1226c.png" />
+<img alt="../../../_images/3fec5ecfff8dd2f8f2c3677e6b9af962c4f8db178d08fa3c2d28a2763d7b6084.png" src="../../../_images/3fec5ecfff8dd2f8f2c3677e6b9af962c4f8db178d08fa3c2d28a2763d7b6084.png" />
 </div>
 </div>
 <blockquote>
@@ -3642,7 +3663,7 @@ Korrelation zwischen Fe3+ und SO4 am höchsten –&gt; also vermutlich verlaufen
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-a-sample">4.2.6. Drawing a sample</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-estimation">4.2.7. Parameter estimation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1">4.2.8. Using Python’ <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to calculate $\beta_0$ and $\beta_1$</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1">4.2.8. Using Python’ <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to calculate <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">4.2.9. Prediction</a></li>
 </ul>
 </li>

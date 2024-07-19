@@ -57,6 +57,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/3_features_scales/3_Feature_scales';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -232,7 +234,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
@@ -482,7 +484,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="feature-scales">
+  <section class="tex2jax_ignore mathjax_ignore" id="feature-scales">
 <h1><span class="section-number">3. </span>Feature Scales<a class="headerlink" href="#feature-scales" title="Link to this heading">#</a></h1>
 <section id="introduction-to-empirical-modelling">
 <h2><span class="section-number">3.1. </span>Introduction to Empirical modelling<a class="headerlink" href="#introduction-to-empirical-modelling" title="Link to this heading">#</a></h2>
@@ -546,22 +548,22 @@ Here, we are presenting linear and non-linear transformation as well as transfor
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Real Space</p></td>
-<td><p>${\rm I!R}$</p></td>
+<td><p><span class="math notranslate nohighlight">\({\rm I\!R}\)</span></p></td>
 <td><p>interval scale</p></td>
-<td><p>$[-\infty, +\infty$]</p></td>
+<td><p><span class="math notranslate nohighlight">\([-\infty, +\infty\)</span>]</p></td>
 <td><p>time &amp; space (location), e.g. UTM coordinates, changing the point of reference does not affect the pattern of the data.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Positive Real Space</p></td>
-<td><p>${\rm I!R^+}$</p></td>
+<td><p><span class="math notranslate nohighlight">\({\rm I\!R^+}\)</span></p></td>
 <td><p>ratio scale</p></td>
-<td><p>$]0, +\infty]$</p></td>
+<td><p><span class="math notranslate nohighlight">\(]0, +\infty]\)</span></p></td>
 <td><p>most physical quantities, e.g. temperature expressed in K (Kelvin), distance, time span, speed, permeability, and discharge.There is no origin on this scale: zero is a limiting value.</p></td>
 </tr>
 <tr class="row-even"><td><p>Simplex</p></td>
-<td><p>$S$</p></td>
+<td><p><span class="math notranslate nohighlight">\(S\)</span></p></td>
 <td><p>compositional scale</p></td>
-<td><p>$]0,1[$</p></td>
-<td><p>Sum must equal a constant (1 for proportions, 100 for percentages, $10^6$ for ppm, e.g. concentrations, mass/ volume fractions</p></td>
+<td><p><span class="math notranslate nohighlight">\(]0,1[\)</span></p></td>
+<td><p>Sum must equal a constant (1 for proportions, 100 for percentages, <span class="math notranslate nohighlight">\(10^6\)</span> for ppm, e.g. concentrations, mass/ volume fractions</p></td>
 </tr>
 </tbody>
 </table>
@@ -629,25 +631,26 @@ ISBN 0912647183. p. 99)</em></p>
 </ul>
 <section id="algebraic-constraints-on-limited-feature-scales">
 <h3><span class="section-number">3.3.1. </span>Algebraic constraints on limited feature scales<a class="headerlink" href="#algebraic-constraints-on-limited-feature-scales" title="Link to this heading">#</a></h3>
-<p>Most real-world variables can only be positive (e.g. $\mathbb{R_+}$ or $]0,+\infty]$ or are limited  to an interval ($]a,b[<em>\mathbb{R</em>+}$). Exceeding these boundaries by algebraic operations such as (+,-,*,/) leads to useless or meaning less results.</p>
+<p>Most real-world variables can only be positive (e.g. <span class="math notranslate nohighlight">\(\mathbb{R_+}\)</span> or <span class="math notranslate nohighlight">\(]0,+\infty]\)</span> or are limited  to an interval (<span class="math notranslate nohighlight">\(]a,b[_\mathbb{R_+}\)</span>). Exceeding these boundaries by algebraic operations such as (+,-,*,/) leads to useless or meaning less results.</p>
 <p><strong>Example</strong></p>
-<p>On the scale of positive real numbers $\mathbb{R_+}$ multiplication and the inverse operation division can not leave the set of positive real numbers. Thus, the positive real numbers together with the multiplication, denoted by $(\mathbb{R_+},*)$, form a commutative group with 1 as neutral element.
-In contrast, the set of positive real numbers together with the addition $(\mathbb{R_+},+)$ has neither inverse elements nor a neutral element. Thus, addition and subtraction can not be unlimited performed.
+<p>On the scale of positive real numbers <span class="math notranslate nohighlight">\(\mathbb{R_+}\)</span> multiplication and the inverse operation division can not leave the set of positive real numbers. Thus, the positive real numbers together with the multiplication, denoted by <span class="math notranslate nohighlight">\((\mathbb{R_+},*)\)</span>, form a commutative group with 1 as neutral element.
+In contrast, the set of positive real numbers together with the addition <span class="math notranslate nohighlight">\((\mathbb{R_+},+)\)</span> has neither inverse elements nor a neutral element. Thus, addition and subtraction can not be unlimited performed.
 But a log-transformation of any variable
-$$x\in\mathbb{R_+}: x\to x’=\log(x)$$
-opens the scale to $x’\to\mathbb{R}$ and transforms the neutral element of $(\mathbb{R_+},\cdot)$ given by 1 to the neutral element of $(\mathbb{R},+)$, given by 0!
-The field of $(\mathbb{R},+,\cdot)$ provides nearly unlimited operations for statistical purposes (except e.g. $\sqrt{-1}$ or $\frac{1}{0}$).</p></p>
+$<span class="math notranslate nohighlight">\(x\in\mathbb{R_+}: x\to x'=\log(x)\)</span><span class="math notranslate nohighlight">\( 
+opens the scale to \)</span>x’\to\mathbb{R}<span class="math notranslate nohighlight">\( and transforms the neutral element of \)</span>(\mathbb{R_+},\cdot)<span class="math notranslate nohighlight">\( given by 1 to the neutral element of \)</span>(\mathbb{R},+)<span class="math notranslate nohighlight">\(, given by 0!
+The field of \)</span>(\mathbb{R},+,\cdot)<span class="math notranslate nohighlight">\( provides nearly unlimited operations for statistical purposes (except e.g. \)</span>\sqrt{-1}<span class="math notranslate nohighlight">\( or \)</span>\frac{1}{0}$).</p></p>
 <p>The inverse transformation powering 
 $$x'\to x=e^{x'}$$</p>
 <p>reverse the log-transformation back to the positive reel scale.</p></section>
 <section id="skewness-symmetry-and-normality">
 <h3><span class="section-number">3.3.2. </span>Skewness, symmetry and normality<a class="headerlink" href="#skewness-symmetry-and-normality" title="Link to this heading">#</a></h3>
 <p>One reason for right skewed distributions can be the Hoelder inequality
-$$\bar{x}<em>{geo}\leq \bar{x}</em>{arith}$$
+$<span class="math notranslate nohighlight">\(\bar{x}_{geo}\leq \bar{x}_{arith}\)</span>$
 , but is not sufficient as explanation. Let us recall the geometric mean:</p>
-<p>\begin{align}
-\bar{x}<em>{geo}=\sqrt[n]{\prod</em>{i=1}^N x_i}=\prod_{i=1}^N x_i^{\frac{1}{n}}= x_1^{\frac{1}{n}}\cdot x_2^{\frac{1}{n}}\cdots x_n^{\frac{1}{n}}
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ccbe2a28-f30a-4a31-b846-ef116349b678">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-ccbe2a28-f30a-4a31-b846-ef116349b678" title="Permalink to this equation">#</a></span>\[\begin{align}
+\bar{x}_{geo}=\sqrt[n]{\prod_{i=1}^N x_i}=\prod_{i=1}^N x_i^{\frac{1}{n}}= x_1^{\frac{1}{n}}\cdot x_2^{\frac{1}{n}}\cdots x_n^{\frac{1}{n}}
+\end{align}\]</div>
 <p>The main apparent difference between these two means is the operator: sum for arithmetic mean and product for the geometric mean. Thus, the arithmetic mean recommend for an additive or distance scale and the geometric mean for a ratio scale approach. In our case, we are dealing with a variable clearly hosted on the
 R+-scale where only multiplication is unlimited allowed.</p>
 <p><strong>But we often need an arithmetic mean for further statistical parameters: e.g.</strong></p>
@@ -660,11 +663,12 @@ R+-scale where only multiplication is unlimited allowed.</p>
 <li><p>etc.</p></li>
 </ul>
 <p>To solve this problem, we can apply the logarithm to the geometric mean:</p>
-<p>\begin{align}
-log(\bar{x}<em>{geo}) &amp; =log(x_1^{\frac{1}{n}}\cdot x_2^{\frac{1}{n}}\cdots x_n^{\frac{1}{n}})= \
-&amp; =\frac{1}{n}log(x_1)+\frac{1}{n}log(x_2)+\cdots+\frac{1}{n}log(x_N)= \
-&amp; =\frac{1}{n}\sum</em>{i=1}^{N}{log(x_i)}={\overline{log(x_i)}}_{arith}
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fc4637e7-5171-474f-aac7-e5f440603453">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-fc4637e7-5171-474f-aac7-e5f440603453" title="Permalink to this equation">#</a></span>\[\begin{align}
+log(\bar{x}_{geo}) &amp; =log(x_1^{\frac{1}{n}}\cdot x_2^{\frac{1}{n}}\cdots x_n^{\frac{1}{n}})= \\
+&amp; =\frac{1}{n}log(x_1)+\frac{1}{n}log(x_2)+\cdots+\frac{1}{n}log(x_N)= \\
+&amp; =\frac{1}{n}\sum_{i=1}^{N}{log(x_i)}={\overline{log(x_i)}}_{arith} 
+\end{align}\]</div>
 <section id="example-working-with-a-dataset">
 <h4><span class="section-number">3.3.2.1. </span>Example: Working with a Dataset<a class="headerlink" href="#example-working-with-a-dataset" title="Link to this heading">#</a></h4>
 <p>We begin by loading the meteorological data set from the <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/">Deutscher Wetterdienst DWD (German Weather Service) Open Climate Data Center </a>. You find a documentation of this data in <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/BESCHREIBUNG_obsgermany_climate_monthly_kl_historical_de.pdf">german</a> and  <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/DESCRIPTION_obsgermany_climate_monthly_kl_historical_en.pdf">english</a>.</p>
@@ -1095,20 +1099,23 @@ log(\bar{x}<em>{geo}) &amp; =log(x_1^{\frac{1}{n}}\cdot x_2^{\frac{1}{n}}\cdots 
 Let us imagine a variable $\mathbf{x}=(x_i\in ]l,u[_\mathbb R,i=1,\cdots,m)$ within a constrained interval [a,b]$\subset \mathbb R$. The absolute value is obviously of minor interest compared with the relative position between l and u. A first step should be a linear min-max-transformation wit min=l and max=u:</p>
 $$ x \to x' =\frac{x-l}{u-l} \in\ ]0,1[\ \in \ {\mathbb R}_+ $$<p>Now, x' divides the interval into two parts: 1. the distance to the left (=x) and 2. the distance to the right (1-x). Both sum up to 1 and are therefore related to a 2-dimensional composition.
 <p>In Application, the formula should look like this:</p>
-<p>$$x’=\frac{x-x_{min}+1}{x_{max}-x_{min}+2, .}$$</p>
+<div class="math notranslate nohighlight">
+\[x'=\frac{x-x_{min}+1}{x_{max}-x_{min}+2\, .}\]</div>
 <p>Applying an alr-transformation to our variable, we are getting a symmetric feature scale:
-$$ x’\to x’’=\log(\frac{x’}{1-x’})\in \mathbb R$$
-This so-called <em>logistic transformation</em> enable application of algebraic operation over the base field $\mathbb R$.</p></p>
+$<span class="math notranslate nohighlight">\( x'\to x''=\log(\frac{x'}{1-x'})\in \mathbb R\)</span><span class="math notranslate nohighlight">\(
+This so-called &lt;em&gt;logistic transformation&lt;/em&gt; enable application of algebraic operation over the base field \)</span>\mathbb R$.</p></p>
 <p>The back transformations are:</p>
 <p>The back transformation is the “logistic” function resp. inverse logit:</p>
-<p>\begin{align}
-x’’\to x’=\frac{e^{x’’}}{1+e^{x’’}}&amp;&amp; and &amp;&amp;
-x’\to x=(x’+l)\cdot(u-l)
-\end{align}</p>
-<p>\begin{align}
-&amp;&amp; resp. &amp;&amp;
-x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d1431d0c-7f5d-45d5-bb58-ae850a47d894">
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-d1431d0c-7f5d-45d5-bb58-ae850a47d894" title="Permalink to this equation">#</a></span>\[\begin{align}
+x''\to x'=\frac{e^{x''}}{1+e^{x''}}&amp;&amp; and &amp;&amp;
+x'\to x=(x'+l)\cdot(u-l) 
+\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-e98f9196-961c-49a9-8574-6243de951dc3">
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-e98f9196-961c-49a9-8574-6243de951dc3" title="Permalink to this equation">#</a></span>\[\begin{align}
+&amp;&amp; resp. &amp;&amp; 
+x'\to x= ({x'+x_{min}+1})\cdot(x_{max}-x_{min}+2)
+\end{align}\]</div>
 <section id="example-northern-hemispheric-ice-extent-under-climate-change">
 <h4><span class="section-number">3.3.3.1. </span>Example: Northern hemispheric ice extent under climate change<a class="headerlink" href="#example-northern-hemispheric-ice-extent-under-climate-change" title="Link to this heading">#</a></h4>
 <p>The <a class="reference external" href="https://nsidc.org/home">National Snow and Ice Data Center</a> at the University of Colorado in Boulder hosts and provides monthly sea ice data for both hemispheres since November 1978 to present. Under the condition of a warming earth system, we will estimate the changes for the northern hemisphere and project a possible trend until the end of this century for September.</p>
@@ -1237,7 +1244,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;million sqrkm&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/8b9fbec268c13373d7175afa8ea69c6d971c5d829b28926bf3c37eb563c4bd4e.png" src="../../../_images/8b9fbec268c13373d7175afa8ea69c6d971c5d829b28926bf3c37eb563c4bd4e.png" />
+<img alt="../../../_images/7efd923db2383efe5cc84a357c631e0640d8956692df6653b5b5d4d106a82588.png" src="../../../_images/7efd923db2383efe5cc84a357c631e0640d8956692df6653b5b5d4d106a82588.png" />
 </div>
 </div>
 <p>Modeling the observed ice cover extent from 1979 to 2020 for the northern hemisphere in September for the future, we have to expect a complete disappearance of the arctic ice in late summer with 95% probability within the second half of this century!</p>
@@ -1302,13 +1309,14 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;ICE logistic space&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/cd99ac52847afcadb10c1c9b53221e8c32f404202b52d3e0bd82d4edfc29a6f9.png" src="../../../_images/cd99ac52847afcadb10c1c9b53221e8c32f404202b52d3e0bd82d4edfc29a6f9.png" />
+<img alt="../../../_images/83066fd1b40ce0c2891b054f97c6a97db0d362d03f0a74baf42dc57dd09a82d8.png" src="../../../_images/83066fd1b40ce0c2891b054f97c6a97db0d362d03f0a74baf42dc57dd09a82d8.png" />
 </div>
 </div>
 <p>Interpreting the zero base of the upper plot, half of the former ice cover extent (expressed by the maximum of observation) has dissapeared since roughly 2010.</p>
 <p>Back transformation in the original space:</p>
 <p>Next, let us us transform the model in the original space by</p>
-<p>$$ICE = \frac{ e^{bx+a} }{1+e^{bx+a}}$$</p>
+<div class="math notranslate nohighlight">
+\[ICE = \frac{ e^{bx+a} }{1+e^{bx+a}}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Since sns.regplot does not provide the coefficients of the regression line, we calculate the</span>
@@ -1351,7 +1359,7 @@ Dep. Variable:             extent lrt   R-squared:                       0.381
 Model:                            OLS   Adj. R-squared:                  0.366
 Method:                 Least Squares   F-statistic:                     26.42
 Date:                Fri, 19 Jul 2024   Prob (F-statistic):           6.40e-06
-Time:                        12:17:24   Log-Likelihood:                -86.781
+Time:                        12:32:25   Log-Likelihood:                -86.781
 No. Observations:                  45   AIC:                             177.6
 Df Residuals:                      43   BIC:                             181.2
 Df Model:                           1                                         
@@ -1374,9 +1382,9 @@ Notes:
 strong multicollinearity or other numerical problems.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_54317/3064685890.py:17: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_54646/3064685890.py:17: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   a = lr.params[1]
-/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_54317/3064685890.py:20: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_54646/3064685890.py:20: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   b = lr.params[0]
 </pre></div>
 </div>
@@ -1459,7 +1467,7 @@ Name: year, Length: 121, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Prediction of ICE decrease for september log-space&#39;}, xlabel=&#39;year&#39;, ylabel=&#39;ICE logistic space&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/126cb28205302fec33d028229119e388cc8f7569847069ca7b7ca8a9b8aa92dd.png" src="../../../_images/126cb28205302fec33d028229119e388cc8f7569847069ca7b7ca8a9b8aa92dd.png" />
+<img alt="../../../_images/18a772634ac37c7522a9b997fe96833dcc7f71a4a421a2dbc1d146656c71ef24.png" src="../../../_images/18a772634ac37c7522a9b997fe96833dcc7f71a4a421a2dbc1d146656c71ef24.png" />
 </div>
 </div>
 <p>As an exercise, you can transform the confidence intervals of the regression line in the log space and you will get the following result:</p>
@@ -1493,8 +1501,9 @@ $$\mathbf{x}_{d}=(x_i-\bar{x},i=1,\cdots,n)$$</p>
 <p>and</p>
 $$ \mathbf{y}_{d}=(y_i-\bar{y},i=1,\cdots,n)$$
 <p>The cosine of the angle between two vectors is calculated by the scalar product divided to the product of both norm: </p>
-<p>$$
-\cos \measuredangle (\mathbf{x}, \mathbf{y})=\frac{&lt;\mathbf{x}, \mathbf{y}&gt;}{\parallel \mathbf{x} \parallel \cdot \parallel \mathbf{y} \parallel  }= \frac {\sum{x_i\cdot y_i }}{\sqrt{x_i^2}\cdot \sqrt{y_i^2}}$$</p>
+<div class="math notranslate nohighlight">
+\[ 
+\cos \measuredangle (\mathbf{x}, \mathbf{y})=\frac{&lt;\mathbf{x}, \mathbf{y}&gt;}{\parallel \mathbf{x} \parallel \cdot \parallel \mathbf{y} \parallel  }= \frac {\sum{x_i\cdot y_i }}{\sqrt{x_i^2}\cdot \sqrt{y_i^2}}\]</div>
 <p>Setting $\mathbf{x} =\mathbf{x}-\overline{\mathbf{x}}$ and $\mathbf{y} =\mathbf{y}-\overline{\mathbf{y}}$, we are getting the scalar product as nominator for the covariance term and the product of the norms as standard deviation terms.</p>
 <p>Thus, in compositions the deviations vectors as bases <strong>are oblique by nature</strong> and <strong>consequently non-euclidean</strong>!</p>
 <p>Hence, statistical methods using distances and angles (ratios) as optimization parameters can not be applied on pure compositions. 

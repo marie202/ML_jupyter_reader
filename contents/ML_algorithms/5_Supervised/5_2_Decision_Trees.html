@@ -57,6 +57,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/ML_algorithms/5_Supervised/5_2_Decision_Trees';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -232,7 +234,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
@@ -528,19 +530,21 @@ document.write(`
 <blockquote>
 <div><p>The tree should give us the answer as to whether it is raining or not - so “rain” should close the tree as the leaf node. The first step is to determine whether “clouds” or “temperature” is a better choice for the first decision level, i.e. the root node of the tree.</p>
 <p>Gini impurity is used for this decision:</p>
-<p>\begin{eqnarray*}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
 Gini(D) = 1 - \sum_{i=1}^k p_i^2.
-\end{eqnarray*}</p>
-<p>The running index “i” $\in$ [1,2] describes the target classes of the leaf nodes to be distinguished, in this case [rain-yes,rain-no]. The probability $p_1$ or $p_2$ is therefore the probability of rain or no rain in data set D.</p>
-<p>The total gini-impurity of a node which splits data set D with $n$ entries into e.g. 2 sub-data sets $D_a$ and $D_b$ with $n_a$ and $n_b$ entries respectively, is calculated from the weighted average of the respective individual gini-impurities:</p>
-<p>\begin{eqnarray*}
+\end{eqnarray*}\]</div>
+<p>The running index “i” <span class="math notranslate nohighlight">\(\in\)</span> [1,2] describes the target classes of the leaf nodes to be distinguished, in this case [rain-yes,rain-no]. The probability <span class="math notranslate nohighlight">\(p_1\)</span> or <span class="math notranslate nohighlight">\(p_2\)</span> is therefore the probability of rain or no rain in data set D.</p>
+<p>The total gini-impurity of a node which splits data set D with <span class="math notranslate nohighlight">\(n\)</span> entries into e.g. 2 sub-data sets <span class="math notranslate nohighlight">\(D_a\)</span> and <span class="math notranslate nohighlight">\(D_b\)</span> with <span class="math notranslate nohighlight">\(n_a\)</span> and <span class="math notranslate nohighlight">\(n_b\)</span> entries respectively, is calculated from the weighted average of the respective individual gini-impurities:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
 Gini(D) = \frac{n_a}{n} Gini(D_a) + \frac{n_b}{n} Gini(D_b),
-\end{eqnarray*}</p>
-<p>where the indices $a$ and $b$ could stand for clouds=yes and clouds=no, for example.</p>
+\end{eqnarray*}\]</div>
+<p>where the indices <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> could stand for clouds=yes and clouds=no, for example.</p>
 <h4 class="rubric" id="exercise-a"><strong>Exercise A</strong>:</h4>
 <p>We now calculate the total gini-impurity of each of the following possible root nodes:</p>
-<p>Clouds $=$ yes or no</p>
-<p>Temperature $=$ cold, mild or hot</p>
+<p>Clouds <span class="math notranslate nohighlight">\(=\)</span> yes or no</p>
+<p>Temperature <span class="math notranslate nohighlight">\(=\)</span> cold, mild or hot</p>
 <h4 class="rubric" id="exercise-b"><strong>Exercise B</strong>:</h4>
 <p>The node with the lowest total Gini impurity is suitable as the first decision node or root node of the tree.
 Determine the total Gini impurity for the first internal nodes of the 2 remaining discriminators, namely for the 2 branches of the root node.</p>

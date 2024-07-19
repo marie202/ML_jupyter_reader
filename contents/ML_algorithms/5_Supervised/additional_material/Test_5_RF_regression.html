@@ -57,6 +57,8 @@
     <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/ML_algorithms/5_Supervised/additional_material/Test_5_RF_regression';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -232,7 +234,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
@@ -469,13 +471,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="machine-learning-algorithms-i">
+  <section class="tex2jax_ignore mathjax_ignore" id="machine-learning-algorithms-i">
 <h1>Machine learning Algorithms I<a class="headerlink" href="#machine-learning-algorithms-i" title="Link to this heading">#</a></h1>
 <section id="decision-trees-random-forests">
 <h2>5 Decision Trees &amp; Random Forests<a class="headerlink" href="#decision-trees-random-forests" title="Link to this heading">#</a></h2>
 <p>In this notebook, we will implement a random forest in Python. We’ll start with a single decision tree and a simple problem, and then work our way to a random forest. Once we understand how a single decision tree works, we can transfer this knowledge to an entire forest of trees.</p>
 <blockquote>
-<div><p>really nice introduction: https://www.youtube.com/watch?v=J4Wdy0Wc_xQ&amp;t=528s</p>
+<div><p>really nice introduction: <a class="reference external" href="https://www.youtube.com/watch?v=J4Wdy0Wc_xQ&amp;amp;t=528s">https://www.youtube.com/watch?v=J4Wdy0Wc_xQ&amp;t=528s</a></p>
 </div></blockquote>
 <section id="rf-tutorial-aims">
 <h3>RF Tutorial Aims:<a class="headerlink" href="#rf-tutorial-aims" title="Link to this heading">#</a></h3>
@@ -544,15 +546,17 @@ document.write(`
 </div>
 <p>The tree should give us the answer as to whether it is raining or not - so “rain” should close the tree as the leaf node. The first step is to determine whether “clouds” or “temperature” is a better choice for the first decision level, i.e. the root node of the tree.</p>
 <p>Gini impurity is used for this decision:</p>
-<p>\begin{eqnarray*}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
 Gini(D) = 1 - \sum_{i=1}^k p_i^2.
-\end{eqnarray*}</p>
-<p>The running index “i” $\in$ [1,2] describes the target classes of the leaf nodes to be distinguished, in this case [rain-yes,rain-no]. The probability $p_1$ or $p_2$ is therefore the probability of rain or no rain in data set D.</p>
-<p>The total gini-impurity of a node which splits data set D with $n$ entries into e.g. 2 sub-data sets $D_a$ and $D_b$ with $n_a$ and $n_b$ entries respectively, is calculated from the weighted average of the respective individual gini-impurities:</p>
-<p>\begin{eqnarray*}
+\end{eqnarray*}\]</div>
+<p>The running index “i” <span class="math notranslate nohighlight">\(\in\)</span> [1,2] describes the target classes of the leaf nodes to be distinguished, in this case [rain-yes,rain-no]. The probability <span class="math notranslate nohighlight">\(p_1\)</span> or <span class="math notranslate nohighlight">\(p_2\)</span> is therefore the probability of rain or no rain in data set D.</p>
+<p>The total gini-impurity of a node which splits data set D with <span class="math notranslate nohighlight">\(n\)</span> entries into e.g. 2 sub-data sets <span class="math notranslate nohighlight">\(D_a\)</span> and <span class="math notranslate nohighlight">\(D_b\)</span> with <span class="math notranslate nohighlight">\(n_a\)</span> and <span class="math notranslate nohighlight">\(n_b\)</span> entries respectively, is calculated from the weighted average of the respective individual gini-impurities:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
 Gini(D) = \frac{n_a}{n} Gini(D_a) + \frac{n_b}{n} Gini(D_b),
-\end{eqnarray*}</p>
-<p>where the indices $a$ and $b$ could stand for clouds=yes and clouds=no, for example.</p>
+\end{eqnarray*}\]</div>
+<p>where the indices <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> could stand for clouds=yes and clouds=no, for example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gini</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">):</span>
@@ -563,8 +567,8 @@ Gini(D) = \frac{n_a}{n} Gini(D_a) + \frac{n_b}{n} Gini(D_b),
 </div>
 </div>
 <p>We now calculate the total gini-impurity of each of the following possible root nodes:</p>
-<p>Clouds $=$ yes or no<br />
-Temperature $=$ cold, mild or hot</p>
+<p>Clouds <span class="math notranslate nohighlight">\(=\)</span> yes or no<br />
+Temperature <span class="math notranslate nohighlight">\(=\)</span> cold, mild or hot</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## 1. cloud no</span>
@@ -928,9 +932,9 @@ Now determine the total Gini impurity for the first internal nodes of the 2 rema
 <blockquote>
 <div><p>aus dem skript der meteos:Aufgabe 2: Random Forests (5 Punkte)</p>
 </div></blockquote>
-<p>In dieser Übung werden wir einen RF aus aktuellen Berliner Wetterdaten erstellen. Lesen Sie dazu die Datenbeschreibung im Refubium:   https://refubium.fu-berlin.de/handle/fub188/38460</p>
-<p>und laden die Datei 01_Tempelhof-1_2006_Daten.zip herunter: https://refubium.fu-berlin.de/bitstream/handle/fub188/38460/01_Tempelhof-1_2006_Daten.zip?sequence=2&amp;isAllowed=y</p>
-<p>Zu diesem Datensatz gibt es nochmal eine gesonderte Beschreibung welche Sie sich gern ansehen können: https://refubium.fu-berlin.de/bitstream/handle/fub188/38460/01_Tempelhof-1_Beschreibung.pdf?sequence=3&amp;isAllowed=y</p>
+<p>In dieser Übung werden wir einen RF aus aktuellen Berliner Wetterdaten erstellen. Lesen Sie dazu die Datenbeschreibung im Refubium:   <a class="reference external" href="https://refubium.fu-berlin.de/handle/fub188/38460">https://refubium.fu-berlin.de/handle/fub188/38460</a></p>
+<p>und laden die Datei 01_Tempelhof-1_2006_Daten.zip herunter: <a class="reference external" href="https://refubium.fu-berlin.de/bitstream/handle/fub188/38460/01_Tempelhof-1_2006_Daten.zip?sequence=2&amp;amp;isAllowed=y">https://refubium.fu-berlin.de/bitstream/handle/fub188/38460/01_Tempelhof-1_2006_Daten.zip?sequence=2&amp;isAllowed=y</a></p>
+<p>Zu diesem Datensatz gibt es nochmal eine gesonderte Beschreibung welche Sie sich gern ansehen können: <a class="reference external" href="https://refubium.fu-berlin.de/bitstream/handle/fub188/38460/01_Tempelhof-1_Beschreibung.pdf?sequence=3&amp;amp;isAllowed=y">https://refubium.fu-berlin.de/bitstream/handle/fub188/38460/01_Tempelhof-1_Beschreibung.pdf?sequence=3&amp;isAllowed=y</a></p>
 <p>Das Einlesen und Benennen der Daten geht recht einfach (die Variablennamen stehen in der gezipten .csv Datei). In R verwendet man hierfür am besten einen sogenannten Data-Frame. Die Funktion <code class="docutils literal notranslate"><span class="pre">read.table()</span></code> erzeugt diesen automatisch:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

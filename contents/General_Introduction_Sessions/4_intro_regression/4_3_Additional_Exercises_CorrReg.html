@@ -57,6 +57,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/4_intro_regression/4_3_Additional_Exercises_CorrReg';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -232,7 +234,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
@@ -1117,27 +1119,31 @@ We comment the code, because our data is normally distributed. But you need it l
 <section id="min-max-scaling">
 <h3><span class="section-number">5.2.2.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Link to this heading">#</a></h3>
 <p>The min-max scaling</p>
-<p>$$x’=\frac{x-x_{min}}{x_{max}-x_{min}}$$</p>
-<p>transforms the data into the range $[0,1]$. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values $x_{min}-1$ and $x_{max}+1$. Thus</p>
-<p>$$x’=\frac{x-x_{min}+1}{x_{max}-x_{min}+2, .}$$</p>
+<div class="math notranslate nohighlight">
+\[x'=\frac{x-x_{min}}{x_{max}-x_{min}}\]</div>
+<p>transforms the data into the range <span class="math notranslate nohighlight">\([0,1]\)</span>. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values <span class="math notranslate nohighlight">\(x_{min}-1\)</span> and <span class="math notranslate nohighlight">\(x_{max}+1\)</span>. Thus</p>
+<div class="math notranslate nohighlight">
+\[x'=\frac{x-x_{min}+1}{x_{max}-x_{min}+2\, .}\]</div>
 </section>
 <section id="logistic-transformation">
 <h3><span class="section-number">5.2.2.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Link to this heading">#</a></h3>
 <p>As a second step, we use a logistic transformation
-$$x’’=\log\frac{x’}{1-x’}$$</p>
+$<span class="math notranslate nohighlight">\(x''=\log\frac{x'}{1-x'}\)</span>$</p>
 <p>However, before we can start the transformation, we face a problem! Because we have transformed the test set with the values of the training set, the test set may contain values outside the range [0,1]. This will not work with the logarithm in the transformation.</p>
 </section>
 <section id="back-transformation">
 <h3><span class="section-number">5.2.2.3. </span>Back transformation<a class="headerlink" href="#back-transformation" title="Link to this heading">#</a></h3>
 <p>The back transformation is the “logistic” function resp. inverse logit:</p>
-<p>\begin{align}
-x’’\to x’=\frac{e^{x’’}}{1+e^{x’’}}&amp;&amp; and &amp;&amp;
-x’\to x=(x’+l)\cdot(u-l)
-\end{align}</p>
-<p>\begin{align}
-&amp;&amp; resp. &amp;&amp;
-x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-40fce527-f6fe-46b8-9514-d2d7d5c9dcea">
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-40fce527-f6fe-46b8-9514-d2d7d5c9dcea" title="Permalink to this equation">#</a></span>\[\begin{align}
+x''\to x'=\frac{e^{x''}}{1+e^{x''}}&amp;&amp; and &amp;&amp;
+x'\to x=(x'+l)\cdot(u-l)
+\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-0bb5e7b1-defc-4a1a-8173-a22d08f1aaf3">
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-0bb5e7b1-defc-4a1a-8173-a22d08f1aaf3" title="Permalink to this equation">#</a></span>\[\begin{align}
+&amp;&amp; resp. &amp;&amp; 
+x'\to x= ({x'+x_{min}+1})\cdot(x_{max}-x_{min}+2)
+\end{align}\]</div>
 </section>
 <section id="exercise-a">
 <h3><span class="section-number">5.2.2.4. </span>Exercise A<a class="headerlink" href="#exercise-a" title="Link to this heading">#</a></h3>
@@ -1869,7 +1875,7 @@ correlation between Fe3+ and SO4 highest –&gt; so presumably the flow paths ru
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x162a8a550&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x150be5460&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/e87ca49c5dee64256e8f10fd977a5afbb5de2e67eb7c9b7f6a8ad038b2ac2824.png" src="../../../_images/e87ca49c5dee64256e8f10fd977a5afbb5de2e67eb7c9b7f6a8ad038b2ac2824.png" />
@@ -1993,7 +1999,7 @@ correlation between Fe3+ and SO4 highest –&gt; so presumably the flow paths ru
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x162b42250&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x150c9f1c0&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/062d1d0b06ee32da35c061f9495003ff925ed0eda5bbb7e3bea34f006c144f49.png" src="../../../_images/062d1d0b06ee32da35c061f9495003ff925ed0eda5bbb7e3bea34f006c144f49.png" />
