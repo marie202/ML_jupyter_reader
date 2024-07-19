@@ -227,12 +227,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ML_algorithms/5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_2_Decision_Trees.html">7.2. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_3_RF_classification.html">7.3. Random Forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_4_RF_regression.html">7.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../references.html">References</a></li>
 </ul>
 
     </div>
@@ -287,7 +298,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html" target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +315,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/3_features_scales/3_Feature_scales.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/3_features_scales/3_Feature_scales.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -477,7 +488,7 @@ document.write(`
 <section id="introduction-to-empirical-modelling">
 <h2><span class="section-number">3.1. </span>Introduction to Empirical modelling<a class="headerlink" href="#introduction-to-empirical-modelling" title="Permalink to this heading">#</a></h2>
 <div style="display:flex; align-items: center;">
-     <div style="color:#03AC13; padding:70px; font-size: 18px;font-weight:bold">
+     <div style="color:#03AC13; padding:5px; font-size: 18px;font-weight:bold">
 <ul class="simple">
 <li><p>What is a good model?</p></li>
 <li><p>How to set up a good model?</p></li>
@@ -487,8 +498,8 @@ document.write(`
 <div><p><strong>Nice <a class="reference external" href="https://www.youtube.com/watch?v=-cfvaNQFozI&amp;amp;list=PLlQWnS27jXh-t3cHfH8oMr8R3-jMvZJn6">Introductory Video</a> !!</strong></p>
 </div></blockquote>
 </div>
-     <div style="flex:1;padding-left:10px;">
-          <img width="400" src="https://imgs.xkcd.com/comics/curve_fitting.png" />
+     <div style="flex:1;padding-left:5px;">
+          <img width="600" src="https://imgs.xkcd.com/comics/curve_fitting.png" />
          </br>
              <div style="color:#808080; padding:1px; font-size: 12px;font-weight:italic">
              https://xkcd.com/2048/
@@ -556,12 +567,6 @@ Here, we are presenting linear and non-linear transformation as well as transfor
 </tbody>
 </table>
 </div>
-<div>
-<img src="figures/2worlds_edit.png" width="1000"/>
-</div>
-<blockquote>
-<div><p>If you need a refresher in maths and logarithms, I recommend <a class="reference external" href="https://www.youtube.com/watch?v=gp9HB1lUQ48">this video on YouTube.</a></p>
-</div></blockquote>
 </section>
 <section id="feature-scales-and-machine-learning-approaches">
 <h3><span class="section-number">3.2.2. </span>Feature scales and machine learning approaches<a class="headerlink" href="#feature-scales-and-machine-learning-approaches" title="Permalink to this heading">#</a></h3>
@@ -987,6 +992,13 @@ log(\bar{x}<em>{geo}) &amp; =log(x_1^{\frac{1}{n}}\cdot x_2^{\frac{1}{n}}\cdots 
 <div><p>Calculate the mean and standard deviation of the logarithmised values and transform them back!</p>
 <p>Calculate the limits of the 3-sigma rule in the same way!</p>
 </div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### your code here ####</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="id2">
 <h5><span class="section-number">3.3.2.2.1. </span>solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h5>
 <div class="cell docutils container">
@@ -1226,7 +1238,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;million sqrkm&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/53219f11966dfabab85af012661509daf124ea34206372c81a1393b8e15ec419.png" src="../../../_images/53219f11966dfabab85af012661509daf124ea34206372c81a1393b8e15ec419.png" />
+<img alt="../../../_images/99199e4521a376c880919688546d4ad94012d654d0600cf985a81e9cbdde809f.png" src="../../../_images/99199e4521a376c880919688546d4ad94012d654d0600cf985a81e9cbdde809f.png" />
 </div>
 </div>
 <p>Modeling the observed ice cover extent from 1979 to 2020 for the northern hemisphere in September for the future, we have to expect a complete disappearance of the arctic ice in late summer with 95% probability within the second half of this century!</p>
@@ -1291,7 +1303,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;ICE logistic space&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/9a64747cdb66bf61889df9c26502fc7e96c80eaea9273e764354d0961939f578.png" src="../../../_images/9a64747cdb66bf61889df9c26502fc7e96c80eaea9273e764354d0961939f578.png" />
+<img alt="../../../_images/c8377696b58d9cffb59100c601d4469644e58ff8a085aa25138f56eb46edfc49.png" src="../../../_images/c8377696b58d9cffb59100c601d4469644e58ff8a085aa25138f56eb46edfc49.png" />
 </div>
 </div>
 <p>Interpreting the zero base of the upper plot, half of the former ice cover extent (expressed by the maximum of observation) has dissapeared since roughly 2010.</p>
@@ -1339,8 +1351,8 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 Dep. Variable:             extent lrt   R-squared:                       0.381
 Model:                            OLS   Adj. R-squared:                  0.366
 Method:                 Least Squares   F-statistic:                     26.42
-Date:                Tue, 16 Jul 2024   Prob (F-statistic):           6.40e-06
-Time:                        13:13:14   Log-Likelihood:                -86.781
+Date:                Thu, 18 Jul 2024   Prob (F-statistic):           6.40e-06
+Time:                        17:13:54   Log-Likelihood:                -86.781
 No. Observations:                  45   AIC:                             177.6
 Df Residuals:                      43   BIC:                             181.2
 Df Model:                           1                                         
@@ -1363,9 +1375,9 @@ Notes:
 strong multicollinearity or other numerical problems.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_25694/3064685890.py:17: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_48413/3064685890.py:17: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   a = lr.params[1]
-/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_25694/3064685890.py:20: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_48413/3064685890.py:20: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   b = lr.params[0]
 </pre></div>
 </div>
@@ -1448,7 +1460,7 @@ Name: year, Length: 121, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Prediction of ICE decrease for september log-space&#39;}, xlabel=&#39;year&#39;, ylabel=&#39;ICE logistic space&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/7dc5913ff973ce742fa47163cdf4a6e74696144741d9f37984e5cabea54896f9.png" src="../../../_images/7dc5913ff973ce742fa47163cdf4a6e74696144741d9f37984e5cabea54896f9.png" />
+<img alt="../../../_images/af37d6bc039eeaa11c2ca916df8a7fbbd4d7d42900d854cd59ddda556d2a0a67.png" src="../../../_images/af37d6bc039eeaa11c2ca916df8a7fbbd4d7d42900d854cd59ddda556d2a0a67.png" />
 </div>
 </div>
 <p>As an exercise, you can transform the confidence intervals of the regression line in the log space and you will get the following result:</p>
@@ -1661,7 +1673,7 @@ By Annette Rudolph, Marie-Christin Eckert
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

@@ -227,12 +227,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ML_algorithms/5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_2_Decision_Trees.html">7.2. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_3_RF_classification.html">7.3. Random Forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_4_RF_regression.html">7.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../references.html">References</a></li>
 </ul>
 
     </div>
@@ -287,7 +298,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html" target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +315,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/2_NVT/2_1_Wdhl_Statisitk_1.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/2_NVT/2_1_Wdhl_Statisitk_1.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -465,13 +476,6 @@ document.write(`
                   
   <section id="recap-statistics">
 <h1><span class="section-number">2. </span>Recap Statistics<a class="headerlink" href="#recap-statistics" title="Permalink to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> lab_black
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, let&#39;s import all the needed libraries.</span>
@@ -801,7 +805,7 @@ Thus, the mean, median or mode by itself is usually not a sufficient measure to 
 We also need a measure that can provide some information about the variation among data values.
 These measures are called the <strong>measures of dispersion</strong>.
 The measures of central tendency and dispersion taken together give a better picture of a data set than the measures of central tendency alone (Mann 2012).</p>
-<a class="bg-primary reference internal image-reference" href="../../../_images/variance_depiction.png"><img alt="mloverview" class="bg-primary" src="../../../_images/variance_depiction.png" style="width: 700px;" /></a>
+<img src="figures/variance_depiction.png" alt="mloverview" class="bg-primary" width="700px">
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Variance"><strong>variance</strong></a> is the mean squared deviation from the mean.
 The variance for population data is denoted by $\sigma^2$ (read as <em>sigma squared</em>) and the variance calculated for sample data is denoted by $s^2$. Mathematically it is given by:</p>
 <p>$$ \sigma^2 = \frac{\sum_{i=1}^n (x_i-\mu)^2}{N}, , $$</p>
@@ -1146,7 +1150,7 @@ In Python we may employ the statsmodels.api library, which provides a function f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reject Ho: not normally distributed
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accept H0: Normally distributed
 </pre></div>
 </div>
 </div>
@@ -1182,7 +1186,7 @@ In Python we may employ the statsmodels.api library, which provides a function f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_44063/3217799496.py:1: FutureWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_48393/3217799496.py:1: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
@@ -1240,24 +1244,13 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <img alt="../../../_images/a693d759a2a8a4f7be2e048dfd4f36606e7922a31a594ecbe5b4c5ff1bd83ce6.png" src="../../../_images/a693d759a2a8a4f7be2e048dfd4f36606e7922a31a594ecbe5b4c5ff1bd83ce6.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-
-<span class="n">IFrame</span><span class="p">(</span>
-    <span class="n">src</span><span class="o">=</span><span class="s2">&quot;../../../citation_Soga.html&quot;</span><span class="p">,</span>
-    <span class="n">width</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span>
-    <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html">
         <iframe
             width="900"
             height="200"
-            src="../../../citation_Soga.html"
+            src="../../citations/citation_Soga.html"
             frameborder="0"
             allowfullscreen
             
@@ -1383,7 +1376,7 @@ By Annette Rudolph, Marie-Christin Eckert
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

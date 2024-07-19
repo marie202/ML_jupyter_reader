@@ -227,12 +227,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ML_algorithms/5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_2_Decision_Trees.html">7.2. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_3_RF_classification.html">7.3. Random Forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_4_RF_regression.html">7.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../references.html">References</a></li>
 </ul>
 
     </div>
@@ -287,7 +298,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html" target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +315,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/1_Introduction_to_Python/1_8_Pandas_Dataframes.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/1_Introduction_to_Python/1_8_Pandas_Dataframes.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -444,14 +455,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> lab_black
-</pre></div>
-</div>
-</div>
-</div>
-<section id="pandas-package-for-handling-dataframes">
+  <section id="pandas-package-for-handling-dataframes">
 <h1><span class="section-number">1.12. </span>Pandas package for handling <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code><a class="headerlink" href="#pandas-package-for-handling-dataframes" title="Permalink to this heading">#</a></h1>
 <p>Usually, when handling data in python we use <code class="docutils literal notranslate"><span class="pre">pandas</span> <span class="pre">DataFrames</span></code>.</p>
 <blockquote>
@@ -460,7 +464,7 @@ document.write(`
 <p>Before we start with a meteorological data set, we will give an example with the population of Europe’s capitals.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, let&#39;s import all the needed libraries. </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, let&#39;s import all the needed libraries.</span>
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -468,6 +472,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">import</span> <span class="nn">warnings</span>
+
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="s2">&quot;use_inf_as_na&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -478,30 +483,65 @@ document.write(`
 <p>set up from dictionary:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## exemplary dataframe </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## exemplary dataframe</span>
 
-<span class="n">cities</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">,</span> <span class="s2">&quot;Madrid&quot;</span><span class="p">,</span> <span class="s2">&quot;Rome&quot;</span><span class="p">,</span> 
-                   <span class="s2">&quot;Paris&quot;</span><span class="p">,</span> <span class="s2">&quot;Vienna&quot;</span><span class="p">,</span> <span class="s2">&quot;Bucharest&quot;</span><span class="p">,</span> <span class="s2">&quot;Hamburg&quot;</span><span class="p">,</span> 
-                   <span class="s2">&quot;Budapest&quot;</span><span class="p">,</span> <span class="s2">&quot;Warsaw&quot;</span><span class="p">,</span> <span class="s2">&quot;Barcelona&quot;</span><span class="p">,</span> 
-                   <span class="s2">&quot;Munich&quot;</span><span class="p">,</span> <span class="s2">&quot;Milan&quot;</span><span class="p">],</span>
-          <span class="s2">&quot;population&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">8615246</span><span class="p">,</span> <span class="mi">3562166</span><span class="p">,</span> <span class="mi">3165235</span><span class="p">,</span> <span class="mi">2874038</span><span class="p">,</span>
-                         <span class="mi">2273305</span><span class="p">,</span> <span class="mi">1805681</span><span class="p">,</span> <span class="mi">1803425</span><span class="p">,</span> <span class="mi">1760433</span><span class="p">,</span>
-                         <span class="mi">1754000</span><span class="p">,</span> <span class="mi">1740119</span><span class="p">,</span> <span class="mi">1602386</span><span class="p">,</span> <span class="mi">1493900</span><span class="p">,</span>
-                         <span class="mi">1350680</span><span class="p">],</span>
-          <span class="s2">&quot;country&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;England&quot;</span><span class="p">,</span> <span class="s2">&quot;Germany&quot;</span><span class="p">,</span> <span class="s2">&quot;Spain&quot;</span><span class="p">,</span> <span class="s2">&quot;Italy&quot;</span><span class="p">,</span>
-                      <span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="s2">&quot;Austria&quot;</span><span class="p">,</span> <span class="s2">&quot;Romania&quot;</span><span class="p">,</span> 
-                      <span class="s2">&quot;Germany&quot;</span><span class="p">,</span> <span class="s2">&quot;Hungary&quot;</span><span class="p">,</span> <span class="s2">&quot;Poland&quot;</span><span class="p">,</span> <span class="s2">&quot;Spain&quot;</span><span class="p">,</span>
-                      <span class="s2">&quot;Germany&quot;</span><span class="p">,</span> <span class="s2">&quot;Italy&quot;</span><span class="p">]}</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Berlin&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Madrid&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Rome&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Paris&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Vienna&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Bucharest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Hamburg&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Budapest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Warsaw&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Barcelona&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Munich&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Milan&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;population&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mi">8615246</span><span class="p">,</span>
+        <span class="mi">3562166</span><span class="p">,</span>
+        <span class="mi">3165235</span><span class="p">,</span>
+        <span class="mi">2874038</span><span class="p">,</span>
+        <span class="mi">2273305</span><span class="p">,</span>
+        <span class="mi">1805681</span><span class="p">,</span>
+        <span class="mi">1803425</span><span class="p">,</span>
+        <span class="mi">1760433</span><span class="p">,</span>
+        <span class="mi">1754000</span><span class="p">,</span>
+        <span class="mi">1740119</span><span class="p">,</span>
+        <span class="mi">1602386</span><span class="p">,</span>
+        <span class="mi">1493900</span><span class="p">,</span>
+        <span class="mi">1350680</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;country&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;England&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Spain&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Italy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;France&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Austria&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Romania&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Hungary&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Poland&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Spain&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Germany&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Italy&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">}</span>
 <span class="n">df_city</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cities</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_city</span><span class="p">)</span>
 
 
 <span class="c1">### Mean of a single column</span>
-<span class="n">mean</span> <span class="o">=</span> <span class="n">df_city</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="c1">## Variance: </span>
-<span class="n">variance</span> <span class="o">=</span> <span class="n">df_city</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">df_city</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c1">## Variance:</span>
+<span class="n">variance</span> <span class="o">=</span> <span class="n">df_city</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
 <span class="c1">## Median</span>
-<span class="n">median</span> <span class="o">=</span> <span class="n">df_city</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median</span> <span class="o">=</span> <span class="n">df_city</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
 
 <span class="n">df_city</span>
 </pre></div>
@@ -783,7 +823,7 @@ By Annette Rudolph, Marie-Christin Eckert
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>
