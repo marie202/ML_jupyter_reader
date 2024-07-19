@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>5. Correlation and Regression &#8212; Machine Learning Online Reader</title>
   
@@ -29,35 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/4_intro_regression/4_2_Intro_Correlation';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -478,12 +477,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="correlation-and-regression">
-<h1><span class="section-number">5. </span>Correlation and Regression<a class="headerlink" href="#correlation-and-regression" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>Correlation and Regression<a class="headerlink" href="#correlation-and-regression" title="Link to this heading">#</a></h1>
 <section id="measures-of-relation-between-variables">
-<h2><span class="section-number">5.1. </span>Measures of Relation Between Variables<a class="headerlink" href="#measures-of-relation-between-variables" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.1. </span>Measures of Relation Between Variables<a class="headerlink" href="#measures-of-relation-between-variables" title="Link to this heading">#</a></h2>
 <p>In the last week we mainly focused on a single variable, describing a distribution and calculating summary statistics. Statistics that describe a single variable are referred to as univariate statistics. If we examine the relationship of two variables, we refer to bivariate statistics. If the relationships among several variables are simultaneously examined, we refer to multivariate statistics. Measures of relation provide a means of summarizing the size of the relation between two variables</p>
 <section id="the-covariance">
-<h3><span class="section-number">5.1.1. </span>The Covariance<a class="headerlink" href="#the-covariance" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.1. </span>The Covariance<a class="headerlink" href="#the-covariance" title="Link to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance"><strong>covariance</strong></a> is a measure of the joint variability of two variables. The covariance can take any value in the interval $(- \infty, \infty)$. The covariance is positive, if the greater/smaller values of one variable mainly correspond with the greater/smaller values of the other variable. The covariance is negative if the variables tend to show opposite behavior. If greater values of one variable mainly correspond to the lesser values of the other.</p>
 <p>The covariance, $s_{xy}$, is calculated by the equation</p>
 <p>$$s_{xy}=\frac{\sum_{i=1}^n(x_i-\bar x)(y_i-\bar y)}{n-1}$$</p>
@@ -492,9 +491,9 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="correlation">
-<h3><span class="section-number">5.1.2. </span>Correlation<a class="headerlink" href="#correlation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.2. </span>Correlation<a class="headerlink" href="#correlation" title="Link to this heading">#</a></h3>
 <section id="pearson-correlation-coefficient">
-<h4><span class="section-number">5.1.2.1. </span>Pearson Correlation coefficient<a class="headerlink" href="#pearson-correlation-coefficient" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">5.1.2.1. </span>Pearson Correlation coefficient<a class="headerlink" href="#pearson-correlation-coefficient" title="Link to this heading">#</a></h4>
 <p>Correlation is a commonly used method to examine the relationship between <strong>quantitative variables</strong>. The most commonly used statistic is the <strong>linear correlation coefficient</strong>, $r$, which is also known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient"><strong>Pearson product moment correlation coefficient</strong></a> in honor of its developer, <a class="reference external" href="https://en.wikipedia.org/wiki/Karl_Pearson">Karl Pearson</a>. Is it given by</p>
 <p>$$r = \frac{\sum_{i=1}^n(x_i- \bar x)(y_i - \bar y)}{\sqrt{\sum_{i=1}^n(x_i- \bar x)^2}\sqrt{\sum_{i=1}^n(y_i- \bar y)^2}}=\frac{s_{xy}}{s_x s_y}\text{,}$$</p>
 <p>where $s_{xy}$ is the covariance of $x$ and $y$ and $s_x$ and $s_y$ the standard deviation of $x$ and $y$, respectively. By dividing by the sample standard deviations, $s_x$ and $s_y$, the linear correlation coefficient, $r$, becomes scale independent and takes values between $-1$ and $1$.</p>
@@ -520,7 +519,7 @@ $$</p>
 </section>
 <hr class="docutils" />
 <section id="pearson-correlation-coefficient-an-example">
-<h3><span class="section-number">5.1.3. </span>Pearson correlation coefficient: An example<a class="headerlink" href="#pearson-correlation-coefficient-an-example" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.3. </span>Pearson correlation coefficient: An example<a class="headerlink" href="#pearson-correlation-coefficient-an-example" title="Link to this heading">#</a></h3>
 <p>In order to get some intuition we calculate the Pearson product moment correlation coefficient in an example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1154,24 +1153,24 @@ dtype: int64
 </div>
 </div>
 <section id="feature-scaling">
-<h4><span class="section-number">5.1.3.1. </span>Feature scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">5.1.3.1. </span>Feature scaling<a class="headerlink" href="#feature-scaling" title="Link to this heading">#</a></h4>
 <p>In the next steps it is exaplained how to transform the data to make the different variables (feature) comparable with each other <strong>min-max scaling</strong> and <strong>logistic transformation</strong> which transforms e.g. skew-symmetric data to a normally distributed data set.
 We comment the code, because our data is normally distributed. But you need it later for dealing with different data.</p>
 <section id="min-max-scaling">
-<h5><span class="section-number">5.1.3.1.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">5.1.3.1.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Link to this heading">#</a></h5>
 <p>The min-max scaling</p>
 <p>$$x’=\frac{x-x_{min}}{x_{max}-x_{min}}$$</p>
 <p>transforms the data into the range $[0,1]$. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values $x_{min}-1$ and $x_{max}+1$. Thus</p>
 <p>$$x’=\frac{x-x_{min}+1}{x_{max}-x_{min}+2, .}$$</p>
 </section>
 <section id="logistic-transformation">
-<h5><span class="section-number">5.1.3.1.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">5.1.3.1.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Link to this heading">#</a></h5>
 <p>As a second step, we use a logistic transformation
 $$x’’=\log\frac{x’}{1-x’}$$</p>
 <p>However, before we can start the transformation, we face a problem! Because we have transformed the test set with the values of the training set, the test set may contain values outside the range [0,1]. This will not work with the logarithm in the transformation.</p>
 </section>
 <section id="back-transformation">
-<h5><span class="section-number">5.1.3.1.3. </span>Back transformation<a class="headerlink" href="#back-transformation" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">5.1.3.1.3. </span>Back transformation<a class="headerlink" href="#back-transformation" title="Link to this heading">#</a></h5>
 <p>The back transformation is the “logistic” function resp. inverse logit:</p>
 <p>\begin{align}
 x’’\to x’=\frac{e^{x’’}}{1+e^{x’’}}&amp;&amp; and &amp;&amp;
@@ -1343,7 +1342,7 @@ cov(b,a) &amp; cov(b,b) \
 </div>
 </section>
 <section id="solution">
-<h5><span class="section-number">5.1.3.1.4. </span>solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">5.1.3.1.4. </span>solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># do each column by hand ....</span>
@@ -1429,7 +1428,7 @@ cov(b,a) &amp; cov(b,b) \
 </section>
 </section>
 <section id="pairwise-correlations">
-<h4><span class="section-number">5.1.3.2. </span>Pairwise Correlations<a class="headerlink" href="#pairwise-correlations" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">5.1.3.2. </span>Pairwise Correlations<a class="headerlink" href="#pairwise-correlations" title="Link to this heading">#</a></h4>
 <p>Of course a correlation analysis is not restricted to two variables. Thanks to statistical software packages, we are able to conduct a pairwise correlation analysis for more than two variables. Let us first prepare the data set. For a better visualization experience we may draw again 100  randomly picked time steps of the data set. Then we select a number of variables to perform correlation analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1546,7 +1545,7 @@ cov(b,a) &amp; cov(b,b) \
 </div>
 </div>
 <section id="id2">
-<h5><span class="section-number">5.1.3.2.1. </span>solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">5.1.3.2.1. </span>solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
@@ -1723,14 +1722,14 @@ cov(b,a) &amp; cov(b,b) \
 </section>
 </section>
 <section id="spearman-s-rank-correlation-coefficient">
-<h3><span class="section-number">5.1.4. </span>Spearman’s rank correlation coefficient<a class="headerlink" href="#spearman-s-rank-correlation-coefficient" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.4. </span>Spearman’s rank correlation coefficient<a class="headerlink" href="#spearman-s-rank-correlation-coefficient" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient"><strong>Spearman’s rank correlation coefficient</strong></a>, also known as the Spearman’s $\rho$ is a non-parametric rank correlation coefficient. It was developed by <a class="reference external" href="https://en.wikipedia.org/wiki/Charles_Spearman">Charles Spearman</a> and is an alternative to Pearson’s product moment correlation coefficient. The Spearman $\rho$ rank correlation coefficient is denoted by $r_s$ for sample data and by $\rho_s$ for population data (Mann 2012). The correlation coefficient assesses the monotonic relationship between two variables and ranges between $-1$ and $1$. It describes the linear correlation between the ranks of the data on variables $x$ and $y$. Spearman’s correlation is high when the variables have a similar rank, and low when variables have a dissimilar rank.</p>
 <p>To calculate $r_s$, the data for each variable, $x$ and $y$, is ranked separately. The difference between each pair of ranks and denote it by $d$. For a given bivariate sequence $(x_1, y_1), (x_2, y_2), …, (x_n, y_n)$ Spearman’s $r_s$  is given by</p>
 <p>$$r_s=1-\frac{6\sum_{i=1}^n (r_{xi}-r_{yi})^2}{n(n^2-1)}\text{,}$$
 where $r_{xi}=Rank(x_i)$ , $r_{yi}= Rank(y_i)$ , and $n$ is the sample size.</p>
 <p>In contrast to Pearson’s linear correlation coefficient Spearman’s linear coefficient is appropriate for both quantitative and ordinal variables. In addition rank based correlations are not dependent on the normal distributional assumption are more resistant to outliers (Schumann 2010).</p>
 <section id="spearman-s-rank-correlation-coefficient-an-example">
-<h4><span class="section-number">5.1.4.1. </span>Spearman’s rank correlation coefficient: An example<a class="headerlink" href="#spearman-s-rank-correlation-coefficient-an-example" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">5.1.4.1. </span>Spearman’s rank correlation coefficient: An example<a class="headerlink" href="#spearman-s-rank-correlation-coefficient-an-example" title="Link to this heading">#</a></h4>
 <p>Let us consider an example. The population of a community along a river believes that recent increases in peak discharge rates are due to deforestation by a logging company in recent years. We calculate Spearman’s rank correlation coefficient to assess if there is a correlation between peak discharge (Durchfluss) and the faction of deforestation (Abholzung) area in the watershed (data modified after <a class="reference external" href="https://www.crcpress.com/Modeling-Hydrologic-Change-Statistical-Methods/McCuen/p/book/9781566706001">McCuen 2003, p. 112</a>).</p>
 <p>$$
 \begin{array}{lcc}
@@ -1959,7 +1958,7 @@ logged = [53 56 57 58 55 54 51 50 49 47 46 44 43 42]
 </section>
 <hr class="docutils" />
 <section id="spearman-s-rank-correlation-coefficient-a-second-example">
-<h3><span class="section-number">5.1.5. </span>Spearman’s rank correlation coefficient: A second example<a class="headerlink" href="#spearman-s-rank-correlation-coefficient-a-second-example" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.5. </span>Spearman’s rank correlation coefficient: A second example<a class="headerlink" href="#spearman-s-rank-correlation-coefficient-a-second-example" title="Link to this heading">#</a></h3>
 <p>Analogously to the Pearson correlation, we can calculate the correlation matrix with respect to the Spearman correlation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4. Linear Regression &#8212; Machine Learning Online Reader</title>
   
@@ -29,35 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/4_intro_regression/4_1_Intro_Regression';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -487,11 +486,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="linear-regression">
-<h1><span class="section-number">4. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>Linear Regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Regression_analysis">Regression</a> analysis is a statistical process for estimating the relationships between two or more variables. The relationship is modeled as $y \sim x$ or $y = f(x)$. Both model descriptions indicate  that the variable $y$ is a function  of $x$. Therefore the variable $y$ is denoted as <strong>response variable</strong> or <strong>dependent variable</strong>, whereas the variable $x$ is denoted as <strong>predictor variable</strong> or <strong>independent variable</strong>.</p>
 <hr class="docutils" />
 <section id="simple-linear-regression">
-<h2><span class="section-number">4.1. </span>Simple Linear Regression<a class="headerlink" href="#simple-linear-regression" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>Simple Linear Regression<a class="headerlink" href="#simple-linear-regression" title="Link to this heading">#</a></h2>
 <p>In this section we discuss a special type of regression, which is called <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_linear_regression"><strong>simple linear regression</strong></a>. In this special case of  regression analysis the relationship between the response variable $y$ and and the predictor variable $x$ is given in form of a <strong>linear</strong> equation</p>
 <p>$$y= a + bx\text{,}$$
 where $a$ and $b$ are constants. The number $a$ is called <strong>intercept</strong> and defines the point of intersection of the line  and the $y$-axis ($x=0$). The number $b$ is called <strong>regression coefficient</strong>. It is a measure of the slope of the <strong>regression line</strong>. Thus, $b$ indicates how much the $y$-value changes when the $x$-value increases by 1 unit. The adjective <strong>simple</strong> refers to the fact that the outcome variable is related to a single predictor. The model is considered as a <strong>deterministic model</strong>, as it gives an exact relationship between $x$ and $y$.</p>
@@ -520,7 +519,7 @@ where $a$ and $b$ are constants. The number $a$ is called <strong>intercept</str
 <p>Depending on the data $e_i$ is a negative number if $y_i$ plots below the regression line or it is a positive number if $y_i$ plots above the regression line.</p>
 <hr class="docutils" />
 <section id="parameter-estimation-ordinary-least-squares-method">
-<h3><span class="section-number">4.1.1. </span>Parameter Estimation: Ordinary Least Squares Method<a class="headerlink" href="#parameter-estimation-ordinary-least-squares-method" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.1.1. </span>Parameter Estimation: Ordinary Least Squares Method<a class="headerlink" href="#parameter-estimation-ordinary-least-squares-method" title="Link to this heading">#</a></h3>
 <p>Now, as we relaxed the constraints of the deterministic model and introduced an error term $\epsilon$, we run into another problem. There are infinitely many regression lines that fulfill the specifications of the probabilistic model.</p>
 <div>
 <img src="4_regression_figures/Regression-3.png" width="600"/>
@@ -535,7 +534,7 @@ and $\beta_0$.</p>
 </section>
 </section>
 <section id="simple-linear-regression-an-example">
-<h2><span class="section-number">4.2. </span>Simple Linear Regression: An example<a class="headerlink" href="#simple-linear-regression-an-example" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>Simple Linear Regression: An example<a class="headerlink" href="#simple-linear-regression-an-example" title="Link to this heading">#</a></h2>
 <p>In order to get some hands-on experience we apply the <strong>simple linear regression</strong> in an exercise.</p>
 <hr class="docutils" />
 <p>For this example, we will use a daily time series from the DWD weather station Berlin-Dahlem (FU), downloaded from <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/daily/kl/historical/tageswerte_KL_00403_19500101_20211231_hist.zip">Climate Data Center</a> on 2022-07-22. A detailed description of the variables is available <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/daily/kl/historical/DESCRIPTION_obsgermany_climate_daily_kl_historical_en.pdf">here</a>. For the purpose of this tutorial the dataset is provided <a class="reference external" href="https://userpage.fu-berlin.de/soga/data/raw-data/tageswerte_KL_00403_19500101_20211231_hist.zip">here</a>.</p>
@@ -864,7 +863,7 @@ and $\beta_0$.</p>
 </div></div></div>
 </div>
 <section id="remove-unnecessary-columns">
-<h3><span class="section-number">4.2.1. </span>Remove unnecessary columns<a class="headerlink" href="#remove-unnecessary-columns" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.1. </span>Remove unnecessary columns<a class="headerlink" href="#remove-unnecessary-columns" title="Link to this heading">#</a></h3>
 <p>By looking at the data and consulting the variable description, we can immediately find variables that are not useful for our purpose and drop them.</p>
 <ul class="simple">
 <li><p>STATIONS_ID -&gt; There is only one station in the data.</p></li>
@@ -1018,7 +1017,7 @@ and $\beta_0$.</p>
 </div>
 </section>
 <section id="rename-columns-for-convenience">
-<h3><span class="section-number">4.2.2. </span>Rename columns for convenience<a class="headerlink" href="#rename-columns-for-convenience" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.2. </span>Rename columns for convenience<a class="headerlink" href="#rename-columns-for-convenience" title="Link to this heading">#</a></h3>
 <p>To improve the readability, we rename the remaining columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1157,7 +1156,7 @@ and $\beta_0$.</p>
 </div>
 </section>
 <section id="pairplot-and-distributions-of-the-data">
-<h3><span class="section-number">4.2.3. </span>Pairplot and distributions of the data<a class="headerlink" href="#pairplot-and-distributions-of-the-data" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.3. </span>Pairplot and distributions of the data<a class="headerlink" href="#pairplot-and-distributions-of-the-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">corner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1172,7 +1171,7 @@ and $\beta_0$.</p>
 <p>Now, we got an impression of the distributions and relations of the different features. We notice a strong reration between different temperature variables.</p>
 </section>
 <section id="drop-missing-data">
-<h3><span class="section-number">4.2.4. </span>Drop missing data<a class="headerlink" href="#drop-missing-data" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.4. </span>Drop missing data<a class="headerlink" href="#drop-missing-data" title="Link to this heading">#</a></h3>
 <p>As a next step, we check the data for missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1423,11 +1422,11 @@ dtype: int64
 <p>We notice the the range of the data differs! Often, we need data of the same scale for appropriate modelling. Therefore, we explain min-max scaling. Moreover, a lot of data sets are not normally distributed. But they need to be normally distributed to e.g. calculate the correlations in a mathematical correct way.</p>
 </section>
 <section id="feature-scaling">
-<h3><span class="section-number">4.2.5. </span>Feature scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.5. </span>Feature scaling<a class="headerlink" href="#feature-scaling" title="Link to this heading">#</a></h3>
 <p>In the next steps it is exaplained how to transform the data to make the different variables (feature) comparable with each other <strong>min-max scaling</strong> and <strong>logistic transformation</strong> which transforms e.g. skew-symmetric data to a normally distributed data set.
 We comment the code, because our data is normally distributed. But you need it later for dealing with different data.</p>
 <section id="min-max-scaling">
-<h4><span class="section-number">4.2.5.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.2.5.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Link to this heading">#</a></h4>
 <p>The min-max scaling</p>
 <p>$$x’=\frac{x-x_{min}}{x_{max}-x_{min}}$$</p>
 <p>transforms the data into the range $[0,1]$. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values $x_{min}-1$ and $x_{max}+1$. Thus</p>
@@ -1449,7 +1448,7 @@ We comment the code, because our data is normally distributed. But you need it l
 </div>
 </section>
 <section id="logistic-transformation">
-<h4><span class="section-number">4.2.5.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.2.5.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Link to this heading">#</a></h4>
 <p>As a second step, we use a logistic transformation
 $$x’’=\log\frac{x’}{1-x’}$$</p>
 <p>However, before we can start the transformation, we face a problem! Because we have transformed the test set with the values of the training set, the test set may contain values outside the range [0,1]. This will not work with the logarithm in the transformation.</p>
@@ -1497,7 +1496,7 @@ $$x’’=\log\frac{x’}{1-x’}$$</p>
 </div>
 </section>
 <section id="back-transformation">
-<h4><span class="section-number">4.2.5.3. </span>Back transformation<a class="headerlink" href="#back-transformation" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.2.5.3. </span>Back transformation<a class="headerlink" href="#back-transformation" title="Link to this heading">#</a></h4>
 <p>The back transformation is the “logistic” function resp. inverse logit:</p>
 <p>\begin{align}
 x’’\to x’=\frac{e^{x’’}}{1+e^{x’’}}&amp;&amp; and &amp;&amp;
@@ -1524,7 +1523,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </section>
 <section id="solution">
-<h4><span class="section-number">4.2.5.4. </span>solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.2.5.4. </span>solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## A.</span>
@@ -1628,7 +1627,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </section>
 <section id="statistics-mean-median-distributions">
-<h4><span class="section-number">4.2.5.5. </span>statistics - mean, median, distributions<a class="headerlink" href="#statistics-mean-median-distributions" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.2.5.5. </span>statistics - mean, median, distributions<a class="headerlink" href="#statistics-mean-median-distributions" title="Link to this heading">#</a></h4>
 <p>Now, we may compute statistics :)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1692,7 +1691,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </section>
 <section id="id1">
-<h4><span class="section-number">4.2.5.6. </span>solution<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.2.5.6. </span>solution<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### log tranform your variable</span>
@@ -1758,7 +1757,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </section>
 <hr class="docutils" />
 <section id="drawing-a-sample">
-<h3><span class="section-number">4.2.6. </span>Drawing a sample<a class="headerlink" href="#drawing-a-sample" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.6. </span>Drawing a sample<a class="headerlink" href="#drawing-a-sample" title="Link to this heading">#</a></h3>
 <p>For data preparation we randomly sample <code class="docutils literal notranslate"><span class="pre">50</span></code> time steps from the data set and build a data frame with the two variables of interest. Further we use the module <code class="docutils literal notranslate"> <span class="pre">matplotlib.pyplot</span></code> to plot the data in form of a scatter plot to visualize the underlying linear relationship between the two variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1777,7 +1776,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x145b6d6a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x12f5868e0&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/f290cc8c98c0cd2bb6d0fab72323728e1d31a8cf37226410fa8f1dd67232cc91.png" src="../../../_images/f290cc8c98c0cd2bb6d0fab72323728e1d31a8cf37226410fa8f1dd67232cc91.png" />
@@ -1787,7 +1786,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </section>
 <hr class="docutils" />
 <section id="parameter-estimation">
-<h3><span class="section-number">4.2.7. </span>Parameter estimation<a class="headerlink" href="#parameter-estimation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.7. </span>Parameter estimation<a class="headerlink" href="#parameter-estimation" title="Link to this heading">#</a></h3>
 <p><strong>Solving for $\beta_0$ and  $\beta_1$ analytically in Python</strong></p>
 <p>As shown in the previous section the parameter $\beta_0$ and $\beta_1$ of a simple linear model may be calculated analytically. Recall the equation for a linear model from sample data</p>
 <p>$$\hat y = \beta_0 + \beta_1 x + e \text{,}$$</p>
@@ -1888,7 +1887,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </section>
 <section id="using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1">
-<h3><span class="section-number">4.2.8. </span>Using Python’ <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to calculate $\beta_0$ and $\beta_1$<a class="headerlink" href="#using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.8. </span>Using Python’ <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to calculate $\beta_0$ and $\beta_1$<a class="headerlink" href="#using-python-sklearn-linear-model-to-calculate-beta-0-and-beta-1" title="Link to this heading">#</a></h3>
 <p>See also the more detailed explanations in https://realpython.com/linear-regression-in-python/</p>
 <p>First, import the class <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model.LinearRegressio</span></code> to perform linear and polynomial regression and make predictions accordingly</p>
 <p>The second step is defining data to work with. The inputs (regressors, predictor variable, independent variable 𝑥) and output (predictor, dependent variable 𝑦) should be arrays (the instances of the class numpy.ndarray) or similar objects. This is the simplest way of providing data for regression:</p>
@@ -2351,7 +2350,7 @@ slope: [1.21050227]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x146f1f880&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x139d56700&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/93de329331991a8f97cc290d8b5298d851b71cab055cce6d69785ea2734547e0.png" src="../../../_images/93de329331991a8f97cc290d8b5298d851b71cab055cce6d69785ea2734547e0.png" />
@@ -2360,7 +2359,7 @@ slope: [1.21050227]
 </section>
 <hr class="docutils" />
 <section id="prediction">
-<h3><span class="section-number">4.2.9. </span>Prediction<a class="headerlink" href="#prediction" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.9. </span>Prediction<a class="headerlink" href="#prediction" title="Link to this heading">#</a></h3>
 <p>Now, we have the linear model to predict the maximum temperature of randomly picked data point. We test if we get the same results as above and calculate the maximum temperature at minimal temperatures of 0, 5 and 10 $°C$.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2410,7 +2409,7 @@ slope: [1.21050227]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x146f7e9a0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x139db3820&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/ed0f3481bb823841ded3ef7ab5318069f76f04396bef57dec5491f467b21613d.png" src="../../../_images/ed0f3481bb823841ded3ef7ab5318069f76f04396bef57dec5491f467b21613d.png" />
@@ -2421,11 +2420,11 @@ slope: [1.21050227]
 </section>
 <hr class="docutils" />
 <section id="model-diagnostic">
-<h2><span class="section-number">4.3. </span>Model diagnostic<a class="headerlink" href="#model-diagnostic" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>Model diagnostic<a class="headerlink" href="#model-diagnostic" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Regression_validation"><strong>Regression validation</strong></a> or <a class="reference external" href="https://en.wikipedia.org/wiki/Regression_diagnostic"><strong>regression diagnostic</strong></a> is a set of procedures that are applied to assess the numerical results of a regression analysis. The procedures include methods of graphical and quantitative analysis or a formal statistical hypothesis test. In this section we focus on the two foremost methods, the graphical and the quantitative analysis. Statistical hypothesis tests for regression problems are provided in the section on hypothesis testing.</p>
 <hr class="docutils" />
 <section id="coefficient-of-determination">
-<h3><span class="section-number">4.3.1. </span>Coefficient of Determination<a class="headerlink" href="#coefficient-of-determination" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.1. </span>Coefficient of Determination<a class="headerlink" href="#coefficient-of-determination" title="Link to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination"><strong>Coefficient of Determination</strong></a>, also denoted as $R^2$, is the proportion of variation in the observed values explained by the regression equation. In other words, $R^2$ is a statistical measure of how well the regression line approximates the real data points, thus it is a measure of the goodness of fit of the model.</p>
 <p>The total variation of the response variable $y$ is based on the deviation of each observed value $y_i$ from the mean value $\bar y$. This quantity is called <strong>total sum of squares, SST</strong> and is given by</p>
 <p>$$SST = \sum (y_i - \bar y)^2\text{.}$$
@@ -2458,7 +2457,7 @@ Recall that the SSE quantity is minimized to obtain the best regression line to 
 </section>
 <hr class="docutils" />
 <section id="from-the-machine-learning-perspective">
-<h2><span class="section-number">4.4. </span>From the Machine Learning perspective:<a class="headerlink" href="#from-the-machine-learning-perspective" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.4. </span>From the Machine Learning perspective:<a class="headerlink" href="#from-the-machine-learning-perspective" title="Link to this heading">#</a></h2>
 <p>Today, we have created a first Machine Learning model!</p>
 <div>
 <img src="4_regression_figures/01_01.png" width="600"/>
@@ -2513,7 +2512,7 @@ Assuming that your test set meets the preceding two conditions, your goal is to 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x147000550&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x139e384c0&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/dcc23f875e143fe8c6dbe33d1012783e98a507b20b9befc0b4a8fbeb30f5f7bb.png" src="../../../_images/dcc23f875e143fe8c6dbe33d1012783e98a507b20b9befc0b4a8fbeb30f5f7bb.png" />
@@ -2523,7 +2522,7 @@ Assuming that your test set meets the preceding two conditions, your goal is to 
 </section>
 <hr class="docutils" />
 <section id="residual-analysis">
-<h2><span class="section-number">4.5. </span>Residual analysis<a class="headerlink" href="#residual-analysis" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.5. </span>Residual analysis<a class="headerlink" href="#residual-analysis" title="Link to this heading">#</a></h2>
 <p>A residuals of an observed value is the difference between the observed value and the estimated value $(y_i−\hat{y}_i)$. It is the leftover after fitting a model to data. The <strong>sum of squared errors of prediction (SSE)</strong>, also known as the sum of squared residuals or the error sum of squares is an indicator how well a model represents data.</p>
 <p>If the absolute residuals, defined for observation $x_i$ as $y_i−\hat{y}_i$  are unusually large, it may be that the observation is from a different population, or that there was some error in making or recording the observation.</p>
 <p>In addition we may analyse the residuals to check if linear regression assumptions are met. Regression residuals should be approximately normally-distributed; that is, the regression should explain the structure and whatever is left over should just be noise, caused by measurement errors or many small uncorrelated factors. The normality of residuals can be checked graphically by a plot of the residuals against the values of the predictor variable. In such a residual plot, the residuals should be randomly scattered about 0 and the variation around 0 should be equal.</p>
@@ -2637,7 +2636,7 @@ MSE test: 14.510185438570927
 </section>
 <hr class="docutils" />
 <section id="exercises">
-<h2><span class="section-number">4.6. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.6. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p><strong>Exercise 2A</strong></p>
 <p>Find the best regression line of the minimal temperature and the mean temperature of the weather station Dahlem.</p>
@@ -2650,7 +2649,7 @@ MSE test: 14.510185438570927
 </div>
 </div>
 <section id="id2">
-<h3><span class="section-number">4.6.1. </span>solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.6.1. </span>solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;temp_min&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -3098,7 +3097,7 @@ slope: [1.07896716]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x147320fa0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13b278d00&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/bac64e58e70350fd84e2891eb3a257e123dd1a4ed722357fde47cfd813fda607.png" src="../../../_images/bac64e58e70350fd84e2891eb3a257e123dd1a4ed722357fde47cfd813fda607.png" />
@@ -3116,7 +3115,7 @@ slope: [1.07896716]
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;temp_min&#39;, ylabel=&#39;temp&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/fe83b994df919ab70f4b34dc2cf6c7d6d0687532b2f32e1806eeaa0ab45f0762.png" src="../../../_images/fe83b994df919ab70f4b34dc2cf6c7d6d0687532b2f32e1806eeaa0ab45f0762.png" />
+<img alt="../../../_images/4ea06fd6f09add04eb5eaa68440f3a7051578d5271f046268e4254957fc1226c.png" src="../../../_images/4ea06fd6f09add04eb5eaa68440f3a7051578d5271f046268e4254957fc1226c.png" />
 </div>
 </div>
 <blockquote>
@@ -3132,7 +3131,7 @@ slope: [1.07896716]
 </div>
 </section>
 <section id="id3">
-<h3><span class="section-number">4.6.2. </span>solution<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.6.2. </span>solution<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
@@ -3155,7 +3154,7 @@ slope: [1.07896716]
 <hr class="docutils" />
 </section>
 <section id="extra-machine-learning-approach">
-<h3><span class="section-number">4.6.3. </span>Extra: Machine Learning approach:<a class="headerlink" href="#extra-machine-learning-approach" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.6.3. </span>Extra: Machine Learning approach:<a class="headerlink" href="#extra-machine-learning-approach" title="Link to this heading">#</a></h3>
 <blockquote>
 <div><p><strong>Exercise 2C (just for fun, this is extra)</strong><br>
 a) Take again two variables the meteorological data set and devide the data into trainings and test data <br>
@@ -3422,7 +3421,7 @@ b) Find either a linear model, a quadratic or a cubic (see the example code belo
 <img alt="../../../_images/f584cb8dfb79b365c8dabddc604ff7e81539246c34dcb6b385714b52d04947d1.png" src="../../../_images/f584cb8dfb79b365c8dabddc604ff7e81539246c34dcb6b385714b52d04947d1.png" />
 </div>
 </div>
-<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>Q</p></th>

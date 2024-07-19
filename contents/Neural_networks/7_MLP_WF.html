@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>9. Multilayer perceptron (MLP) - the Machine Learning Workflow &#8212; Machine Learning Online Reader</title>
   
@@ -29,35 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/Neural_networks/7_MLP_WF';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -489,13 +488,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="multilayer-perceptron-mlp-the-machine-learning-workflow">
-<h1><span class="section-number">9. </span>Multilayer perceptron (MLP) - the Machine Learning Workflow<a class="headerlink" href="#multilayer-perceptron-mlp-the-machine-learning-workflow" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>Multilayer perceptron (MLP) - the Machine Learning Workflow<a class="headerlink" href="#multilayer-perceptron-mlp-the-machine-learning-workflow" title="Link to this heading">#</a></h1>
 <p>A typical machine learning approach consists of several steps that can be arranged in a kind of standard workflow. Training of the model, which we have done in the previous examples of different algorithms, is only a small part of this workflow. Data preprocessing and model evaluation and selection are by far the more extensive tasks.</p>
 <p>In the following we will walk through the entire workflow using a simple but more realistic example than using toy data.</p>
 <p>Our goal is to use weather data and predict the daily mean temperature at a measurement station from several other measurements, such as pressure, vapor content, and so on.</p>
 <p>For this example, we will use a daily time series from the DWD weather station Berlin-Dahlem (FU), downloaded from <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/daily/kl/historical/tageswerte_KL_00403_19500101_20211231_hist.zip">Climate Data Center</a> on 2022-07-22. A detailed description of the variables is available <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/daily/kl/historical/DESCRIPTION_obsgermany_climate_daily_kl_historical_en.pdf">here</a>. For the purpose of this tutorial the dataset is provided <a class="reference external" href="https://userpage.fu-berlin.de/soga/data/raw-data/tageswerte_KL_00403_19500101_20211231_hist.zip">here</a>.</p>
 <section id="read-dataset">
-<h2><span class="section-number">9.1. </span>Read dataset<a class="headerlink" href="#read-dataset" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>Read dataset<a class="headerlink" href="#read-dataset" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -815,7 +814,7 @@ document.write(`
 </div>
 </section>
 <section id="remove-unnecessary-columns">
-<h2><span class="section-number">9.2. </span>Remove unnecessary columns<a class="headerlink" href="#remove-unnecessary-columns" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.2. </span>Remove unnecessary columns<a class="headerlink" href="#remove-unnecessary-columns" title="Link to this heading">#</a></h2>
 <p>By looking at the data and consulting the variable description, we can immediately find variables that are not useful for our purpose and drop them.</p>
 <ul class="simple">
 <li><p>STATIONS_ID -&gt; There is only one station in the data.</p></li>
@@ -1026,7 +1025,7 @@ document.write(`
 </div>
 </section>
 <section id="rename-columns-for-convenience">
-<h2><span class="section-number">9.3. </span>Rename columns for convenience<a class="headerlink" href="#rename-columns-for-convenience" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.3. </span>Rename columns for convenience<a class="headerlink" href="#rename-columns-for-convenience" title="Link to this heading">#</a></h2>
 <p>To improve the readability, we rename the remaining columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1243,7 +1242,7 @@ document.write(`
 </div>
 </section>
 <section id="remove-correlated-columns">
-<h2><span class="section-number">9.4. </span>Remove correlated columns<a class="headerlink" href="#remove-correlated-columns" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.4. </span>Remove correlated columns<a class="headerlink" href="#remove-correlated-columns" title="Link to this heading">#</a></h2>
 <p>In the next step, we see that there are four columns with temperature-related data:</p>
 <ul class="simple">
 <li><p>TMK -&gt; Daily Mean Temp (this is the temperature which we want to predict)</p></li>
@@ -1259,7 +1258,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1633b4ac0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x12b732b50&gt;
 </pre></div>
 </div>
 <img alt="../../_images/d70472cea3c52c18f945578731ec426c01a30e7849b6ccd30145fd7d3087593b.png" src="../../_images/d70472cea3c52c18f945578731ec426c01a30e7849b6ccd30145fd7d3087593b.png" />
@@ -1432,7 +1431,7 @@ document.write(`
 </div>
 </section>
 <section id="drop-missing-data">
-<h2><span class="section-number">9.5. </span>Drop missing data<a class="headerlink" href="#drop-missing-data" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.5. </span>Drop missing data<a class="headerlink" href="#drop-missing-data" title="Link to this heading">#</a></h2>
 <p>As a next step, we check the data for missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1620,7 +1619,7 @@ dtype: int64
 </div>
 </section>
 <section id="handle-categorical-data">
-<h2><span class="section-number">9.6. </span>Handle categorical data<a class="headerlink" href="#handle-categorical-data" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.6. </span>Handle categorical data<a class="headerlink" href="#handle-categorical-data" title="Link to this heading">#</a></h2>
 <p>All of the data in our data set contain numerical values. However, while they are all continuous variables, the prec_type is a categorical variable. Furthermore, it is only nominal, not ordinal. If we leave the values as they are, the model will imply an order on the prec_type, assuming for example that type 8 is greater than type 6. This could lead to non-optimal results.</p>
 <p>We will use a solution called <strong>one-hot encoding</strong>. This means that we create a new feature for each of the types and assign binary values to it.</p>
 <div class="cell docutils container">
@@ -1838,10 +1837,10 @@ dtype: int64
 <p>Note: We used the option <code class="docutils literal notranslate"><span class="pre">drop_first=True</span></code> which removes the column for the first type. This does not reduce the information because the precipitation is of type 0 if it is not of another type, but it does reduce the number of features we introduce.</p>
 </section>
 <section id="inspect-data">
-<h2><span class="section-number">9.7. </span>Inspect data<a class="headerlink" href="#inspect-data" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.7. </span>Inspect data<a class="headerlink" href="#inspect-data" title="Link to this heading">#</a></h2>
 <p>Now that all the data is preprocessed, we want to take a closer look at the different features. We will start by plotting the distributions.</p>
 <section id="check-distributions">
-<h3><span class="section-number">9.7.1. </span>Check distributions<a class="headerlink" href="#check-distributions" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.7.1. </span>Check distributions<a class="headerlink" href="#check-distributions" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;prec&quot;</span><span class="p">,</span> <span class="s2">&quot;sun_dur&quot;</span><span class="p">,</span> <span class="s2">&quot;snow_depth&quot;</span><span class="p">,</span> <span class="s2">&quot;vapor_pres&quot;</span><span class="p">,</span> <span class="s2">&quot;pres&quot;</span><span class="p">,</span> <span class="s2">&quot;rel_humid&quot;</span><span class="p">,</span> <span class="s2">&quot;temp&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
@@ -2168,7 +2167,7 @@ dtype: int64
 </section>
 </section>
 <section id="train-test-split">
-<h2><span class="section-number">9.8. </span>Train-Test split<a class="headerlink" href="#train-test-split" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.8. </span>Train-Test split<a class="headerlink" href="#train-test-split" title="Link to this heading">#</a></h2>
 <p>When we train a model, we need to test its performance. To do this, we need data that is similar to the training data, but independent of it. We achieve this by splitting our dataset into two parts, a training part, which we use to build the model, and a test part, which we use only for the final evaluation.</p>
 <p>Here we use 80% of our data for training and 20% for testing. Additionally, we split the data into features and target variables.</p>
 <div class="cell docutils container">
@@ -2194,12 +2193,12 @@ dtype: int64
 <p>Note: The records are randomly shuffled and split to avoid any effects from the original order of the records.</p>
 </section>
 <section id="feature-scaling">
-<h2><span class="section-number">9.9. </span>Feature scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.9. </span>Feature scaling<a class="headerlink" href="#feature-scaling" title="Link to this heading">#</a></h2>
 <p>Now we are ready for the promised feature scaling.</p>
 <p>The reason we did the train-test split first is that we want a pure training data set that is not influenced by the test data. If we were to determine the scaling parameters from the whole data set, information from the test data would be included in the parameters. Therefore, we perform the scaling on the training data only. Then, of course, we have to transform the test set with the same parameters.</p>
 <p>The features cloud cover, vapor pressure, pressure, relative humidity and temperature are all double constrained and we will use a logistic transformation with a prior min-max scaling.</p>
 <section id="min-max-scaling">
-<h3><span class="section-number">9.9.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.9.1. </span>Min-Max scaling<a class="headerlink" href="#min-max-scaling" title="Link to this heading">#</a></h3>
 <p>The min-max scaling</p>
 <p>$$x’=\frac{x-x_{min}}{x_{max}-x_{min}}$$</p>
 <p>transforms the data into the range $[0,1]$. We want to avoid getting values with 0, because in the second step we need the logarithm of the values. Therefore, we use slightly larger boundary values $x_{min}-1$ and $x_{max}+1$. Thus</p>
@@ -2222,7 +2221,7 @@ dtype: int64
 </div>
 </section>
 <section id="logistic-transformation">
-<h3><span class="section-number">9.9.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.9.2. </span>Logistic transformation<a class="headerlink" href="#logistic-transformation" title="Link to this heading">#</a></h3>
 <p>As a second step, we use a logistic transformation
 $$x’’=\log\frac{x’}{1-x’}$$</p>
 <p>However, before we can start the transformation, we face a problem! Because we have transformed the test set with the values of the training set, the test set may contain values outside the range [0,1]. This will not work with the logarithm in the transformation.</p>
@@ -2343,7 +2342,7 @@ Series([], Name: temp, dtype: float64)
 </section>
 </section>
 <section id="model-definition">
-<h2><span class="section-number">9.10. </span>Model definition<a class="headerlink" href="#model-definition" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.10. </span>Model definition<a class="headerlink" href="#model-definition" title="Link to this heading">#</a></h2>
 <p>All the necessary pre-processing is now done and we can finally get to the actual model.</p>
 <p>We will use a neural net for this regression task and start with a fully connected net with two layers and 8 nodes each. We chose the 8 simply because we have 8 features.</p>
 <div class="cell docutils container">
@@ -2367,7 +2366,7 @@ Series([], Name: temp, dtype: float64)
 </div>
 </section>
 <section id="model-training">
-<h2><span class="section-number">9.11. </span>Model training<a class="headerlink" href="#model-training" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.11. </span>Model training<a class="headerlink" href="#model-training" title="Link to this heading">#</a></h2>
 <p>Once we have defined the model, we need to train it on our train set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2784,10 +2783,10 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </section>
 <section id="model-evaluation">
-<h2><span class="section-number">9.12. </span>Model evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.12. </span>Model evaluation<a class="headerlink" href="#model-evaluation" title="Link to this heading">#</a></h2>
 <p>You may have thought “that’s it”, but we are only halfway through. Having a trained model is nice, but is it a good model, i.e. does it do what it is supposed to do? And how well is it doing it? And could we make the model even better? These questions are answered when we perform model evaluation and model selection.</p>
 <section id="convergence-of-training">
-<h3><span class="section-number">9.12.1. </span>Convergence of training<a class="headerlink" href="#convergence-of-training" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.12.1. </span>Convergence of training<a class="headerlink" href="#convergence-of-training" title="Link to this heading">#</a></h3>
 <p>First, let’s look at the training of the model. Within the neural network, we update the weights at the nodes to minimise a loss function. The following graph shows the value of this loss function as a function of epochs, i.e. the number of times the training data set is used.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2807,7 +2806,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <p>As expected, the value of the loss function decreases as the number of epochs increases. We also see that after 5 epochs, the gain due to further epochs is minimal. We can therefore conclude that the model has converged to a stable state after a few epochs.</p>
 </section>
 <section id="model-validation">
-<h3><span class="section-number">9.12.2. </span>Model validation<a class="headerlink" href="#model-validation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.12.2. </span>Model validation<a class="headerlink" href="#model-validation" title="Link to this heading">#</a></h3>
 <p>Let us start with a naive approach to get an idea of the performance of the model. We will use our test data and predict temperatures $\hat{y}<em>i$ for each of the datasets in <code class="docutils literal notranslate"><span class="pre">X_test</span></code>. Then we compare the model output with our known temperatures $y_i$ in <code class="docutils literal notranslate"><span class="pre">y_test</span></code>. To calculate the  mean squared error
 $$MSE={\sum</em>{i=1}^N\left(y_i-\hat{y}<em>i\right)^2}, ,$$ respectively the root mean squared error
 $$RMSE=\sqrt{\sum</em>{i=1}^N\left(y_i-\hat{y}_i\right)^2}$$
@@ -2861,7 +2860,7 @@ gives us an estimate of the quality of the prediction.</p>
 <p>Note: The function returns the negative RMSE, which we have converted to positive values.</p>
 </section>
 <section id="learning-curve">
-<h3><span class="section-number">9.12.3. </span>Learning curve<a class="headerlink" href="#learning-curve" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.12.3. </span>Learning curve<a class="headerlink" href="#learning-curve" title="Link to this heading">#</a></h3>
 <p>An important thing to watch out for in machine learning is <strong>overfitting</strong>. This means that if we train our model well, it will learn all the tiny characteristics of the data and thus describe the training data perfectly. However, the test data may be slightly different, so the model will perform poorly on new data.</p>
 <p>One way to detect overfitting is to run a so-called learning curve. This means that we train the model with training sets of different sizes. Furthermore, each training is done with a 10-fold cross validation.</p>
 <div class="cell docutils container">
@@ -2926,10 +2925,10 @@ gives us an estimate of the quality of the prediction.</p>
 </section>
 </section>
 <section id="model-selection">
-<h2><span class="section-number">9.13. </span>Model selection<a class="headerlink" href="#model-selection" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.13. </span>Model selection<a class="headerlink" href="#model-selection" title="Link to this heading">#</a></h2>
 <p>In the previous part, we checked the model for problems such as poor performance and overfitting. In this part we will see if we can improve the model by changing so-called hyperparameters, i.e. parameters that are used for the model but are not related to the data.</p>
 <section id="parameter-alpha">
-<h3><span class="section-number">9.13.1. </span>Parameter alpha<a class="headerlink" href="#parameter-alpha" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.13.1. </span>Parameter alpha<a class="headerlink" href="#parameter-alpha" title="Link to this heading">#</a></h3>
 <p>In our model definition we set the parameter alpha to 0.0001. This parameter controls the so-called <strong>L2 regularisation</strong>, which adds a penalty term to the loss function to prevent the weights from diverging.</p>
 <p>To get an idea of the influence of the alpha parameter, we perform several model fits with different values for alpha. Again, a 10-fold cross-validation is performed for each of the fits.</p>
 <div class="cell docutils container">
@@ -2981,7 +2980,7 @@ gives us an estimate of the quality of the prediction.</p>
 <p>The plot shows that over a wide range of alpha values the result for the model is almost the same. However, for larger values, the RMSE starts to “jump around”. Since we are not sure whether the lower value for $alpha=0.1$ is just lower by chance or really a better value, we stick with our predefined value of 0.0001.</p>
 </section>
 <section id="the-network-layout">
-<h3><span class="section-number">9.13.2. </span>The network layout<a class="headerlink" href="#the-network-layout" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.13.2. </span>The network layout<a class="headerlink" href="#the-network-layout" title="Link to this heading">#</a></h3>
 <p>We have defined the layout for our model as two layers of 9 nodes each. This was a very arbitrary choice and we will now test some different layouts and see if they offer better performance. So we define different layouts:</p>
 <ol class="arabic simple">
 <li><p>two layers of 8 nodes each (our original model)</p></li>
@@ -3075,7 +3074,7 @@ gives us an estimate of the quality of the prediction.</p>
 <p>There is an obvious difference between layouts. Layouts with more nodes perform better. Since the training and validation curves tend to diverge for the 5th layout, we will use layout 4, the default sklearn layout, for our final model.</p>
 </section>
 <section id="activation-function">
-<h3><span class="section-number">9.13.3. </span>Activation function<a class="headerlink" href="#activation-function" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.13.3. </span>Activation function<a class="headerlink" href="#activation-function" title="Link to this heading">#</a></h3>
 <p>As a final parameter, we will look at the activation function used inside the nodes. So we use the same approach as above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3151,15 +3150,15 @@ gives us an estimate of the quality of the prediction.</p>
 <p>The activation functions with the best performance are the <code class="docutils literal notranslate"><span class="pre">tanh</span></code> and <code class="docutils literal notranslate"><span class="pre">relu</span></code> functions. For our model we used the <code class="docutils literal notranslate"><span class="pre">relu</span></code> function, which means we have already made a good choice and we will leave it that way.</p>
 </section>
 <section id="grid-search">
-<h3><span class="section-number">9.13.4. </span>Grid search<a class="headerlink" href="#grid-search" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.13.4. </span>Grid search<a class="headerlink" href="#grid-search" title="Link to this heading">#</a></h3>
 <p>Above we tested each parameter individually. This may not be the best way as there may be a dependency between the different parameters. The best way would be to test all the parameters at the same time. This can be done using an approach called <strong>grid search</strong>. However, we will not use it here.</p>
 </section>
 </section>
 <section id="final-model">
-<h2><span class="section-number">9.14. </span>Final model<a class="headerlink" href="#final-model" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.14. </span>Final model<a class="headerlink" href="#final-model" title="Link to this heading">#</a></h2>
 <p>When we are satisfied with our model evaluation and selection, we can define a final model and train it on the entire training data set. As mentioned before, the only thing we will change is the network layout.</p>
 <section id="id1">
-<h3><span class="section-number">9.14.1. </span>Model definition<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.14.1. </span>Model definition<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlp</span> <span class="o">=</span> <span class="n">MLPRegressor</span><span class="p">(</span>
@@ -3176,7 +3175,7 @@ gives us an estimate of the quality of the prediction.</p>
 </div>
 </section>
 <section id="id2">
-<h3><span class="section-number">9.14.2. </span>Model training<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.14.2. </span>Model training<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -3592,7 +3591,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </section>
 <section id="final-model-evaluation">
-<h3><span class="section-number">9.14.3. </span>Final model evaluation<a class="headerlink" href="#final-model-evaluation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.14.3. </span>Final model evaluation<a class="headerlink" href="#final-model-evaluation" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
@@ -3616,7 +3615,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </section>
 </section>
 <section id="a-good-model-might-not-do-what-we-think-it-does">
-<h2><span class="section-number">9.15. </span>A good model might not do what we think it does…<a class="headerlink" href="#a-good-model-might-not-do-what-we-think-it-does" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.15. </span>A good model might not do what we think it does…<a class="headerlink" href="#a-good-model-might-not-do-what-we-think-it-does" title="Link to this heading">#</a></h2>
 <p>In our model, we used vapor pressure and relative humidity, among other things, to predict temperature. Let us add some physical background here. Relative humidity is defined as the ratio of vapor pressure to saturation vapor pressure. From the relative humidity and the vapor pressure, we can calculate the saturation vapor pressure. The saturation vapor pressure in turn has a relationship to temperature called the Magnus formula. This is not a linear relationship, but as we know, neural networks can model non-linear relationships.</p>
 <p><strong>Thus, the model probably models only the Magnus formula and simply ignores all other data.</strong></p>
 <p>We can test this by removing the vapor pressure or the relative humidity from the data and train the model again.</p>
