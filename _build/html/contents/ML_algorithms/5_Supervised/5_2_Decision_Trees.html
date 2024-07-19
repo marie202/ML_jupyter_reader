@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>7.2. Decision Trees &#8212; Machine Learning Online Reader</title>
   
@@ -29,35 +28,37 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/ML_algorithms/5_Supervised/5_2_Decision_Trees';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -233,23 +234,13 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. A typical machine learning workflow</a></li>
-
-
-
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -308,7 +299,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html" target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -325,7 +316,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html/issues/new?title=Issue%20on%20page%20%2Fcontents/ML_algorithms/5_Supervised/5_2_Decision_Trees.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader/issues/new?title=Issue%20on%20page%20%2Fcontents/ML_algorithms/5_Supervised/5_2_Decision_Trees.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -470,13 +461,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="decision-trees">
-<h1><span class="section-number">7.2. </span>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">7.2. </span>Decision Trees<a class="headerlink" href="#decision-trees" title="Link to this heading">#</a></h1>
 <p>In this notebook, we will implement a decision in Python. We’ll start with a single decision tree and a simple problem, and then work our way to a random forest. Once we understand how a single decision tree works, we can transfer this knowledge to an entire forest of trees.</p>
 <blockquote>
 <div><p><a class="reference external" href="https://www.youtube.com/watch?v=J4Wdy0Wc_xQ&amp;amp;t=528s">Nice introductory video</a></p>
 </div></blockquote>
 <section id="what-is-a-decision-tree">
-<h2><span class="section-number">7.2.1. </span>What is a decision tree<a class="headerlink" href="#what-is-a-decision-tree" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.2.1. </span>What is a decision tree<a class="headerlink" href="#what-is-a-decision-tree" title="Link to this heading">#</a></h2>
 <div>
 <img src="figures/decision_trees.png" width="700"/>
 </div>
@@ -493,15 +484,15 @@ document.write(`
 <p>Their main disadvantage: <strong>INACCURAY</strong>, since they are not flexible with new samples</p>
 </div></blockquote>
 <section id="example-building-a-decision-tree-from-scratch">
-<h3><span class="section-number">7.2.1.1. </span><strong>Example</strong>: Building a Decision Tree from scratch<a class="headerlink" href="#example-building-a-decision-tree-from-scratch" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.2.1.1. </span><strong>Example</strong>: Building a Decision Tree from scratch<a class="headerlink" href="#example-building-a-decision-tree-from-scratch" title="Link to this heading">#</a></h3>
 <blockquote>
 <div><p>First, a decision tree is to be generated by hand from the following admittedly rather artificial data set.</p>
 </div></blockquote>
-<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="text-center head"><p>Clouds</p></th>
-<th class="text-center head"><p>Temperature</p></th>
-<th class="text-center head"><p>Rain</p></th>
+<tr class="row-odd"><th class="head text-center"><p>Clouds</p></th>
+<th class="head text-center"><p>Temperature</p></th>
+<th class="head text-center"><p>Rain</p></th>
 </tr>
 </thead>
 <tbody>
@@ -539,19 +530,21 @@ document.write(`
 <blockquote>
 <div><p>The tree should give us the answer as to whether it is raining or not - so “rain” should close the tree as the leaf node. The first step is to determine whether “clouds” or “temperature” is a better choice for the first decision level, i.e. the root node of the tree.</p>
 <p>Gini impurity is used for this decision:</p>
-<p>\begin{eqnarray*}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
 Gini(D) = 1 - \sum_{i=1}^k p_i^2.
-\end{eqnarray*}</p>
-<p>The running index “i” $\in$ [1,2] describes the target classes of the leaf nodes to be distinguished, in this case [rain-yes,rain-no]. The probability $p_1$ or $p_2$ is therefore the probability of rain or no rain in data set D.</p>
-<p>The total gini-impurity of a node which splits data set D with $n$ entries into e.g. 2 sub-data sets $D_a$ and $D_b$ with $n_a$ and $n_b$ entries respectively, is calculated from the weighted average of the respective individual gini-impurities:</p>
-<p>\begin{eqnarray*}
+\end{eqnarray*}\]</div>
+<p>The running index “i” <span class="math notranslate nohighlight">\(\in\)</span> [1,2] describes the target classes of the leaf nodes to be distinguished, in this case [rain-yes,rain-no]. The probability <span class="math notranslate nohighlight">\(p_1\)</span> or <span class="math notranslate nohighlight">\(p_2\)</span> is therefore the probability of rain or no rain in data set D.</p>
+<p>The total gini-impurity of a node which splits data set D with <span class="math notranslate nohighlight">\(n\)</span> entries into e.g. 2 sub-data sets <span class="math notranslate nohighlight">\(D_a\)</span> and <span class="math notranslate nohighlight">\(D_b\)</span> with <span class="math notranslate nohighlight">\(n_a\)</span> and <span class="math notranslate nohighlight">\(n_b\)</span> entries respectively, is calculated from the weighted average of the respective individual gini-impurities:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
 Gini(D) = \frac{n_a}{n} Gini(D_a) + \frac{n_b}{n} Gini(D_b),
-\end{eqnarray*}</p>
-<p>where the indices $a$ and $b$ could stand for clouds=yes and clouds=no, for example.</p>
+\end{eqnarray*}\]</div>
+<p>where the indices <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> could stand for clouds=yes and clouds=no, for example.</p>
 <h4 class="rubric" id="exercise-a"><strong>Exercise A</strong>:</h4>
 <p>We now calculate the total gini-impurity of each of the following possible root nodes:</p>
-<p>Clouds $=$ yes or no</p>
-<p>Temperature $=$ cold, mild or hot</p>
+<p>Clouds <span class="math notranslate nohighlight">\(=\)</span> yes or no</p>
+<p>Temperature <span class="math notranslate nohighlight">\(=\)</span> cold, mild or hot</p>
 <h4 class="rubric" id="exercise-b"><strong>Exercise B</strong>:</h4>
 <p>The node with the lowest total Gini impurity is suitable as the first decision node or root node of the tree.
 Determine the total Gini impurity for the first internal nodes of the 2 remaining discriminators, namely for the 2 branches of the root node.</p>
@@ -565,7 +558,7 @@ Determine the total Gini impurity for the first internal nodes of the 2 remainin
 </div>
 </section>
 <section id="solution">
-<h3><span class="section-number">7.2.1.2. </span>solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.2.1.2. </span>solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gini</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">):</span>
@@ -696,7 +689,7 @@ Determine the total Gini impurity for the first internal nodes of the 2 remainin
 </section>
 </section>
 <section id="decision-trees-in-scikit-learn">
-<h2><span class="section-number">7.2.2. </span>Decision trees in Scikit-learn<a class="headerlink" href="#decision-trees-in-scikit-learn" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.2.2. </span>Decision trees in Scikit-learn<a class="headerlink" href="#decision-trees-in-scikit-learn" title="Link to this heading">#</a></h2>
 <p>Next, we  build and train a single decision tree on the data using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>. The tree will learn how to separate the points, building a flowchart of questions based on the feature values and the labels. At each stage, the decision tree makes splits by maximizing the reduction in Gini impurity.  We’ll use the default hyperparameters for the decision tree which means it can grow as deep as necessary in order to completely separate the classes. This will lead to overfitting because the model memorizes the training data, and in practice, we usually want to limit the depth of the tree so it can generalize to testing data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1161,7 +1154,7 @@ Determine the total Gini impurity for the first internal nodes of the 2 remainin
 <p>The data set contains 188 samples and the following 11 variables:
 Event, Sample ID, Latitude, Longitude, Date/Time, Samp type, Sample comment, δ18O H2O [‰ SMOW], δD H2O [‰ SMOW], δ18O H2O std dev [±], δD H2O std dev [±]. The isotope ratios are expressed in the conventional delta notation (δ18O, δ2H) in per mil (‰) relative to VSMOW (<a class="reference external" href="https://en.wikipedia.org/wiki/Vienna_Standard_Mean_Ocean_Water">Vienna Standard Mean Ocean Water</a>.</p>
 <section id="ressources-for-this-script">
-<h3><span class="section-number">7.2.2.1. </span>Ressources for this script:<a class="headerlink" href="#ressources-for-this-script" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.2.2.1. </span>Ressources for this script:<a class="headerlink" href="#ressources-for-this-script" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://towardsdatascience.com/hyperparameter-tuning-the-random-forest-in-python-using-scikit-learn-28d2aa77dd74">Koehrsen 2010</a></p></li>
 </ul>
@@ -1303,7 +1296,7 @@ By Annette Rudolph, Marie-Christin Eckert
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

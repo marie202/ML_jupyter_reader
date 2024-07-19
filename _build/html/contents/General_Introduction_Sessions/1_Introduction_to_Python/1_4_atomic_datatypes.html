@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1.5. Datatypes &#8212; Machine Learning Online Reader</title>
   
@@ -29,35 +28,37 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/1_Introduction_to_Python/1_4_atomic_datatypes';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -227,12 +228,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ML_algorithms/5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_2_Decision_Trees.html">7.2. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_3_RF_classification.html">7.3. Random Forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_4_RF_regression.html">7.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../references.html">References</a></li>
 </ul>
 
     </div>
@@ -287,7 +299,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html" target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +316,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/1_Introduction_to_Python/1_4_atomic_datatypes.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/1_Introduction_to_Python/1_4_atomic_datatypes.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -454,12 +466,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="datatypes">
-<h1><span class="section-number">1.5. </span>Datatypes<a class="headerlink" href="#datatypes" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">1.5. </span>Datatypes<a class="headerlink" href="#datatypes" title="Link to this heading">#</a></h1>
 <p>In the following we want to introduce the concept of data types (especially) in Python. As explained in the previous chapters, data types are related to the type of information that should be processed or which is stored in a variable. We have already learned that Python (and other programming language) differentiates between numbers and characters. In relation to this there are appropriated data types for this kind of information. Based on the <em>type of data</em> the following atomic built-in data types are available in Python</p>
-<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="text-left head"><p>Kind of information</p></th>
-<th class="text-center head"><p>Data type</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Kind of information</p></th>
+<th class="head text-center"><p>Data type</p></th>
 </tr>
 </thead>
 <tbody>
@@ -492,12 +504,12 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="simple-build-in-data-types">
-<h1><span class="section-number">1.6. </span>Simple build in Data types<a class="headerlink" href="#simple-build-in-data-types" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">1.6. </span>Simple build in Data types<a class="headerlink" href="#simple-build-in-data-types" title="Link to this heading">#</a></h1>
 <p>We want to have a closer look at the atomic data types and how they are used in Python</p>
 <section id="numbers">
-<h2><span class="section-number">1.6.1. </span>Numbers<a class="headerlink" href="#numbers" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.6.1. </span>Numbers<a class="headerlink" href="#numbers" title="Link to this heading">#</a></h2>
 <section id="integer-values">
-<h3><span class="section-number">1.6.1.1. </span>Integer values<a class="headerlink" href="#integer-values" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.6.1.1. </span>Integer values<a class="headerlink" href="#integer-values" title="Link to this heading">#</a></h3>
 <p>Numbers without a decimal point are automatically stored as <code class="docutils literal notranslate"><span class="pre">integer</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -520,7 +532,7 @@ document.write(`
 </div>
 </section>
 <section id="float-values">
-<h3><span class="section-number">1.6.1.2. </span>Float values<a class="headerlink" href="#float-values" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.6.1.2. </span>Float values<a class="headerlink" href="#float-values" title="Link to this heading">#</a></h3>
 <p>In contrast to <code class="docutils literal notranslate"><span class="pre">integer</span></code> values numbers with a decimal point are stored as <code class="docutils literal notranslate"><span class="pre">float</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -575,7 +587,7 @@ document.write(`
 </section>
 </section>
 <section id="character-chains-strings">
-<h2><span class="section-number">1.6.2. </span>Character chains - <code class="docutils literal notranslate"><span class="pre">Strings</span></code><a class="headerlink" href="#character-chains-strings" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.6.2. </span>Character chains - <code class="docutils literal notranslate"><span class="pre">Strings</span></code><a class="headerlink" href="#character-chains-strings" title="Link to this heading">#</a></h2>
 <p>Besides numbers we also get to know about chains of characters or letters. The associated data typed is called <code class="docutils literal notranslate"><span class="pre">str</span></code> for strings. Every information is automatically interpreted as string if the value is put in <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">''</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -677,7 +689,7 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="string-methods">
-<h2><span class="section-number">1.6.3. </span>String methods<a class="headerlink" href="#string-methods" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.6.3. </span>String methods<a class="headerlink" href="#string-methods" title="Link to this heading">#</a></h2>
 <p>Besides the above introduced functions there are a variety of very useful <code class="docutils literal notranslate"><span class="pre">str</span></code> methods. The <code class="docutils literal notranslate"><span class="pre">format()</span></code> method is a nice extension for the <code class="docutils literal notranslate"><span class="pre">print()</span></code> statement:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -784,7 +796,7 @@ document.write(`
 </div>
 </section>
 <section id="logical-values-bool">
-<h2><span class="section-number">1.6.4. </span>Logical values - <code class="docutils literal notranslate"><span class="pre">bool</span></code><a class="headerlink" href="#logical-values-bool" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.6.4. </span>Logical values - <code class="docutils literal notranslate"><span class="pre">bool</span></code><a class="headerlink" href="#logical-values-bool" title="Link to this heading">#</a></h2>
 <p>Logical values are a kind of information that only consists of two contrastive values:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> in the meaning of <em>no</em> or <em>false</em></p></li>
@@ -847,7 +859,7 @@ document.write(`
 </section>
 </section>
 <section id="indexing-and-slicing">
-<h1><span class="section-number">1.7. </span>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">1.7. </span>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Link to this heading">#</a></h1>
 <p>At last, we want to introduce the the concept of indexing a specific value out of a chain of values. The only chain of values that you know to this point are <code class="docutils literal notranslate"><span class="pre">str</span></code> objects. In the next chapter you will also get to know about other common data structures that combines the introduced atomic data types to create new data objects widely used for the purposes of data science and statistical modelling. To use these data structures properly you need to understand how to retrieve one or more specific values out of a chain of values. We want to explain this with the help of a <code class="docutils literal notranslate"><span class="pre">str</span></code> object:</p>
 <blockquote>
 <div><p><strong>Note:</strong> the term <em>indexing</em> is referred to adress the position of a value in a chain whereas the term <em>slicing</em> relates to the extraction of values out of a chain of values.</p>
@@ -888,7 +900,7 @@ As you can see the first letter in this string is associated with the place mark
 <div><p><strong>Note:</strong> Also spaces and special characters (e.g. <code class="docutils literal notranslate"><span class="pre">(</span></code>, <code class="docutils literal notranslate"><span class="pre">)</span></code>, or <code class="docutils literal notranslate"><span class="pre">*</span></code> are counted at a single letter! Be aware of this for indexing purposes.</p>
 </div></blockquote>
 <blockquote>
-<div><p><strong>Note:</strong> It is important to know that Python starts counting with $0$. That means the first character has always the associated positional number $0$ whereas the last letter in will have the position $n - 1$, in this case 19.</p>
+<div><p><strong>Note:</strong> It is important to know that Python starts counting with <span class="math notranslate nohighlight">\(0\)</span>. That means the first character has always the associated positional number <span class="math notranslate nohighlight">\(0\)</span> whereas the last letter in will have the position <span class="math notranslate nohighlight">\(n - 1\)</span>, in this case 19.</p>
 </div></blockquote>
 <p>To access one or more specific letter in a value chain, we make use of the <code class="docutils literal notranslate"><span class="pre">[&lt;position&gt;]</span></code> brackets. For instance, if we want to access the first letter in a string:</p>
 <div class="cell docutils container">
@@ -1167,7 +1179,7 @@ By Annette Rudolph, Marie-Christin Eckert
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

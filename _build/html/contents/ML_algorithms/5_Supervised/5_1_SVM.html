@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>7.1. Support Vector Machines (SVM) &#8212; Machine Learning Online Reader</title>
   
@@ -29,35 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/ML_algorithms/5_Supervised/5_1_SVM';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -233,23 +232,13 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. A typical machine learning workflow</a></li>
-
-
-
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -308,7 +297,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html" target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -325,7 +314,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html/issues/new?title=Issue%20on%20page%20%2Fcontents/ML_algorithms/5_Supervised/5_1_SVM.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader/issues/new?title=Issue%20on%20page%20%2Fcontents/ML_algorithms/5_Supervised/5_1_SVM.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -449,12 +438,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-data-set-example-crop-recommendations">7.1.1. Working Data Set example: Crop Recommendations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">7.1.1.1. solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-implementation">7.1.1. SVM Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-generation">7.1.1.1. Data generation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-exploration">7.1.2. Data exploration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">7.1.3. Ressources for this script:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-splitting">7.1.2. Train-Test Splitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling">7.1.3. Feature Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-svm-model">7.1.4. Train SVM Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-model">7.1.5. Evaluate Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">7.1.5.1. Ressources for this script:</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -467,54 +461,100 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="support-vector-machines-svm">
-<h1><span class="section-number">7.1. </span>Support Vector Machines (SVM)<a class="headerlink" href="#support-vector-machines-svm" title="Permalink to this heading">#</a></h1>
-<div>
-<img src="figures/SVM_margin.png" width="400"/>
-</div>
-<p>(figure by <a class="reference external" href="https://en.wikipedia.org/wiki/Support_vector_machine#/media/File:SVM_margin.png">Wikipedia 2018</a> )</p>
-<p>SVM classifies data by finding the best way to separate different groups of data in a multidimensional space. It finds the maximum margin between the closest data points of opposite groups, creating the optimal hyperplane. The number of features in the input data determines if the hyperplane is a line in a 2D space or a plane in an N-dimensional space. The SVM algorithm is used in machine learning because it can handle both linear and nonlinear classification tasks. However, when the data is not linearly separable, kernel functions are used to transform the data to enable linear separation. This is called the ‘kernel trick’. The type of kernel used depends on the data and the task.</p>
+<h1><span class="section-number">7.1. </span>Support Vector Machines (SVM)<a class="headerlink" href="#support-vector-machines-svm" title="Link to this heading">#</a></h1>
+<a class="reference internal image-reference" href="../../../_images/SVM_margin.png"><img alt="../../../_images/SVM_margin.png" src="../../../_images/SVM_margin.png" style="width: 900px;" /></a>
+<p>Support Vector Machine (SVM) classifies data by identifying the best way to separate different groups within a multidimensional space. It does this by finding the maximum margin between the closest data points of opposing groups, thus creating the optimal hyperplane. The dimensionality of the input data determines whether this hyperplane is a line in a 2D space or a plane in a higher-dimensional space. SVM is widely used in machine learning because it is effective for both linear and nonlinear classification tasks. When the data is not linearly separable, kernel functions are applied to transform the data, enabling linear separation. This technique is known as the ‘kernel trick’. The choice of kernel depends on the specific data and task at hand.</p>
 <p><strong>Support Vectors</strong></p>
-<p>Support vectors are the data points, which are closest to the hyperplane. These points will define the separating line better by calculating margins. These points are more relevant to the construction of the classifier.</p>
+<p>Support vectors are the data points closest to the hyperplane. They help define the separating line by calculating margins, making them crucial for building the classifier.</p>
 <p><strong>Hyperplane</strong></p>
-<p>A hyperplane is a decision plane which separates between a set of objects having different class memberships.</p>
+<p>A hyperplane is a decision boundary that separates a set of objects into different classes.</p>
 <p><strong>Margin</strong></p>
-<p>A margin is a gap between the two lines on the closest class points. This is calculated as the perpendicular distance from the line to support vectors or closest points. If the margin is larger in between the classes, then it is considered a good margin, a smaller margin is a bad margin.</p>
-<p><strong>Let’s get down to business</strong>: Now you will learn about its implementation in Python using scikit-learn.</p>
+<p>A margin is the gap between two lines that are closest to the class points. It is measured as the perpendicular distance from these lines to the support vectors or closest points. A larger margin between the classes is considered good, while a smaller margin is considered bad.</p>
+<section id="svm-implementation">
+<h2><span class="section-number">7.1.1. </span>SVM Implementation<a class="headerlink" href="#svm-implementation" title="Link to this heading">#</a></h2>
+<p>Now, we will learn about its implementation in Python using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
+<section id="data-generation">
+<h3><span class="section-number">7.1.1.1. </span>Data generation<a class="headerlink" href="#data-generation" title="Link to this heading">#</a></h3>
+<p>First, lets consider some articifial data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, let&#39;s import all the needed libraries. </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, let&#39;s import all the needed libraries.</span>
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
 
 <span class="kn">import</span> <span class="nn">warnings</span>
+
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="s2">&quot;use_inf_as_na&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Data Cleaning and Processing</p>
-<p>The following library has been utilized for data processing:</p>
-<ul class="simple">
-<li><p>pandas: It is an open-source Python module, having a wide scope of use in the field of computing, data analysis, statistics, etc. The following techniques have been implemented for Data Processing:</p></li>
-<li><p>Data Type conversions</p></li>
-<li><p>Label Encoding</p></li>
-<li><p>Feature Scaling</p></li>
-</ul>
-<p><strong>Feature Scaling</strong></p>
-<p>Feature Scaling refers to the technique of converting the numeric data into a standard range to improvise the performance of algorithms. This is obtained by normalizing or standardizing the data values. One of the most common feature-scaling techniques is min-max scaling which will be implemented here.</p>
-<p>Min-max scaling is a feature scaling technique that involves the subtraction of the minimum value in the attribute with each observation and then dividing this by the range of the attribute.</p>
-<p>Here, attributes: ‘bright_t31’, ‘brightness’, and ‘frp’ undergo min-max scaling. The technique will result in the transformation of all these attributes into normalized numerical form in the range of 0 to 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">min_max</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">28</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">centers</span><span class="o">=</span><span class="p">[[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">5500</span><span class="p">],</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">15000</span><span class="p">]],</span>
+    <span class="c1">#  center_box=(0, 200),</span>
+    <span class="n">cluster_std</span><span class="o">=</span><span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1700</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]],</span>
+<span class="p">)</span>
+
+
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Weight (g)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="o">*</span><span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/3d5896a79382a2f9582d6ff6beb2369cd341f3439bb9893b7d2d0c91affafefd.png" src="../../../_images/3d5896a79382a2f9582d6ff6beb2369cd341f3439bb9893b7d2d0c91affafefd.png" />
+</div>
+</div>
+<p>Lets imagine we are dealing with 1000 height and weight samples of cats and dogs. No we want to train a linear classifier to seperate the two based on the height/ weight ratio. “0” stands for cats and “1” for dogs.</p>
+</section>
+</section>
+<section id="train-test-splitting">
+<h2><span class="section-number">7.1.2. </span>Train-Test Splitting<a class="headerlink" href="#train-test-splitting" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import train_test_split function</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Split dataset into training set and test set</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">109</span>
+<span class="p">)</span>  <span class="c1"># 70% training and 30% test</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="feature-scaling">
+<h2><span class="section-number">7.1.3. </span>Feature Scaling<a class="headerlink" href="#feature-scaling" title="Link to this heading">#</a></h2>
+<p>SVM are sensitive to feature scaling! This is why we want to min-max scale our inputs first!</p>
+<blockquote>
+<div><p><strong>Recall Feature Scaling</strong></p>
+<p>Feature scaling is a technique used to convert numeric data into a standard range, enhancing the performance of algorithms. This is achieved by normalizing or standardizing the data values. One common feature scaling method is min-max scaling, which will be implemented here.</p>
+<p>Min-max scaling involves subtracting the minimum value of an attribute from each observation and then dividing by the range of the attribute.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">min_max</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">xmin</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>  <span class="c1">## no we are able to set xmin manually</span>
         <span class="n">xmax</span> <span class="o">=</span> <span class="n">variable</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
         <span class="n">min_max_done</span> <span class="o">=</span> <span class="p">(</span><span class="n">variable</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">min_max_done</span>
-    <span class="k">elif</span> <span class="p">(</span><span class="n">xmin</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">):</span>  <span class="c1">## no we are able to set xmin and xmax manually</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">xmin</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
+        <span class="n">xmax</span> <span class="o">!=</span> <span class="kc">None</span>
+    <span class="p">):</span>  <span class="c1">## no we are able to set xmin and xmax manually</span>
         <span class="n">min_max_done</span> <span class="o">=</span> <span class="p">(</span><span class="n">variable</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">min_max_done</span>
     <span class="k">else</span><span class="p">:</span>
@@ -525,224 +565,125 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="working-data-set-example-crop-recommendations">
-<h2><span class="section-number">7.1.1. </span>Working Data Set example: Crop Recommendations<a class="headerlink" href="#working-data-set-example-crop-recommendations" title="Permalink to this heading">#</a></h2>
-<p>For building the SVM model we will use the Crop Recommendation Dataset. our aim is to <strong>Maximize agricultural yield by recommending appropriate crops</strong>. You can find this example on <a class="reference external" href="https://www.kaggle.com/code/atharvaingle/what-crop-to-grow#Support-Vector-Machine-(SVM)">kaggle here</a> and you can download the data from <a class="reference external" href="https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset">kaggle here</a>.</p>
-<p><strong>About the data set:</strong></p>
-<p>This dataset was build by augmenting datasets of rainfall, climate and fertilizer data available for India.</p>
-<p><strong>Data fields</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">N</span></code> - ratio of Nitrogen content in soil</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">P</span></code> - ratio of Phosphorous content in soil</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">K</span></code> - ratio of Potassium content in soil</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">temperature</span></code> - temperature in degree Celsius</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">humidity</span></code> - relative humidity in %</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ph</span></code> - ph value of the soil</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rainfall</span></code> - rainfall in mm</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## read the data into pandas df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## training</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-<span class="n">PATH</span> <span class="o">=</span> <span class="s1">&#39;Crop_recommendation.csv&#39;</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">PATH</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">X_train_min_0</span><span class="p">,</span> <span class="n">X_train_max_0</span><span class="p">,</span> <span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_max</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">X_train_min_1</span><span class="p">,</span> <span class="n">X_train_max_1</span><span class="p">,</span> <span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_max</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1">## test data</span>
+<span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">X_test_min_0</span><span class="p">,</span> <span class="n">X_test_max_0</span><span class="p">,</span> <span class="n">X_test_scaled</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_max</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">X_test_min_1</span><span class="p">,</span> <span class="n">X_test_max_1</span><span class="p">,</span> <span class="n">X_test_scaled</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_max</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Height (cm) - scaled&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Weight (g) -scaled &quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="o">*</span><span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">## read the data into pandas df</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">PATH</span> <span class="o">=</span> <span class="s1">&#39;Crop_recommendation.csv&#39;</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">PATH</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-<span class="nn">File /opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File /opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File /opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File /opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File /opt/anaconda3/envs/jupyter_book_ml/lib/python3.9/site-packages/pandas/io/common.py:873,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
-<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
-<span class="g g-Whitespace">    </span><span class="mi">871</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="c1"># Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">873</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">874</span>             <span class="n">handle</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">875</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">876</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">877</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="c1"># Binary mode</span>
-<span class="g g-Whitespace">    </span><span class="mi">882</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;Crop_recommendation.csv&#39;
-</pre></div>
+<img alt="../../../_images/4b419994f477a5301c22a512995e597a3affa6c218aa1eb0de2d6f22844b424b.png" src="../../../_images/4b419994f477a5301c22a512995e597a3affa6c218aa1eb0de2d6f22844b424b.png" />
 </div>
 </div>
-</div>
+</section>
+<section id="train-svm-model">
+<h2><span class="section-number">7.1.4. </span>Train SVM Model<a class="headerlink" href="#train-svm-model" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2200, 8)
-</pre></div>
-</div>
-</div>
-</div>
-<blockquote>
-<div><p><strong>Exercise</strong>:</p>
-<p>Whats the datatype of each column?</p>
-<p>Find all unique crops in the <code class="docutils literal notranslate"><span class="pre">label</span></code> column!</p>
-<p>How many entries are there per label?</p>
-</div></blockquote>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### your code here ###</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="solution">
-<h3><span class="section-number">7.1.1.1. </span>solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N                int64
-P                int64
-K                int64
-temperature    float64
-humidity       float64
-ph             float64
-rainfall       float64
-label           object
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;rice&#39;, &#39;maize&#39;, &#39;chickpea&#39;, &#39;kidneybeans&#39;, &#39;pigeonpeas&#39;,
-       &#39;mothbeans&#39;, &#39;mungbean&#39;, &#39;blackgram&#39;, &#39;lentil&#39;, &#39;pomegranate&#39;,
-       &#39;banana&#39;, &#39;mango&#39;, &#39;grapes&#39;, &#39;watermelon&#39;, &#39;muskmelon&#39;, &#39;apple&#39;,
-       &#39;orange&#39;, &#39;papaya&#39;, &#39;coconut&#39;, &#39;cotton&#39;, &#39;jute&#39;, &#39;coffee&#39;],
-      dtype=object)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>label
-rice           100
-maize          100
-jute           100
-cotton         100
-coconut        100
-papaya         100
-orange         100
-apple          100
-muskmelon      100
-watermelon     100
-grapes         100
-mango          100
-banana         100
-pomegranate    100
-lentil         100
-blackgram      100
-mungbean       100
-mothbeans      100
-pigeonpeas     100
-kidneybeans    100
-chickpea       100
-coffee         100
-Name: count, dtype: int64
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import svm model</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+
+<span class="c1"># Create a svm Classifier</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>  <span class="c1"># Linear Kernel</span>
+
+<span class="c1"># Train the model using the training sets</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Predict the response for test dataset</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-</section>
-<section id="data-exploration">
-<h2><span class="section-number">7.1.2. </span>Data exploration<a class="headerlink" href="#data-exploration" title="Permalink to this heading">#</a></h2>
-<p>We will plot a correlation matrix (pearson) to quickly gain an overview of structures within our data:</p>
+<section id="evaluate-model">
+<h2><span class="section-number">7.1.5. </span>Evaluate Model<a class="headerlink" href="#evaluate-model" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span><span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import scikit-learn metrics module for accuracy calculation</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+
+<span class="c1"># Model Accuracy</span>
+<span class="c1"># how often is the classifier correct?</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 1.0
 </pre></div>
 </div>
-<img alt="../../../_images/0604eb27252080f48d5bc5760b5b294a51299cad95271ee9573f066bdffa415b.png" src="../../../_images/0604eb27252080f48d5bc5760b5b294a51299cad95271ee9573f066bdffa415b.png" />
 </div>
 </div>
-</section>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model Precision: what percentage of positive tuples are labeled as such?</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Precision:&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precision: 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a mesh to plot decision boundaries</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># step size in the mesh</span>
+<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot decision boundary of Linear SVM</span>
+<span class="n">Z_linear</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<span class="n">Z_linear</span> <span class="o">=</span> <span class="n">Z_linear</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z_linear</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_train_scaled</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Linear SVM&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/370ea911246bb92b6af1215f8bed546d33a32998969b84000e65fce32acd95ad.png" src="../../../_images/370ea911246bb92b6af1215f8bed546d33a32998969b84000e65fce32acd95ad.png" />
+</div>
+</div>
 <section id="ressources-for-this-script">
-<h2><span class="section-number">7.1.3. </span>Ressources for this script:<a class="headerlink" href="#ressources-for-this-script" title="Permalink to this heading">#</a></h2>
-<p>KMeans:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://towardsdatascience.com/unsupervised-learning-k-means-clustering-27416b95af27">Artley 2022</a></p></li>
-<li><p><a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">Python Data Science Handbook</a></p></li>
-</ul>
+<h3><span class="section-number">7.1.5.1. </span>Ressources for this script:<a class="headerlink" href="#ressources-for-this-script" title="Link to this heading">#</a></h3>
 <p>SVM:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/svm.html">Scikit-Learn Documentation</a></p></li>
@@ -760,6 +701,7 @@ Name: count, dtype: int64
         ></iframe>
         </div></div>
 </div>
+</section>
 </section>
 </section>
 
@@ -827,12 +769,17 @@ Name: count, dtype: int64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-data-set-example-crop-recommendations">7.1.1. Working Data Set example: Crop Recommendations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">7.1.1.1. solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-implementation">7.1.1. SVM Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-generation">7.1.1.1. Data generation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-exploration">7.1.2. Data exploration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">7.1.3. Ressources for this script:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-splitting">7.1.2. Train-Test Splitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-scaling">7.1.3. Feature Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-svm-model">7.1.4. Train SVM Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-model">7.1.5. Evaluate Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">7.1.5.1. Ressources for this script:</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -857,7 +804,7 @@ By Annette Rudolph, Marie-Christin Eckert
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

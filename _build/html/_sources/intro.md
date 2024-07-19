@@ -22,7 +22,3 @@ This reader is heavily based on the [SOGA E-Learning projected by the Freie Univ
 
 Rudolph, A., Krois, J., Hartmann, K. (2023): Statistics and Geodata Analysis using Python (SOGA-Py). Department of Earth Sciences, Freie Universitaet Berlin. 
 
-
-
-```{tableofcontents}
-```

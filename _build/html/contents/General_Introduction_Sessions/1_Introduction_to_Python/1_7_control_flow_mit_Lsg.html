@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1.10. Steering the control flow of a program &#8212; Machine Learning Online Reader</title>
   
@@ -29,35 +28,37 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/1_Introduction_to_Python/1_7_control_flow_mit_Lsg';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -227,12 +228,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ML_algorithms/5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_2_Decision_Trees.html">7.2. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_3_RF_classification.html">7.3. Random Forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_4_RF_regression.html">7.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../references.html">References</a></li>
 </ul>
 
     </div>
@@ -287,7 +299,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html" target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +316,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/1_Introduction_to_Python/1_7_control_flow_mit_Lsg.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/1_Introduction_to_Python/1_7_control_flow_mit_Lsg.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -450,7 +462,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="steering-the-control-flow-of-a-program">
-<h1><span class="section-number">1.10. </span>Steering the control flow of a program<a class="headerlink" href="#steering-the-control-flow-of-a-program" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">1.10. </span>Steering the control flow of a program<a class="headerlink" href="#steering-the-control-flow-of-a-program" title="Link to this heading">#</a></h1>
 <p>Up to this point, we have already learned how to utilise Python and Jupyter Notebooks to solve a variety of programming scenarios with the help of the essential data types and structures. We also get to know the usage of external packages and the usage of user-defined functions and their vast benefits. Nevertheless, the shown programming approaches have been pretty straightforward so far in a manner of speaking that we only implemented so-called <em><strong>sequentially control flows.</strong></em> This programmatic concept describes a relatively static way of implementation since all our implemented lines of codes (<strong>statements</strong>) are executed exactly in the order they are written without any possibility of omission. Hence our programming approaches lack the opportunity for flexibility, like a repeated or conditioned execution of certain code blocks.</p>
 <p>Therefore, within the scope of this chapter, we want to get to know a variety of standard control flow structures that will allow you to modify and steer the programming flow in your favour. The following control flows will be introduced:</p>
 <ul class="simple">
@@ -459,7 +471,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span></code></p></li>
 </ul>
 <section id="conditioned-code-execution">
-<h2><span class="section-number">1.10.1. </span>Conditioned code execution<a class="headerlink" href="#conditioned-code-execution" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.10.1. </span>Conditioned code execution<a class="headerlink" href="#conditioned-code-execution" title="Link to this heading">#</a></h2>
 <p>The first way of steering the code execution is to create branches within the execution flow of your code using conditions. The condition itself must contain a logical statement which is evaluated. Depending on the outcome of the logical expression (either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>), one or the other branch is executed. We use the’ if’ statement to implement this type of control flow. The general syntax is:</p>
 <p>For example, we could implement a <strong>UDF</strong> that proves based on your age, if you are a teenager or an adult and returns the results of that evaluation:</p>
 <div class="cell docutils container">
@@ -556,12 +568,12 @@ document.write(`
 </section>
 </section>
 <section id="using-loops-for-repetition-of-statements">
-<h1><span class="section-number">1.11. </span>Using loops for repetition of statements<a class="headerlink" href="#using-loops-for-repetition-of-statements" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">1.11. </span>Using loops for repetition of statements<a class="headerlink" href="#using-loops-for-repetition-of-statements" title="Link to this heading">#</a></h1>
 <p>Another way to steer the control and execution flow is by repeatedly executing a specific code block on purpose with changing values. This programmatic concept is related to the term loops. It is one of the most powerful since it allows you to save many unnecessary LoCs due to little differences. The code statements within the loop are repeated as long as a given condition remains <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> based on the chosen implementation or as long as not all elements of a given list are selected once. The first case is related to <code class="docutils literal notranslate"><span class="pre">while</span></code> loops, while the second holds for <code class="docutils literal notranslate"><span class="pre">for</span></code> loops. For loops in Python are helpful when you want to cycle over all of the items
 in a collection (such as all of the elements of an array), and while loops are useful when you want to
 cycle for an indefinite amount of time until some condition is met.</p>
 <section id="for-loops">
-<h2><span class="section-number">1.11.1. </span><code class="docutils literal notranslate"><span class="pre">for</span></code> loops<a class="headerlink" href="#for-loops" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.11.1. </span><code class="docutils literal notranslate"><span class="pre">for</span></code> loops<a class="headerlink" href="#for-loops" title="Link to this heading">#</a></h2>
 <p>At first, we want to look at <code class="docutils literal notranslate"><span class="pre">for</span></code> loops since the structure is most likely easier to follow as a beginner.</p>
 <p>For a first example, let us use a for loop to print each number between 1 and 10 sequentially:</p>
 <div class="cell docutils container">
@@ -610,7 +622,7 @@ cycle for an indefinite amount of time until some condition is met.</p>
 </div>
 </div>
 <blockquote>
-<div><p><strong>Note:</strong> the <code class="docutils literal notranslate"><span class="pre">range</span></code> command generates a list of values according to the parametrisation. If only one parameter is given, the list will start with $0$ and ends with $n - 1$. If two parameters are given, the list starts with $a$ and ends with $n - 1$.</p>
+<div><p><strong>Note:</strong> the <code class="docutils literal notranslate"><span class="pre">range</span></code> command generates a list of values according to the parametrisation. If only one parameter is given, the list will start with <span class="math notranslate nohighlight">\(0\)</span> and ends with <span class="math notranslate nohighlight">\(n - 1\)</span>. If two parameters are given, the list starts with <span class="math notranslate nohighlight">\(a\)</span> and ends with <span class="math notranslate nohighlight">\(n - 1\)</span>.</p>
 </div></blockquote>
 <p>Awesome! As a next, more advanced task we want to calculate the sum of the first ten numbers with the help of a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
 <div class="cell docutils container">
@@ -678,7 +690,7 @@ i= 10 , result= 55
 </div>
 <blockquote>
 <div><p><strong>Test your function</strong>:<br />
-The sum of the first $100$ natural numbers should be $5050$, while the sum of the first $500$ natural numbers should be $125250$.</p>
+The sum of the first <span class="math notranslate nohighlight">\(100\)</span> natural numbers should be <span class="math notranslate nohighlight">\(5050\)</span>, while the sum of the first <span class="math notranslate nohighlight">\(500\)</span> natural numbers should be <span class="math notranslate nohighlight">\(125250\)</span>.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1346,7 +1358,7 @@ class zip(object)
 </div>
 </section>
 <section id="while-loops">
-<h2><span class="section-number">1.11.2. </span><code class="docutils literal notranslate"><span class="pre">while</span></code> loops<a class="headerlink" href="#while-loops" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.11.2. </span><code class="docutils literal notranslate"><span class="pre">while</span></code> loops<a class="headerlink" href="#while-loops" title="Link to this heading">#</a></h2>
 <p>A <code class="docutils literal notranslate"><span class="pre">while</span></code> loop repeats a task until a particular condition is met. Therefore, we do not need to know how often the loop will be executed. Be sure there is a way to exit out of a while loop. Otherwise, your program will run forever.</p>
 <p>Let’s implement the same task with which we introduced the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, but this time by using a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop. That means using a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop that prints the first ten natural numbers sequentially:</p>
 <div class="cell docutils container">
@@ -1373,7 +1385,7 @@ class zip(object)
 </div>
 </div>
 </div>
-<p>Now, we want to adapt the above loop so that only every second number starting with $2$ is printed:</p>
+<p>Now, we want to adapt the above loop so that only every second number starting with <span class="math notranslate nohighlight">\(2\)</span> is printed:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>
@@ -1393,7 +1405,7 @@ class zip(object)
 </div>
 </div>
 </div>
-<p>There is also the possibility of using an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement within the loop to achieve the same result. We want to have a look at that solution by printing all even numbers from $0$ to $25$:</p>
+<p>There is also the possibility of using an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement within the loop to achieve the same result. We want to have a look at that solution by printing all even numbers from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(25\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1586,7 +1598,7 @@ By Annette Rudolph, Marie-Christin Eckert
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Machine learning Algorithms I &#8212; Machine Learning Online Reader</title>
   
@@ -29,35 +28,37 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/clipboard.min.js"></script>
-    <script src="../../../../_static/copybutton.js"></script>
-    <script src="../../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../../_static/design-tabs.js"></script>
+    <script src="../../../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/ML_algorithms/5_Supervised/additional_material/Test_5_RF_regression';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -227,12 +228,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5_2_Decision_Trees.html">7.2. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5_3_RF_classification.html">7.3. Random Forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5_4_RF_regression.html">7.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../references.html">References</a></li>
 </ul>
 
     </div>
@@ -287,7 +299,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html" target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +316,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html/issues/new?title=Issue%20on%20page%20%2Fcontents/ML_algorithms/5_Supervised/additional_material/Test_5_RF_regression.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader/issues/new?title=Issue%20on%20page%20%2Fcontents/ML_algorithms/5_Supervised/additional_material/Test_5_RF_regression.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -459,16 +471,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="machine-learning-algorithms-i">
-<h1>Machine learning Algorithms I<a class="headerlink" href="#machine-learning-algorithms-i" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="machine-learning-algorithms-i">
+<h1>Machine learning Algorithms I<a class="headerlink" href="#machine-learning-algorithms-i" title="Link to this heading">#</a></h1>
 <section id="decision-trees-random-forests">
-<h2>5 Decision Trees &amp; Random Forests<a class="headerlink" href="#decision-trees-random-forests" title="Permalink to this heading">#</a></h2>
+<h2>5 Decision Trees &amp; Random Forests<a class="headerlink" href="#decision-trees-random-forests" title="Link to this heading">#</a></h2>
 <p>In this notebook, we will implement a random forest in Python. We’ll start with a single decision tree and a simple problem, and then work our way to a random forest. Once we understand how a single decision tree works, we can transfer this knowledge to an entire forest of trees.</p>
 <blockquote>
-<div><p>really nice introduction: https://www.youtube.com/watch?v=J4Wdy0Wc_xQ&amp;t=528s</p>
+<div><p>really nice introduction: <a class="reference external" href="https://www.youtube.com/watch?v=J4Wdy0Wc_xQ&amp;amp;t=528s">https://www.youtube.com/watch?v=J4Wdy0Wc_xQ&amp;t=528s</a></p>
 </div></blockquote>
 <section id="rf-tutorial-aims">
-<h3>RF Tutorial Aims:<a class="headerlink" href="#rf-tutorial-aims" title="Permalink to this heading">#</a></h3>
+<h3>RF Tutorial Aims:<a class="headerlink" href="#rf-tutorial-aims" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Random Forest classification with scikit-learn</p></li>
 <li><p>How random forests work</p></li>
@@ -478,9 +490,9 @@ document.write(`
 </section>
 </section>
 <section id="decision-trees">
-<h2>1. Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this heading">#</a></h2>
+<h2>1. Decision Trees<a class="headerlink" href="#decision-trees" title="Link to this heading">#</a></h2>
 <section id="what-is-a-decision-tree">
-<h3>What is a decision tree<a class="headerlink" href="#what-is-a-decision-tree" title="Permalink to this heading">#</a></h3>
+<h3>What is a decision tree<a class="headerlink" href="#what-is-a-decision-tree" title="Link to this heading">#</a></h3>
 <div>
 <img src="5_RF_figures/Decisiontree.png" width="400"/>
 </div>
@@ -491,13 +503,13 @@ document.write(`
 </ul>
 </section>
 <section id="exercise-how-to-built-a-dt-from-scratch">
-<h3>Exercise - How to built a DT from scratch<a class="headerlink" href="#exercise-how-to-built-a-dt-from-scratch" title="Permalink to this heading">#</a></h3>
+<h3>Exercise - How to built a DT from scratch<a class="headerlink" href="#exercise-how-to-built-a-dt-from-scratch" title="Link to this heading">#</a></h3>
 <p>First, a decision tree is to be generated by hand from the following admittedly rather artificial data set.</p>
-<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="text-center head"><p>Clouds</p></th>
-<th class="text-center head"><p>Temperature</p></th>
-<th class="text-center head"><p>Rain</p></th>
+<tr class="row-odd"><th class="head text-center"><p>Clouds</p></th>
+<th class="head text-center"><p>Temperature</p></th>
+<th class="head text-center"><p>Rain</p></th>
 </tr>
 </thead>
 <tbody>
@@ -534,15 +546,17 @@ document.write(`
 </div>
 <p>The tree should give us the answer as to whether it is raining or not - so “rain” should close the tree as the leaf node. The first step is to determine whether “clouds” or “temperature” is a better choice for the first decision level, i.e. the root node of the tree.</p>
 <p>Gini impurity is used for this decision:</p>
-<p>\begin{eqnarray*}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
 Gini(D) = 1 - \sum_{i=1}^k p_i^2.
-\end{eqnarray*}</p>
-<p>The running index “i” $\in$ [1,2] describes the target classes of the leaf nodes to be distinguished, in this case [rain-yes,rain-no]. The probability $p_1$ or $p_2$ is therefore the probability of rain or no rain in data set D.</p>
-<p>The total gini-impurity of a node which splits data set D with $n$ entries into e.g. 2 sub-data sets $D_a$ and $D_b$ with $n_a$ and $n_b$ entries respectively, is calculated from the weighted average of the respective individual gini-impurities:</p>
-<p>\begin{eqnarray*}
+\end{eqnarray*}\]</div>
+<p>The running index “i” <span class="math notranslate nohighlight">\(\in\)</span> [1,2] describes the target classes of the leaf nodes to be distinguished, in this case [rain-yes,rain-no]. The probability <span class="math notranslate nohighlight">\(p_1\)</span> or <span class="math notranslate nohighlight">\(p_2\)</span> is therefore the probability of rain or no rain in data set D.</p>
+<p>The total gini-impurity of a node which splits data set D with <span class="math notranslate nohighlight">\(n\)</span> entries into e.g. 2 sub-data sets <span class="math notranslate nohighlight">\(D_a\)</span> and <span class="math notranslate nohighlight">\(D_b\)</span> with <span class="math notranslate nohighlight">\(n_a\)</span> and <span class="math notranslate nohighlight">\(n_b\)</span> entries respectively, is calculated from the weighted average of the respective individual gini-impurities:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
 Gini(D) = \frac{n_a}{n} Gini(D_a) + \frac{n_b}{n} Gini(D_b),
-\end{eqnarray*}</p>
-<p>where the indices $a$ and $b$ could stand for clouds=yes and clouds=no, for example.</p>
+\end{eqnarray*}\]</div>
+<p>where the indices <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> could stand for clouds=yes and clouds=no, for example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gini</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">):</span>
@@ -553,8 +567,8 @@ Gini(D) = \frac{n_a}{n} Gini(D_a) + \frac{n_b}{n} Gini(D_b),
 </div>
 </div>
 <p>We now calculate the total gini-impurity of each of the following possible root nodes:</p>
-<p>Clouds $=$ yes or no<br />
-Temperature $=$ cold, mild or hot</p>
+<p>Clouds <span class="math notranslate nohighlight">\(=\)</span> yes or no<br />
+Temperature <span class="math notranslate nohighlight">\(=\)</span> cold, mild or hot</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## 1. cloud no</span>
@@ -619,7 +633,7 @@ Temperature $=$ cold, mild or hot</p>
 </div>
 </div>
 <section id="calculating-total-gini-impurity-for-the-node-temperature">
-<h4>Calculating total GINI Impurity for the node “temperature”<a class="headerlink" href="#calculating-total-gini-impurity-for-the-node-temperature" title="Permalink to this heading">#</a></h4>
+<h4>Calculating total GINI Impurity for the node “temperature”<a class="headerlink" href="#calculating-total-gini-impurity-for-the-node-temperature" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## 1. temperature cold </span>
@@ -864,7 +878,7 @@ Now determine the total Gini impurity for the first internal nodes of the 2 rema
 </section>
 </section>
 <section id="what-is-a-rf">
-<h3>1. What is a RF?<a class="headerlink" href="#what-is-a-rf" title="Permalink to this heading">#</a></h3>
+<h3>1. What is a RF?<a class="headerlink" href="#what-is-a-rf" title="Link to this heading">#</a></h3>
 <div>
 <img src="5_RF_figures/RF.png" width="500"/>
 </div>
@@ -876,7 +890,7 @@ Now determine the total Gini impurity for the first internal nodes of the 2 rema
 <li><p>RFs are an ensemble method, meaning they combine predictions from other models.</p></li>
 </ul>
 <section id="how-does-it-work">
-<h4>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this heading">#</a></h4>
+<h4>How does it work?<a class="headerlink" href="#how-does-it-work" title="Link to this heading">#</a></h4>
 <blockquote>
 <div><p>A Random forest regression model combines multiple decision trees to create a single model. Each tree in the forest builds from a different subset of the data and makes its own independent prediction. The final prediction for input is based on the average or weighted average of all the individual trees’ predictions.</p>
 <p><a class="reference external" href="https://www.analytixlabs.co.in/blog/random-forest-regression/#:~:text=using%20various%20techniques.-,Evaluating%20Random%20Forest%20Regression%20Performance,such%20as%20accuracy%20and%20precision.">Read here more on the theory.</a></p>
@@ -889,7 +903,7 @@ Now determine the total Gini impurity for the first internal nodes of the 2 rema
 </section>
 </section>
 <section id="packages">
-<h3>3. Packages<a class="headerlink" href="#packages" title="Permalink to this heading">#</a></h3>
+<h3>3. Packages<a class="headerlink" href="#packages" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data Processing</span>
@@ -914,13 +928,13 @@ Now determine the total Gini impurity for the first internal nodes of the 2 rema
 </div>
 </section>
 <section id="data-set">
-<h3>3. Data set<a class="headerlink" href="#data-set" title="Permalink to this heading">#</a></h3>
+<h3>3. Data set<a class="headerlink" href="#data-set" title="Link to this heading">#</a></h3>
 <blockquote>
 <div><p>aus dem skript der meteos:Aufgabe 2: Random Forests (5 Punkte)</p>
 </div></blockquote>
-<p>In dieser Übung werden wir einen RF aus aktuellen Berliner Wetterdaten erstellen. Lesen Sie dazu die Datenbeschreibung im Refubium:   https://refubium.fu-berlin.de/handle/fub188/38460</p>
-<p>und laden die Datei 01_Tempelhof-1_2006_Daten.zip herunter: https://refubium.fu-berlin.de/bitstream/handle/fub188/38460/01_Tempelhof-1_2006_Daten.zip?sequence=2&amp;isAllowed=y</p>
-<p>Zu diesem Datensatz gibt es nochmal eine gesonderte Beschreibung welche Sie sich gern ansehen können: https://refubium.fu-berlin.de/bitstream/handle/fub188/38460/01_Tempelhof-1_Beschreibung.pdf?sequence=3&amp;isAllowed=y</p>
+<p>In dieser Übung werden wir einen RF aus aktuellen Berliner Wetterdaten erstellen. Lesen Sie dazu die Datenbeschreibung im Refubium:   <a class="reference external" href="https://refubium.fu-berlin.de/handle/fub188/38460">https://refubium.fu-berlin.de/handle/fub188/38460</a></p>
+<p>und laden die Datei 01_Tempelhof-1_2006_Daten.zip herunter: <a class="reference external" href="https://refubium.fu-berlin.de/bitstream/handle/fub188/38460/01_Tempelhof-1_2006_Daten.zip?sequence=2&amp;amp;isAllowed=y">https://refubium.fu-berlin.de/bitstream/handle/fub188/38460/01_Tempelhof-1_2006_Daten.zip?sequence=2&amp;isAllowed=y</a></p>
+<p>Zu diesem Datensatz gibt es nochmal eine gesonderte Beschreibung welche Sie sich gern ansehen können: <a class="reference external" href="https://refubium.fu-berlin.de/bitstream/handle/fub188/38460/01_Tempelhof-1_Beschreibung.pdf?sequence=3&amp;amp;isAllowed=y">https://refubium.fu-berlin.de/bitstream/handle/fub188/38460/01_Tempelhof-1_Beschreibung.pdf?sequence=3&amp;isAllowed=y</a></p>
 <p>Das Einlesen und Benennen der Daten geht recht einfach (die Variablennamen stehen in der gezipten .csv Datei). In R verwendet man hierfür am besten einen sogenannten Data-Frame. Die Funktion <code class="docutils literal notranslate"><span class="pre">read.table()</span></code> erzeugt diesen automatisch:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1347,7 +1361,7 @@ dtype: object
 </div>
 </section>
 <section id="splitting-the-data">
-<h3>4. Splitting the data<a class="headerlink" href="#splitting-the-data" title="Permalink to this heading">#</a></h3>
+<h3>4. Splitting the data<a class="headerlink" href="#splitting-the-data" title="Link to this heading">#</a></h3>
 <p>test and train set</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1363,7 +1377,7 @@ dtype: object
 </div>
 </section>
 <section id="fitting-and-evaluating-the-model">
-<h3>5. Fitting and Evaluating the Model<a class="headerlink" href="#fitting-and-evaluating-the-model" title="Permalink to this heading">#</a></h3>
+<h3>5. Fitting and Evaluating the Model<a class="headerlink" href="#fitting-and-evaluating-the-model" title="Link to this heading">#</a></h3>
 <p>We first create an instance of the Random Forest model, with the default parameters. We then fit this to our training data. We pass both the features and the target variable, so the model can learn.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1949,7 +1963,7 @@ By Annette Rudolph, Marie-Christin Eckert
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

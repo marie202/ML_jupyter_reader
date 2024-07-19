@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>2.3. Additional Exercises III - The Normal distribution &#8212; Machine Learning Online Reader</title>
   
@@ -29,35 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/2_NVT/2_2_Add_Exercises_NVT';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -227,12 +226,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ML_algorithms/5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_2_Decision_Trees.html">7.2. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_3_RF_classification.html">7.3. Random Forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_4_RF_regression.html">7.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../references.html">References</a></li>
 </ul>
 
     </div>
@@ -287,7 +297,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html" target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +314,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/2_NVT/2_2_Add_Exercises_NVT.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/2_NVT/2_2_Add_Exercises_NVT.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -470,9 +480,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="additional-exercises-iii-the-normal-distribution">
-<h1><span class="section-number">2.3. </span>Additional Exercises III -  The Normal distribution<a class="headerlink" href="#additional-exercises-iii-the-normal-distribution" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">2.3. </span>Additional Exercises III -  The Normal distribution<a class="headerlink" href="#additional-exercises-iii-the-normal-distribution" title="Link to this heading">#</a></h1>
 <section id="exercise-1-recall-statistics">
-<h2><span class="section-number">2.3.1. </span>Exercise 1: Recall Statistics<a class="headerlink" href="#exercise-1-recall-statistics" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3.1. </span>Exercise 1: Recall Statistics<a class="headerlink" href="#exercise-1-recall-statistics" title="Link to this heading">#</a></h2>
 <p>In order to apply AI algorithms, write codes and evaluate large data sets, we need some statistics.</p>
 <p>Recall in groups the following topics:</p>
 <ol class="arabic simple">
@@ -487,9 +497,9 @@ document.write(`
 </ol>
 </section>
 <section id="exercise-2-checking-for-normal-distribution">
-<h2><span class="section-number">2.3.2. </span>Exercise 2: Checking for Normal Distribution<a class="headerlink" href="#exercise-2-checking-for-normal-distribution" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3.2. </span>Exercise 2: Checking for Normal Distribution<a class="headerlink" href="#exercise-2-checking-for-normal-distribution" title="Link to this heading">#</a></h2>
 <section id="dwd-data">
-<h3><span class="section-number">2.3.2.1. </span>DWD data<a class="headerlink" href="#dwd-data" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.2.1. </span>DWD data<a class="headerlink" href="#dwd-data" title="Link to this heading">#</a></h3>
 <p>We begin by loading the meteorological data set from the <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/">Deutscher Wetterdienst DWD (German Weather Service) Open Climate Data Center </a>. You find a documentation of this data in <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/BESCHREIBUNG_obsgermany_climate_monthly_kl_historical_de.pdf">german</a> and  <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/DESCRIPTION_obsgermany_climate_monthly_kl_historical_en.pdf">english</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -757,7 +767,7 @@ document.write(`
 </section>
 </section>
 <section id="exercise-2a-subsetting-the-data-frame">
-<h2><span class="section-number">2.3.3. </span>Exercise 2A: Subsetting the data frame<a class="headerlink" href="#exercise-2a-subsetting-the-data-frame" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3.3. </span>Exercise 2A: Subsetting the data frame<a class="headerlink" href="#exercise-2a-subsetting-the-data-frame" title="Link to this heading">#</a></h2>
 <p>First, we want to subset the entire dataset.</p>
 <blockquote>
 <div><p>We only want to keep data from 1961 to day. Subset the entire dataset (not only 1 column as we saw in the seminar)!
@@ -771,7 +781,7 @@ hwo many rows has the dataframe now?</p>
 </div>
 </div>
 <section id="solution">
-<h3><span class="section-number">2.3.3.1. </span>solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.3.1. </span>solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## you could do e.g.,:</span>
@@ -1038,7 +1048,7 @@ hwo many rows has the dataframe now?</p>
 </section>
 </section>
 <section id="exercise-2b-checking-the-mean-and-standard-deviation-for-this-subset">
-<h2><span class="section-number">2.3.4. </span>Exercise 2B: Checking the mean and standard deviation for this subset<a class="headerlink" href="#exercise-2b-checking-the-mean-and-standard-deviation-for-this-subset" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3.4. </span>Exercise 2B: Checking the mean and standard deviation for this subset<a class="headerlink" href="#exercise-2b-checking-the-mean-and-standard-deviation-for-this-subset" title="Link to this heading">#</a></h2>
 <p>Calculate the mean and standard deviation for the monthly mean temperature! Doe they violate the three sigma rule? plot the distriubtion as histogram and density plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1048,7 +1058,7 @@ hwo many rows has the dataframe now?</p>
 </div>
 </div>
 <section id="id1">
-<h3><span class="section-number">2.3.4.1. </span>solution<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.4.1. </span>solution<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dahlem_clim</span><span class="o">.</span><span class="n">MO_TT</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span>
@@ -1081,7 +1091,7 @@ hwo many rows has the dataframe now?</p>
 </section>
 </section>
 <section id="exercise-2c-checking-the-mean-and-standard-deviation-for-this-subset">
-<h2><span class="section-number">2.3.5. </span>Exercise 2C: Checking the mean and standard deviation for this subset<a class="headerlink" href="#exercise-2c-checking-the-mean-and-standard-deviation-for-this-subset" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3.5. </span>Exercise 2C: Checking the mean and standard deviation for this subset<a class="headerlink" href="#exercise-2c-checking-the-mean-and-standard-deviation-for-this-subset" title="Link to this heading">#</a></h2>
 <p>Check for normality of the monthly mean temperature with the help of a qqplot!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1091,7 +1101,7 @@ hwo many rows has the dataframe now?</p>
 </div>
 </div>
 <section id="id2">
-<h3><span class="section-number">2.3.5.1. </span>solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.5.1. </span>solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
@@ -1114,7 +1124,7 @@ hwo many rows has the dataframe now?</p>
 </section>
 </section>
 <section id="exercise-2d-slicing-the-data-frame">
-<h2><span class="section-number">2.3.6. </span>Exercise 2D: Slicing the data frame<a class="headerlink" href="#exercise-2d-slicing-the-data-frame" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3.6. </span>Exercise 2D: Slicing the data frame<a class="headerlink" href="#exercise-2d-slicing-the-data-frame" title="Link to this heading">#</a></h2>
 <p>Now, we want to slice the dataset into 2 parts. We want to subset between 1961 to 1990 and from 1991 to today. Subset the entire dataset (not only 1 column as we saw in the seminar)!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1124,7 +1134,7 @@ hwo many rows has the dataframe now?</p>
 </div>
 </div>
 <section id="id3">
-<h3><span class="section-number">2.3.6.1. </span>solution<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.6.1. </span>solution<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## combined conditions :</span>
@@ -1677,7 +1687,7 @@ hwo many rows has the dataframe now?</p>
 </section>
 </section>
 <section id="exercise-2e-checking-for-normality">
-<h2><span class="section-number">2.3.7. </span>Exercise 2E: Checking for Normality<a class="headerlink" href="#exercise-2e-checking-for-normality" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3.7. </span>Exercise 2E: Checking for Normality<a class="headerlink" href="#exercise-2e-checking-for-normality" title="Link to this heading">#</a></h2>
 <p>Calculate the mean and standard deviation for the monthly mean temperature for both dataframes! Doe they violate the three sigma rule? plot the distriubtion as histogram and density plot.
 Check for normality of the monthly mean temperature with the help of a qqplot! (solution the same as above)</p>
 <div class="cell docutils container">
@@ -1689,7 +1699,7 @@ Check for normality of the monthly mean temperature with the help of a qqplot! (
 </div>
 </section>
 <section id="exercise-2f-boxplots">
-<h2><span class="section-number">2.3.8. </span>Exercise 2F: Boxplots<a class="headerlink" href="#exercise-2f-boxplots" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3.8. </span>Exercise 2F: Boxplots<a class="headerlink" href="#exercise-2f-boxplots" title="Link to this heading">#</a></h2>
 <p>Let’s have a closer look at both dataframes with the help of a boxplot! Plot both datasets next to eachother in two boxplots but one figure frame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1699,7 +1709,7 @@ Check for normality of the monthly mean temperature with the help of a qqplot! (
 </div>
 </div>
 <section id="id4">
-<h3><span class="section-number">2.3.8.1. </span>solution<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.8.1. </span>solution<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -1718,7 +1728,7 @@ Check for normality of the monthly mean temperature with the help of a qqplot! (
 </section>
 </section>
 <section id="exercise-2g-nodges">
-<h2><span class="section-number">2.3.9. </span>Exercise 2G: Nodges<a class="headerlink" href="#exercise-2g-nodges" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3.9. </span>Exercise 2G: Nodges<a class="headerlink" href="#exercise-2g-nodges" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p>Which argument to we have to add, if we want to find significant differences between the groups? Is there a signifanct difference in the monthly mean temperature between 1961 to 1991 and from 1991 to today?</p>
 </div></blockquote>
@@ -1730,7 +1740,7 @@ Check for normality of the monthly mean temperature with the help of a qqplot! (
 </div>
 </div>
 <section id="id5">
-<h3><span class="section-number">2.3.9.1. </span>solution<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.9.1. </span>solution<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -1751,7 +1761,7 @@ Check for normality of the monthly mean temperature with the help of a qqplot! (
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
 
 <span class="n">IFrame</span><span class="p">(</span>
-    <span class="n">src</span><span class="o">=</span><span class="s2">&quot;../../../citation_Marie.html&quot;</span><span class="p">,</span>
+    <span class="n">src</span><span class="o">=</span><span class="s2">&quot;../../citations/citation_Marie.html&quot;</span><span class="p">,</span>
     <span class="n">width</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1763,7 +1773,7 @@ Check for normality of the monthly mean temperature with the help of a qqplot! (
         <iframe
             width="900"
             height="200"
-            src="../../../citation_Marie.html"
+            src="../../citations/citation_Marie.html"
             frameborder="0"
             allowfullscreen
             
@@ -1892,7 +1902,7 @@ By Annette Rudolph, Marie-Christin Eckert
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>3. Feature Scales &#8212; Machine Learning Online Reader</title>
   
@@ -29,35 +28,37 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/General_Introduction_Sessions/3_features_scales/3_Feature_scales';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -227,12 +228,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ML_algorithms/5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_2_Decision_Trees.html">7.2. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_3_RF_classification.html">7.3. Random Forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_4_RF_regression.html">7.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../references.html">References</a></li>
 </ul>
 
     </div>
@@ -287,7 +299,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html" target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +316,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/3_features_scales/3_Feature_scales.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader/issues/new?title=Issue%20on%20page%20%2Fcontents/General_Introduction_Sessions/3_features_scales/3_Feature_scales.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -472,12 +484,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="feature-scales">
-<h1><span class="section-number">3. </span>Feature Scales<a class="headerlink" href="#feature-scales" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="feature-scales">
+<h1><span class="section-number">3. </span>Feature Scales<a class="headerlink" href="#feature-scales" title="Link to this heading">#</a></h1>
 <section id="introduction-to-empirical-modelling">
-<h2><span class="section-number">3.1. </span>Introduction to Empirical modelling<a class="headerlink" href="#introduction-to-empirical-modelling" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.1. </span>Introduction to Empirical modelling<a class="headerlink" href="#introduction-to-empirical-modelling" title="Link to this heading">#</a></h2>
 <div style="display:flex; align-items: center;">
-     <div style="color:#03AC13; padding:70px; font-size: 18px;font-weight:bold">
+     <div style="color:#03AC13; padding:5px; font-size: 18px;font-weight:bold">
 <ul class="simple">
 <li><p>What is a good model?</p></li>
 <li><p>How to set up a good model?</p></li>
@@ -487,15 +499,15 @@ document.write(`
 <div><p><strong>Nice <a class="reference external" href="https://www.youtube.com/watch?v=-cfvaNQFozI&amp;amp;list=PLlQWnS27jXh-t3cHfH8oMr8R3-jMvZJn6">Introductory Video</a> !!</strong></p>
 </div></blockquote>
 </div>
-     <div style="flex:1;padding-left:10px;">
-          <img width="400" src="https://imgs.xkcd.com/comics/curve_fitting.png" />
+     <div style="flex:1;padding-left:5px;">
+          <img width="600" src="https://imgs.xkcd.com/comics/curve_fitting.png" />
          </br>
              <div style="color:#808080; padding:1px; font-size: 12px;font-weight:italic">
              https://xkcd.com/2048/
             </div>
      </div>
 </div><section id="understanding-the-problem">
-<h3><span class="section-number">3.1.1. </span>Understanding the Problem<a class="headerlink" href="#understanding-the-problem" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.1.1. </span>Understanding the Problem<a class="headerlink" href="#understanding-the-problem" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>almost all geoscientific characteristics are limited in scale space</p></li>
 <li><p>statistics can estimate unknown (value) limits from observations</p></li>
@@ -517,15 +529,15 @@ Here, we are presenting linear and non-linear transformation as well as transfor
 </section>
 </section>
 <section id="introduction-to-model-sesign">
-<h2><span class="section-number">3.2. </span>Introduction to Model Sesign<a class="headerlink" href="#introduction-to-model-sesign" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.2. </span>Introduction to Model Sesign<a class="headerlink" href="#introduction-to-model-sesign" title="Link to this heading">#</a></h2>
 <p><strong>Basic principles:</strong>  Mathematics, Physics &amp; Statistics</p>
 <p><strong>Model design:</strong> Requirements, Recipe &amp; Testing of existing models</p>
 <blockquote>
 <div><p><strong>scale of measurement! –&gt; The guiding principle: design models in the real space!</strong></p>
 </div></blockquote>
 <section id="mathematics-spaces">
-<h3><span class="section-number">3.2.1. </span>Mathematics – spaces<a class="headerlink" href="#mathematics-spaces" title="Permalink to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
+<h3><span class="section-number">3.2.1. </span>Mathematics – spaces<a class="headerlink" href="#mathematics-spaces" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Space</p></th>
 <th class="head"><p>Notation</p></th>
@@ -536,35 +548,29 @@ Here, we are presenting linear and non-linear transformation as well as transfor
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Real Space</p></td>
-<td><p>${\rm I!R}$</p></td>
+<td><p><span class="math notranslate nohighlight">\({\rm I\!R}\)</span></p></td>
 <td><p>interval scale</p></td>
-<td><p>$[-\infty, +\infty$]</p></td>
+<td><p><span class="math notranslate nohighlight">\([-\infty, +\infty\)</span>]</p></td>
 <td><p>time &amp; space (location), e.g. UTM coordinates, changing the point of reference does not affect the pattern of the data.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Positive Real Space</p></td>
-<td><p>${\rm I!R^+}$</p></td>
+<td><p><span class="math notranslate nohighlight">\({\rm I\!R^+}\)</span></p></td>
 <td><p>ratio scale</p></td>
-<td><p>$]0, +\infty]$</p></td>
+<td><p><span class="math notranslate nohighlight">\(]0, +\infty]\)</span></p></td>
 <td><p>most physical quantities, e.g. temperature expressed in K (Kelvin), distance, time span, speed, permeability, and discharge.There is no origin on this scale: zero is a limiting value.</p></td>
 </tr>
 <tr class="row-even"><td><p>Simplex</p></td>
-<td><p>$S$</p></td>
+<td><p><span class="math notranslate nohighlight">\(S\)</span></p></td>
 <td><p>compositional scale</p></td>
-<td><p>$]0,1[$</p></td>
-<td><p>Sum must equal a constant (1 for proportions, 100 for percentages, $10^6$ for ppm, e.g. concentrations, mass/ volume fractions</p></td>
+<td><p><span class="math notranslate nohighlight">\(]0,1[\)</span></p></td>
+<td><p>Sum must equal a constant (1 for proportions, 100 for percentages, <span class="math notranslate nohighlight">\(10^6\)</span> for ppm, e.g. concentrations, mass/ volume fractions</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div>
-<img src="figures/2worlds_edit.png" width="1000"/>
-</div>
-<blockquote>
-<div><p>If you need a refresher in maths and logarithms, I recommend <a class="reference external" href="https://www.youtube.com/watch?v=gp9HB1lUQ48">this video on YouTube.</a></p>
-</div></blockquote>
 </section>
 <section id="feature-scales-and-machine-learning-approaches">
-<h3><span class="section-number">3.2.2. </span>Feature scales and machine learning approaches<a class="headerlink" href="#feature-scales-and-machine-learning-approaches" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.2.2. </span>Feature scales and machine learning approaches<a class="headerlink" href="#feature-scales-and-machine-learning-approaches" title="Link to this heading">#</a></h3>
 <hr class="docutils" />
 <blockquote>
 <div><p>This is by no means a new idea !</p>
@@ -582,7 +588,7 @@ ISBN 0912647183. p. 99)</em></p>
 <p>As discussed above, normalization, scaling, standardization and transformations are crucial requirements for reliable and robust application of statistical methods beyond simple data description for getting meaningful results. Especially application of complex machine learning algorithms for exploration of multivariate data patterns it often becomes likely to get entrapped for violation of important preconditions. Hereby, it can be the violation of scale homogeneity using gradient descent related optimization technics or non-euclidean feature space for distance or angle related technics as well as simple violation of algebraic constraints.</p>
 <p>A brief overview of common risk concerning serious pitfall is provided by Minkyung Kang in his <a class="reference external" href="https://mkang32.github.io/python/2020/12/27/feature-scaling.html#why">data science blog</a>:</p>
 <section id="ml-models-sensitive-to-feature-scale">
-<h4><span class="section-number">3.2.2.1. </span><strong>ML Models sensitive to feature scale</strong><a class="headerlink" href="#ml-models-sensitive-to-feature-scale" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">3.2.2.1. </span><strong>ML Models sensitive to feature scale</strong><a class="headerlink" href="#ml-models-sensitive-to-feature-scale" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Algorithms that use gradient descent as an optimization technique</p>
 <ul>
@@ -603,7 +609,7 @@ ISBN 0912647183. p. 99)</em></p>
 </ul>
 </section>
 <section id="ml-models-not-sensitive-to-feature-scale">
-<h4><span class="section-number">3.2.2.2. </span><strong>ML models not sensitive to feature scale</strong><a class="headerlink" href="#ml-models-not-sensitive-to-feature-scale" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">3.2.2.2. </span><strong>ML models not sensitive to feature scale</strong><a class="headerlink" href="#ml-models-not-sensitive-to-feature-scale" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Tree-based algorithms</p></li>
 <li><p>Decision Tree</p></li>
@@ -614,7 +620,7 @@ ISBN 0912647183. p. 99)</em></p>
 </section>
 </section>
 <section id="reasons-for-transformations">
-<h2><span class="section-number">3.3. </span>Reasons for transformations<a class="headerlink" href="#reasons-for-transformations" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3. </span>Reasons for transformations<a class="headerlink" href="#reasons-for-transformations" title="Link to this heading">#</a></h2>
 <p>There are nearly unlimited reasons for scale transformation. Just to name a few, we focus on the following:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.geo.fu-berlin.de/en/v/soga-py/Advanced-statistics/Feature-scales/Reasons-for-transformation/index.html">Scale homogeneity</a> (e.g. different units, physical restriction)</p></li>
@@ -624,26 +630,27 @@ ISBN 0912647183. p. 99)</em></p>
 <li><p>Compositional data sets</p></li>
 </ul>
 <section id="algebraic-constraints-on-limited-feature-scales">
-<h3><span class="section-number">3.3.1. </span>Algebraic constraints on limited feature scales<a class="headerlink" href="#algebraic-constraints-on-limited-feature-scales" title="Permalink to this heading">#</a></h3>
-<p>Most real-world variables can only be positive (e.g. $\mathbb{R_+}$ or $]0,+\infty]$ or are limited  to an interval ($]a,b[<em>\mathbb{R</em>+}$). Exceeding these boundaries by algebraic operations such as (+,-,*,/) leads to useless or meaning less results.</p>
+<h3><span class="section-number">3.3.1. </span>Algebraic constraints on limited feature scales<a class="headerlink" href="#algebraic-constraints-on-limited-feature-scales" title="Link to this heading">#</a></h3>
+<p>Most real-world variables can only be positive (e.g. <span class="math notranslate nohighlight">\(\mathbb{R_+}\)</span> or <span class="math notranslate nohighlight">\(]0,+\infty]\)</span> or are limited  to an interval (<span class="math notranslate nohighlight">\(]a,b[_\mathbb{R_+}\)</span>). Exceeding these boundaries by algebraic operations such as (+,-,*,/) leads to useless or meaning less results.</p>
 <p><strong>Example</strong></p>
-<p>On the scale of positive real numbers $\mathbb{R_+}$ multiplication and the inverse operation division can not leave the set of positive real numbers. Thus, the positive real numbers together with the multiplication, denoted by $(\mathbb{R_+},*)$, form a commutative group with 1 as neutral element.
-In contrast, the set of positive real numbers together with the addition $(\mathbb{R_+},+)$ has neither inverse elements nor a neutral element. Thus, addition and subtraction can not be unlimited performed.
+<p>On the scale of positive real numbers <span class="math notranslate nohighlight">\(\mathbb{R_+}\)</span> multiplication and the inverse operation division can not leave the set of positive real numbers. Thus, the positive real numbers together with the multiplication, denoted by <span class="math notranslate nohighlight">\((\mathbb{R_+},*)\)</span>, form a commutative group with 1 as neutral element.
+In contrast, the set of positive real numbers together with the addition <span class="math notranslate nohighlight">\((\mathbb{R_+},+)\)</span> has neither inverse elements nor a neutral element. Thus, addition and subtraction can not be unlimited performed.
 But a log-transformation of any variable
-$$x\in\mathbb{R_+}: x\to x’=\log(x)$$
-opens the scale to $x’\to\mathbb{R}$ and transforms the neutral element of $(\mathbb{R_+},\cdot)$ given by 1 to the neutral element of $(\mathbb{R},+)$, given by 0!
-The field of $(\mathbb{R},+,\cdot)$ provides nearly unlimited operations for statistical purposes (except e.g. $\sqrt{-1}$ or $\frac{1}{0}$).</p></p>
+$<span class="math notranslate nohighlight">\(x\in\mathbb{R_+}: x\to x'=\log(x)\)</span><span class="math notranslate nohighlight">\( 
+opens the scale to \)</span>x’\to\mathbb{R}<span class="math notranslate nohighlight">\( and transforms the neutral element of \)</span>(\mathbb{R_+},\cdot)<span class="math notranslate nohighlight">\( given by 1 to the neutral element of \)</span>(\mathbb{R},+)<span class="math notranslate nohighlight">\(, given by 0!
+The field of \)</span>(\mathbb{R},+,\cdot)<span class="math notranslate nohighlight">\( provides nearly unlimited operations for statistical purposes (except e.g. \)</span>\sqrt{-1}<span class="math notranslate nohighlight">\( or \)</span>\frac{1}{0}$).</p></p>
 <p>The inverse transformation powering 
 $$x'\to x=e^{x'}$$</p>
 <p>reverse the log-transformation back to the positive reel scale.</p></section>
 <section id="skewness-symmetry-and-normality">
-<h3><span class="section-number">3.3.2. </span>Skewness, symmetry and normality<a class="headerlink" href="#skewness-symmetry-and-normality" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.3.2. </span>Skewness, symmetry and normality<a class="headerlink" href="#skewness-symmetry-and-normality" title="Link to this heading">#</a></h3>
 <p>One reason for right skewed distributions can be the Hoelder inequality
-$\bar{x}<em>{geo}\leq \bar{x}</em>{arith}$
+$<span class="math notranslate nohighlight">\(\bar{x}_{geo}\leq \bar{x}_{arith}\)</span>$
 , but is not sufficient as explanation. Let us recall the geometric mean:</p>
-<p>\begin{align}
-\bar{x}<em>{geo}=\sqrt[n]{\prod</em>{i=1}^N x_i}=\prod_{i=1}^N x_i^{\frac{1}{n}}= x_1^{\frac{1}{n}}\cdot x_2^{\frac{1}{n}}\cdots x_n^{\frac{1}{n}}
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ccbe2a28-f30a-4a31-b846-ef116349b678">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-ccbe2a28-f30a-4a31-b846-ef116349b678" title="Permalink to this equation">#</a></span>\[\begin{align}
+\bar{x}_{geo}=\sqrt[n]{\prod_{i=1}^N x_i}=\prod_{i=1}^N x_i^{\frac{1}{n}}= x_1^{\frac{1}{n}}\cdot x_2^{\frac{1}{n}}\cdots x_n^{\frac{1}{n}}
+\end{align}\]</div>
 <p>The main apparent difference between these two means is the operator: sum for arithmetic mean and product for the geometric mean. Thus, the arithmetic mean recommend for an additive or distance scale and the geometric mean for a ratio scale approach. In our case, we are dealing with a variable clearly hosted on the
 R+-scale where only multiplication is unlimited allowed.</p>
 <p><strong>But we often need an arithmetic mean for further statistical parameters: e.g.</strong></p>
@@ -656,13 +663,14 @@ R+-scale where only multiplication is unlimited allowed.</p>
 <li><p>etc.</p></li>
 </ul>
 <p>To solve this problem, we can apply the logarithm to the geometric mean:</p>
-<p>\begin{align}
-log(\bar{x}<em>{geo}) &amp; =log(x_1^{\frac{1}{n}}\cdot x_2^{\frac{1}{n}}\cdots x_n^{\frac{1}{n}})= \
-&amp; =\frac{1}{n}log(x_1)+\frac{1}{n}log(x_2)+\cdots+\frac{1}{n}log(x_N)= \
-&amp; =\frac{1}{n}\sum</em>{i=1}^{N}{log(x_i)}={\overline{log(x_i)}}_{arith}
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fc4637e7-5171-474f-aac7-e5f440603453">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-fc4637e7-5171-474f-aac7-e5f440603453" title="Permalink to this equation">#</a></span>\[\begin{align}
+log(\bar{x}_{geo}) &amp; =log(x_1^{\frac{1}{n}}\cdot x_2^{\frac{1}{n}}\cdots x_n^{\frac{1}{n}})= \\
+&amp; =\frac{1}{n}log(x_1)+\frac{1}{n}log(x_2)+\cdots+\frac{1}{n}log(x_N)= \\
+&amp; =\frac{1}{n}\sum_{i=1}^{N}{log(x_i)}={\overline{log(x_i)}}_{arith} 
+\end{align}\]</div>
 <section id="example-working-with-a-dataset">
-<h4><span class="section-number">3.3.2.1. </span>Example: Working with a Dataset<a class="headerlink" href="#example-working-with-a-dataset" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">3.3.2.1. </span>Example: Working with a Dataset<a class="headerlink" href="#example-working-with-a-dataset" title="Link to this heading">#</a></h4>
 <p>We begin by loading the meteorological data set from the <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/">Deutscher Wetterdienst DWD (German Weather Service) Open Climate Data Center </a>. You find a documentation of this data in <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/BESCHREIBUNG_obsgermany_climate_monthly_kl_historical_de.pdf">german</a> and  <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/DESCRIPTION_obsgermany_climate_monthly_kl_historical_en.pdf">english</a>.</p>
 <blockquote>
 <div><h4 class="rubric" id="exercise">Exercise:</h4>
@@ -943,7 +951,7 @@ log(\bar{x}<em>{geo}) &amp; =log(x_1^{\frac{1}{n}}\cdot x_2^{\frac{1}{n}}\cdots 
 </div>
 </div>
 <section id="solution">
-<h5><span class="section-number">3.3.2.1.1. </span>solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">3.3.2.1.1. </span>solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Dahlem_NS</span><span class="p">)</span>
@@ -982,13 +990,20 @@ log(\bar{x}<em>{geo}) &amp; =log(x_1^{\frac{1}{n}}\cdot x_2^{\frac{1}{n}}\cdots 
 </section>
 </section>
 <section id="id1">
-<h4><span class="section-number">3.3.2.2. </span>Exercise:<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">3.3.2.2. </span>Exercise:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <blockquote>
 <div><p>Calculate the mean and standard deviation of the logarithmised values and transform them back!</p>
 <p>Calculate the limits of the 3-sigma rule in the same way!</p>
 </div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### your code here ####</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="id2">
-<h5><span class="section-number">3.3.2.2.1. </span>solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h5>
+<h5><span class="section-number">3.3.2.2.1. </span>solution<a class="headerlink" href="#id2" title="Link to this heading">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Dahlem_NS</span><span class="p">)))</span>
@@ -1079,27 +1094,30 @@ log(\bar{x}<em>{geo}) &amp; =log(x_1^{\frac{1}{n}}\cdot x_2^{\frac{1}{n}}\cdots 
 </section>
 </section>
 <section id="double-constrained-feature-spaces">
-<h3><span class="section-number">3.3.3. </span>Double constrained feature spaces<a class="headerlink" href="#double-constrained-feature-spaces" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.3.3. </span>Double constrained feature spaces<a class="headerlink" href="#double-constrained-feature-spaces" title="Link to this heading">#</a></h3>
 <p>There is a certain relation to the compositional constraint if we face double bounded feature spaces.
 Let us imagine a variable $\mathbf{x}=(x_i\in ]l,u[_\mathbb R,i=1,\cdots,m)$ within a constrained interval [a,b]$\subset \mathbb R$. The absolute value is obviously of minor interest compared with the relative position between l and u. A first step should be a linear min-max-transformation wit min=l and max=u:</p>
 $$ x \to x' =\frac{x-l}{u-l} \in\ ]0,1[\ \in \ {\mathbb R}_+ $$<p>Now, x' divides the interval into two parts: 1. the distance to the left (=x) and 2. the distance to the right (1-x). Both sum up to 1 and are therefore related to a 2-dimensional composition.
 <p>In Application, the formula should look like this:</p>
-<p>$$x’=\frac{x-x_{min}+1}{x_{max}-x_{min}+2, .}$$</p>
+<div class="math notranslate nohighlight">
+\[x'=\frac{x-x_{min}+1}{x_{max}-x_{min}+2\, .}\]</div>
 <p>Applying an alr-transformation to our variable, we are getting a symmetric feature scale:
-$$ x’\to x’’=\log(\frac{x’}{1-x’})\in \mathbb R$$
-This so-called <em>logistic transformation</em> enable application of algebraic operation over the base field $\mathbb R$.</p></p>
+$<span class="math notranslate nohighlight">\( x'\to x''=\log(\frac{x'}{1-x'})\in \mathbb R\)</span><span class="math notranslate nohighlight">\(
+This so-called &lt;em&gt;logistic transformation&lt;/em&gt; enable application of algebraic operation over the base field \)</span>\mathbb R$.</p></p>
 <p>The back transformations are:</p>
 <p>The back transformation is the “logistic” function resp. inverse logit:</p>
-<p>\begin{align}
-x’’\to x’=\frac{e^{x’’}}{1+e^{x’’}}&amp;&amp; and &amp;&amp;
-x’\to x=(x’+l)\cdot(u-l)
-\end{align}</p>
-<p>\begin{align}
-&amp;&amp; resp. &amp;&amp;
-x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d1431d0c-7f5d-45d5-bb58-ae850a47d894">
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-d1431d0c-7f5d-45d5-bb58-ae850a47d894" title="Permalink to this equation">#</a></span>\[\begin{align}
+x''\to x'=\frac{e^{x''}}{1+e^{x''}}&amp;&amp; and &amp;&amp;
+x'\to x=(x'+l)\cdot(u-l) 
+\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-e98f9196-961c-49a9-8574-6243de951dc3">
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-e98f9196-961c-49a9-8574-6243de951dc3" title="Permalink to this equation">#</a></span>\[\begin{align}
+&amp;&amp; resp. &amp;&amp; 
+x'\to x= ({x'+x_{min}+1})\cdot(x_{max}-x_{min}+2)
+\end{align}\]</div>
 <section id="example-northern-hemispheric-ice-extent-under-climate-change">
-<h4><span class="section-number">3.3.3.1. </span>Example: Northern hemispheric ice extent under climate change<a class="headerlink" href="#example-northern-hemispheric-ice-extent-under-climate-change" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">3.3.3.1. </span>Example: Northern hemispheric ice extent under climate change<a class="headerlink" href="#example-northern-hemispheric-ice-extent-under-climate-change" title="Link to this heading">#</a></h4>
 <p>The <a class="reference external" href="https://nsidc.org/home">National Snow and Ice Data Center</a> at the University of Colorado in Boulder hosts and provides monthly sea ice data for both hemispheres since November 1978 to present. Under the condition of a warming earth system, we will estimate the changes for the northern hemisphere and project a possible trend until the end of this century for September.</p>
 <p><strong>Step 1: Loading the data and plotting the time series</strong></p>
 <div class="cell docutils container">
@@ -1226,7 +1244,7 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;million sqrkm&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/53219f11966dfabab85af012661509daf124ea34206372c81a1393b8e15ec419.png" src="../../../_images/53219f11966dfabab85af012661509daf124ea34206372c81a1393b8e15ec419.png" />
+<img alt="../../../_images/7efd923db2383efe5cc84a357c631e0640d8956692df6653b5b5d4d106a82588.png" src="../../../_images/7efd923db2383efe5cc84a357c631e0640d8956692df6653b5b5d4d106a82588.png" />
 </div>
 </div>
 <p>Modeling the observed ice cover extent from 1979 to 2020 for the northern hemisphere in September for the future, we have to expect a complete disappearance of the arctic ice in late summer with 95% probability within the second half of this century!</p>
@@ -1291,13 +1309,14 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;ICE logistic space&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/9a64747cdb66bf61889df9c26502fc7e96c80eaea9273e764354d0961939f578.png" src="../../../_images/9a64747cdb66bf61889df9c26502fc7e96c80eaea9273e764354d0961939f578.png" />
+<img alt="../../../_images/83066fd1b40ce0c2891b054f97c6a97db0d362d03f0a74baf42dc57dd09a82d8.png" src="../../../_images/83066fd1b40ce0c2891b054f97c6a97db0d362d03f0a74baf42dc57dd09a82d8.png" />
 </div>
 </div>
 <p>Interpreting the zero base of the upper plot, half of the former ice cover extent (expressed by the maximum of observation) has dissapeared since roughly 2010.</p>
 <p>Back transformation in the original space:</p>
 <p>Next, let us us transform the model in the original space by</p>
-<p>$$ICE = \frac{ e^{bx+a} }{1+e^{bx+a}}$$</p>
+<div class="math notranslate nohighlight">
+\[ICE = \frac{ e^{bx+a} }{1+e^{bx+a}}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Since sns.regplot does not provide the coefficients of the regression line, we calculate the</span>
@@ -1339,8 +1358,8 @@ x’\to x= ({x’+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 Dep. Variable:             extent lrt   R-squared:                       0.381
 Model:                            OLS   Adj. R-squared:                  0.366
 Method:                 Least Squares   F-statistic:                     26.42
-Date:                Tue, 16 Jul 2024   Prob (F-statistic):           6.40e-06
-Time:                        13:13:14   Log-Likelihood:                -86.781
+Date:                Fri, 19 Jul 2024   Prob (F-statistic):           6.40e-06
+Time:                        12:32:25   Log-Likelihood:                -86.781
 No. Observations:                  45   AIC:                             177.6
 Df Residuals:                      43   BIC:                             181.2
 Df Model:                           1                                         
@@ -1363,9 +1382,9 @@ Notes:
 strong multicollinearity or other numerical problems.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_25694/3064685890.py:17: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_54646/3064685890.py:17: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   a = lr.params[1]
-/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_25694/3064685890.py:20: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+/var/folders/vs/k3tcf9r11xq5pqzsg6kq3sx00000gn/T/ipykernel_54646/3064685890.py:20: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
   b = lr.params[0]
 </pre></div>
 </div>
@@ -1448,7 +1467,7 @@ Name: year, Length: 121, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Prediction of ICE decrease for september log-space&#39;}, xlabel=&#39;year&#39;, ylabel=&#39;ICE logistic space&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/7dc5913ff973ce742fa47163cdf4a6e74696144741d9f37984e5cabea54896f9.png" src="../../../_images/7dc5913ff973ce742fa47163cdf4a6e74696144741d9f37984e5cabea54896f9.png" />
+<img alt="../../../_images/18a772634ac37c7522a9b997fe96833dcc7f71a4a421a2dbc1d146656c71ef24.png" src="../../../_images/18a772634ac37c7522a9b997fe96833dcc7f71a4a421a2dbc1d146656c71ef24.png" />
 </div>
 </div>
 <p>As an exercise, you can transform the confidence intervals of the regression line in the log space and you will get the following result:</p>
@@ -1456,7 +1475,7 @@ Name: year, Length: 121, dtype: int64
 </section>
 </section>
 <section id="compositional-contraints">
-<h3><span class="section-number">3.3.4. </span>Compositional contraints<a class="headerlink" href="#compositional-contraints" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.3.4. </span>Compositional contraints<a class="headerlink" href="#compositional-contraints" title="Link to this heading">#</a></h3>
 <p>Compositional data is a special type of of non-negative data, which carries the relevant information in the ratios between the variables rather than in the actual data values. The individual parts of the composition are called components or parts. Each component has an amount, representing its importance within the whole. The sum over the amounts of all components is called the total amount, and portions are the individual amounts divided by this total amount (van den Boogaart and Tolosana-Delgado 2013).</p>
 <blockquote>
 <div><p>Compositions are sets of variables which values sum up to a constant, e.g.</p>
@@ -1482,8 +1501,9 @@ $$\mathbf{x}_{d}=(x_i-\bar{x},i=1,\cdots,n)$$</p>
 <p>and</p>
 $$ \mathbf{y}_{d}=(y_i-\bar{y},i=1,\cdots,n)$$
 <p>The cosine of the angle between two vectors is calculated by the scalar product divided to the product of both norm: </p>
-<p>$$
-\cos \measuredangle (\mathbf{x}, \mathbf{y})=\frac{&lt;\mathbf{x}, \mathbf{y}&gt;}{\parallel \mathbf{x} \parallel \cdot \parallel \mathbf{y} \parallel  }= \frac {\sum{x_i\cdot y_i }}{\sqrt{x_i^2}\cdot \sqrt{y_i^2}}$$</p>
+<div class="math notranslate nohighlight">
+\[ 
+\cos \measuredangle (\mathbf{x}, \mathbf{y})=\frac{&lt;\mathbf{x}, \mathbf{y}&gt;}{\parallel \mathbf{x} \parallel \cdot \parallel \mathbf{y} \parallel  }= \frac {\sum{x_i\cdot y_i }}{\sqrt{x_i^2}\cdot \sqrt{y_i^2}}\]</div>
 <p>Setting $\mathbf{x} =\mathbf{x}-\overline{\mathbf{x}}$ and $\mathbf{y} =\mathbf{y}-\overline{\mathbf{y}}$, we are getting the scalar product as nominator for the covariance term and the product of the norms as standard deviation terms.</p>
 <p>Thus, in compositions the deviations vectors as bases <strong>are oblique by nature</strong> and <strong>consequently non-euclidean</strong>!</p>
 <p>Hence, statistical methods using distances and angles (ratios) as optimization parameters can not be applied on pure compositions. 
@@ -1661,7 +1681,7 @@ By Annette Rudolph, Marie-Christin Eckert
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Introduction: Random Forest in Python &#8212; Machine Learning Online Reader</title>
   
@@ -29,35 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/clipboard.min.js"></script>
-    <script src="../../../../_static/copybutton.js"></script>
-    <script src="../../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../../_static/design-tabs.js"></script>
+    <script src="../../../../_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/ML_algorithms/5_Supervised/additional_material/Random Forest Tutorial';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -227,12 +226,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5_2_Decision_Trees.html">7.2. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5_3_RF_classification.html">7.3. Random Forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5_4_RF_regression.html">7.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - $k$-Means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../references.html">References</a></li>
 </ul>
 
     </div>
@@ -287,7 +297,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html" target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +314,7 @@
       
       
       
-      <li><a href="https://marie202.github.io/ML_jupyter_reader/_build/html/issues/new?title=Issue%20on%20page%20%2Fcontents/ML_algorithms/5_Supervised/additional_material/Random Forest Tutorial.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/marie202/ML_jupyter_reader/issues/new?title=Issue%20on%20page%20%2Fcontents/ML_algorithms/5_Supervised/additional_material/Random Forest Tutorial.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -479,8 +489,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="introduction-random-forest-in-python">
-<h1>Introduction: Random Forest in Python<a class="headerlink" href="#introduction-random-forest-in-python" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-random-forest-in-python">
+<h1>Introduction: Random Forest in Python<a class="headerlink" href="#introduction-random-forest-in-python" title="Link to this heading">#</a></h1>
 <p>In this notebook, we will implement a random forest in Python. With machine learning in Python, it’s very easy to build a complex model without having any idea how it works. Therefore, we’ll start with a single decision tree and a simple problem, and then work our way to a random forest and a real-world problem.</p>
 <p>Once we understand how a single decision tree thinks, we can transfer this knowledge to an entire forest of trees.</p>
 <div class="cell docutils container">
@@ -495,8 +505,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="start-simple-basic-problem">
-<h1>Start Simple: Basic Problem<a class="headerlink" href="#start-simple-basic-problem" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="start-simple-basic-problem">
+<h1>Start Simple: Basic Problem<a class="headerlink" href="#start-simple-basic-problem" title="Link to this heading">#</a></h1>
 <p>To begin, we’ll use a very simple problems with only two features and two classes. This is a binary classification problem.</p>
 <p>First, we create the features <code class="docutils literal notranslate"><span class="pre">X</span></code> and the labels <code class="docutils literal notranslate"><span class="pre">y</span></code>. There are only two features, which will allow us to visualize the data and which makes this a very easy problem.</p>
 <div class="cell docutils container">
@@ -514,7 +524,7 @@ document.write(`
 </div>
 </div>
 <section id="data-visualization">
-<h2>Data Visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h2>
+<h2>Data Visualization<a class="headerlink" href="#data-visualization" title="Link to this heading">#</a></h2>
 <p>To get a sense of the data, we can graph the data points with the number showing the label.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -550,7 +560,7 @@ document.write(`
 <p>Even though there are only two features, this is a linearly inseparable problem. A simple linear classifier will not be able to draw a boundary that separates the classes. The single decision tree will be able to completely separate the points because it essentially draws many repeated linear boundaries between points. A decision tree is a non-parametric model because the number of parameters grows with the size of the data.</p>
 </section>
 <section id="single-decision-tree">
-<h2>Single Decision Tree<a class="headerlink" href="#single-decision-tree" title="Permalink to this heading">#</a></h2>
+<h2>Single Decision Tree<a class="headerlink" href="#single-decision-tree" title="Link to this heading">#</a></h2>
 <p>Here we quickly build and train a single decision tree on the data using Scikit-Learn. The tree will learn how to separate the points, building a flowchart of questions based on the feature values and the labels. At each stage, the decision tree makes splits by maximizing the reduction in Gini impurity.</p>
 <p>We’ll use the default hyperparameters for the decision tree which means it can grow as deep as necessary in order to completely separate the classes. This will lead to overfitting because the model memorizes the training data, and in practice, we usually want to limit the depth of the tree so it can generalize to testing data.</p>
 <div class="cell docutils container">
@@ -997,7 +1007,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </section>
 <section id="visualize-decision-tree">
-<h2>Visualize Decision Tree<a class="headerlink" href="#visualize-decision-tree" title="Permalink to this heading">#</a></h2>
+<h2>Visualize Decision Tree<a class="headerlink" href="#visualize-decision-tree" title="Link to this heading">#</a></h2>
 <p>To get a sense of how the decision tree “thinks”, it’s helpful to visualize the entire structure. This will show each node in the tree which we can use to make new predictions. Because the tree is relatively small, we can understand the entire image.</p>
 <p>First we export the tree as a <code class="docutils literal notranslate"><span class="pre">dot</span></code> file making sure to label the features and the classes.</p>
 <div class="cell docutils container">
@@ -1024,13 +1034,13 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </ol>
 <p>The leaf nodes (the terminal nodes at each branch) do not have a question because they are where the tree makes a prediction. All of the samples in a leaf node are assigned the same class.</p>
 <section id="gini-impurity">
-<h3>Gini Impurity<a class="headerlink" href="#gini-impurity" title="Permalink to this heading">#</a></h3>
+<h3>Gini Impurity<a class="headerlink" href="#gini-impurity" title="Link to this heading">#</a></h3>
 <p>The Gini Impurity represents the probability that a randomly selected sample from the node will be incorrectly classified according to the distribution of samples in the node. At the top, there is a 44.4% chance that a randomly selected point would be incorrectly classified. The Gini Impurity is how the decision tree makes splits. It splits the samples based on the value of a feature that reduces the Gini Impurity by the largest amount.
 If we do the math, the average (weighted by number of samples) Gini Impurity decreases as we move down the tree.</p>
 <p>Eventually, the average Gini Impurity goes to 0.0 as we correctly classify each point. However, correctly classifying every single training point is usually not a good indicator because that means the model will not be able to generalize to the testing data! This model correclty classifies every single training point because we did not limit the maximum depth and during training, we give the model the answers as well as the features.</p>
 </section>
 <section id="limit-maximum-depth">
-<h3>Limit Maximum Depth<a class="headerlink" href="#limit-maximum-depth" title="Permalink to this heading">#</a></h3>
+<h3>Limit Maximum Depth<a class="headerlink" href="#limit-maximum-depth" title="Link to this heading">#</a></h3>
 <p>In practice, we usually want to limit the maximum depth of the decision tree (even in a random forest) so the tree can generalize better to testing data. Although this will lead to reduced accuracy on the training data, it can improve performance on the testing data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1083,13 +1093,13 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 </section>
 </section>
 </section>
-<section id="real-dataset">
-<h1>Real Dataset<a class="headerlink" href="#real-dataset" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="real-dataset">
+<h1>Real Dataset<a class="headerlink" href="#real-dataset" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://www.kaggle.com/cdc/behavioral-risk-factor-surveillance-system">Available Here</a></p>
 <p>The following data set is from the Centers for Disease Control and Prevention (CDC) and includes socioeconomic and lifestyle indicators for hundreds of thousands of individuals. The objective is to predict the overall health of an individual: either 0 for poor health or 1 for good health. We’ll limit the data to 100,000 individuals to speed up training.</p>
 <p>The problem is imbalanced (far more of one label than another) so for assessing performance, we’ll use recall, precision, receiver operating characteristic area under the curve (ROC AUC), and also plot the ROC curve. Accuracy is not a useful metric when dealing with an imbalanced problem.</p>
 <section id="data-cleaning">
-<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this heading">#</a></h2>
+<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h2>
 <p>We’ll read the data in and do a little cleaning.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1173,7 +1183,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 </div>
 </div>
 <section id="label-distribution">
-<h3>Label Distribution<a class="headerlink" href="#label-distribution" title="Permalink to this heading">#</a></h3>
+<h3>Label Distribution<a class="headerlink" href="#label-distribution" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;_RFHLTH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_RFHLTH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="mi">2</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
@@ -1199,7 +1209,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 </section>
 </section>
 <section id="split-data-into-training-and-testing-set">
-<h2>Split Data into Training and Testing Set<a class="headerlink" href="#split-data-into-training-and-testing-set" title="Permalink to this heading">#</a></h2>
+<h2>Split Data into Training and Testing Set<a class="headerlink" href="#split-data-into-training-and-testing-set" title="Link to this heading">#</a></h2>
 <p>To assess our predictions, we’ll need to use a training and a testing set. The model learns from the training data and then makes predictions on the testing data. Since we have the correct answers for the testing data, we can tell how well the model is able to generalize to new data. It’s important to only use the testing set once, because this is meant to be an estimate of how well the model will perform on new data.</p>
 <p>We’ll save 30% of the examples for testing.</p>
 <div class="cell docutils container">
@@ -1219,7 +1229,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 </div>
 </div>
 <section id="imputation-of-missing-values">
-<h3>Imputation of Missing values<a class="headerlink" href="#imputation-of-missing-values" title="Permalink to this heading">#</a></h3>
+<h3>Imputation of Missing values<a class="headerlink" href="#imputation-of-missing-values" title="Link to this heading">#</a></h3>
 <p>We’ll fill in the missing values with the mean of the column. It’s important to note that we fill in missing values in the test set with the mean of columns in the training data. This is necessary because if we get new data, we’ll have to use the training data to fill in any missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1249,7 +1259,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 </section>
 </section>
 <section id="decision-tree-on-real-data">
-<h2>Decision Tree on Real Data<a class="headerlink" href="#decision-tree-on-real-data" title="Permalink to this heading">#</a></h2>
+<h2>Decision Tree on Real Data<a class="headerlink" href="#decision-tree-on-real-data" title="Link to this heading">#</a></h2>
 <p>First, we’ll train the decision tree on the data. Let’s leave the depth unlimited and see if we get overfitting!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1262,7 +1272,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 </div>
 </section>
 <section id="assess-decision-tree-performance">
-<h2>Assess Decision Tree Performance<a class="headerlink" href="#assess-decision-tree-performance" title="Permalink to this heading">#</a></h2>
+<h2>Assess Decision Tree Performance<a class="headerlink" href="#assess-decision-tree-performance" title="Link to this heading">#</a></h2>
 <p>Given the number of nodes in our decision tree and the maximum depth, we expect it has overfit to the training data. This means it will do much better on the training data than on the testing data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1296,7 +1306,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 <p>Our model does outperform a baseline guess, but we can see it has severely overfit to the training data, acheiving perfect ROC AUC.</p>
 </section>
 <section id="evaluate-the-decision-tree">
-<h2>Evaluate the Decision Tree<a class="headerlink" href="#evaluate-the-decision-tree" title="Permalink to this heading">#</a></h2>
+<h2>Evaluate the Decision Tree<a class="headerlink" href="#evaluate-the-decision-tree" title="Link to this heading">#</a></h2>
 <p>We’ll write a short function that calculates a number of metrics for the baseline (guessing the most common label in the training data), the testing predictions, and the training predictions. The function also plots the ROC curve where a better model is to the left and towards the top.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1359,7 +1369,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 <p>There we can see the problem with a single decision tree where the maximum depth is not limited: <strong>severe overfitting to the training data</strong>.</p>
 <p>Another method to inspect the performance of a classification model is by making a confusion matrix.</p>
 <section id="confusion-matrix">
-<h3>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this heading">#</a></h3>
+<h3>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
@@ -1419,7 +1429,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 <p>This shows the classifications predicted by the model on the test data along with the real labels. We can see that our model has many false negatives (predicted good health but actually poor health) and false positives (predicted poor health but actually good health).</p>
 </section>
 <section id="feature-importances">
-<h3>Feature Importances<a class="headerlink" href="#feature-importances" title="Permalink to this heading">#</a></h3>
+<h3>Feature Importances<a class="headerlink" href="#feature-importances" title="Link to this heading">#</a></h3>
 <p>Finally, we can take a look at the features considered most important by the Decision Tree. The values are computed by summing the reduction in Gini Impurity over all of the nodes of the tree in which the feature is used.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1434,7 +1444,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 <p>We won’t go through the definitions here, but you can look through the <a class="reference external" href="https://www.kaggle.com/cdc/behavioral-risk-factor-surveillance-system#2015_formats.json">data dictionary</a> to determine the meaning of each feature.</p>
 </section>
 <section id="visualize-full-tree">
-<h3>Visualize Full Tree<a class="headerlink" href="#visualize-full-tree" title="Permalink to this heading">#</a></h3>
+<h3>Visualize Full Tree<a class="headerlink" href="#visualize-full-tree" title="Link to this heading">#</a></h3>
 <p>As before, we can look at the decision tree on the data. This time, we have to limit the maximum depth otherwise the tree will be too large and cannot be converted and displayed as an image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1456,8 +1466,8 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 </section>
 </section>
 </section>
-<section id="random-forest">
-<h1>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="random-forest">
+<h1>Random Forest<a class="headerlink" href="#random-forest" title="Link to this heading">#</a></h1>
 <p>Now we can move on to a more powerful model, the random forest. This takes the idea of a single decision tree, and creates an <em>ensemble</em> model out of hundreds or thousands of trees to reduce the variance. Each tree is trained on a random set of the observations, and for each split of a node, only a subset of the features are used for making a split. When making predictions, the random forest averages the predictions for each of the individual decision trees for each data point in order to arrive at a final classification.</p>
 <p>Creating and training a random forest in extremely easy in Scikit-Learn. The cell below is all you need.</p>
 <div class="cell docutils container">
@@ -1494,7 +1504,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 </div>
 <p>We see that each decision tree in the forest has many nodes and is extremely deep. However, even though each individual decision tree may overfit to a particular subset of the training data, the idea is that the overall random forest should have a reduced variance.</p>
 <section id="random-forest-results">
-<h2>Random Forest Results<a class="headerlink" href="#random-forest-results" title="Permalink to this heading">#</a></h2>
+<h2>Random Forest Results<a class="headerlink" href="#random-forest-results" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_rf_predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
@@ -1537,8 +1547,8 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 <p>Our model does pretty well! Compared to the single decision tree, the random forest is much better able to generalize to new data.</p>
 </section>
 </section>
-<section id="random-forest-optimization-through-random-search">
-<h1>Random Forest Optimization through Random Search<a class="headerlink" href="#random-forest-optimization-through-random-search" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="random-forest-optimization-through-random-search">
+<h1>Random Forest Optimization through Random Search<a class="headerlink" href="#random-forest-optimization-through-random-search" title="Link to this heading">#</a></h1>
 <p>In order to maximize the performance of the random forest, we can perform a random search for better hyperparameters. This will randomly select combinations of hyperparameters from a grid, evaluate them using cross validation on the training data, and return the values that perform the best.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1577,7 +1587,7 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 </div>
 <p>We can see that the best hyperparameter values are not the defaults. This shows the importance of tuning a model for a specific dataset. Each dataset will have different characteristics, and the model that does best on one dataset will not necessarily do the best across all datasets.</p>
 <section id="use-best-model">
-<h2>Use Best Model<a class="headerlink" href="#use-best-model" title="Permalink to this heading">#</a></h2>
+<h2>Use Best Model<a class="headerlink" href="#use-best-model" title="Link to this heading">#</a></h2>
 <p>Now we can take the best model (it has already been trained) and evaluate it. Hopefully it does better than the stock Random Forest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1644,8 +1654,8 @@ If we do the math, the average (weighted by number of samples) Gini Impurity dec
 <p>This tree is a little simpler than the solitary decision tree model. Random search found that limiting the maximum depth of the trees in the forest delivers better performance than letting them expand as far as needed.</p>
 </section>
 </section>
-<section id="conclusions">
-<h1>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusions">
+<h1>Conclusions<a class="headerlink" href="#conclusions" title="Link to this heading">#</a></h1>
 <p>In this notebook, we built and used a random forest machine learning model in Python. Rather than just writing the code and not understanding the model, we formed an understanding of the random forest by inspecting an individual decision tree and discussion its limitations. We visualized the decision tree to see how it makes decisions and also saw how one decision tree overfits to the trainig data. <strong>To overcome the limitations of a single decision tree, we can train hundreds or thousands of them in a single ensemble model. This model, known as a random forest, trains each tree on a different set of the training observations, and make splits at each node based on a subset of the features leading to a model with reduced variance and better generalization performance on the testing set.</strong></p>
 <p>A few key concepts to take away are</p>
 <ol class="arabic simple">
@@ -1769,7 +1779,7 @@ By Annette Rudolph, Marie-Christin Eckert
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>
