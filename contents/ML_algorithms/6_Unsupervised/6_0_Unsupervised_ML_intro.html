@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8. Supervised Machine Learning &#8212; Machine Learning Online Reader</title>
+    <title>9. Unsupervised Machine Learning &#8212; Machine Learning Online Reader</title>
   
   
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="8.1. Clustering Algorithms - \(k\)-Means" href="6_1_k-Means.html" />
-    <link rel="prev" title="7.4. Random Forest Regression" href="../5_Supervised/5_4_RF_regression.html" />
+    <link rel="next" title="9.1. Clustering Algorithms - \(k\)-Means" href="6_1_k-Means.html" />
+    <link rel="prev" title="8.4. Random Forest Regression" href="../5_Supervised/5_4_RF_regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -223,24 +223,28 @@
 </ul>
 </details></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time Series Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../TSA/5_00_TSA_intro.html">6. Time Series Analysis</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning Algorithms</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../5_Supervised/5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../5_Supervised/5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../5_Supervised/5_2_Decision_Trees.html">7.2. Decision Trees</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../5_Supervised/5_3_RF_classification.html">7.3. Random Forest Classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../5_Supervised/5_4_RF_regression.html">7.4. Random Forest Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_ML_Intro.html">7. Machine learning Algorithms I</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../5_Supervised/5_0_Supervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../5_Supervised/5_1_SVM.html">8.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5_Supervised/5_2_Decision_Trees.html">8.2. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5_Supervised/5_3_RF_classification.html">8.3. Random Forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../5_Supervised/5_4_RF_regression.html">8.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">8. Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">9. Unsupervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_1_k-Means.html">9.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">10. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -428,7 +432,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Supervised Machine Learning</h1>
+    <h1>Unsupervised Machine Learning</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,8 +446,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="supervised-machine-learning">
-<h1><span class="section-number">8. </span>Supervised Machine Learning<a class="headerlink" href="#supervised-machine-learning" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="unsupervised-machine-learning">
+<h1><span class="section-number">9. </span>Unsupervised Machine Learning<a class="headerlink" href="#unsupervised-machine-learning" title="Link to this heading">#</a></h1>
 <a class="bg-primary reference internal image-reference" href="../../../_images/unsupervised_overview.png"><img alt="unsupervised_overview" class="bg-primary" src="../../../_images/unsupervised_overview.png" style="width: 700px;" /></a>
 <div class="toctree-wrapper compound">
 </div>
@@ -485,7 +489,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.4. </span>Random Forest Regression</p>
+        <p class="prev-next-title"><span class="section-number">8.4. </span>Random Forest Regression</p>
       </div>
     </a>
     <a class="right-next"
@@ -493,7 +497,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8.1. </span>Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</p>
+        <p class="prev-next-title"><span class="section-number">9.1. </span>Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

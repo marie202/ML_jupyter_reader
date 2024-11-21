@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7.3. Random Forest Classification &#8212; Machine Learning Online Reader</title>
+    <title>8.3. Random Forest Classification &#8212; Machine Learning Online Reader</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/ML_algorithms/5_Supervised/5_3_RF_classification';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="7.4. Random Forest Regression" href="5_4_RF_regression.html" />
-    <link rel="prev" title="7.2. Decision Trees" href="5_2_Decision_Trees.html" />
+    <link rel="next" title="8.4. Random Forest Regression" href="5_4_RF_regression.html" />
+    <link rel="prev" title="8.2. Decision Trees" href="5_2_Decision_Trees.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -221,24 +221,28 @@
 </ul>
 </details></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time Series Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../TSA/5_00_TSA_intro.html">6. Time Series Analysis</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning Algorithms</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5_2_Decision_Trees.html">7.2. Decision Trees</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. Random Forest Classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5_4_RF_regression.html">7.4. Random Forest Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_ML_Intro.html">7. Machine learning Algorithms I</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="5_0_Supervised_ML_intro.html">8. Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="5_1_SVM.html">8.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_2_Decision_Trees.html">8.2. Decision Trees</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.3. Random Forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_4_RF_regression.html">8.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../6_Unsupervised/6_0_Unsupervised_ML_intro.html">9. Unsupervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../6_Unsupervised/6_1_k-Means.html">9.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">10. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -438,20 +442,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-tutorial-aims">7.3.1. Random Forest Tutorial Aims:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-random-forest">7.3.2. What is a Random Forest?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-it-work">7.3.3. How does it work?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step">7.3.3.1. Step by Step:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-tutorial-aims">8.3.1. Random Forest Tutorial Aims:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-random-forest">8.3.2. What is a Random Forest?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-it-work">8.3.3. How does it work?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step">8.3.3.1. Step by Step:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">7.3.4. Evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-building-a-random-forest">7.3.5. Example: Building a Random Forest</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">7.3.5.1. solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">8.3.4. Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-building-a-random-forest">8.3.5. Example: Building a Random Forest</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">8.3.5.1. solution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">7.3.6. Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.3.6.1. solution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">7.3.6.2. Ressources for this script:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">8.3.6. Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.3.6.1. solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">8.3.6.2. Ressources for this script:</a></li>
 </ul>
 </li>
 </ul>
@@ -466,10 +470,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="random-forest-classification">
-<h1><span class="section-number">7.3. </span>Random Forest Classification<a class="headerlink" href="#random-forest-classification" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">8.3. </span>Random Forest Classification<a class="headerlink" href="#random-forest-classification" title="Link to this heading">#</a></h1>
 <a class="bg-primary reference internal image-reference" href="../../../_images/rf_intro.png"><img alt="mloverview" class="bg-primary" src="../../../_images/rf_intro.png" style="width: 700px;" /></a>
 <section id="random-forest-tutorial-aims">
-<h2><span class="section-number">7.3.1. </span>Random Forest Tutorial Aims:<a class="headerlink" href="#random-forest-tutorial-aims" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3.1. </span>Random Forest Tutorial Aims:<a class="headerlink" href="#random-forest-tutorial-aims" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Random Forest classification with scikit-learn</p></li>
 <li><p>How random forests work</p></li>
@@ -478,7 +482,7 @@ document.write(`
 </ul>
 </section>
 <section id="what-is-a-random-forest">
-<h2><span class="section-number">7.3.2. </span>What is a Random Forest?<a class="headerlink" href="#what-is-a-random-forest" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3.2. </span>What is a Random Forest?<a class="headerlink" href="#what-is-a-random-forest" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>RF are built by combining mulitple DT (ensemble of decision trees to predict target variables)</p></li>
 <li><p>RFs combine simplicity of DTs with flexiblity –&gt; therefore improved accuracy</p></li>
@@ -489,14 +493,14 @@ document.write(`
 <a class="bg-primary reference internal image-reference" href="../../../_images/rf_1.png"><img alt="mloverview" class="bg-primary" src="../../../_images/rf_1.png" style="width: 700px;" /></a>
 </section>
 <section id="how-does-it-work">
-<h2><span class="section-number">7.3.3. </span>How does it work?<a class="headerlink" href="#how-does-it-work" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3.3. </span>How does it work?<a class="headerlink" href="#how-does-it-work" title="Link to this heading">#</a></h2>
 <p>A Random forest regression model combines multiple decision trees to create a single model. Each tree in the forest builds from a different subset of the data and makes its own independent prediction. The final prediction for input is based on the average or weighted average of all the individual trees’ predictions.</p>
 <blockquote>
 <div><p><a class="reference external" href="https://www.analytixlabs.co.in/blog/random-forest-regression/#:~:text=using%20various%20techniques.-,Evaluating%20Random%20Forest%20Regression%20Performance,such%20as%20accuracy%20and%20precision.">Read here more on the theory.</a></p>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=J4Wdy0Wc_xQ">Nice introductory video</a></p>
 </div></blockquote>
 <section id="step-by-step">
-<h3><span class="section-number">7.3.3.1. </span>Step by Step:<a class="headerlink" href="#step-by-step" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.3.3.1. </span>Step by Step:<a class="headerlink" href="#step-by-step" title="Link to this heading">#</a></h3>
 <ul>
 <li><ol class="arabic simple">
 <li><p>Create a “bootstrapped” dataset.</p></li>
@@ -528,7 +532,7 @@ document.write(`
 </section>
 </section>
 <section id="evaluation">
-<h2><span class="section-number">7.3.4. </span>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3.4. </span>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>1/3 of the data does not end up in the “bootstrapped” dataset = <strong>Out-Of-Bag</strong> Dataset</p></li>
 <li><p>Evaluate all trees with the  <strong>Out-Of-Bag</strong> Dataset,</p></li>
@@ -536,7 +540,7 @@ document.write(`
 </ul>
 </section>
 <section id="example-building-a-random-forest">
-<h2><span class="section-number">7.3.5. </span>Example: Building a Random Forest<a class="headerlink" href="#example-building-a-random-forest" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3.5. </span>Example: Building a Random Forest<a class="headerlink" href="#example-building-a-random-forest" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p>Now, we will built a Random Forest by revisiting the example, we introduced in the decision tree script.
 Split data into target and features and perform the train-test-split (70-30).</p>
@@ -659,7 +663,7 @@ Split data into target and features and perform the train-test-split (70-30).</p
 </div>
 </div>
 <section id="solution">
-<h3><span class="section-number">7.3.5.1. </span>solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.3.5.1. </span>solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split dataset in features and target variable</span>
@@ -678,7 +682,7 @@ Split data into target and features and perform the train-test-split (70-30).</p
 </section>
 </section>
 <section id="model">
-<h2><span class="section-number">7.3.6. </span>Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3.6. </span>Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p>Build the Random Forest Classfier an fit the model</p>
 </div></blockquote>
@@ -1127,7 +1131,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <section id="id1">
-<h3><span class="section-number">7.3.6.1. </span>solution<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.3.6.1. </span>solution<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mittelwert der quadrierten Residuen und erklärte Varianz ausgeben lassen</span>
@@ -1332,7 +1336,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 Event, Sample ID, Latitude, Longitude, Date/Time, Samp type, Sample comment, δ18O H2O [‰ SMOW], δD H2O [‰ SMOW], δ18O H2O std dev [±], δD H2O std dev [±]. The isotope ratios are expressed in the conventional delta notation (δ18O, δ2H) in per mil (‰) relative to VSMOW (<a class="reference external" href="https://en.wikipedia.org/wiki/Vienna_Standard_Mean_Ocean_Water">Vienna Standard Mean Ocean Water</a>.</p>
 </section>
 <section id="ressources-for-this-script">
-<h3><span class="section-number">7.3.6.2. </span>Ressources for this script:<a class="headerlink" href="#ressources-for-this-script" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.3.6.2. </span>Ressources for this script:<a class="headerlink" href="#ressources-for-this-script" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://towardsdatascience.com/hyperparameter-tuning-the-random-forest-in-python-using-scikit-learn-28d2aa77dd74">Koehrsen 2010</a></p></li>
 </ul>
@@ -1400,7 +1404,7 @@ Event, Sample ID, Latitude, Longitude, Date/Time, Samp type, Sample comment, δ1
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.2. </span>Decision Trees</p>
+        <p class="prev-next-title"><span class="section-number">8.2. </span>Decision Trees</p>
       </div>
     </a>
     <a class="right-next"
@@ -1408,7 +1412,7 @@ Event, Sample ID, Latitude, Longitude, Date/Time, Samp type, Sample comment, δ1
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.4. </span>Random Forest Regression</p>
+        <p class="prev-next-title"><span class="section-number">8.4. </span>Random Forest Regression</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1428,20 +1432,20 @@ Event, Sample ID, Latitude, Longitude, Date/Time, Samp type, Sample comment, δ1
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-tutorial-aims">7.3.1. Random Forest Tutorial Aims:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-random-forest">7.3.2. What is a Random Forest?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-it-work">7.3.3. How does it work?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step">7.3.3.1. Step by Step:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-tutorial-aims">8.3.1. Random Forest Tutorial Aims:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-random-forest">8.3.2. What is a Random Forest?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-it-work">8.3.3. How does it work?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step">8.3.3.1. Step by Step:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">7.3.4. Evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-building-a-random-forest">7.3.5. Example: Building a Random Forest</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">7.3.5.1. solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">8.3.4. Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-building-a-random-forest">8.3.5. Example: Building a Random Forest</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">8.3.5.1. solution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">7.3.6. Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.3.6.1. solution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">7.3.6.2. Ressources for this script:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">8.3.6. Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.3.6.1. solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">8.3.6.2. Ressources for this script:</a></li>
 </ul>
 </li>
 </ul>
