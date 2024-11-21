@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7.2. Decision Trees &#8212; Machine Learning Online Reader</title>
+    <title>8.2. Decision Trees &#8212; Machine Learning Online Reader</title>
   
   
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/ML_algorithms/5_Supervised/5_2_Decision_Trees';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="7.3. Random Forest Classification" href="5_3_RF_classification.html" />
-    <link rel="prev" title="7.1. Support Vector Machines (SVM)" href="5_1_SVM.html" />
+    <link rel="next" title="8.3. Random Forest Classification" href="5_3_RF_classification.html" />
+    <link rel="prev" title="8.1. Support Vector Machines (SVM)" href="5_1_SVM.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -223,24 +223,28 @@
 </ul>
 </details></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time Series Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../TSA/5_00_TSA_intro.html">6. Time Series Analysis</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning Algorithms</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.2. Decision Trees</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5_3_RF_classification.html">7.3. Random Forest Classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5_4_RF_regression.html">7.4. Random Forest Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_ML_Intro.html">7. Machine learning Algorithms I</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="5_0_Supervised_ML_intro.html">8. Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="5_1_SVM.html">8.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.2. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_3_RF_classification.html">8.3. Random Forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_4_RF_regression.html">8.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../6_Unsupervised/6_0_Unsupervised_ML_intro.html">9. Unsupervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../6_Unsupervised/6_1_k-Means.html">9.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">10. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -440,13 +444,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-decision-tree">7.2.1. What is a decision tree</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-building-a-decision-tree-from-scratch">7.2.1.1. <strong>Example</strong>: Building a Decision Tree from scratch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">7.2.1.2. solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-decision-tree">8.2.1. What is a decision tree</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-building-a-decision-tree-from-scratch">8.2.1.1. <strong>Example</strong>: Building a Decision Tree from scratch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">8.2.1.2. solution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-in-scikit-learn">7.2.2. Decision trees in Scikit-learn</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">7.2.2.1. Ressources for this script:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-in-scikit-learn">8.2.2. Decision trees in Scikit-learn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">8.2.2.1. Ressources for this script:</a></li>
 </ul>
 </li>
 </ul>
@@ -460,14 +464,21 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="decision-trees">
-<h1><span class="section-number">7.2. </span>Decision Trees<a class="headerlink" href="#decision-trees" title="Link to this heading">#</a></h1>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> lab_black
+</pre></div>
+</div>
+</div>
+</div>
+<section id="decision-trees">
+<h1><span class="section-number">8.2. </span>Decision Trees<a class="headerlink" href="#decision-trees" title="Link to this heading">#</a></h1>
 <p>In this notebook, we will implement a decision in Python. We’ll start with a single decision tree and a simple problem, and then work our way to a random forest. Once we understand how a single decision tree works, we can transfer this knowledge to an entire forest of trees.</p>
 <blockquote>
 <div><p><a class="reference external" href="https://www.youtube.com/watch?v=J4Wdy0Wc_xQ&amp;amp;t=528s">Nice introductory video</a></p>
 </div></blockquote>
 <section id="what-is-a-decision-tree">
-<h2><span class="section-number">7.2.1. </span>What is a decision tree<a class="headerlink" href="#what-is-a-decision-tree" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.2.1. </span>What is a decision tree<a class="headerlink" href="#what-is-a-decision-tree" title="Link to this heading">#</a></h2>
 <div>
 <img src="figures/decision_trees.png" width="700"/>
 </div>
@@ -484,7 +495,7 @@ document.write(`
 <p>Their main disadvantage: <strong>INACCURAY</strong>, since they are not flexible with new samples</p>
 </div></blockquote>
 <section id="example-building-a-decision-tree-from-scratch">
-<h3><span class="section-number">7.2.1.1. </span><strong>Example</strong>: Building a Decision Tree from scratch<a class="headerlink" href="#example-building-a-decision-tree-from-scratch" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.1.1. </span><strong>Example</strong>: Building a Decision Tree from scratch<a class="headerlink" href="#example-building-a-decision-tree-from-scratch" title="Link to this heading">#</a></h3>
 <blockquote>
 <div><p>First, a decision tree is to be generated by hand from the following admittedly rather artificial data set.</p>
 </div></blockquote>
@@ -558,7 +569,7 @@ Determine the total Gini impurity for the first internal nodes of the 2 remainin
 </div>
 </section>
 <section id="solution">
-<h3><span class="section-number">7.2.1.2. </span>solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.1.2. </span>solution<a class="headerlink" href="#solution" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gini</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">):</span>
@@ -689,7 +700,7 @@ Determine the total Gini impurity for the first internal nodes of the 2 remainin
 </section>
 </section>
 <section id="decision-trees-in-scikit-learn">
-<h2><span class="section-number">7.2.2. </span>Decision trees in Scikit-learn<a class="headerlink" href="#decision-trees-in-scikit-learn" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.2.2. </span>Decision trees in Scikit-learn<a class="headerlink" href="#decision-trees-in-scikit-learn" title="Link to this heading">#</a></h2>
 <p>Next, we  build and train a single decision tree on the data using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>. The tree will learn how to separate the points, building a flowchart of questions based on the feature values and the labels. At each stage, the decision tree makes splits by maximizing the reduction in Gini impurity.  We’ll use the default hyperparameters for the decision tree which means it can grow as deep as necessary in order to completely separate the classes. This will lead to overfitting because the model memorizes the training data, and in practice, we usually want to limit the depth of the tree so it can generalize to testing data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1154,7 +1165,7 @@ Determine the total Gini impurity for the first internal nodes of the 2 remainin
 <p>The data set contains 188 samples and the following 11 variables:
 Event, Sample ID, Latitude, Longitude, Date/Time, Samp type, Sample comment, δ18O H2O [‰ SMOW], δD H2O [‰ SMOW], δ18O H2O std dev [±], δD H2O std dev [±]. The isotope ratios are expressed in the conventional delta notation (δ18O, δ2H) in per mil (‰) relative to VSMOW (<a class="reference external" href="https://en.wikipedia.org/wiki/Vienna_Standard_Mean_Ocean_Water">Vienna Standard Mean Ocean Water</a>.</p>
 <section id="ressources-for-this-script">
-<h3><span class="section-number">7.2.2.1. </span>Ressources for this script:<a class="headerlink" href="#ressources-for-this-script" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.2.2.1. </span>Ressources for this script:<a class="headerlink" href="#ressources-for-this-script" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://towardsdatascience.com/hyperparameter-tuning-the-random-forest-in-python-using-scikit-learn-28d2aa77dd74">Koehrsen 2010</a></p></li>
 </ul>
@@ -1235,7 +1246,7 @@ Event, Sample ID, Latitude, Longitude, Date/Time, Samp type, Sample comment, δ1
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.1. </span>Support Vector Machines (SVM)</p>
+        <p class="prev-next-title"><span class="section-number">8.1. </span>Support Vector Machines (SVM)</p>
       </div>
     </a>
     <a class="right-next"
@@ -1243,7 +1254,7 @@ Event, Sample ID, Latitude, Longitude, Date/Time, Samp type, Sample comment, δ1
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.3. </span>Random Forest Classification</p>
+        <p class="prev-next-title"><span class="section-number">8.3. </span>Random Forest Classification</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1263,13 +1274,13 @@ Event, Sample ID, Latitude, Longitude, Date/Time, Samp type, Sample comment, δ1
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-decision-tree">7.2.1. What is a decision tree</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-building-a-decision-tree-from-scratch">7.2.1.1. <strong>Example</strong>: Building a Decision Tree from scratch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">7.2.1.2. solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-decision-tree">8.2.1. What is a decision tree</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-building-a-decision-tree-from-scratch">8.2.1.1. <strong>Example</strong>: Building a Decision Tree from scratch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">8.2.1.2. solution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-in-scikit-learn">7.2.2. Decision trees in Scikit-learn</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">7.2.2.1. Ressources for this script:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-in-scikit-learn">8.2.2. Decision trees in Scikit-learn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">8.2.2.1. Ressources for this script:</a></li>
 </ul>
 </li>
 </ul>

@@ -38,6 +38,13 @@ parts:
   - file: contents/General_Introduction_Sessions/4_intro_regression/4_2_Intro_Correlation
     sections:
     - file: contents/General_Introduction_Sessions/4_intro_regression/4_3_Additional_Exercises_CorrReg
+- caption: Time Series Analysis
+  numbered: true
+  chapters:
+  - file: contents/TSA/5_00_TSA_intro
+    sections:
+    - file: contents/TSA/5_01_TSA_Data_preprocessing
+    - file: contents/TSA/5_02_TSA_Data_analysis
 - caption: Machine Learning Algorithms
   numbered: true
   chapters:

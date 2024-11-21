@@ -223,24 +223,28 @@
 </ul>
 </details></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time Series Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../TSA/5_00_TSA_intro.html">6. Time Series Analysis</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning Algorithms</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../ML_algorithms/5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_2_Decision_Trees.html">7.2. Decision Trees</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_3_RF_classification.html">7.3. Random Forest Classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_4_RF_regression.html">7.4. Random Forest Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ML_algorithms/5_ML_Intro.html">7. Machine learning Algorithms I</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_0_Supervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_1_SVM.html">8.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_2_Decision_Trees.html">8.2. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_3_RF_classification.html">8.3. Random Forest Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/5_Supervised/5_4_RF_regression.html">8.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_0_Unsupervised_ML_intro.html">9. Unsupervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ML_algorithms/6_Unsupervised/6_1_k-Means.html">9.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">10. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -454,7 +458,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-transformation">4.2.5.2. Logistic transformation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#back-transformation">4.2.5.3. Back transformation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">4.2.5.4. solution</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-mean-median-distributions">4.2.5.5. statistics - mean, median, distributions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-mean-median-distributions">4.2.5.5. Statistics - Mean, Median &amp; Distributions</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.2.5.6. solution</a></li>
 </ul>
 </li>
@@ -1509,13 +1513,13 @@ $<span class="math notranslate nohighlight">\(x''=\log\frac{x'}{1-x'}\)</span>$<
 <section id="back-transformation">
 <h4><span class="section-number">4.2.5.3. </span>Back transformation<a class="headerlink" href="#back-transformation" title="Link to this heading">#</a></h4>
 <p>The back transformation is the “logistic” function resp. inverse logit:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c82606cc-6094-4ada-a7bd-274528bf2502">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-c82606cc-6094-4ada-a7bd-274528bf2502" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-317f0ee2-ade5-44fb-adbc-38a7e7e81334">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-317f0ee2-ade5-44fb-adbc-38a7e7e81334" title="Permalink to this equation">#</a></span>\[\begin{align}
 x''\to x'=\frac{e^{x''}}{1+e^{x''}}&amp;&amp; and &amp;&amp;
 x'\to x=(x'+l)\cdot(u-l)
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-5821c2a5-6708-419f-a5f1-7104e0810c15">
-<span class="eqno">(4.2)<a class="headerlink" href="#equation-5821c2a5-6708-419f-a5f1-7104e0810c15" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-daa5daf6-fa8d-40e6-87a9-fc826e8236bc">
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-daa5daf6-fa8d-40e6-87a9-fc826e8236bc" title="Permalink to this equation">#</a></span>\[\begin{align}
 &amp;&amp; resp. &amp;&amp; 
 x'\to x= ({x'+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 \end{align}\]</div>
@@ -1640,7 +1644,7 @@ x'\to x= ({x'+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </section>
 <section id="statistics-mean-median-distributions">
-<h4><span class="section-number">4.2.5.5. </span>statistics - mean, median, distributions<a class="headerlink" href="#statistics-mean-median-distributions" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">4.2.5.5. </span>Statistics - Mean, Median &amp; Distributions<a class="headerlink" href="#statistics-mean-median-distributions" title="Link to this heading">#</a></h4>
 <p>Now, we may compute statistics :)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1789,7 +1793,7 @@ x'\to x= ({x'+x_{min}+1})\cdot(x_{max}-x_{min}+2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1293ad6d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x132c3a6d0&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/f290cc8c98c0cd2bb6d0fab72323728e1d31a8cf37226410fa8f1dd67232cc91.png" src="../../../_images/f290cc8c98c0cd2bb6d0fab72323728e1d31a8cf37226410fa8f1dd67232cc91.png" />
@@ -2367,7 +2371,7 @@ slope: [1.21050227]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12a66a700&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x134032700&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/93de329331991a8f97cc290d8b5298d851b71cab055cce6d69785ea2734547e0.png" src="../../../_images/93de329331991a8f97cc290d8b5298d851b71cab055cce6d69785ea2734547e0.png" />
@@ -2426,7 +2430,7 @@ slope: [1.21050227]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12a6c7820&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13408f820&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/ed0f3481bb823841ded3ef7ab5318069f76f04396bef57dec5491f467b21613d.png" src="../../../_images/ed0f3481bb823841ded3ef7ab5318069f76f04396bef57dec5491f467b21613d.png" />
@@ -2533,7 +2537,7 @@ Assuming that your test set meets the preceding two conditions, your goal is to 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12a87f550&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1341153a0&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/dcc23f875e143fe8c6dbe33d1012783e98a507b20b9befc0b4a8fbeb30f5f7bb.png" src="../../../_images/dcc23f875e143fe8c6dbe33d1012783e98a507b20b9befc0b4a8fbeb30f5f7bb.png" />
@@ -3118,7 +3122,7 @@ slope: [1.07896716]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12aa9fe20&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x134333d90&gt;]
 </pre></div>
 </div>
 <img alt="../../../_images/bac64e58e70350fd84e2891eb3a257e123dd1a4ed722357fde47cfd813fda607.png" src="../../../_images/bac64e58e70350fd84e2891eb3a257e123dd1a4ed722357fde47cfd813fda607.png" />
@@ -3136,7 +3140,7 @@ slope: [1.07896716]
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;temp_min&#39;, ylabel=&#39;temp&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/3fec5ecfff8dd2f8f2c3677e6b9af962c4f8db178d08fa3c2d28a2763d7b6084.png" src="../../../_images/3fec5ecfff8dd2f8f2c3677e6b9af962c4f8db178d08fa3c2d28a2763d7b6084.png" />
+<img alt="../../../_images/1c566bf93c771a51af3e1617499a378bbfdbc546718275c0f4907c88f3eebc97.png" src="../../../_images/1c566bf93c771a51af3e1617499a378bbfdbc546718275c0f4907c88f3eebc97.png" />
 </div>
 </div>
 <blockquote>
@@ -3657,7 +3661,7 @@ Korrelation zwischen Fe3+ und SO4 am höchsten –&gt; also vermutlich verlaufen
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-transformation">4.2.5.2. Logistic transformation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#back-transformation">4.2.5.3. Back transformation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">4.2.5.4. solution</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-mean-median-distributions">4.2.5.5. statistics - mean, median, distributions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-mean-median-distributions">4.2.5.5. Statistics - Mean, Median &amp; Distributions</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.2.5.6. solution</a></li>
 </ul>
 </li>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7.4. Random Forest Regression &#8212; Machine Learning Online Reader</title>
+    <title>8.4. Random Forest Regression &#8212; Machine Learning Online Reader</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/ML_algorithms/5_Supervised/5_4_RF_regression';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="8. Supervised Machine Learning" href="../6_Unsupervised/6_0_Unsupervised_ML_intro.html" />
-    <link rel="prev" title="7.3. Random Forest Classification" href="5_3_RF_classification.html" />
+    <link rel="next" title="9. Unsupervised Machine Learning" href="../6_Unsupervised/6_0_Unsupervised_ML_intro.html" />
+    <link rel="prev" title="8.3. Random Forest Classification" href="5_3_RF_classification.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -221,24 +221,28 @@
 </ul>
 </details></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Time Series Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../TSA/5_00_TSA_intro.html">6. Time Series Analysis</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning Algorithms</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../5_ML_Intro.html">6. Machine learning Algorithms I</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="5_0_Supervised_ML_intro.html">7. Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="5_1_SVM.html">7.1. Support Vector Machines (SVM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5_2_Decision_Trees.html">7.2. Decision Trees</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5_3_RF_classification.html">7.3. Random Forest Classification</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.4. Random Forest Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_ML_Intro.html">7. Machine learning Algorithms I</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="5_0_Supervised_ML_intro.html">8. Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="5_1_SVM.html">8.1. Support Vector Machines (SVM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_2_Decision_Trees.html">8.2. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_3_RF_classification.html">8.3. Random Forest Classification</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.4. Random Forest Regression</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../6_Unsupervised/6_0_Unsupervised_ML_intro.html">8. Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../6_Unsupervised/6_1_k-Means.html">8.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../6_Unsupervised/6_0_Unsupervised_ML_intro.html">9. Unsupervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../6_Unsupervised/6_1_k-Means.html">9.1. Clustering Algorithms - <span class="math notranslate nohighlight">\(k\)</span>-Means</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Neural Networks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">9. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Neural_networks/7_MLP_WF.html">10. Multilayer perceptron (MLP) - the Machine Learning Workflow</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -438,26 +442,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-tutorial-aims">7.4.1. Random Forest Tutorial Aims:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-level-prediction-in-baden-wurttemberg">7.4.2. Water level prediction in Baden-Württemberg</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">7.4.3. Data Collection</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-data-set">7.4.4. Read Data Set</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-unnecessary-columns">7.4.4.1. Remove unnecessary columns</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-columns-for-convenience">7.4.4.2. Rename columns for convenience</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-missing-data">7.4.4.3. Drop missing data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-index-to-datetimeindex">7.4.4.4. Convert Index to <code class="docutils literal notranslate"><span class="pre">DateTimeindex</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#append-information-about-month">7.4.4.5. Append information about Month</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#append-rolling-mean">7.4.4.6. Append Rolling Mean</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">7.4.4.7. Train-Test split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-tutorial-aims">8.4.1. Random Forest Tutorial Aims:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-level-prediction-in-baden-wurttemberg">8.4.2. Water level prediction in Baden-Württemberg</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">8.4.3. Data Collection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-data-set">8.4.4. Read Data Set</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-unnecessary-columns">8.4.4.1. Remove unnecessary columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-columns-for-convenience">8.4.4.2. Rename columns for convenience</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-missing-data">8.4.4.3. Drop missing data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-index-to-datetimeindex">8.4.4.4. Convert Index to <code class="docutils literal notranslate"><span class="pre">DateTimeindex</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#append-information-about-month">8.4.4.5. Append information about Month</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#append-rolling-mean">8.4.4.6. Append Rolling Mean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">8.4.4.7. Train-Test split</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-model-set-up">7.4.5. Initial Model Set Up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyper-parameter-tuning">7.4.6. Hyper-parameter Tuning</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#max-features">7.4.6.1. max_features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-model-set-up">8.4.5. Initial Model Set Up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyper-parameter-tuning">8.4.6. Hyper-parameter Tuning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#max-features">8.4.6.1. max_features</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-model">7.4.7. Final Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">7.4.7.1. Ressources for this script:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-model">8.4.7. Final Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">8.4.7.1. Ressources for this script:</a></li>
 </ul>
 </li>
 </ul>
@@ -472,10 +476,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="random-forest-regression">
-<h1><span class="section-number">7.4. </span>Random Forest Regression<a class="headerlink" href="#random-forest-regression" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">8.4. </span>Random Forest Regression<a class="headerlink" href="#random-forest-regression" title="Link to this heading">#</a></h1>
 <a class="bg-primary reference internal image-reference" href="../../../_images/rf_intro.png"><img alt="mloverview" class="bg-primary" src="../../../_images/rf_intro.png" style="width: 700px;" /></a>
 <section id="random-forest-tutorial-aims">
-<h2><span class="section-number">7.4.1. </span>Random Forest Tutorial Aims:<a class="headerlink" href="#random-forest-tutorial-aims" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4.1. </span>Random Forest Tutorial Aims:<a class="headerlink" href="#random-forest-tutorial-aims" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Random Forest classification with scikit-learn</p></li>
 <li><p>How random forests work</p></li>
@@ -485,12 +489,12 @@ document.write(`
 <a class="bg-primary reference internal image-reference" href="../../../_images/rf_1.png"><img alt="mloverview" class="bg-primary" src="../../../_images/rf_1.png" style="width: 700px;" /></a>
 </section>
 <section id="water-level-prediction-in-baden-wurttemberg">
-<h2><span class="section-number">7.4.2. </span>Water level prediction in Baden-Württemberg<a class="headerlink" href="#water-level-prediction-in-baden-wurttemberg" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4.2. </span>Water level prediction in Baden-Württemberg<a class="headerlink" href="#water-level-prediction-in-baden-wurttemberg" title="Link to this heading">#</a></h2>
 <p>A typical machine learning approach consists of several steps that can be arranged in a kind of standard workflow. Training of the model, which we have done in the previous examples of different algorithms, is only a small part of this workflow. Data preprocessing and model evaluation and selection are by far the more extensive tasks. In the following we will walk through the entire workflow using a simple but more realistic example than using toy data. <strong>We will build a Random Forest Regression as an Example for a typical ML workflow.</strong></p>
 <p>Our goal is to use climate data (temperature and precipitation) and predict the daily mean water level at a water level monitoring station in Baden-Württemberg.</p>
 </section>
 <section id="data-collection">
-<h2><span class="section-number">7.4.3. </span>Data Collection<a class="headerlink" href="#data-collection" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4.3. </span>Data Collection<a class="headerlink" href="#data-collection" title="Link to this heading">#</a></h2>
 <p>For this example, we will use a daily time series from the water level (Pegel) stations in Baden-Württemberg (BW), downloadable from <a class="reference external" href="https://udo.lubw.baden-wuerttemberg.de/public/processingChain?repositoryItemGlobalId=hydrologische_landespegel&amp;amp;conditionValuesSetHash=00E06F8&amp;amp;selector=hydrologische_landespegel&amp;amp;sourceOrderAsc=false&amp;amp;offset=0&amp;amp;limit=2147483647">UDO</a>. The data provided here was downloaded on 2024-07-22. A detailed description of the variables is available <a class="reference external" href="https://www.hvz.baden-wuerttemberg.de">here</a>. For the purpose of this tutorial the dataset is provided in <a class="reference download internal" download="" href="../../../_downloads/e530c26fb38641ab83ce5154bb398a73/Jagstzell_Jagst_dailyData_HYRAS_Pegelstand.csv"><span class="xref download myst">here</span></a>.</p>
 <a class="reference internal image-reference" href="../../../_images/pegel_BW.png"><img alt="../../../_images/pegel_BW.png" src="../../../_images/pegel_BW.png" style="width: 800px;" /></a>
 <a class="reference internal image-reference" href="../../../_images/ausgewählte_stations.png"><img alt="../../../_images/ausgew%C3%A4hlte_stations.png" src="../../../_images/ausgew%C3%A4hlte_stations.png" style="width: 400px;" /></a>
@@ -498,7 +502,7 @@ document.write(`
 The respective data is open access and can be easily downloaded <a class="reference external" href="https://opendata.dwd.de/climate_environment/CDC/grids_germany/daily/hyras_de/">here</a>. The respective climate data at the water level monitoring station is already appended in the provided csv file.</p>
 </section>
 <section id="read-data-set">
-<h2><span class="section-number">7.4.4. </span>Read Data Set<a class="headerlink" href="#read-data-set" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4.4. </span>Read Data Set<a class="headerlink" href="#read-data-set" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> lab_black
@@ -641,7 +645,7 @@ dtype: object
 </div>
 </div>
 <section id="remove-unnecessary-columns">
-<h3><span class="section-number">7.4.4.1. </span>Remove unnecessary columns<a class="headerlink" href="#remove-unnecessary-columns" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.4.4.1. </span>Remove unnecessary columns<a class="headerlink" href="#remove-unnecessary-columns" title="Link to this heading">#</a></h3>
 <p>By looking at the data and consulting the variable description, we can immediately find variables that are not useful for our purpose and drop them.</p>
 <ul class="simple">
 <li><p>Einheit</p></li>
@@ -764,7 +768,7 @@ dtype: object
 </div>
 </section>
 <section id="rename-columns-for-convenience">
-<h3><span class="section-number">7.4.4.2. </span>Rename columns for convenience<a class="headerlink" href="#rename-columns-for-convenience" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.4.4.2. </span>Rename columns for convenience<a class="headerlink" href="#rename-columns-for-convenience" title="Link to this heading">#</a></h3>
 <p>To improve the readability, we rename the remaining columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -889,7 +893,7 @@ dtype: object
 </div>
 </section>
 <section id="drop-missing-data">
-<h3><span class="section-number">7.4.4.3. </span>Drop missing data<a class="headerlink" href="#drop-missing-data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.4.4.3. </span>Drop missing data<a class="headerlink" href="#drop-missing-data" title="Link to this heading">#</a></h3>
 <p>As a next step, we check the data for missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -928,7 +932,7 @@ dtype: int64
 </div>
 </section>
 <section id="convert-index-to-datetimeindex">
-<h3><span class="section-number">7.4.4.4. </span>Convert Index to <code class="docutils literal notranslate"><span class="pre">DateTimeindex</span></code><a class="headerlink" href="#convert-index-to-datetimeindex" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.4.4.4. </span>Convert Index to <code class="docutils literal notranslate"><span class="pre">DateTimeindex</span></code><a class="headerlink" href="#convert-index-to-datetimeindex" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
@@ -946,7 +950,7 @@ dtype: int64
 </div>
 </section>
 <section id="append-information-about-month">
-<h3><span class="section-number">7.4.4.5. </span>Append information about Month<a class="headerlink" href="#append-information-about-month" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.4.4.5. </span>Append information about Month<a class="headerlink" href="#append-information-about-month" title="Link to this heading">#</a></h3>
 <p>We know that the infiltration behaviour of soils changes with the season. That’s why we want to keep this information as a proxy for season.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -957,7 +961,7 @@ dtype: int64
 </div>
 </section>
 <section id="append-rolling-mean">
-<h3><span class="section-number">7.4.4.6. </span>Append Rolling Mean<a class="headerlink" href="#append-rolling-mean" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.4.4.6. </span>Append Rolling Mean<a class="headerlink" href="#append-rolling-mean" title="Link to this heading">#</a></h3>
 <p>The discharge behaviour of a river is of course not only dependent on the precipitation and temperature on the respective day. The preceding days should also have an influence. To cover this, we add a moving average column over 5 and 10 days for precipitation and temperature.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -973,7 +977,7 @@ dtype: int64
 </div>
 </section>
 <section id="train-test-split">
-<h3><span class="section-number">7.4.4.7. </span>Train-Test split<a class="headerlink" href="#train-test-split" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.4.4.7. </span>Train-Test split<a class="headerlink" href="#train-test-split" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -999,7 +1003,7 @@ dtype: int64
 </section>
 </section>
 <section id="initial-model-set-up">
-<h2><span class="section-number">7.4.5. </span>Initial Model Set Up<a class="headerlink" href="#initial-model-set-up" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4.5. </span>Initial Model Set Up<a class="headerlink" href="#initial-model-set-up" title="Link to this heading">#</a></h2>
 <p>All the necessary pre-processing is now done and we can finally get to the actual model. The Random Forest (RF) algorithm is applied to assess the relative importance of meteorological variables on the water level. Our goal is then to predict the mean water level (cm).</p>
 <p>We start with a performance test on our data for the RF algorithm by creating an initial RF model using the RandomForestRegressor() function. It predicts water level based on all other variables with 2000 trees.</p>
 <div class="cell docutils container">
@@ -1502,7 +1506,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <p>As shown in the figure, the mean squared residuals stabilize around <strong>500 trees</strong>. Thus, in the following step we use <code class="docutils literal notranslate"><span class="pre">n_estimators=500</span></code> and optimize the tree depth.</p>
 </section>
 <section id="hyper-parameter-tuning">
-<h2><span class="section-number">7.4.6. </span>Hyper-parameter Tuning<a class="headerlink" href="#hyper-parameter-tuning" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4.6. </span>Hyper-parameter Tuning<a class="headerlink" href="#hyper-parameter-tuning" title="Link to this heading">#</a></h2>
 <p>To look at the available hyperparameters, we can examine the default values of our random forest model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1544,7 +1548,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </ul>
 <p>We could go read the research papers on the random forest and try to theorize the best hyperparameters, but a more efficient use of our time is just to try out a wide range of values and see what works!</p>
 <section id="max-features">
-<h3><span class="section-number">7.4.6.1. </span>max_features<a class="headerlink" href="#max-features" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.4.6.1. </span>max_features<a class="headerlink" href="#max-features" title="Link to this heading">#</a></h3>
 <p>Now, we will tune the parameter that determines the number of variables that are randomly sampled as candidates at each split (max_features). The numbers of trees and variables are crucial for the model performance. We apply a range of <strong>max_features from 1 to 5</strong> while n_estimators is fixed at <strong>500</strong>. This grid represents different combinations of hyper-parameters to be tested.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1643,7 +1647,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </section>
 </section>
 <section id="final-model">
-<h2><span class="section-number">7.4.7. </span>Final Model<a class="headerlink" href="#final-model" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4.7. </span>Final Model<a class="headerlink" href="#final-model" title="Link to this heading">#</a></h2>
 <p>Now, the final RF model with optimized parameters can be created. The varimp() function is used to calculate the importance of each variable in the model. This tells us which variables are most predictive of O18.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2137,7 +2141,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <p>For predicting the water level, <font color='royalblue'>the precipitation over the past 10 days</font> at sampling site seems to be the most important variable, among <font color='royalblue'>the precipitation over the past 5 days</font>, and the general location temperature.</p>
 <hr class="docutils" />
 <section id="ressources-for-this-script">
-<h3><span class="section-number">7.4.7.1. </span>Ressources for this script:<a class="headerlink" href="#ressources-for-this-script" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.4.7.1. </span>Ressources for this script:<a class="headerlink" href="#ressources-for-this-script" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://towardsdatascience.com/hyperparameter-tuning-the-random-forest-in-python-using-scikit-learn-28d2aa77dd74">Koehrsen 2010</a></p></li>
 </ul>
@@ -2205,7 +2209,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.3. </span>Random Forest Classification</p>
+        <p class="prev-next-title"><span class="section-number">8.3. </span>Random Forest Classification</p>
       </div>
     </a>
     <a class="right-next"
@@ -2213,7 +2217,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Supervised Machine Learning</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Unsupervised Machine Learning</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2233,26 +2237,26 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-tutorial-aims">7.4.1. Random Forest Tutorial Aims:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-level-prediction-in-baden-wurttemberg">7.4.2. Water level prediction in Baden-Württemberg</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">7.4.3. Data Collection</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-data-set">7.4.4. Read Data Set</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-unnecessary-columns">7.4.4.1. Remove unnecessary columns</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-columns-for-convenience">7.4.4.2. Rename columns for convenience</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-missing-data">7.4.4.3. Drop missing data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-index-to-datetimeindex">7.4.4.4. Convert Index to <code class="docutils literal notranslate"><span class="pre">DateTimeindex</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#append-information-about-month">7.4.4.5. Append information about Month</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#append-rolling-mean">7.4.4.6. Append Rolling Mean</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">7.4.4.7. Train-Test split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-tutorial-aims">8.4.1. Random Forest Tutorial Aims:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-level-prediction-in-baden-wurttemberg">8.4.2. Water level prediction in Baden-Württemberg</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">8.4.3. Data Collection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-data-set">8.4.4. Read Data Set</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-unnecessary-columns">8.4.4.1. Remove unnecessary columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-columns-for-convenience">8.4.4.2. Rename columns for convenience</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop-missing-data">8.4.4.3. Drop missing data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-index-to-datetimeindex">8.4.4.4. Convert Index to <code class="docutils literal notranslate"><span class="pre">DateTimeindex</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#append-information-about-month">8.4.4.5. Append information about Month</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#append-rolling-mean">8.4.4.6. Append Rolling Mean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">8.4.4.7. Train-Test split</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-model-set-up">7.4.5. Initial Model Set Up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyper-parameter-tuning">7.4.6. Hyper-parameter Tuning</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#max-features">7.4.6.1. max_features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-model-set-up">8.4.5. Initial Model Set Up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hyper-parameter-tuning">8.4.6. Hyper-parameter Tuning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#max-features">8.4.6.1. max_features</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-model">7.4.7. Final Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">7.4.7.1. Ressources for this script:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-model">8.4.7. Final Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ressources-for-this-script">8.4.7.1. Ressources for this script:</a></li>
 </ul>
 </li>
 </ul>
